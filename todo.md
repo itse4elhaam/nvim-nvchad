@@ -1,2 +1,4 @@
 - fold in nvim
 - save sessions
+- manage plugins better
+- manage overriding vim settings better

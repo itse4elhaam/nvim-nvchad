@@ -17,9 +17,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 
--- Create a group for the autocommand
 vim.api.nvim_create_augroup('PasteRemoveCarriageReturn', { clear = true })
-
 -- Remove carriage returns after pasting in normal mode
 vim.api.nvim_create_autocmd('VimEnter', {
   group = 'PasteRemoveCarriageReturn',
@@ -57,6 +55,8 @@ vim.cmd [[
     au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=300})
   augroup END
 ]]
+
+vim.o.linespace = 12
 
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
