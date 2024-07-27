@@ -14,20 +14,13 @@ local plugins = {
     end
   },
   { "wakatime/vim-wakatime", lazy = false },
-  {
-    "kevinhwang91/nvim-ufo",
-    requires = "kevinhwang91/promise-async",
-    config = require "custom.configs.ufo"
-  },
   -- todo move this to a seperate file
   {
     "0x00-ketsu/autosave.nvim",
     event = { "InsertLeave", "TextChanged" },
     config = function()
       require("autosave").setup {
-        -- You can put any autosave specific configurations here
         enabled = true, -- Enable auto-save
-        execution_message = "Auto-saved at: " .. vim.fn.strftime("%H:%M:%S"),
         events = { "InsertLeave", "TextChanged" },
         conditions = {
           exists = true,
@@ -38,15 +31,16 @@ local plugins = {
         write_all_buffers = false,
         on_off_commands = true,
         clean_command_line_interval = 0,
-        debounce_delay = 135
+        debounce_delay = 1500
       }
-      local autosave_group = vim.api.nvim_create_augroup("AutoSaveFormatting", { clear = true })
-      vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-        group = autosave_group,
-        callback = function()
-          vim.lsp.buf.format { async = false }
-        end,
-      })
+      -- local autosave_group = vim.api.nvim_create_augroup("AutoSaveFormatting", { clear = true })
+      -- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
+      --   group = autosave_group,
+        -- callback = function()
+        --     vim.lsp.buf.format { async = false }
+        --     vim.api.nvim_command('write')
+        -- end,
+      -- })
     end
   }, {
   "williamboman/mason.nvim",
