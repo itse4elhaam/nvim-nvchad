@@ -17,7 +17,7 @@ if not vim.loop.fs_stat(lazypath) then
 end
 
 
--- Create a group for the autocommands
+-- Create a group for the autocommand
 vim.api.nvim_create_augroup('PasteRemoveCarriageReturn', { clear = true })
 
 -- Remove carriage returns after pasting in normal mode

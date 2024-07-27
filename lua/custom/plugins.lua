@@ -1,4 +1,5 @@
 local plugins = {
+{ 'wakatime/vim-wakatime', lazy = false },
   {
     'kevinhwang91/nvim-ufo',
     requires = 'kevinhwang91/promise-async',
