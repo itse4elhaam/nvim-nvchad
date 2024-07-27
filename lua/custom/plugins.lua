@@ -1,10 +1,9 @@
 local plugins = {
   {
-    'rmagatti/auto-session',
+    "rmagatti/auto-session",
     lazy = false,
     config = function()
-      require('auto-session').setup({
-        log_level = 'info',
+      require("auto-session").setup({
         auto_session_enabled = true,
         auto_session_suppress_dirs = { "~/Downloads", "~/Documents" },
       })
@@ -30,7 +29,7 @@ local plugins = {
     event = { "InsertLeave", "TextChanged" },
     config = function()
       require("autosave").setup {
-        enabled = true, -- Enable auto-save
+        enabled = true,
         events = { "InsertLeave", "TextChanged" },
         conditions = {
           exists = true,
@@ -48,12 +47,12 @@ local plugins = {
       --   group = autosave_group,
       -- callback = function()
       --     vim.lsp.buf.format { async = false }
-      --     vim.api.nvim_command('write')
+      --     vim.api.nvim_command("write")
       -- end,
       -- })
     end
   },
-  { "williamboman/mason-lspconfig.nvim", lazy = false, opts = { ensure_installed = true } },
+  { "williamboman/mason-lspconfig.nvim", lazy = false, opts = { auto_install = true } },
   {
     "williamboman/mason.nvim",
     opts = {
