@@ -1,0 +1,2 @@
+- fold in nvim
+- save sessions
