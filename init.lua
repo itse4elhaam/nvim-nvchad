@@ -56,6 +56,15 @@ vim.cmd [[
   augroup END
 ]]
 
+-- Autocmd to open NvimTree on startup if no file is specified
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    local buffer_name = vim.api.nvim_buf_get_name(0)
+    if buffer_name == "" or buffer_name == nil then
+      vim.cmd("NvimTreeToggle")
+    end
+  end,
+})
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"

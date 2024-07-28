@@ -40,8 +40,7 @@ local plugins = {
     lazy = false,
     config = function()
       require("auto-session").setup({
-        auto_session_enabled = true,
-        auto_session_suppress_dirs = { "~/Downloads", "~/Documents" },
+        pre_save_cmds = { "tabdo NvimTreeClose" },
       })
     end,
   }, {
@@ -78,14 +77,6 @@ local plugins = {
         clean_command_line_interval = 0,
         debounce_delay = 100
       }
-      -- local autosave_group = vim.api.nvim_create_augroup("AutoSaveFormatting", { clear = true })
-      -- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {
-      --   group = autosave_group,
-      -- callback = function()
-      --     vim.lsp.buf.format { async = false }
-      --     vim.api.nvim_command("write")
-      -- end,
-      -- })
     end
   },
   { "williamboman/mason-lspconfig.nvim", lazy = false, opts = { auto_install = true } },

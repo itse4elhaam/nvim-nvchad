@@ -70,8 +70,6 @@ M.general = {
 
     ["<C-p>"] = { ":Telescope find_files<CR>" },
 
-    ["<C-w>"] = { ":bd<CR>" },
-
     ["el"] = { "$" },
     ["sl"] = { "_" },
 
@@ -99,6 +97,10 @@ M.general = {
   },
 
   x = {
+    ["<leader>dd"] = {
+      [["_d"]],
+      "Delete without overwriting register"
+    },
     ["<leader>pp"] = {
       [["_dP"]],
       "Paste without overwriting register"
