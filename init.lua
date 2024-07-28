@@ -56,8 +56,6 @@ vim.cmd [[
   augroup END
 ]]
 
-vim.o.linespace = 12
-
 dofile(vim.g.base46_cache .. "defaults")
 vim.opt.rtp:prepend(lazypath)
 require "plugins"

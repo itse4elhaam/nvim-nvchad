@@ -57,7 +57,7 @@ local plugins = {
         write_all_buffers = false,
         on_off_commands = true,
         clean_command_line_interval = 0,
-        debounce_delay = 700
+        debounce_delay = 100
       }
       -- local autosave_group = vim.api.nvim_create_augroup("AutoSaveFormatting", { clear = true })
       -- vim.api.nvim_create_autocmd({ "InsertLeave", "TextChanged" }, {

@@ -17,12 +17,40 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>dd"] = {
+      [["_d"]],
+      "Delete without overwriting register"
+    },
+    ["J"] = {
+      "mzJ`z",
+      "Join lines and retain cursor position"
+    },
+    ["<C-d>"] = {
+      "<C-d>zz",
+      "Half-page down and center"
+    },
+    ["<C-u>"] = {
+      "<C-u>zz",
+      "Half-page up and center"
+    },
+    ["n"] = {
+      "nzzzv",
+      "Next search result and center"
+    },
+    ["N"] = {
+      "Nzzzv",
+      "Previous search result and center"
+    },
+    ["<leader>sr"] = {
+      [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+      "Search and replace"
+    },
     ["yf"] = { "vaijy" },
     ["sa"] = { "G$Vgg" },
     ["ya"] = { ":%y<CR>" },
     ["da"] = { "G$vgg_d" },
-    ["<C-K>"] = {"_dd"},
-    ["dla"] = {"%_dd"},
+    ["<C-K>"] = { "_dd" },
+    ["dla"] = { "%_dd" },
 
     -- switch b/w buffers
     ["<S-h>"] = { ":bprevious<CR>" },
@@ -31,12 +59,6 @@ M.general = {
     -- splits
     ["<leader>v"] = { ":vsplit<CR>" },
     ["<leader>s"] = { ":split<CR>" },
-
-    -- panes
-    -- ["<leader>h"] = { ":wincmd h<CR>" },
-    -- ["<leader>j"] = { ":wincmd j<CR>" },
-    -- ["<leader>k"] = { ":wincmd k<CR>" },
-    -- ["<leader>l"] = { ":wincmd l<CR>" },
 
     -- cmd
     ["<leader>wq"] = { ":wq!<CR>" },
@@ -60,15 +82,33 @@ M.general = {
   },
 
   v = {
+    ["<leader>dd"] = {
+      [["_d"]],
+      "Delete without overwriting register"
+    },
     ["<"] = { "<gv" },
     [">"] = { ">gv" },
-    ["<leader>c"] = { ":lua require('Comment.api').toggle.linewise(vim.fn.visualmode())<CR>" },
+    ["J"] = {
+      ":m '>+1<CR>gv=gv",
+      "Move selected lines down"
+    },
+    ["K"] = {
+      ":m '<-2<CR>gv=gv",
+      "Move selected lines up"
+    }
+  },
+
+  x = {
+    ["<leader>pp"] = {
+      [["_dP"]],
+      "Paste without overwriting register"
+    }
   },
 
   i = {
-    ["<C-w>"] = { "<C-w>" },
+    ["<C-w>"] = { "<C-w>" }
   },
-}
 
+}
 
 return M
