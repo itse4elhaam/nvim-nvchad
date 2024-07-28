@@ -1,21 +1,40 @@
 local plugins = {
-{
-  "nvim-telescope/telescope.nvim",
-  dependencies = {
-    "nvim-lua/plenary.nvim",
-    "debugloop/telescope-undo.nvim",
-  },
-  config = function()
-    require("telescope").setup({
-      extensions = {
-        undo = {
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    lazy = false,
+    config = function()
+      require('treesitter-context').setup {
+        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
+        throttle = true, -- Throttle the update (may improve performance)
+        max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
+        patterns = {     -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
+          -- For all filetypes
+          default = {
+            'class',
+            'function',
+            'method',
+          },
         },
-      },
-    })
-    require("telescope").load_extension("undo")
-    vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
-  end,
-},
+      }
+    end,
+  },
+  {
+    "nvim-telescope/telescope.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "debugloop/telescope-undo.nvim",
+    },
+    config = function()
+      require("telescope").setup({
+        extensions = {
+          undo = {
+          },
+        },
+      })
+      require("telescope").load_extension("undo")
+      vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+    end,
+  },
   {
     "rmagatti/auto-session",
     lazy = false,
