@@ -1,4 +1,21 @@
 local plugins = {
+{
+  "nvim-telescope/telescope.nvim",
+  dependencies = {
+    "nvim-lua/plenary.nvim",
+    "debugloop/telescope-undo.nvim",
+  },
+  config = function()
+    require("telescope").setup({
+      extensions = {
+        undo = {
+        },
+      },
+    })
+    require("telescope").load_extension("undo")
+    vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+  end,
+},
   {
     "rmagatti/auto-session",
     lazy = false,
