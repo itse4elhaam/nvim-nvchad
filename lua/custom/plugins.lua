@@ -94,21 +94,6 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
-  -- replacements for null-ls
-  {
-    "mhartington/formatter.nvim",
-    event = "veryLazy",
-    opts = function()
-      require "custom.configs.formatter"
-    end
-  },
-  {
-    "mfussenegger/nvim-lint",
-    event = "veryLazy",
-    config = function()
-      require "custom.configs.lint"
-    end,
-  },
   {
     "jose-elias-alvarez/null-ls.nvim",
     ft = { "go", "python" },
