@@ -7,7 +7,7 @@ local util = require "lspconfig/util"
 lspconfig.gopls.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  cmd = {"gopls"},
+  cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
   root_dir = util.root_pattern("go.work", "go.mod", ".git"),
   settings = {
@@ -23,9 +23,9 @@ lspconfig.gopls.setup {
 lspconfig.pyright.setup({
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = {"python"}
+  filetypes = { "python" }
 })
-lspconfig.tsserver.setuo {
+lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   init_options = {
@@ -34,3 +34,11 @@ lspconfig.tsserver.setuo {
     }
   }
 }
+-- todo do this for all of these
+local servers = { "tailwindcss", "eslint", "cssls" }
+for _, lsp in ipairs(servers) do
+  lspconfig[lsp].setup {
+    on_attach = on_attach,
+    capabilities = capabilities,
+  }
+end

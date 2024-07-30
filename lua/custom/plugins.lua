@@ -83,7 +83,9 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "gopls", "pyright", "ruff", "mypy", "black", "typescript-language-server", "eslint-lsp"
+        "gopls", "pyright", "ruff", "mypy", "black",
+        "typescript-language-server", "eslint-lsp",
+        "tailwindcss-language-server", "prettierd"
       },
     },
   },
@@ -95,11 +97,12 @@ local plugins = {
     end,
   },
   {
-    "jose-elias-alvarez/null-ls.nvim",
-    ft = { "go", "python" },
+
+    "nvimtools/none-ls.nvim",
+    event = "VeryLazy",
     opts = function()
       return require "custom.configs.null-ls"
-    end,
+    end
   },
   {
     "olexsmir/gopher.nvim",
@@ -111,6 +114,20 @@ local plugins = {
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
     end,
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    ft = { "javascript", "javascriptreact", "typescript", "typescriptreact", "html", "vue", "astro" },
+    config = function()
+      require("nvim-ts-autotag").setup()
+    end
+  },
+  {
+    "nvim-treesitter/nvim-treesitter-context",
+    opts = function()
+      require "custom.configs.treesitter"
+    end
+
   },
 }
 

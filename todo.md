@@ -7,6 +7,8 @@
 - how to paste from different registers
 - better comments
 
-# refactoring
+# code refactoring
 - manage plugins better
 - mnage overriding vim settings better
+- move to 2.5 v
+- move all customizations to custom dir
