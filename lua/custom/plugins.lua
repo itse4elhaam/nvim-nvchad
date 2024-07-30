@@ -4,11 +4,10 @@ local plugins = {
     lazy = false,
     config = function()
       require('treesitter-context').setup {
-        enable = true,   -- Enable this plugin (Can be enabled/disabled later via commands)
-        throttle = true, -- Throttle the update (may improve performance)
-        max_lines = 0,   -- How many lines the window should span. Values <= 0 mean no limit.
-        patterns = {     -- Match patterns for TS nodes. These get wrapped to match at word boundaries.
-          -- For all filetypes
+        enable = true,
+        throttle = true,
+        max_lines = 0,
+        patterns = {
           default = {
             'class',
             'function',
@@ -84,7 +83,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "gopls",
+        "gopls", "pyright", "ruff", "mypy", "black"
       },
     },
   },
@@ -97,7 +96,7 @@ local plugins = {
   },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = "go",
+    ft = {"go", "python"},
     opts = function()
       return require "custom.configs.null-ls"
     end,

@@ -29,6 +29,7 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end
 })
 
+-- todo move these from here
 -- Remove carriage returns after pasting in insert mode
 vim.api.nvim_create_autocmd('InsertLeave', {
   group = 'PasteRemoveCarriageReturn',
@@ -38,7 +39,6 @@ vim.api.nvim_create_autocmd('InsertLeave', {
     ]])
   end
 })
--- todo move these from here
 -- Define autocmd group
 vim.cmd [[
   augroup LineNumberToggle
