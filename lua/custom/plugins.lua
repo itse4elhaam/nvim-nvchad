@@ -83,7 +83,7 @@ local plugins = {
     "williamboman/mason.nvim",
     opts = {
       ensure_installed = {
-        "gopls", "pyright", "ruff", "mypy", "black"
+        "gopls", "pyright", "ruff", "mypy", "black", "typescript-language-server", "eslint-lsp"
       },
     },
   },
@@ -94,9 +94,24 @@ local plugins = {
       require "custom.configs.lspconfig"
     end,
   },
+  -- replacements for null-ls
+  {
+    "mhartington/formatter.nvim",
+    event = "veryLazy",
+    opts = function()
+      require "custom.configs.formatter"
+    end
+  },
+  {
+    "mfussenegger/nvim-lint",
+    event = "veryLazy",
+    config = function()
+      require "custom.configs.lint"
+    end,
+  },
   {
     "jose-elias-alvarez/null-ls.nvim",
-    ft = {"go", "python"},
+    ft = { "go", "python" },
     opts = function()
       return require "custom.configs.null-ls"
     end,

@@ -1,4 +1,5 @@
 - fix that paste warning
+- color highlight disable
 - default relative line numbers
 - no gh functionality
 - default buffer should be file tree
