@@ -1,6 +1,5 @@
 local M = {}
 
-
 M.gopher = {
   plugin = true,
   n = {
@@ -107,7 +106,7 @@ M.general = {
   },
 
   i = {
-    ["<S-Tab>"] = { "<C-w>" }
+    ["<S-Tab>"] = { "<C-w>" },
   },
 
 }
