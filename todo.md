@@ -1,8 +1,6 @@
-- emmet like feels
 - fix that paste warning
 - how to paste from different registers
 - better comments
-- auto install lsp/treesitter/stuff
 - waka time in the status line/ sl customizations
 
 # code refactoring
