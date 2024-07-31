@@ -6,7 +6,7 @@ local options = {
   disable_netrw = true,
   hijack_netrw = true,
   hijack_cursor = true,
-  hijack_unnamed_buffer_when_opening = false,
+  hijack_unnamed_buffer_when_opening = true,
   sync_root_with_cwd = true,
   update_focused_file = {
     enable = true,
@@ -32,11 +32,11 @@ local options = {
   },
   renderer = {
     root_folder_label = false,
-    highlight_git = false,
+    highlight_git = true,
     highlight_opened_files = "none",
 
     indent_markers = {
-      enable = false,
+      enable = true,
     },
 
     icons = {
@@ -44,7 +44,7 @@ local options = {
         file = true,
         folder = true,
         folder_arrow = true,
-        git = false,
+        git = true,
       },
 
       glyphs = {

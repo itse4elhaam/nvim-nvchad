@@ -18,8 +18,8 @@ M.gopher = {
 M.general = {
   n = {
     ["<leader>dd"] = {
-      [["_d"]],
-      "Delete without overwriting register"
+      [["_dd"]],
+      "Delete single line without overwriting reg"
     },
     ["J"] = {
       "mzJ`z",
@@ -49,7 +49,6 @@ M.general = {
     ["sa"] = { "G$Vgg" },
     ["ya"] = { ":%y<CR>" },
     ["da"] = { "G$vgg_d" },
-    ["<C-K>"] = { "_dd" },
     ["dla"] = { "%_dd" },
 
     -- switch b/w buffers
@@ -108,7 +107,7 @@ M.general = {
   },
 
   i = {
-    ["<C-w>"] = { "<C-w>" }
+    ["<S-Tab>"] = { "<C-w>" }
   },
 
 }
