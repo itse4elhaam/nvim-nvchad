@@ -59,8 +59,8 @@ lspconfig.emmet_language_server.setup({
   },
 })
 
--- todo do this for all of these
-local servers = { "tailwindcss", "eslint", "cssls" }
+-- todo do this for all of these, disabling eslint for now, not needed
+local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     on_attach = on_attach,

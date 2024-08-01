@@ -47,8 +47,8 @@ M.general = {
     ["yf"] = { "vaijy" },
     ["sa"] = { "G$Vgg" },
     ["ya"] = { ":%y<CR>" },
-    ["da"] = { "G$vgg_d" },
-    ["dla"] = { "%_dd" },
+    ["da"] = { "G$vggd" },
+    ["<leader>da"] = { "G$Vgg_d" },
 
     -- switch b/w buffers
     ["<S-h>"] = { ":bprevious<CR>" },

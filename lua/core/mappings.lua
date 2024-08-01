@@ -172,7 +172,7 @@ M.lspconfig = {
       "LSP definition type",
     },
 
-    ["<leader>ra"] = {
+   ["<leader>ra"] = {
       function()
         require("nvchad.renamer").open()
       end,
