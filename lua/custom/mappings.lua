@@ -16,6 +16,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
     ["<leader>dd"] = {
       [["_dd"]],
       "Delete single line without overwriting reg"
@@ -46,7 +47,7 @@ M.general = {
     },
     ["yf"] = { "vaijy" },
     ["sa"] = { "G$Vgg" },
-    ["ya"] = { ":%y<CR>" },
+    ["<leader>ya"] = { ":%y<CR>" },
     ["da"] = { "G$vggd" },
     ["<leader>da"] = { "G$Vgg_d" },
 
@@ -75,6 +76,10 @@ M.general = {
     ["gd"] = { ":lua vim.lsp.buf.definition()<CR>" },
 
     ["<leader>ca"] = { ":lua vim.lsp.buf.code_action()<CR>" },
+    ["<leader>xa"] = {
+      ":bufdo bd<CR>",
+      "Close all buffers"
+    },
   },
 
   v = {
@@ -92,6 +97,7 @@ M.general = {
       ":m '<-2<CR>gv=gv",
       "Move selected lines up"
     }
+
   },
 
   x = {

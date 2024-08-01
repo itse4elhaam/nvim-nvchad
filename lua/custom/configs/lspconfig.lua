@@ -59,6 +59,14 @@ lspconfig.emmet_language_server.setup({
   },
 })
 
+lspconfig.clangd.setup {
+  on_attach = function(client, bufnr)
+    client.server_capabilities_signatureHelpProvider = false
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities
+}
+
 -- todo do this for all of these, disabling eslint for now, not needed
 local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
