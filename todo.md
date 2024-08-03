@@ -1,7 +1,9 @@
+- wrapping selected tasks in a quote
+- better comments
 - fix that paste warning
 - how to paste from different registers
-- better comments
-- waka time in the status line/ sl customizations
+- wakatime with async stuff
+- increase the size of the floating window
 
 # code refactoring
 - manage plugins better
