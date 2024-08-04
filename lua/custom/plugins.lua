@@ -1,5 +1,19 @@
 local plugins = {
   {
+    'echasnovski/mini.surround',
+    version = false,
+    config = function()
+      require('mini.surround').setup()
+    end
+  },
+  {
+    'echasnovski/mini.icons',
+    version = false,
+    config = function()
+      require('mini.icons').setup()
+    end
+  },
+  {
     "Djancyp/better-comments.nvim",
     config = function()
       require('better-comment').setup({
@@ -87,7 +101,7 @@ local plugins = {
     })
   end
 },
-  { "wakatime/vim-wakatime",             lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
   -- todo move this to a seperate file
   {
     "0x00-ketsu/autosave.nvim",
@@ -109,7 +123,7 @@ local plugins = {
       }
     end
   },
-  { "williamboman/mason-lspconfig.nvim", lazy = false, opts = { auto_install = true } },
+  -- { "williamboman/mason-lspconfig.nvim", lazy = false, opts = { auto_install = true } },
   {
     "williamboman/mason.nvim",
     opts = {

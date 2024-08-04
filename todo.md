@@ -1,4 +1,3 @@
-- wrapping selected tasks in a quote
 - better comments
 - fix that paste warning
 - how to paste from different registers
