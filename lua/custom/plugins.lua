@@ -44,6 +44,7 @@ local plugins = {
   },
   {
     'echasnovski/mini.surround',
+    lazy = false,
     version = false,
     config = function()
       require('mini.surround').setup()
