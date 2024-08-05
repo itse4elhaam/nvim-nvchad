@@ -1,7 +1,9 @@
+- lazyvim
+- eslint not working properly
+- prettier not working with the config
 - fix that paste warning
 - how to paste from different registers
 - wakatime with async stuff
-- increase the size of the floating window
 - add mini.icons
 
 # code refactoring
