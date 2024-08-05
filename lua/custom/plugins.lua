@@ -1,5 +1,15 @@
 local plugins = {
   {
+    "kylechui/nvim-surround",
+    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    event = "VeryLazy",
+    config = function()
+      require("nvim-surround").setup({
+        -- Configuration here, or leave empty to use defaults
+      })
+    end
+  },
+  {
     "folke/todo-comments.nvim",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -41,14 +51,6 @@ local plugins = {
         desc = "Quickfix List (Trouble)",
       },
     },
-  },
-  {
-    'echasnovski/mini.surround',
-    lazy = false,
-    version = false,
-    config = function()
-      require('mini.surround').setup()
-    end
   },
   {
     'echasnovski/mini.icons',
@@ -138,7 +140,7 @@ local plugins = {
         write_all_buffers = false,
         on_off_commands = true,
         clean_command_line_interval = 0,
-        debounce_delay = 100
+        debounce_delay = 500
       }
     end
   },

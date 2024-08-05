@@ -45,7 +45,6 @@ M.general = {
       [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
       "Search and replace"
     },
-    ["yf"] = { "vaijy" },
     ["sa"] = { "G$Vgg" },
     ["<leader>ya"] = { ":%y<CR>" },
     ["da"] = { "G$vggd" },

@@ -2,6 +2,7 @@
 - how to paste from different registers
 - wakatime with async stuff
 - increase the size of the floating window
+- add mini.icons
 
 # code refactoring
 - manage plugins better
