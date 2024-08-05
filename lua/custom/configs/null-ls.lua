@@ -9,9 +9,11 @@ local opts = {
     null_ls.builtins.formatting.black,
     null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.diagnostics.mypy,
-    null_ls.builtins.formatting.prettierd,
+    null_ls.builtins.formatting.prettierd.with({
+      filetypes = { "javascript", "typescript", "json", "css", "html", "jsx", "tsx", "astro", "vue", "svelete" },
+    }),
     null_ls.builtins.formatting.clang_format,
-    -- null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.diagnostics.eslint,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
