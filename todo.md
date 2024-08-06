@@ -1,5 +1,5 @@
 - lazyvim
-- Anything in Neovim land that can update JS imports when moving files around
+- cursor overtake
 - eslint not working properly
 - prettier not working with the config
 - fix that paste warning
