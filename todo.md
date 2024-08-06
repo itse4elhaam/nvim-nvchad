@@ -1,5 +1,6 @@
 - lazyvim
 - cursor overtake
+- look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly
 - prettier not working with the config
 - fix that paste warning
