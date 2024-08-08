@@ -1,5 +1,6 @@
 - lazyvim
 - shift l/h should move in order
+- comments in jsx
 - remap to toggle bw erred lines
 - look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly
@@ -9,6 +10,9 @@
 - how to paste from different registers
 - wakatime with async stuff
 - add mini.icons
+- https://github.com/letieu/btw.nvim
+- https://github.com/nvim-neorg/neorg
+- https://github.com/letieu/jot.lua
 
 # code refactoring
 - manage plugins better
