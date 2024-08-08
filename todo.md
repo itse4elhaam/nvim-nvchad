@@ -1,4 +1,5 @@
 - lazyvim
+- remap to toggle bw erred lines
 - look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly
 - css formatting not working
