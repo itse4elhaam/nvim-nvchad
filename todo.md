@@ -1,5 +1,4 @@
 - lazyvim
-- git blame
 - shift l/h should move in order
 - remap to toggle bw erred lines
 - look into https://github.com/pmizio/typescript-tools.nvim
