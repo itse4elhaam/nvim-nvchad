@@ -1,4 +1,5 @@
 - lazyvim
+- shift l/h should move in order
 - cursor overtake
 - look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly
