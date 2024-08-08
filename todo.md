@@ -1,8 +1,10 @@
 - lazyvim
 - shift l/h should move in order
 - cursor overtake
+- remap to toggle bw erred lines
 - look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly
+- css formatting not working
 - prettier not working with the config
 - fix that paste warning
 - how to paste from different registers
