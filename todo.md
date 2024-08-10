@@ -1,4 +1,5 @@
 - lazyvim
+- html context fix
 - shift l/h should move in order
 - comments in jsx
 - remap to toggle bw erred lines
@@ -13,6 +14,7 @@
 - https://github.com/letieu/btw.nvim
 - https://github.com/nvim-neorg/neorg
 - https://github.com/letieu/jot.lua
+- https://github.com/Al0den/notion.nvim
 
 # code refactoring
 - manage plugins better
