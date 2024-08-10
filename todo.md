@@ -17,8 +17,5 @@
 - https://github.com/Al0den/notion.nvim
 
 # code refactoring
-- manage plugins better
 - mnage overriding vim settings better
-- move to 2.5 v
-- move all customizations to custom dir
 - improve loading time
