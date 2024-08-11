@@ -1,7 +1,7 @@
 - lazyvim
+- increase floating terminal height
 - sorround toggle/shit
 - remap to toggle bw erred lines
-- look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly
 - css formatting not working
 - prettier not working with the config
@@ -9,7 +9,7 @@
 - how to paste from different registers
 - wakatime with async stuff
 - add mini.icons
-- https://github.com/letieu/btw.nvim
 - https://github.com/nvim-neorg/neorg
 - https://github.com/letieu/jot.lua
 - https://github.com/Al0den/notion.nvim
+- look into https://github.com/pmizio/typescript-tools.nvim
