@@ -1,7 +1,7 @@
 return function()
   require("autosave").setup {
     enabled = true,
-    events = { "TextChanged" },
+    events = { "InsertLeave", "TextChanged" },
     conditions = {
       exists = true,
       filename_is_not = {},

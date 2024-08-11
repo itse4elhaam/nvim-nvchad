@@ -1,7 +1,5 @@
 - lazyvim
-- html context fix
-- shift l/h should move in order
-- comments in jsx
+- sorround toggle/shit
 - remap to toggle bw erred lines
 - look into https://github.com/pmizio/typescript-tools.nvim
 - eslint not working properly

@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    config = function()
+      require('ts_context_commentstring').setup {
+        enable_autocmd = false,
+      }
+    end
+  },
+  {
     "antosha417/nvim-lsp-file-operations",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -12,7 +20,7 @@ local plugins = {
   },
   {
     "kylechui/nvim-surround",
-    version = "*", -- Use for stability; omit to use `main` branch for the latest features
+    version = "*",
     event = "VeryLazy",
     config = function()
       require("nvim-surround").setup({})
@@ -61,7 +69,7 @@ local plugins = {
   { "wakatime/vim-wakatime", lazy = false },
   {
     "0x00-ketsu/autosave.nvim",
-    event = { "TextChanged" },
+    event = { "InsertLeave", "TextChanged" },
     config = require("custom.configs.autosave")
   },
   {
