@@ -8,6 +8,7 @@ opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
 
 vim.api.nvim_create_augroup('PasteRemoveCarriageReturn', { clear = true })
+
 -- Remove carriage returns after pasting in normal mode
 vim.api.nvim_create_autocmd('VimEnter', {
   group = 'PasteRemoveCarriageReturn',

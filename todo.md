@@ -15,7 +15,3 @@
 - https://github.com/nvim-neorg/neorg
 - https://github.com/letieu/jot.lua
 - https://github.com/Al0den/notion.nvim
-
-# code refactoring
-- mnage overriding vim settings better
-- improve loading time
