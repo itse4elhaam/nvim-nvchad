@@ -1,5 +1,6 @@
 - lazyvim
 - shift l/h should move in order
+- bulk find and replace
 - comments in jsx
 - remap to toggle bw erred lines
 - look into https://github.com/pmizio/typescript-tools.nvim
