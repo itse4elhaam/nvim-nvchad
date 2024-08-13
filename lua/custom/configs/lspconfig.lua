@@ -66,6 +66,26 @@ lspconfig.clangd.setup {
   end,
   capabilities = capabilities
 }
+
+lspconfig.jsonls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  on_new_config = function(new_config)
+    new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+    vim.list_extend(new_config.settings.json.schemas, schemastore.json.schemas())
+  end,
+  settings = {
+    json = {
+      format = {
+        enable = true, -- Enable JSON formatting
+      },
+      validate = {
+        enable = true, -- Enable JSON validation
+      },
+    },
+  },
+}
+
 -- todo do this for all of these, disabling eslint for now, not needed
 local servers = { "tailwindcss", "eslint", "cssls" }
 for _, lsp in ipairs(servers) do
