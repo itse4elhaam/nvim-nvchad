@@ -1,5 +1,8 @@
 - eslint not working properly
+- bulk find and replace
 - prettier not working with the config
+- ctrl w for closing buffers
+- fold all levels
 - https://github.com/jay-babu/mason-null-ls.nvim
 - fix that paste warning
 - how to paste from different registers
