@@ -3,6 +3,7 @@ return function()
     enable = true,
     throttle = true,
     max_lines = 7,
+    trim_scope = "inner",
     patterns = {
       default = {
         'class',

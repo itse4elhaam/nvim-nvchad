@@ -38,6 +38,17 @@ vim.cmd [[
   augroup END
 ]]
 
+-- set highlight color as this
+-- TODO: fix this
+vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
+    group = vim.api.nvim_create_augroup('Color', {}),
+    pattern = "*",
+    callback = function ()
+        vim.api.nvim_set_hl(0, "LspReferenceRead", {fg = "#3e4451"})
+        vim.api.nvim_set_hl(0, "LspReferenceWrite", {fg = "#3e4451"})
+        vim.api.nvim_set_hl(0, "LspReferenceText", {fg = "#3e4451"})
+    end
+})
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
   augroup highlight_yank
