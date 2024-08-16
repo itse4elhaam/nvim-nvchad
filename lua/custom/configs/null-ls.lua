@@ -13,7 +13,7 @@ local opts = {
       filetypes = { "javascript", "typescript", "json", "css", "html", "jsx", "tsx", "astro", "vue", "svelete" },
     }),
     null_ls.builtins.formatting.clang_format,
-    null_ls.builtins.diagnostics.eslint,
+    -- null_ls.builtins.diagnostics.eslint,
   },
   on_attach = function(client, bufnr)
     if client.supports_method("textDocument/formatting") then
