@@ -1,3 +1,4 @@
+- C-w for buffer close
 - eslint not working properly
 - bulk find and replace
 - prettier not working with the config
