@@ -15,3 +15,4 @@
 - look into https://github.com/pmizio/typescript-tools.nvim
 - remap to toggle bw erred lines
 - lazyvim
+- AstroVim

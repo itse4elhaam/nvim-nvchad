@@ -1,5 +1,16 @@
 local plugins = {
   {
+    'MagicDuck/grug-far.nvim',
+    lazy = false,
+    config = function()
+      require('grug-far').setup({});
+    end
+  },
+  {
+    "https://github.com/sindrets/diffview.nvim",
+    lazy = false,
+  },
+  {
     "letieu/btw.nvim",
     lazy = false,
     config = function()
