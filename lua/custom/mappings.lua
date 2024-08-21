@@ -16,6 +16,10 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>ba"] = {
+      "<cmd>%bd|e#<CR>",
+      "Close all other buffers except the current one"
+    },
     -- GrugFar operations
     ["<leader>gf"] = { "<cmd>GrugFar<CR>", "Open GrugFar buffer" },
     -- for git diff
@@ -51,37 +55,37 @@ M.general = {
       "Search and replace"
     },
     ["sa"] = { "G$Vgg" },
-    ["<leader>ya"] = { ":%y<CR>" },
+    ["<leader>ya"] = { "<cmd>%y<CR>" },
     ["da"] = { "G$vggd" },
     ["<leader>da"] = { "G$Vgg_d" },
 
     -- switch b/w buffers
-    ["<S-h>"] = { ":bprevious<CR>" },
-    ["<S-l>"] = { ":bnext<CR>" },
+    ["<S-h>"] = { "<cmd>bprevious<CR>" },
+    ["<S-l>"] = { "<cmd>bnext<CR>" },
 
     -- splits
-    ["<leader>v"] = { ":vsplit<CR>" },
-    ["<leader>s"] = { ":split<CR>" },
+    ["<leader>v"] = { "<cmd>vsplit<CR>" },
+    ["<leader>s"] = { "<cmd>split<CR>" },
 
     -- cmd
-    ["<leader>wq"] = { ":wq!<CR>" },
-    ["<leader>w"] = { ":w!<CR>" },
-    ["<leader>q"] = { ":q!<CR>" },
+    ["<leader>wq"] = { "<cmd>wq!<CR>" },
+    ["<leader>w"] = { "<cmd>w!<CR>" },
+    ["<leader>q"] = { "<cmd>q!<CR>" },
 
-    ["[d"] = { ":lua vim.diagnostic.goto_prev()<CR>" },
-    ["]d"] = { ":lua vim.diagnostic.goto_next()<CR>" },
+    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
+    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>" },
 
-    ["<C-p>"] = { ":Telescope find_files<CR>" },
+    ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
 
     ["el"] = { "$" },
     ["sl"] = { "_" },
 
-    ["gh"] = { ":lua vim.lsp.buf.hover()<CR>" },
-    ["gd"] = { ":lua vim.lsp.buf.definition()<CR>" },
+    ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<CR>" },
+    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
 
-    ["<leader>ca"] = { ":lua vim.lsp.buf.code_action()<CR>" },
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
     ["<leader>xa"] = {
-      ":bufdo bd<CR>",
+      "<cmd>bufdo bd<CR>",
       "Close all buffers"
     },
   },
