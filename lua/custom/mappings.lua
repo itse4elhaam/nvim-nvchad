@@ -16,7 +16,12 @@ M.gopher = {
 
 M.general = {
   n = {
-    ["<leader>fg"] = { "<cmd> Telescope live_grep <CR>", "Live grep" },
+    -- GrugFar operations
+    ["<leader>gf"] = { "<cmd>GrugFar<CR>", "Open GrugFar buffer" },
+    -- for git diff
+    ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
+    ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
+    ["<leader>gdt"] = { "<cmd> DiffviewToggleFiles<CR>", "Toggle files git diff" },
     ["<leader>dd"] = {
       [["_dd"]],
       "Delete single line without overwriting reg"

@@ -3,6 +3,6 @@ return {
     "gopls", "pyright", "ruff", "mypy", "black",
     "typescript-language-server", "eslint-lsp",
     "tailwindcss-language-server", "prettierd",
-    "clangd", "clang-format", "json-lsp", "css-lsp"
+    "clangd", "clang-format", "json-lsp", "css-lsp",
   },
 }
