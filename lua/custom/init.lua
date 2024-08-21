@@ -9,6 +9,11 @@ vim.g.lazyvim_prettier_needs_config = false
 
 vim.api.nvim_create_augroup('PasteRemoveCarriageReturn', { clear = true })
 
+-- adds .env to sh group
+vim.cmd [[
+  autocmd BufRead,BufNewFile *.env set filetype=sh
+]]
+
 -- Remove carriage returns after pasting in normal mode
 vim.api.nvim_create_autocmd('VimEnter', {
   group = 'PasteRemoveCarriageReturn',
@@ -40,14 +45,14 @@ vim.cmd [[
 
 -- set highlight color as this
 -- TODO: fix this
-vim.api.nvim_create_autocmd({"ColorScheme", "VimEnter"}, {
-    group = vim.api.nvim_create_augroup('Color', {}),
-    pattern = "*",
-    callback = function ()
-        vim.api.nvim_set_hl(0, "LspReferenceRead", {fg = "#3e4451"})
-        vim.api.nvim_set_hl(0, "LspReferenceWrite", {fg = "#3e4451"})
-        vim.api.nvim_set_hl(0, "LspReferenceText", {fg = "#3e4451"})
-    end
+vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+  group = vim.api.nvim_create_augroup('Color', {}),
+  pattern = "*",
+  callback = function()
+    vim.api.nvim_set_hl(0, "LspReferenceRead", { fg = "#3e4451" })
+    vim.api.nvim_set_hl(0, "LspReferenceWrite", { fg = "#3e4451" })
+    vim.api.nvim_set_hl(0, "LspReferenceText", { fg = "#3e4451" })
+  end
 })
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
