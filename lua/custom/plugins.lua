@@ -1,5 +1,10 @@
 local plugins = {
   {
+    'MunifTanjim/prettier.nvim',
+    lazy = false,
+    config = require("custom.configs.prettier")
+  },
+  {
     'MagicDuck/grug-far.nvim',
     lazy = false,
     config = function()

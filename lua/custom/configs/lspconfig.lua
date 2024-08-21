@@ -85,6 +85,17 @@ lspconfig.jsonls.setup {
     },
   },
 }
+lspconfig.eslint.setup({
+  settings = {
+    packageManager = 'yarn',
+  },
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+})
 
 -- todo do this for all of these, disabling eslint for now, not needed
 local servers = { "tailwindcss", "eslint", "cssls" }
