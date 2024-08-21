@@ -1,5 +1,9 @@
 local plugins = {
   {
+    "nvim-lua/plenary.nvim",
+    config = require "custom.configs.plenary",
+  },
+  {
     "MunifTanjim/prettier.nvim",
     lazy = false,
     config = require "custom.configs.prettier",
