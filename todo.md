@@ -1,9 +1,6 @@
 - eslint not working properly
-- https://github.com/jay-babu/mason-null-ls.nvim
-- fix that paste warning
 - how to paste from different registers
-- wakatime with async stuff
-- non working null_ls stuff
+- non working null_ls tools
 - add mini.icons
 - https://github.com/nvim-neorg/neorg
 - https://github.com/letieu/jot.lua

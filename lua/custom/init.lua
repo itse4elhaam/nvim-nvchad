@@ -19,8 +19,8 @@ vim.api.nvim_create_autocmd("VimEnter", {
   group = "PasteRemoveCarriageReturn",
   callback = function()
     vim.cmd [[
-      nnoremap <silent> P :execute "normal! P" <bar> %s/\r//g<CR>
-      nnoremap <silent> p :execute "normal! p" <bar> %s/\r//g<CR>
+      nnoremap <silent> P :execute "normal! P" <bar> silent! %s/\r//g<CR>
+      nnoremap <silent> p :execute "normal! p" <bar> silent! %s/\r//g<CR>
     ]]
   end,
 })
@@ -30,7 +30,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
   group = "PasteRemoveCarriageReturn",
   callback = function()
     vim.cmd [[
-      nnoremap <silent> <C-r> :execute "normal! <C-r>" <bar> %s/\r//g<CR>
+      nnoremap <silent> <C-r> :execute "normal! <C-r>" <bar> silent! %s/\r//g<CR>
     ]]
   end,
 })
@@ -63,7 +63,6 @@ vim.cmd [[
 ]]
 
 vim.api.nvim_create_augroup("Shape", { clear = true })
-
 vim.api.nvim_create_autocmd("VimLeave", {
   group = "Shape",
   -- this is for underscore
