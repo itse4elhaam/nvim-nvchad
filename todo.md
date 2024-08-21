@@ -1,19 +1,14 @@
-- C-w for buffer close
 - eslint not working properly
-- bulk find and replace
-- prettier not working with the config
-- ctrl w for closing buffers
-- fold all levels
 - https://github.com/jay-babu/mason-null-ls.nvim
 - fix that paste warning
 - how to paste from different registers
 - wakatime with async stuff
+- non working null_ls stuff
 - add mini.icons
 - https://github.com/nvim-neorg/neorg
 - https://github.com/letieu/jot.lua
 
 - https://github.com/Al0den/notion.nvim
 - look into https://github.com/pmizio/typescript-tools.nvim
-- remap to toggle bw erred lines
 - lazyvim
 - AstroVim

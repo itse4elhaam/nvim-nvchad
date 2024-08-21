@@ -16,7 +16,9 @@ local opts = {
     null_ls.builtins.formatting.clang_format,
     null_ls.builtins.formatting.stylua,
     null_ls.builtins.formatting.sqlfmt,
+    null_ls.builtins.diagnostics.checkmake,
     -- WARNING: these donot work for some reason
+    -- null_ls.builtins.diagnostics.misspell,
     -- null_ls.builtins.diagnostics.ruff,
     -- null_ls.builtins.formatting.beautysh,
     -- null_ls.builtins.diagnostics.eslint,
