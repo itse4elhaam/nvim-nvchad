@@ -1,4 +1,6 @@
 - eslint not working properly
+- go linting
+- spelling checker
 - how to paste from different registers
 - non working null_ls tools
 - add mini.icons
