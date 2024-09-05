@@ -1,5 +1,5 @@
 local ui = {
-  theme = 'tokyonight',
+  theme = "tokyonight",
   transparency = true,
   statusline = {
     theme = "default",
