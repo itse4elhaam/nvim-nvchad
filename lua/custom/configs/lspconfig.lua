@@ -1,7 +1,7 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
 local capabilities = require("plugins.configs.lspconfig").capabilities
 
-local lspconfig = require("lspconfig")
+local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
 lspconfig.gopls.setup {
@@ -20,21 +20,21 @@ lspconfig.gopls.setup {
     },
   },
 }
-lspconfig.pyright.setup({
+lspconfig.pyright.setup {
   on_attach = on_attach,
   capabilities = capabilities,
-  filetypes = { "python" }
-})
+  filetypes = { "python" },
+}
 lspconfig.tsserver.setup {
   on_attach = on_attach,
   capabilities = capabilities,
   init_options = {
     preferences = {
       disableSuggestions = true,
-    }
-  }
+    },
+  },
 }
-lspconfig.emmet_language_server.setup({
+lspconfig.emmet_language_server.setup {
   filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
   -- **Note:** only the options listed in the table are supported.
@@ -57,14 +57,14 @@ lspconfig.emmet_language_server.setup({
     --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
   },
-})
+}
 
 lspconfig.clangd.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities_signatureHelpProvider = false
     on_attach(client, bufnr)
   end,
-  capabilities = capabilities
+  capabilities = capabilities,
 }
 
 lspconfig.jsonls.setup {
@@ -85,9 +85,9 @@ lspconfig.jsonls.setup {
     },
   },
 }
-lspconfig.eslint.setup({
+lspconfig.eslint.setup {
   settings = {
-    packageManager = 'yarn',
+    packageManager = "yarn",
   },
   on_attach = function(_, bufnr)
     vim.api.nvim_create_autocmd("BufWritePre", {
@@ -95,7 +95,7 @@ lspconfig.eslint.setup({
       command = "EslintFixAll",
     })
   end,
-})
+}
 
 -- todo do this for all of these, disabling eslint for now, not needed
 local servers = { "tailwindcss", "eslint", "cssls" }
