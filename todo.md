@@ -1,13 +1,18 @@
 - eslint not working properly
-- go linting
 - spelling checker
 - how to paste from different registers
 - non working null_ls tools
 - add mini.icons
-- https://github.com/nvim-neorg/neorg
-- https://github.com/letieu/jot.lua
+- code snippets taker
 
-- https://github.com/Al0den/notion.nvim
-- look into https://github.com/pmizio/typescript-tools.nvim
-- lazyvim
-- AstroVim
+<!-- plugins to install -->
+
+- https://github.com/pmizio/typescript-tools.nvim
+- https://github.com/ggandor/leap.nvim
+- https://github.com/stevearc/aerial.nvim
+- https://github.com/kristijanhusak/vim-dadbod-ui.git
+- https://www.lazyvim.org/extras/editor/harpoon2
+- https://www.lazyvim.org/extras/editor/illuminate
+- https://www.lazyvim.org/extras/editor/outline
+- https://www.lazyvim.org/extras/editor/refactoring
+- https://www.lazyvim.org/extras/lang/markdown
