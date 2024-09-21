@@ -5,20 +5,20 @@ M.gopher = {
   n = {
     ["<leader>gsj"] = {
       "<cmd> GoTagAdd json <CR>",
-      "Add json struct tags"
+      "Add json struct tags",
     },
     ["<leader>gsy"] = {
       "<cmd> GoTagAdd yaml <CR>",
-      "Add yaml struct tags"
-    }
-  }
+      "Add yaml struct tags",
+    },
+  },
 }
 
 M.general = {
   n = {
     ["<leader>ba"] = {
       "<cmd>%bd|e#<CR>",
-      "Close all other buffers except the current one"
+      "Close all other buffers except the current one",
     },
     -- GrugFar operations
     ["<leader>gf"] = { "<cmd>GrugFar<CR>", "Open GrugFar buffer" },
@@ -28,36 +28,37 @@ M.general = {
     ["<leader>gdt"] = { "<cmd> DiffviewToggleFiles<CR>", "Toggle files git diff" },
     ["<leader>dd"] = {
       [["_dd"]],
-      "Delete single line without overwriting reg"
+      "Delete single line without overwriting reg",
     },
     ["J"] = {
       "mzJ`z",
-      "Join lines and retain cursor position"
+      "Join lines and retain cursor position",
     },
     ["<C-d>"] = {
       "<C-d>zz",
-      "Half-page down and center"
+      "Half-page down and center",
     },
     ["<C-u>"] = {
       "<C-u>zz",
-      "Half-page up and center"
+      "Half-page up and center",
     },
     ["n"] = {
       "nzzzv",
-      "Next search result and center"
+      "Next search result and center",
     },
     ["N"] = {
       "Nzzzv",
-      "Previous search result and center"
+      "Previous search result and center",
     },
     ["<leader>sr"] = {
       [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
-      "Search and replace"
+      "Search and replace",
     },
     ["sa"] = { "G$Vgg" },
     ["<leader>ya"] = { "<cmd>%y<CR>" },
-    ["da"] = { "G$vggd" },
     ["<leader>da"] = { "G$Vgg_d" },
+    ["yf"] = { "va{oky" },
+    ["ef"] = { "va{<ESC>" },
 
     -- switch b/w buffers
     ["<S-h>"] = { "<cmd>bprevious<CR>" },
@@ -86,43 +87,41 @@ M.general = {
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
     ["<leader>xa"] = {
       "<cmd>bufdo bd<CR>",
-      "Close all buffers"
+      "Close all buffers",
     },
   },
 
   v = {
     ["<leader>dd"] = {
       [["_d"]],
-      "Delete without overwriting register"
+      "Delete without overwriting register",
     },
     ["<"] = { "<gv" },
     [">"] = { ">gv" },
     ["J"] = {
       ":m '>+1<CR>gv=gv",
-      "Move selected lines down"
+      "Move selected lines down",
     },
     ["K"] = {
       ":m '<-2<CR>gv=gv",
-      "Move selected lines up"
-    }
-
+      "Move selected lines up",
+    },
   },
 
   x = {
     ["<leader>dd"] = {
       [["_d"]],
-      "Delete without overwriting register"
+      "Delete without overwriting register",
     },
     ["<leader>pp"] = {
       [["_dP"]],
-      "Paste without overwriting register"
-    }
+      "Paste without overwriting register",
+    },
   },
 
   i = {
     ["<S-Tab>"] = { "<C-w>" },
   },
-
 }
 
 return M
