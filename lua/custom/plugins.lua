@@ -16,6 +16,10 @@ local plugins = {
     },
   },
   {
+    "ThePrimeagen/vim-be-good",
+    lazy = false
+  },
+  {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
