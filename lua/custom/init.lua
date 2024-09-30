@@ -27,11 +27,12 @@ vim.api.nvim_create_autocmd("VimEnter", {
 })
 
 -- Remove carriage returns after pasting in insert mode
+-- nnoremap <silent> <C-r> :execute "normal! <C-r>" <bar> silent! %s/\r//g<CR>
 vim.api.nvim_create_autocmd("InsertLeave", {
   group = "PasteRemoveCarriageReturn",
   callback = function()
     vim.cmd [[
-      nnoremap <silent> <C-r> :execute "normal! <C-r>" <bar> silent! %s/\r//g<CR>
+      silent! %s/\r//g
     ]]
   end,
 })
