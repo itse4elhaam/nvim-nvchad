@@ -57,7 +57,7 @@ M.general = {
     ["sa"] = { "G$Vgg" },
     ["<leader>ya"] = { "<cmd>%y<CR>" },
     ["<leader>da"] = { "G$Vgg_d" },
-    ["<leader>yf"] = { "va{oky" },
+    ["<leader>yf"] = { "vi{joky" },
     ["<leader>ef"] = { "va{<ESC>" },
 
     -- switch b/w buffers
