@@ -4,6 +4,8 @@
 - non working null_ls tools
 - add mini.icons
 - code snippets taker
+- remap for spell check
+- anything .env\* should be bash
 
 <!-- plugins to install -->
 
