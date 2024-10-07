@@ -25,7 +25,7 @@ M.general = {
     -- for git diff
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
     ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
-    ["<leader>gdt"] = { "<cmd> DiffviewToggleFiles<CR>", "Toggle files git diff" },
+    ["<leader>gdt"] = { "<cmd> DiffviewOpen <CR>", "Toggle files git diff" },
     ["<leader>dd"] = {
       [["_dd"]],
       "Delete single line without overwriting reg",
