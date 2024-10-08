@@ -1,4 +1,5 @@
 - eslint not working properly
+- IMPORTANT REPLACE TS_LS with something saner
 - spelling checker
 - how to paste from different registers
 - non working null_ls tools
