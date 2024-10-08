@@ -10,6 +10,7 @@
 <!-- plugins to install -->
 
 - https://github.com/pmizio/typescript-tools.nvim
+- https://www.lazyvim.org/extras/lang/typescript
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/aerial.nvim
 - https://github.com/kristijanhusak/vim-dadbod-ui.git
