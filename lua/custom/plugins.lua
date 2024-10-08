@@ -17,6 +17,11 @@ local plugins = {
     },
   },
   {
+    "pmizio/typescript-tools.nvim",
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
+  {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
