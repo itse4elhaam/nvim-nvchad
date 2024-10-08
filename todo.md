@@ -1,13 +1,11 @@
 - eslint not working properly
 - IMPORTANT REPLACE TS_LS with something saner
-- spelling checker
 - how to paste from different registers
 - non working null_ls tools
 - add mini.icons
 - code snippets taker
-- remap for spell check
-- anything .env\* should be bash
 - Disable auto checking on neovim config update
+- open link in browser ??
 
 <!-- plugins to install -->
 

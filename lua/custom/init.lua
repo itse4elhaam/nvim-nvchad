@@ -12,7 +12,7 @@ vim.g.maplocalleader = ","
 
 -- adds .env to sh group
 vim.cmd [[
-  autocmd BufRead,BufNewFile *.env set filetype=sh
+  autocmd BufRead,BufNewFile *.env* set filetype=sh
 ]]
 
 -- Remove carriage returns after pasting in normal mode

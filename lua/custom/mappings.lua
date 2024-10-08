@@ -1,5 +1,20 @@
 local M = {}
 
+function OpenEnvFile()
+  local env_file = ".env"
+  local env_local_file = ".env.local"
+
+  -- Check if .env file exists
+  if vim.fn.filereadable(env_file) == 1 then
+    vim.cmd("edit " .. env_file)
+    -- Check if .env.local exists if .env is not found
+  elseif vim.fn.filereadable(env_local_file) == 1 then
+    vim.cmd("edit " .. env_local_file)
+  else
+    print ".env or .env.local not found"
+  end
+end
+
 M.gopher = {
   plugin = true,
   n = {
@@ -89,6 +104,8 @@ M.general = {
       "<cmd>bufdo bd<CR>",
       "Close all buffers",
     },
+    ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
+    ["<leader>env"] = { "<cmd>lua OpenEnvFile()<CR>", desc = "Open .env file" },
   },
 
   v = {
