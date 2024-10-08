@@ -3,21 +3,18 @@ local plugins = {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
       "neovim/nvim-lspconfig",
-      "mfussenegger/nvim-dap", "mfussenegger/nvim-dap-python", --optional
+      "mfussenegger/nvim-dap",
       { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
     },
-    lazy = false,
+    event = "VeryLazy",
     branch = "regexp", -- This is the regexp branch, use this for the new version
     config = function()
       require("venv-selector").setup()
     end,
+    ft = { "python" },
     keys = {
       { "<leader>vs", "<cmd>VenvSelect<cr>" },
     },
-  },
-  {
-    "ThePrimeagen/vim-be-good",
-    lazy = false
   },
   {
     "nvim-lua/plenary.nvim",
@@ -25,7 +22,7 @@ local plugins = {
   },
   {
     "MunifTanjim/prettier.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = require "custom.configs.prettier",
   },
   {
@@ -41,18 +38,19 @@ local plugins = {
   },
   {
     "MagicDuck/grug-far.nvim",
-    lazy = false,
+    event = "VeryLazy",
     config = function()
       require("grug-far").setup {}
     end,
   },
   {
     "sindrets/diffview.nvim",
-    lazy = false,
+    event = "VeryLazy",
   },
   {
     "letieu/btw.nvim",
-    lazy = false,
+    -- NOTE: is this correct here?
+    event = "VeryLazy",
     config = function()
       require("btw").setup()
     end,
@@ -86,7 +84,7 @@ local plugins = {
   },
   {
     "folke/todo-comments.nvim",
-    lazy = false,
+    event = "VeryLazy",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -104,7 +102,7 @@ local plugins = {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    lazy = false,
+    event = "VeryLazy",
     config = require "custom.configs.nvim-treesitter-context",
   },
   {
@@ -124,7 +122,6 @@ local plugins = {
       }
     end,
   },
-  { "wakatime/vim-wakatime", lazy = false },
   {
     "0x00-ketsu/autosave.nvim",
     event = { "InsertLeave", "TextChanged" },

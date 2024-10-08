@@ -4,6 +4,7 @@ local config = function()
   local async = require "plenary.async"
 
   -- Define an asynchronous function to get today's WakaTime usage
+  -- TODO: need to do this without the wakatime cli
   local get_wakatime_time = async.void(function()
     local tx, rx = async.control.channel.oneshot()
     local ok, job = pcall(Job.new, Job, {

@@ -7,6 +7,7 @@
 - code snippets taker
 - remap for spell check
 - anything .env\* should be bash
+- Disable auto checking on neovim config update
 
 <!-- plugins to install -->
 
