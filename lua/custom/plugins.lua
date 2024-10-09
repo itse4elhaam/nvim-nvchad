@@ -1,4 +1,5 @@
 local plugins = {
+  { "wakatime/vim-wakatime", lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
