@@ -6,6 +6,7 @@
 - code snippets taker
 - Disable auto checking on neovim config update
 - open link in browser ??
+- TS lsp issue in big codebases
 
 <!-- plugins to install -->
 
