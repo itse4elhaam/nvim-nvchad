@@ -26,17 +26,18 @@ lspconfig.pyright.setup {
   filetypes = { "python" },
 }
 -- TODO: fix this
-lspconfig.ts_ls.setup {
-  on_attach = on_attach,
-  capabilities = capabilities,
-  init_options = {
-    preferences = {
-      disableSuggestions = true,
-    },
-  },
-}
+-- lspconfig.ts_ls.setup {
+--   on_attach = on_attach,
+--   capabilities = capabilities,
+--   init_options = {
+--     preferences = {
+--       disableSuggestions = true,
+--     },
+--   },
+-- }
+
 lspconfig.emmet_language_server.setup {
-  filetypes = { "css", "html", "javascript", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
+  filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
   -- **Note:** only the options listed in the table are supported.
   init_options = {

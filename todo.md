@@ -1,5 +1,4 @@
 - eslint not working properly
-- IMPORTANT REPLACE TS_LS with something saner
 - how to paste from different registers
 - non working null_ls tools
 - add mini.icons
@@ -12,8 +11,6 @@
 
 <!-- plugins to install -->
 
-- https://github.com/pmizio/typescript-tools.nvim
-- https://www.lazyvim.org/extras/lang/typescript
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/aerial.nvim
 - https://github.com/kristijanhusak/vim-dadbod-ui.git
@@ -23,3 +20,4 @@
 - https://www.lazyvim.org/extras/editor/refactoring
 - https://www.lazyvim.org/extras/lang/markdown
 - https://github.com/dmmulroy/tsc.nvim
+- https://github.com/ThePrimeagen/refactoring.nvim

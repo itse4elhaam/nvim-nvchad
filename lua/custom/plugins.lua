@@ -1,4 +1,10 @@
 local plugins = {
+  {
+    "pmizio/typescript-tools.nvim",
+    lazy = false,
+    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    opts = {},
+  },
   { "wakatime/vim-wakatime", lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
