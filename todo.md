@@ -7,6 +7,7 @@
 - Disable auto checking on neovim config update
 - open link in browser ??
 - TS lsp issue in big codebases
+- find a way so that the ts_ls does not affect the neovim performance
 
 <!-- plugins to install -->
 
