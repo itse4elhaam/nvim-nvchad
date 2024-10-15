@@ -7,11 +7,10 @@ function OpenEnvFile()
   -- Check if .env file exists
   if vim.fn.filereadable(env_file) == 1 then
     vim.cmd("edit " .. env_file)
-    -- Check if .env.local exists if .env is not found
   elseif vim.fn.filereadable(env_local_file) == 1 then
     vim.cmd("edit " .. env_local_file)
   else
-    print ".env or .env.local not found"
+    print ".env not found"
   end
 end
 
@@ -74,10 +73,6 @@ M.general = {
     ["<leader>da"] = { "G$Vgg_d" },
     ["<leader>yf"] = { "vi{joky" },
     ["<leader>ef"] = { "va{<ESC>" },
-
-    -- switch b/w buffers
-    ["<S-h>"] = { "<cmd>bprevious<CR>" },
-    ["<S-l>"] = { "<cmd>bnext<CR>" },
 
     -- splits
     ["<leader>v"] = { "<cmd>vsplit<CR>" },
