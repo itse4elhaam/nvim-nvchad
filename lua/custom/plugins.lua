@@ -1,5 +1,15 @@
 local plugins = {
   {
+    "stevearc/aerial.nvim",
+    lazy = false,
+    opts = {},
+    -- Optional dependencies
+    dependencies = {
+      "nvim-treesitter/nvim-treesitter",
+      "nvim-tree/nvim-web-devicons",
+    },
+  },
+  {
     "pmizio/typescript-tools.nvim",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },

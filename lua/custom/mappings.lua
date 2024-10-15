@@ -101,6 +101,7 @@ M.general = {
     },
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
     ["<leader>env"] = { "<cmd>lua OpenEnvFile()<CR>", desc = "Open .env file" },
+    ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Open .env file" },
   },
 
   v = {
