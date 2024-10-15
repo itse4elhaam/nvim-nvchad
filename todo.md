@@ -20,3 +20,4 @@
 - https://www.lazyvim.org/extras/editor/outline
 - https://www.lazyvim.org/extras/editor/refactoring
 - https://www.lazyvim.org/extras/lang/markdown
+- https://github.com/dmmulroy/tsc.nvim
