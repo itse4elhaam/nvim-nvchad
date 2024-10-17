@@ -30,6 +30,11 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>te"] = {
+      "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
+      "Add // @ts-expect-error above the current line",
+    },
+
     ["<leader>ba"] = {
       "<cmd>%bd|e#<CR>",
       "Close all other buffers except the current one",
