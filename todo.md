@@ -8,6 +8,7 @@
 - TS lsp issue in big codebases
 - find a way so that the ts_ls does not affect the neovim performance
 - bulk formatting for lua files
+- remap to copy trouble error to the clipboard
 
 <!-- plugins to install -->
 
