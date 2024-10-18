@@ -10,6 +10,9 @@
 - bulk formatting for lua files
 - remap to copy trouble error to the clipboard
 - clg remap in js
+- remap to comment x lines
+- run tstools utils cmds on save
+- format should run on a file close
 
 <!-- plugins to install -->
 
