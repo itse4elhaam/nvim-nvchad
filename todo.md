@@ -13,6 +13,7 @@
 - remap to comment x lines
 - run tstools utils cmds on save
 - format should run on a file close
+- shift to mini tools
 
 <!-- plugins to install -->
 

@@ -1,4 +1,5 @@
 local plugins = {
+  { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
   {
     "stevearc/aerial.nvim",
     lazy = false,
