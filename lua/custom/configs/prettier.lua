@@ -1,10 +1,19 @@
 local config = function()
-  local prettier = require("prettier")
-  prettier.setup({
-    bin = 'prettierd',
+  local prettier = require "prettier"
+  prettier.setup {
+    bin = "prettierd",
     filetypes = {
-      "css", "graphql", "html", "javascript", "javascriptreact",
-      "less", "markdown", "scss", "typescript", "typescriptreact", "yaml",
+      "css",
+      "graphql",
+      "html",
+      "javascript",
+      "javascriptreact",
+      "less",
+      "markdown",
+      "scss",
+      "typescript",
+      "typescriptreact",
+      "yaml",
     },
     cli_options = {
       arrow_parens = "always",
@@ -28,16 +37,16 @@ local config = function()
     },
     ["null-ls"] = {
       condition = function()
-        return prettier.config_exists({
+        return prettier.config_exists {
           check_package_json = true,
-        })
+        }
       end,
       runtime_condition = function(params)
         return true
       end,
       timeout = 5000,
     },
-  })
+  }
 end
 
 return config

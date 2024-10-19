@@ -83,7 +83,7 @@ local options = {
     },
     ["<Tab>"] = cmp.mapping(function(fallback)
       if cmp.visible() then
-        cmp.confirm({ select = true })
+        cmp.confirm { select = true }
       elseif require("luasnip").expand_or_jumpable() then
         vim.fn.feedkeys(vim.api.nvim_replace_termcodes("<Plug>luasnip-expand-or-jump", true, true, true), "")
       else

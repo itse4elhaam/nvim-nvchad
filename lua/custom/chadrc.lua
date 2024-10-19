@@ -1,4 +1,4 @@
-require("custom.init")
+require "custom.init"
 ---@type ChadrcConfig
 local M = {}
 -- todo move this to a seperate file
