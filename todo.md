@@ -15,10 +15,9 @@
 - format should run on a file close
 - shift to mini tools
 - markdown lsp
-- postman in neovim
 - only hex codes should be highlited not names
 - previous searches in live grep
-- json with comments?
+- something for refactoring
 
 <!-- plugins to install -->
 
