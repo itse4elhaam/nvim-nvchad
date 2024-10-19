@@ -17,7 +17,9 @@
 - markdown lsp
 - only hex codes should be highlited not names
 - previous searches in live grep
-- something for refactoring
+- how to use bookmarks?
+- smth to restart neovim with
+- cursor changes on remap shift
 
 <!-- plugins to install -->
 

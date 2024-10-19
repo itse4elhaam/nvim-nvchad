@@ -5,5 +5,5 @@ return function()
     },
   }
   require("telescope").load_extension "undo"
-  vim.keymap.set("n", "<leader>u", "<cmd>Telescope undo<cr>")
+  require("telescope").load_extension "refactoring"
 end

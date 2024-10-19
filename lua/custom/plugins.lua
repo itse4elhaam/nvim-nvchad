@@ -1,4 +1,15 @@
 local plugins = {
+  {
+    "ThePrimeagen/refactoring.nvim",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    event = "VeryLazy",
+    config = function()
+      require("refactoring").setup()
+    end,
+  },
   { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
   {
     "stevearc/aerial.nvim",

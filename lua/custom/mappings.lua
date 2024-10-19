@@ -30,6 +30,27 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>u"] = {
+      "<cmd>Telescope undo<cr>",
+      "Open undo history using Telescope",
+    },
+
+    -- Insert printf debugging statement
+    ["<leader>rp"] = {
+      function()
+        require("refactoring").debug.printf { below = false }
+      end,
+      "Insert printf debug statement",
+    },
+
+    -- Cleanup debug statements
+    ["<leader>rc"] = {
+      function()
+        require("refactoring").debug.cleanup {}
+      end,
+      "Clean up debug statements",
+    },
+
     ["<leader>te"] = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
       "Add // @ts-expect-error above the current line",
@@ -99,17 +120,18 @@ M.general = {
     ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<CR>" },
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
 
-    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
-    ["<leader>xa"] = {
-      "<cmd>bufdo bd<CR>",
-      "Close all buffers",
-    },
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
     ["<leader>env"] = { "<cmd>lua OpenEnvFile()<CR>", desc = "Open .env file" },
     ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Open .env file" },
   },
 
   v = {
+    ["<leader>rv"] = {
+      function()
+        require("refactoring").debug.print_var()
+      end,
+      "Print variable for debugging",
+    },
     ["<leader>dd"] = {
       [["_d"]],
       "Delete without overwriting register",
@@ -127,6 +149,20 @@ M.general = {
   },
 
   x = {
+    ["<leader>rr"] = {
+      function()
+        require("telescope").extensions.refactoring.refactors()
+      end,
+      "Open refactoring options with Telescope",
+    },
+
+    ["<leader>rv"] = {
+      function()
+        require("refactoring").debug.print_var()
+      end,
+      "Print variable for debugging",
+    },
+
     ["<leader>dd"] = {
       [["_d"]],
       "Delete without overwriting register",
