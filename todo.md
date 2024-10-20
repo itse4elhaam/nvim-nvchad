@@ -1,15 +1,14 @@
+- code snippets taker
 - eslint not working properly
 - how to paste from different registers
 - non working null_ls tools
 - add mini.icons
-- code snippets taker
 - Disable auto checking on neovim config update
 - open link in browser ??
 - remap to copy trouble error to the clipboard
 - shift to mini tools
 - markdown lsp
 - only hex codes should be highlited not names
-- previous searches in live grep
 - smth to restart neovim with
 - cursor changes on remap shift
 
@@ -23,4 +22,3 @@
 - https://www.lazyvim.org/extras/editor/refactoring
 - https://www.lazyvim.org/extras/lang/markdown
 - https://github.com/dmmulroy/tsc.nvim
-- https://github.com/ThePrimeagen/refactoring.nvim
