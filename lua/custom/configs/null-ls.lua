@@ -33,7 +33,6 @@ local opts = {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
           local js_filetypes = {
             "javascript",
             "typescript",
@@ -45,6 +44,7 @@ local opts = {
             vim.cmd "TSToolsOrganizeImports"
             vim.cmd "TSToolsAddMissingImports"
           end
+          vim.lsp.buf.format { bufnr = bufnr }
         end,
       })
     end
