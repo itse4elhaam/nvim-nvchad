@@ -15,7 +15,6 @@ local plugins = {
     "stevearc/aerial.nvim",
     lazy = false,
     opts = {},
-    -- Optional dependencies
     dependencies = {
       "nvim-treesitter/nvim-treesitter",
       "nvim-tree/nvim-web-devicons",
@@ -82,7 +81,6 @@ local plugins = {
   },
   {
     "letieu/btw.nvim",
-    -- NOTE: is this correct here?
     event = "VeryLazy",
     config = function()
       require("btw").setup()
@@ -123,7 +121,7 @@ local plugins = {
   },
   {
     "folke/trouble.nvim",
-    opts = {}, -- for default options, refer to the configuration section for custom setup.
+    opts = {},
     cmd = "Trouble",
     keys = require "custom.configs.trouble",
   },
