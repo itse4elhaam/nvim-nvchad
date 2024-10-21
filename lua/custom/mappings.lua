@@ -30,6 +30,16 @@ M.gopher = {
 
 M.general = {
   n = {
+    -- ts tool maps
+    ["<leader>toi"] = {
+      "<cmd>TSToolsOrganizeImports<CR>",
+      "Organize Imports",
+    },
+    ["<leader>tai"] = {
+      "<cmd>TSToolsAddMissingImports<CR>",
+      "Add Missing Imports",
+    },
+
     ["<leader>u"] = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",

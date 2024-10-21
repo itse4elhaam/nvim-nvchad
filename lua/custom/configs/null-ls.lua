@@ -33,17 +33,6 @@ local opts = {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          local js_filetypes = {
-            "javascript",
-            "typescript",
-            "typescriptreact",
-            "javascriptreact",
-          }
-
-          if vim.tbl_contains(js_filetypes, vim.bo.filetype) then
-            vim.cmd "TSToolsOrganizeImports"
-            vim.cmd "TSToolsAddMissingImports"
-          end
           vim.lsp.buf.format { bufnr = bufnr }
         end,
       })

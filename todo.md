@@ -11,6 +11,7 @@
 - only hex codes should be highlited not names
 - smth to restart neovim with
 - cursor changes on remap shift
+- if session things errs, create a new session
 
 <!-- plugins to install -->
 
