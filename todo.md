@@ -12,6 +12,8 @@
 - smth to restart neovim with
 - cursor changes on remap shift
 - if session things errs, create a new session
+- no fold found issue
+- ignore all issues with ts-expect error
 
 <!-- plugins to install -->
 
