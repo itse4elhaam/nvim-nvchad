@@ -2,19 +2,19 @@
 - eslint not working properly
 - how to paste from different registers
 - non working null_ls tools
-- add mini.icons
 - Disable auto checking on neovim config update
 - open link in browser ??
 - remap to copy trouble error to the clipboard
 - shift to mini tools
 - markdown lsp
 - only hex codes should be highlited not names
-- smth to restart neovim with
 - cursor changes on remap shift
 - if session things errs, create a new session
 - no fold found issue
 - ignore all issues with ts-expect error
 - <leader>ca not working
+- ts stuff not working - too slow
+- take stuff of off tstools
 
 <!-- plugins to install -->
 
