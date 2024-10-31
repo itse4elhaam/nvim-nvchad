@@ -30,6 +30,15 @@ M.gopher = {
 
 M.general = {
   n = {
+    -- lsp remaps
+    ["<leader>ld"] = {
+      "<cmd>LspStop<CR>",
+      "Organize Imports",
+    },
+    ["<leader>le"] = {
+      "<cmd>LspStart<CR>",
+      "Organize Imports",
+    },
     -- ts tool maps
     ["<leader>toi"] = {
       "<cmd>TSToolsOrganizeImports<CR>",
