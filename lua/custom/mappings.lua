@@ -49,9 +49,13 @@ M.general = {
       "Add Missing Imports",
     },
 
-    ["<leader>u"] = {
+    ["<leader>fu"] = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",
+    },
+    ["<leader>fc"] = {
+      "<cmd>Telescope coc<cr>",
+      "coc using Telescope",
     },
 
     -- Insert printf debugging statement

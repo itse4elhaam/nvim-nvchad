@@ -116,14 +116,6 @@ local default_plugins = {
     end,
   },
 
-  {
-    "neovim/nvim-lspconfig",
-    event = "User FilePost",
-    config = function()
-      require "plugins.configs.lspconfig"
-    end,
-  },
-
   -- load luasnips + cmp related in insert mode only
   {
     "hrsh7th/nvim-cmp",

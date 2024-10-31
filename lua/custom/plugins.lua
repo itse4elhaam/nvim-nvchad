@@ -20,12 +20,6 @@ local plugins = {
       "nvim-tree/nvim-web-devicons",
     },
   },
-  {
-    "pmizio/typescript-tools.nvim",
-    lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
   { "wakatime/vim-wakatime", lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
@@ -141,6 +135,7 @@ local plugins = {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
+      "fannheyward/telescope-coc.nvim",
     },
     config = require "custom.configs.telescope",
   },
@@ -163,11 +158,11 @@ local plugins = {
     opts = require "custom.configs.mason",
   },
   {
-    "neovim/nvim-lspconfig",
-    config = function()
-      require "plugins.configs.lspconfig"
-      require "custom.configs.lspconfig"
-    end,
+    "neoclide/coc.nvim",
+    branch = "master",
+    build = "yarn install --frozen-lockfile",
+    config = require "custom.configs.coc",
+    lazy = false,
   },
   {
 
