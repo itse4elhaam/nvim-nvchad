@@ -15,6 +15,7 @@
 - <leader>ca not working
 - ts stuff not working - too slow
 - take stuff of off tstools
+- zen mode??
 
 <!-- plugins to install -->
 
