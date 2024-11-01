@@ -15,6 +15,9 @@
 - <leader>ca not working
 - ts stuff not working - too slow
 - take stuff of off tstools
+- zen mode??
+- lsp server should restart on erring
+- prettier chanegs should not be undo able
 
 <!-- plugins to install -->
 

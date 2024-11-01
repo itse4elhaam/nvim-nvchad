@@ -81,10 +81,10 @@ local plugins = {
   },
   {
     "letieu/btw.nvim",
-    event = "VeryLazy",
     config = function()
       require("btw").setup()
     end,
+    lazy = false,
   },
   {
     "JoosepAlviste/nvim-ts-context-commentstring",
