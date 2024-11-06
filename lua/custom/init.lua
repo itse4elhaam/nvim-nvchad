@@ -80,3 +80,15 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
     end
   end,
 })
+
+-- When a conflict is detected by this plugin a User autocommand is fired called GitConflictDetected. When this is resolved another command is fired called GitConflictResolved.
+vim.api.nvim_create_autocmd("User", {
+  pattern = "GitConflictDetected",
+  callback = function()
+    vim.notify("Conflict detected in " .. vim.fn.expand "<afile>")
+    vim.keymap.set("n", "cww", function()
+      engage.conflict_buster()
+      create_buffer_local_mappings()
+    end)
+  end,
+})
