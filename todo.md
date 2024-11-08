@@ -18,6 +18,8 @@
 - zen mode??
 - lsp server should restart on erring
 - prettier chanegs should not be undo able
+- why does the bracket expand?
+- debounce on autosave maybe? perf????
 
 <!-- plugins to install -->
 
