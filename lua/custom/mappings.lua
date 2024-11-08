@@ -30,6 +30,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
     -- lsp remaps
     ["<leader>ld"] = {
       "<cmd>LspStop<CR>",
