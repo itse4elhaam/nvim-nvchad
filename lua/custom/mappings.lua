@@ -1,27 +1,24 @@
 local M = {}
 
-function OpenEnvFile()
-  local env_file = ".env"
-  local env_local_file = ".env.local"
-
-  -- Check if .env file exists
-  if vim.fn.filereadable(env_file) == 1 then
-    vim.cmd("edit " .. env_file)
-  elseif vim.fn.filereadable(env_local_file) == 1 then
-    vim.cmd("edit " .. env_local_file)
-  else
-    print ".env not found"
+function OpenOrCreateFiles(filenames)
+  for _, filename in ipairs(filenames) do
+    -- Check if the file exists
+    if vim.fn.filereadable(filename) == 1 then
+      vim.cmd("edit " .. filename)
+      print(filename .. " opened")
+      return
+    end
   end
-end
 
-function OpenGitIgnoreFile()
-  local gitignore_file = ".gitignore"
-
-  -- Check if .env file exists
-  if vim.fn.filereadable(gitignore_file) == 1 then
-    vim.cmd("edit " .. gitignore_file)
+  -- If no file exists, ask the user before creating the file
+  local create_file = vim.fn.input("File not found. Do you want to create " .. filenames[1] .. "? (y/N): ")
+  if create_file:lower() == "y" then
+    -- Create the file if the user confirmed
+    vim.fn.writefile({}, filenames[1])
+    vim.cmd("edit " .. filenames[1])
+    print(filenames[1] .. " created and opened")
   else
-    print ".gitignore not found"
+    print "File creation aborted."
   end
 end
 
@@ -152,8 +149,8 @@ M.general = {
     ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
 
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
-    ["<leader>env"] = { "<cmd>lua OpenEnvFile()<CR>", desc = "Open .env file" },
-    ["<leader>gi"] = { "<cmd>lua OpenGitIgnoreFile()<CR>", desc = "Open .env file" },
+    ["<leader>env"] = { "<cmd>lua OpenOrCreateFiles({'.env', '.env.local'})<CR>", desc = "Open .env file" },
+    ["<leader>gi"] = { "<cmd>lua OpenOrCreateFiles({'.gitignore'})<CR>", desc = "Open .env file" },
     ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Open .env file" },
   },
 
