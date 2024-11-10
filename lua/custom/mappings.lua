@@ -21,7 +21,7 @@ function OpenGitIgnoreFile()
   if vim.fn.filereadable(gitignore_file) == 1 then
     vim.cmd("edit " .. gitignore_file)
   else
-    print ".env not found"
+    print ".gitignore not found"
   end
 end
 
@@ -41,6 +41,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
     -- lsp remaps
     ["<leader>ld"] = {
       "<cmd>LspStop<CR>",
