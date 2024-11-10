@@ -14,6 +14,17 @@ function OpenEnvFile()
   end
 end
 
+function OpenGitIgnoreFile()
+  local gitignore_file = ".gitignore"
+
+  -- Check if .env file exists
+  if vim.fn.filereadable(gitignore_file) == 1 then
+    vim.cmd("edit " .. gitignore_file)
+  else
+    print ".env not found"
+  end
+end
+
 M.gopher = {
   plugin = true,
   n = {
@@ -141,6 +152,7 @@ M.general = {
 
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
     ["<leader>env"] = { "<cmd>lua OpenEnvFile()<CR>", desc = "Open .env file" },
+    ["<leader>gi"] = { "<cmd>lua OpenGitIgnoreFile()<CR>", desc = "Open .env file" },
     ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Open .env file" },
   },
 
