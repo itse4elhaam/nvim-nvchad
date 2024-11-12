@@ -25,16 +25,6 @@ lspconfig.pyright.setup {
   capabilities = capabilities,
   filetypes = { "python" },
 }
--- TODO: fix this
--- lspconfig.ts_ls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   init_options = {
---     preferences = {
---       disableSuggestions = true,
---     },
---   },
--- }
 
 lspconfig.emmet_language_server.setup {
   filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },

@@ -171,6 +171,7 @@ local default_plugins = {
         opts = {
           fast_wrap = {},
           disable_filetype = { "TelescopePrompt", "vim" },
+          enable_check_bracket_line = false,
         },
         config = function(_, opts)
           require("nvim-autopairs").setup(opts)
