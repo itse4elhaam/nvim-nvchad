@@ -38,6 +38,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
     ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
     -- lsp remaps
     ["<leader>ld"] = {
