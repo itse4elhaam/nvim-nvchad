@@ -3,7 +3,6 @@
 - non working null_ls tools
 - Disable auto checking on neovim config update
 - open link in browser ??
-- remap to copy trouble error to the clipboard
 - shift to mini tools
 - markdown lsp
 - cursor changes on remap shift
@@ -15,11 +14,10 @@
 - take stuff of off tstools
 - zen mode??
 - lsp server should restart on erring
-- prettier chanegs should not be undo able
-- why does the bracket expand?
 - is this needed:
 - after a certain time of inactivty, lsp should get disabled
 - make a workspace??
+- async actions on save???
 
 <!-- plugins to install -->
 
@@ -28,6 +26,6 @@
 - https://www.lazyvim.org/extras/editor/harpoon2
 - https://www.lazyvim.org/extras/editor/illuminate
 - https://www.lazyvim.org/extras/editor/outline
-- https://www.lazyvim.org/extras/editor/refactoring
+- https://www.lazyvim.org/extras/editor/refactorin
 - https://www.lazyvim.org/extras/lang/markdown
 - https://github.com/dmmulroy/tsc.nvim
