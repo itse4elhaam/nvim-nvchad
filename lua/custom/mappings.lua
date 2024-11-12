@@ -1,5 +1,22 @@
 local M = {}
 
+function CopyDiagnosticToClip()
+  -- Get the current line diagnostics in the current buffer
+  local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
+
+  if #diagnostics == 0 then
+    print "No diagnostics on this line."
+    return
+  end
+
+  -- Take the first diagnostic message (you could also combine multiple messages if needed)
+  local diagnostic_message = diagnostics[1].message
+
+  -- Copy to clipboard
+  vim.fn.setreg("+", diagnostic_message)
+  print("Copied diagnostic to clipboard: " .. diagnostic_message)
+end
+
 function OpenOrCreateFiles(filenames)
   for _, filename in ipairs(filenames) do
     -- Check if the file exists
@@ -64,19 +81,24 @@ M.general = {
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>fls"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
+    ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find command history" },
+    ["<leader>ft"] = { "<cmd> TodoTelescope <CR>", "Find command history" },
+    ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "Find command history" },
+    ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "Find command history" },
+    ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Find command history" },
     ["<leader>u"] = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",
     },
-    ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
     ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Search in aerial" },
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", desc = "Find buffer commits" },
+    ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Open .env file" },
 
     -- Insert printf debugging statement
     ["<leader>rp"] = {
       function()
-        require("refactoring").debug.printf { below = false }
+        require("refactoring").dekug.printf { below = false }
       end,
       "Insert printf debug statement",
     },
@@ -158,6 +180,8 @@ M.general = {
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
     ["<leader>env"] = { "<cmd>lua OpenOrCreateFiles({'.env', '.env.local'})<CR>", desc = "Open .env file" },
     ["<leader>gi"] = { "<cmd>lua OpenOrCreateFiles({'.gitignore'})<CR>", desc = "Open .env file" },
+
+    ["<leader>cd"] = { "<cmd>lua CopyDiagnosticToClip() <CR>", desc = "Open .env file" },
   },
 
   v = {
