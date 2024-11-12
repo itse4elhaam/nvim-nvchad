@@ -20,6 +20,8 @@
 - prettier chanegs should not be undo able
 - why does the bracket expand?
 - debounce on autosave maybe? perf????
+- is this needed:
+- after a certain time of inactivty, lsp should get disabled
 
 <!-- plugins to install -->
 
