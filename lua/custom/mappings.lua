@@ -59,10 +59,19 @@ M.general = {
       "Add Missing Imports",
     },
 
+    -- telescope remaps
+    ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
+    ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
+    ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
+    ["<leader>fls"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
     ["<leader>u"] = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",
     },
+    ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
+    ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Search in aerial" },
+    ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", desc = "Find buffer commits" },
+    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Open .env file" },
 
     -- Insert printf debugging statement
     ["<leader>rp"] = {
@@ -141,18 +150,14 @@ M.general = {
     ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
     ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>" },
 
-    ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
-
     ["el"] = { "$" },
     ["sl"] = { "_" },
 
     ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<CR>" },
-    ["gd"] = { "<cmd>lua vim.lsp.buf.definition()<CR>" },
 
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
     ["<leader>env"] = { "<cmd>lua OpenOrCreateFiles({'.env', '.env.local'})<CR>", desc = "Open .env file" },
     ["<leader>gi"] = { "<cmd>lua OpenOrCreateFiles({'.gitignore'})<CR>", desc = "Open .env file" },
-    ["<leader>fs"] = { "<cmd>Telescope aerial<CR>", desc = "Open .env file" },
   },
 
   v = {

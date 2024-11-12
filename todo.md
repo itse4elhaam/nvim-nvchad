@@ -1,13 +1,11 @@
 - code snippets taker
 - eslint not working properly
-- how to paste from different registers
 - non working null_ls tools
 - Disable auto checking on neovim config update
 - open link in browser ??
 - remap to copy trouble error to the clipboard
 - shift to mini tools
 - markdown lsp
-- only hex codes should be highlited not names
 - cursor changes on remap shift
 - if session things errs, create a new session
 - no fold found issue
@@ -21,6 +19,7 @@
 - why does the bracket expand?
 - is this needed:
 - after a certain time of inactivty, lsp should get disabled
+- make a workspace??
 
 <!-- plugins to install -->
 
