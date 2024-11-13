@@ -18,6 +18,7 @@
 - after a certain time of inactivty, lsp should get disabled
 - make a workspace??
 - async actions on save???
+- git conflicts with telescope
 
 <!-- plugins to install -->
 
