@@ -19,6 +19,8 @@
 - make a workspace??
 - async actions on save???
 - git conflicts with telescope
+- move these functions to utils
+- can the lgit work in the background in case of push or anything?
 
 <!-- plugins to install -->
 
