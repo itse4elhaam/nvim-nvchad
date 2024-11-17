@@ -22,6 +22,8 @@
 - move these functions to utils
 - can the lgit work in the background in case of push or anything?
 
+- study and add better folding shortcuts
+
 <!-- plugins to install -->
 
 - https://github.com/ggandor/leap.nvim
