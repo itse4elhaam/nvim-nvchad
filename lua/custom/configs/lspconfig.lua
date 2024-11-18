@@ -90,7 +90,7 @@ lspconfig.jsonls.setup {
 -- }
 
 -- TODO: do this for all of these, disabling eslint for now, not needed
--- local servers = { "tailwindcss", "cssls" }
+local servers = { "tailwindcss", "cssls" }
 local servers = {}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {

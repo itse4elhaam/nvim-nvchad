@@ -21,6 +21,8 @@
 - git conflicts with telescope
 - move these functions to utils
 - can the lgit work in the background in case of push or anything?
+- how to zoom into a pan?
+- grug far should open in its own buffer
 
 - study and add better folding shortcuts
 
