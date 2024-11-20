@@ -23,6 +23,8 @@
 - can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
 - grug far should open in its own buffer
+- auto save should be enabled and disabled automatically
+- eslint fix all mapping
 
 - study and add better folding shortcuts
 
