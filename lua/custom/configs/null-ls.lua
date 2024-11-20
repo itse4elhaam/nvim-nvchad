@@ -33,7 +33,7 @@ local opts = {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
+          vim.lsp.buf.format { bufnr = bufnr, async = true }
         end,
       })
     end

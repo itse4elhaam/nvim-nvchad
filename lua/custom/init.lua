@@ -1,9 +1,5 @@
 local opt = vim.opt
 
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevelstart = 99
-
 opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
 
@@ -36,6 +32,7 @@ vim.api.nvim_create_autocmd("InsertLeave", {
     ]]
   end,
 })
+
 -- Define autocmd group
 vim.cmd [[
   augroup LineNumberToggle
@@ -46,7 +43,6 @@ vim.cmd [[
 ]]
 
 -- set highlight color as this
--- TODO: fix this
 vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   group = vim.api.nvim_create_augroup("Color", {}),
   pattern = "*",
@@ -56,6 +52,7 @@ vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
     vim.api.nvim_set_hl(0, "LspReferenceText", { fg = "#3e4451" })
   end,
 })
+
 -- highlight yanked text for 200ms using the "Visual" highlight group
 vim.cmd [[
   augroup highlight_yank
@@ -81,14 +78,10 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
   end,
 })
 
--- When a conflict is detected by this plugin a User autocommand is fired called GitConflictDetected. When this is resolved another command is fired called GitConflictResolved.
-vim.api.nvim_create_autocmd("User", {
-  pattern = "GitConflictDetected",
-  callback = function()
-    vim.notify("Conflict detected in " .. vim.fn.expand "<afile>")
-    vim.keymap.set("n", "cww", function()
-      engage.conflict_buster()
-      create_buffer_local_mappings()
-    end)
-  end,
-})
+-- defers actions on ts and tsx files
+vim.cmd [[
+  augroup FormatOnSave
+    autocmd!
+    autocmd BufWritePre *.ts,*.tsx lua vim.defer_fn(function() vim.lsp.buf.format() end, 200)
+  augroup END
+]]
