@@ -1,5 +1,4 @@
 local null_ls = require "null-ls"
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 local opts = {
   sources = {
@@ -33,7 +32,7 @@ local opts = {
         group = augroup,
         buffer = bufnr,
         callback = function()
-          vim.lsp.buf.format { bufnr = bufnr, async = true }
+          vim.lsp.buf.format { bufnr = bufnr }
         end,
       })
     end
