@@ -26,6 +26,16 @@ lspconfig.pyright.setup {
   filetypes = { "python" },
 }
 
+lspconfig.ts_ls.setup {
+  on_attach = on_attach,
+  capabilities = capabilities,
+  init_options = {
+    preferences = {
+      disableSuggestions = true,
+    },
+  },
+}
+
 lspconfig.emmet_language_server.setup {
   filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
   -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
@@ -77,23 +87,24 @@ lspconfig.jsonls.setup {
     },
   },
 }
--- lspconfig.eslint.setup {
---   settings = {
---     packageManager = "yarn",
---   },
---   on_attach = function(_, bufnr)
---     vim.api.nvim_create_autocmd("BufWritePre", {
---       buffer = bufnr,
---       command = "EslintFixAll",
---     })
---   end,
--- }
 
--- TODO: do this for all of these, disabling eslint for now, not needed
+lspconfig.eslint.setup {
+  settings = {
+    packageManager = "yarn",
+  },
+  on_attach = function(_, bufnr)
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      buffer = bufnr,
+      command = "EslintFixAll",
+    })
+  end,
+}
+
+-- todo do this for all of these, disabling eslint for now, not needed
 local servers = { "tailwindcss", "cssls" }
-local servers = {}
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
+    filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
     on_attach = on_attach,
     capabilities = capabilities,
   }

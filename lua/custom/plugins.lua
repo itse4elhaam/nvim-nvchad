@@ -1,5 +1,8 @@
 local plugins = {
   {
+    "nvim-telescope/telescope-ui-select.nvim",
+  },
+  {
     "kdheepak/lazygit.nvim",
     lazy = true,
     cmd = {

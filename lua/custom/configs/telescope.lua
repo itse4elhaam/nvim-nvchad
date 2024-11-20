@@ -1,9 +1,18 @@
 return function()
-  require("telescope").setup {
+  local telescope = require "telescope"
+  local themes = require "telescope.themes"
+
+  telescope.setup {
     extensions = {
       undo = {},
+      ["ui-select"] = themes.get_dropdown {
+        previewer = true,
+      },
     },
   }
-  require("telescope").load_extension "undo"
-  require("telescope").load_extension "refactoring"
+
+  -- Load Telescope extensions
+  telescope.load_extension "undo"
+  telescope.load_extension "refactoring"
+  telescope.load_extension "ui-select"
 end
