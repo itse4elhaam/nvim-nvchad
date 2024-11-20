@@ -55,16 +55,21 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>as"] = { "<cmd>ASToggle<CR>", "Toggle auto save" },
     ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
     ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
     -- lsp remaps
     ["<leader>ld"] = {
       "<cmd>LspStop<CR>",
-      "Organize Imports",
+      "Start LSP",
+    },
+    ["<leader>lr"] = {
+      "<cmd>LspRestart<CR>",
+      "Restart LSP",
     },
     ["<leader>le"] = {
       "<cmd>LspStart<CR>",
-      "Organize Imports",
+      "Stop LSP",
     },
     -- ts tool maps
     ["<leader>toi"] = {
