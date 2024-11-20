@@ -55,6 +55,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
     ["<leader>as"] = { "<cmd>ASToggle<CR>", "Toggle auto save" },
     ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
     ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
