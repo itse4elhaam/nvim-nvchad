@@ -32,15 +32,6 @@ local plugins = {
   },
   { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
   {
-    "stevearc/aerial.nvim",
-    lazy = false,
-    opts = {},
-    dependencies = {
-      "nvim-treesitter/nvim-treesitter",
-      "nvim-tree/nvim-web-devicons",
-    },
-  },
-  {
     "pmizio/typescript-tools.nvim",
     lazy = false,
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
