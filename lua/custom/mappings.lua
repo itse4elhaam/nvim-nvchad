@@ -39,6 +39,25 @@ function OpenOrCreateFiles(filenames)
   end
 end
 
+function ToggleDiagnostics()
+  if vim.diagnostic.is_disabled(0) then
+    vim.diagnostic.enable(0)
+    print "Diagnostics enabled for this buffer"
+  else
+    vim.diagnostic.disable(0)
+    print "Diagnostics disabled for this buffer"
+  end
+end
+
+function SearchGitConflicts()
+  local builtin = require "telescope.builtin"
+  builtin.live_grep {
+    prompt_title = "Search Git Conflicts",
+    default_text = "HEAD >>>>",
+    find_command = { "rg", "--files", "--glob", "*", "-t", "tracked" },
+  }
+end
+
 M.gopher = {
   plugin = true,
   n = {
@@ -56,6 +75,7 @@ M.gopher = {
 M.general = {
   n = {
     ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
+    ["<leader>td"] = { "<cmd>lua ToggleDiagnostics()<CR>", "Toogle Diagnostics" },
     ["<leader>as"] = { "<cmd>ASToggle<CR>", "Toggle auto save" },
     ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
     ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
@@ -83,22 +103,23 @@ M.general = {
     },
 
     -- telescope remaps
+    ["<leader>fgc"] = { "<cmd>lua search_git_conflicts()<CR>", "Search for git conflicts" },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find command history" },
-    ["<leader>ft"] = { "<cmd> TodoTelescope <CR>", "Find command history" },
+    ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
     ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "Find command history" },
-    ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "Find command history" },
-    ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Find command history" },
+    ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "LSP References" },
+    ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Type Definations" },
     ["<leader>u"] = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",
     },
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", desc = "Find buffer commits" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
-    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Open .env file" },
+    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Lsp defination" },
 
     -- Insert printf debugging statement
     ["<leader>rp"] = {
@@ -120,6 +141,7 @@ M.general = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
       "Add // @ts-expect-error above the current line",
     },
+    ["<leader>tn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
 
     ["<leader>ba"] = {
       "<cmd>%bd|e#<CR>",
@@ -179,8 +201,6 @@ M.general = {
 
     ["el"] = { "$" },
     ["sl"] = { "_" },
-
-    ["gh"] = { "<cmd>lua vim.lsp.buf.hover()<CR>" },
 
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
     ["<leader>env"] = { "<cmd>lua OpenOrCreateFiles({'.env', '.env.local'})<CR>", desc = "Open .env file" },

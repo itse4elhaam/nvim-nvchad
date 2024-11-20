@@ -8,23 +8,21 @@
 - cursor changes on remap shift
 - if session things errs, create a new session
 - no fold found issue
-- ignore all issues with ts-expect error
-- <leader>ca not working
 - ts stuff not working - too slow
 - take stuff of off tstools
 - zen mode??
 - lsp server should restart on erring
-- is this needed:
-- after a certain time of inactivty, lsp should get disabled
 - make a workspace??
 - async actions on save???
-- git conflicts with telescope
 - move these functions to utils
 - can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
 - grug far should open in its own buffer
 - auto save should be enabled and disabled automatically
 - eslint fix all mapping
+- how to show hidden files in neotree?
+- prose lint, write_good and alex
+- btw.nvim should show up if not files are open
 
 - study and add better folding shortcuts
 
