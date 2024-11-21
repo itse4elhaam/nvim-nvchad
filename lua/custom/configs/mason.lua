@@ -8,7 +8,7 @@ return {
     "typescript-language-server",
     "eslintd",
     "tailwindcss-language-server",
-    "prettierd",
+    "prettier",
     "clangd",
     "clang-format",
     "json-lsp",

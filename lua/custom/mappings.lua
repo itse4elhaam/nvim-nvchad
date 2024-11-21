@@ -192,7 +192,7 @@ M.general = {
     ["<leader>s"] = { "<cmd>split<CR>" },
 
     -- cmd
-    ["<leader>wq"] = { "<cmd>waq!<CR>" },
+    ["<leader>wq"] = { "<cmd>wqa!<CR>" },
     ["<leader>q"] = { "<cmd>q!<CR>" },
 
     ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
