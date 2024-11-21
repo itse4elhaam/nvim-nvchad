@@ -165,11 +165,6 @@ local plugins = {
     end,
   },
   {
-    "0x00-ketsu/autosave.nvim",
-    event = { "InsertLeave", "TextChanged" },
-    config = require "custom.configs.autosave",
-  },
-  {
     "williamboman/mason.nvim",
     opts = require "custom.configs.mason",
   },
