@@ -4,8 +4,20 @@ local capabilities = require("plugins.configs.lspconfig").capabilities
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
+-- TODO: fix the function splits here
+
+-- Disable formatting for tailwindcss and cssls
+local function disable_formatting(client)
+  if client.name == "tailwindcss" or client.name == "cssls" then
+    client.server_capabilities.documentFormattingProvider = false
+  end
+end
+
 lspconfig.gopls.setup {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting for specific servers
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
   cmd = { "gopls" },
   filetypes = { "go", "gomod", "gowork", "gotmpl" },
@@ -20,43 +32,27 @@ lspconfig.gopls.setup {
     },
   },
 }
+
 lspconfig.pyright.setup {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting for specific servers
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
   filetypes = { "python" },
 }
 
--- lspconfig.ts_ls.setup {
---   on_attach = on_attach,
---   capabilities = capabilities,
---   init_options = {
---     preferences = {
---       disableSuggestions = true,
---     },
---   },
--- }
-
 lspconfig.emmet_language_server.setup {
   filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
-  -- Read more about this options in the [vscode docs](https://code.visualstudio.com/docs/editor/emmet#_emmet-configuration).
-  -- **Note:** only the options listed in the table are supported.
   init_options = {
     includeLanguages = {},
-    --- @type string[]
     excludeLanguages = {},
-    --- @type string[]
     extensionsPath = {},
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/preferences/)
     preferences = {},
-    --- @type boolean Defaults to `true`
     showAbbreviationSuggestions = true,
-    --- @type "always" | "never" Defaults to `"always"`
     showExpandedAbbreviation = "always",
-    --- @type boolean Defaults to `false`
     showSuggestionsAsSnippets = false,
-    --- @type table<string, any> [Emmet Docs](https://docs.emmet.io/customization/syntax-profiles/)
     syntaxProfiles = {},
-    --- @type table<string, string> [Emmet Docs](https://docs.emmet.io/customization/snippets/#variables)
     variables = {},
   },
 }
@@ -64,13 +60,17 @@ lspconfig.emmet_language_server.setup {
 lspconfig.clangd.setup {
   on_attach = function(client, bufnr)
     client.server_capabilities_signatureHelpProvider = false
+    disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
 }
 
 lspconfig.jsonls.setup {
-  on_attach = on_attach,
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting for specific servers
+    on_attach(client, bufnr)
+  end,
   capabilities = capabilities,
   on_new_config = function(new_config)
     new_config.settings.json.schemas = new_config.settings.json.schemas or {}
@@ -88,23 +88,15 @@ lspconfig.jsonls.setup {
   },
 }
 
--- lspconfig.eslint.setup {
---   settings = {
---     packageManager = "yarn",
---   },
---   on_attach = function(_, bufnr)
---     vim.api.nvim_create_autocmd("BufWritePre", {
---       buffer = bufnr,
---       command = "EslintFixAll",
---     })
---   end,
--- }
-
--- local servers = { "tailwindcss", "cssls" }
+-- Disable formatting for tailwindcss and cssls
+local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },
-    on_attach = on_attach,
+    on_attach = function(client, bufnr)
+      disable_formatting(client) -- Disable formatting for specific servers
+      on_attach(client, bufnr)
+    end,
     capabilities = capabilities,
   }
 end
