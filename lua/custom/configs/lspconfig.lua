@@ -100,7 +100,7 @@ lspconfig.jsonls.setup {
 --   end,
 -- }
 
-local servers = { "tailwindcss", "cssls" }
+-- local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
     filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact" },

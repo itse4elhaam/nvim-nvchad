@@ -8,7 +8,6 @@ return {
     "typescript-language-server",
     "eslintd",
     "tailwindcss-language-server",
-    "prettier",
     "clangd",
     "clang-format",
     "json-lsp",
@@ -20,5 +19,6 @@ return {
     "checkmake",
     "marksman",
     "grammarly-languageserver",
+    "prettierd",
   },
 }
