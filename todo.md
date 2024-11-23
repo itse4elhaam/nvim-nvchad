@@ -22,6 +22,8 @@
 - prose lint, write_good and alex
 - btw.nvim should show up if not files are open
 - space on the right when nvim-tree opens up
+- folds closed by default?
+- delet autocmd
 
 <!-- plugins to install -->
 
@@ -31,5 +33,4 @@
 - https://www.lazyvim.org/extras/editor/illuminate
 - https://www.lazyvim.org/extras/editor/outline
 - https://www.lazyvim.org/extras/editor/refactorin
-- https://www.lazyvim.org/extras/lang/markdown
 - https://github.com/dmmulroy/tsc.nvim
