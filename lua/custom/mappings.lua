@@ -71,6 +71,8 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["ul"] = { "O<Esc>:normal j<CR>", "Insert line above and move down" },
+    ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
     ["<leader>td"] = { "<cmd>lua ToggleDiagnostics()<CR>", "Toogle Diagnostics" },
