@@ -23,6 +23,7 @@
 - how to show hidden files in neotree?
 - prose lint, write_good and alex
 - btw.nvim should show up if not files are open
+- add x lines below
 
 - study and add better folding shortcuts
 
