@@ -1,18 +1,14 @@
-local M = {}
+-- remap functions:
 
 function CopyDiagnosticToClip()
-  -- Get the current line diagnostics in the current buffer
   local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
-
   if #diagnostics == 0 then
     print "No diagnostics on this line."
     return
   end
 
-  -- Take the first diagnostic message (you could also combine multiple messages if needed)
   local diagnostic_message = diagnostics[1].message
 
-  -- Copy to clipboard
   vim.fn.setreg("+", diagnostic_message)
   print("Copied diagnostic to clipboard: " .. diagnostic_message)
 end
@@ -30,7 +26,6 @@ function OpenOrCreateFiles(filenames)
   -- If no file exists, ask the user before creating the file
   local create_file = vim.fn.input("File not found. Do you want to create " .. filenames[1] .. "? (y/N): ")
   if create_file:lower() == "y" then
-    -- Create the file if the user confirmed
     vim.fn.writefile({}, filenames[1])
     vim.cmd("edit " .. filenames[1])
     print(filenames[1] .. " created and opened")
@@ -57,6 +52,8 @@ function SearchGitConflicts()
     find_command = { "rg", "--files", "--glob", "*", "-t", "tracked" },
   }
 end
+
+local M = {}
 
 M.gopher = {
   plugin = true,
@@ -178,10 +175,11 @@ M.general = {
       "Previous search result and center",
     },
     ["<leader>sr"] = {
-      [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]],
+      [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/cgI<Left><Left><Left>]],
       "Search and replace",
     },
-    ["sa"] = { "G$Vgg" },
+    ["sa"] = { "G$Vgg", "Select all" },
+    ["<leader>so"] = { ":source %<CR>", "Source the current file" },
     ["<leader>ya"] = { "<cmd>%y<CR>" },
     ["<leader>da"] = { "G$Vgg_d" },
     ["<leader>yf"] = { "vi{joky" },

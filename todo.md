@@ -20,11 +20,10 @@
 - grug far should open in its own buffer
 - auto save should be enabled and disabled automatically
 - eslint fix all mapping
-- how to show hidden files in neotree?
 - prose lint, write_good and alex
 - btw.nvim should show up if not files are open
 - add x lines below
-
+- space on the right when nvim-tree opens up
 - study and add better folding shortcuts
 
 <!-- plugins to install -->

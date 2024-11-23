@@ -16,6 +16,9 @@ vim.cmd [[
   autocmd BufRead,BufNewFile *.env* set filetype=sh
 ]]
 
+-- removes out commenting of next lines
+vim.cmd [[autocmd FileType * set formatoptions-=ro]]
+
 -- Remove carriage returns after pasting in normal mode
 vim.api.nvim_create_autocmd("VimEnter", {
   group = "PasteRemoveCarriageReturn",
