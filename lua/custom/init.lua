@@ -1,8 +1,8 @@
 local opt = vim.opt
 
-opt.foldmethod = "expr"
-opt.foldexpr = "nvim_treesitter#foldexpr()"
-opt.foldlevelstart = 99
+-- opt.foldmethod = "expr"
+-- opt.foldexpr = "nvim_treesitter#foldexpr()"
+-- opt.foldlevelstart = 99
 
 opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
@@ -50,14 +50,16 @@ vim.cmd [[
   augroup END
 ]]
 
+local highLightClr = "#3e4451"
+
 -- set highlight color as this
 vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   group = vim.api.nvim_create_augroup("Color", {}),
   pattern = "*",
   callback = function()
-    vim.api.nvim_set_hl(0, "LspReferenceRead", { fg = "#3e4451" })
-    vim.api.nvim_set_hl(0, "LspReferenceWrite", { fg = "#3e4451" })
-    vim.api.nvim_set_hl(0, "LspReferenceText", { fg = "#3e4451" })
+    vim.api.nvim_set_hl(0, "LspReferenceRead", { fg = highLightClr })
+    vim.api.nvim_set_hl(0, "LspReferenceWrite", { fg = highLightClr })
+    vim.api.nvim_set_hl(0, "LspReferenceText", { fg = highLightClr })
   end,
 })
 

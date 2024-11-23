@@ -1,4 +1,11 @@
 local plugins = {
+  { "kevinhwang91/promise-async" },
+  {
+    "kevinhwang91/nvim-ufo",
+    requires = "kevinhwang91/promise-async",
+    lazy = false,
+    config = require "custom.configs.ufo",
+  },
   {
     "nvim-telescope/telescope-ui-select.nvim",
   },

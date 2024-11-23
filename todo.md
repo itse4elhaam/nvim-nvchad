@@ -7,7 +7,6 @@
 - markdown lsp
 - cursor changes on remap shift
 - if session things errs, create a new session
-- no fold found issue
 - ts stuff not working - too slow
 - take stuff of off tstools
 - zen mode??
@@ -22,9 +21,7 @@
 - eslint fix all mapping
 - prose lint, write_good and alex
 - btw.nvim should show up if not files are open
-- add x lines below
 - space on the right when nvim-tree opens up
-- study and add better folding shortcuts
 
 <!-- plugins to install -->
 

@@ -1,3 +1,4 @@
+---@diagnostic disable: undefined-field
 -- remap functions:
 
 function CopyDiagnosticToClip()
@@ -34,6 +35,7 @@ function OpenOrCreateFiles(filenames)
   end
 end
 
+-- TODO: fix these dig errors
 function ToggleDiagnostics()
   if vim.diagnostic.is_disabled(0) then
     vim.diagnostic.enable(0)
@@ -71,6 +73,18 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
+    ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
+    ["K"] = {
+      function()
+        local winid = require("ufo").peekFoldedLinesUnderCursor()
+        if not winid then
+          vim.lsp.buf.hover()
+        end
+      end,
+      "Peek Fold/Hover",
+    },
+
     ["ul"] = { "O<Esc>:normal j<CR>", "Insert line above and move down" },
     ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
