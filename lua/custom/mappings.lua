@@ -71,6 +71,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
     ["<leader>td"] = { "<cmd>lua ToggleDiagnostics()<CR>", "Toogle Diagnostics" },
     ["<leader>as"] = { "<cmd>ASToggle<CR>", "Toggle auto save" },

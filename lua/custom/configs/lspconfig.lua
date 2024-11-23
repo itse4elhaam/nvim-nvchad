@@ -88,7 +88,6 @@ lspconfig.jsonls.setup {
   },
 }
 
--- Disable formatting for tailwindcss and cssls
 local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
