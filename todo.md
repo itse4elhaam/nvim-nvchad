@@ -25,9 +25,14 @@
 - folds closed by default?
 - delet autocmd
 - add "use client"
+- use markdown previwer and persistance.nvim
+- USE MINI.AI
 
 <!-- plugins to install -->
 
+- notes in neovim??
+- https://github.com/stevearc/dressing.nvim
+- https://github.com/stevearc/quicker.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/kristijanhusak/vim-dadbod-ui.git
 - https://www.lazyvim.org/extras/editor/harpoon2
