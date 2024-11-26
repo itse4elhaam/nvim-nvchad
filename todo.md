@@ -24,6 +24,7 @@
 - space on the right when nvim-tree opens up
 - folds closed by default?
 - delet autocmd
+- add "use client"
 
 <!-- plugins to install -->
 

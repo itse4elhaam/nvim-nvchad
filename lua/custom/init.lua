@@ -87,11 +87,3 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
     end
   end,
 })
-
--- defers actions on ts and tsx files
-vim.cmd [[
-  augroup FormatOnSave
-    autocmd!
-    autocmd BufWritePre *.ts,*.tsx lua vim.defer_fn(function() vim.lsp.buf.format() end, 200)
-  augroup END
-]]
