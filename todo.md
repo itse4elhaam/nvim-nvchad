@@ -32,7 +32,6 @@
 - https://github.com/stevearc/quicker.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/kristijanhusak/vim-dadbod-ui.git
-- https://www.lazyvim.org/extras/editor/harpoon2
 - https://www.lazyvim.org/extras/editor/illuminate
 - https://www.lazyvim.org/extras/editor/outline
 - https://www.lazyvim.org/extras/editor/refactorin
