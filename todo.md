@@ -23,10 +23,7 @@
 - btw.nvim should show up if not files are open
 - space on the right when nvim-tree opens up
 - folds closed by default?
-- delet autocmd
-- add "use client"
 - use markdown previwer and persistance.nvim
-- USE MINI.AI
 
 <!-- plugins to install -->
 

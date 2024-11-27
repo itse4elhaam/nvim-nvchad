@@ -1,6 +1,18 @@
 ---@diagnostic disable: undefined-field
 -- remap functions:
 
+local function addDirective(directive)
+  local bufnr = vim.api.nvim_get_current_buf()
+  local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
+
+  if not first_line:match("^['\"]" .. directive .. "['\"]") then
+    vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { '"' .. directive .. '"' })
+    print('"' .. directive .. '" added to the top of the file')
+  else
+    print('"' .. directive .. '" is already present')
+  end
+end
+
 function CopyDiagnosticToClip()
   local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
   if #diagnostics == 0 then
@@ -84,7 +96,18 @@ M.general = {
       end,
       "Peek Fold/Hover",
     },
-
+    ["<leader>uc"] = {
+      function()
+        addDirective "use client"
+      end,
+      "Add 'use client' to the top of the file",
+    },
+    ["<leader>us"] = {
+      function()
+        addDirective "use server"
+      end,
+      "Add 'use server' to the top of the file",
+    },
     ["ul"] = { "O<Esc>:normal j<CR>", "Insert line above and move down" },
     ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
