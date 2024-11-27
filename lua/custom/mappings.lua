@@ -140,7 +140,7 @@ M.general = {
     },
 
     -- telescope remaps
-    ["<leader>fgc"] = { "<cmd>lua search_git_conflicts()<CR>", "Search for git conflicts" },
+    ["<leader>fgc"] = { "<cmd>lua SearchGitConflicts()<CR>", "Search for git conflicts" },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
