@@ -5,9 +5,9 @@ local plugins = {
     ---@module "quicker"
     ---@type quicker.SetupOptions
     opts = {},
-    config = function ()
-          require("quicker").setup()
-    end
+    config = function()
+      require("quicker").setup()
+    end,
   },
   -- TODO: organize this into files
   {
@@ -52,14 +52,14 @@ local plugins = {
       return keys
     end,
   },
-  {
-    "echasnovski/mini.ai",
-    version = "*",
-    lazy = false,
-    config = function()
-      require("mini.ai").setup()
-    end,
-  },
+  -- {
+  --   "echasnovski/mini.ai",
+  --   version = "*",
+  --   lazy = false,
+  --   config = function()
+  --     require("mini.ai").setup()
+  --   end,
+  -- },
   { "kevinhwang91/promise-async" },
   {
     "kevinhwang91/nvim-ufo",
