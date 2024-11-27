@@ -1,5 +1,17 @@
 local plugins = {
   {
+    "sphamba/smear-cursor.nvim",
+    lazy = false,
+    opts = {},
+  },
+  {
+    "karb94/neoscroll.nvim",
+    lazy = false,
+    config = function()
+      require("neoscroll").setup {}
+    end,
+  },
+  {
     "stevearc/quicker.nvim",
     event = "FileType qf",
     ---@module "quicker"
