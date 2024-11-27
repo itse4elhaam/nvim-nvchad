@@ -16,6 +16,9 @@
 - space on the right when nvim-tree opens up
 - folds closed by default?
 - use markdown previwer and persistance.nvim
+- astro nvim??
+- tabs??
+- total load time
 
 <!-- plugins to install -->
 
