@@ -1,4 +1,12 @@
 local plugins = {
+  {
+    "echasnovski/mini.ai",
+    version = "*",
+    lazy = false,
+    config = function()
+      require("mini.ai").setup()
+    end,
+  },
   { "kevinhwang91/promise-async" },
   {
     "kevinhwang91/nvim-ufo",
