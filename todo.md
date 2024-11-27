@@ -19,6 +19,7 @@
 - astro nvim??
 - tabs??
 - total load time
+- html folding
 
 <!-- plugins to install -->
 
