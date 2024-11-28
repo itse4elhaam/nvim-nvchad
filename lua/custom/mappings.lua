@@ -62,7 +62,7 @@ function SearchGitConflicts()
   local builtin = require "telescope.builtin"
   builtin.live_grep {
     prompt_title = "Search Git Conflicts",
-    default_text = "HEAD >>>>",
+    default_text = "<<<< HEAD",
     find_command = { "rg", "--files", "--glob", "*", "-t", "tracked" },
   }
 end
