@@ -1,5 +1,10 @@
 local plugins = {
   {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    lazy = true,
+    config = require "custom.configs.textobjects",
+  },
+  {
     "stevearc/quicker.nvim",
     event = "FileType qf",
     ---@module "quicker"
