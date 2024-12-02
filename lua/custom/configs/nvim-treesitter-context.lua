@@ -2,7 +2,7 @@ return function()
   require("treesitter-context").setup {
     enable = true,
     throttle = true,
-    max_lines = 7,
+    max_lines = 3,
     trim_scope = "inner",
     patterns = {
       default = {
