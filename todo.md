@@ -20,12 +20,13 @@
 - total load time
 - html folding
 - fold all funcs
-- https://github.com/andrewferrier/debugprint.nvim
-- https://github.com/Goose97/timber.nvim
+- notes in neovim??
 
 <!-- plugins to install -->
 
-- notes in neovim??
+- https://github.com/andrewferrier/debugprint.nvim
+- https://github.com/Goose97/timber.nvim
+- https://github.com/jdrupal-dev/code-refactor.nvim
 - https://github.com/stevearc/dressing.nvim
 - https://github.com/stevearc/quicker.nvim
 - https://github.com/ggandor/leap.nvim
