@@ -20,6 +20,8 @@
 - total load time
 - html folding
 - fold all funcs
+- https://github.com/andrewferrier/debugprint.nvim
+- https://github.com/Goose97/timber.nvim
 
 <!-- plugins to install -->
 
