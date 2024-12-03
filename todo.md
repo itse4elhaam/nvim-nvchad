@@ -7,7 +7,6 @@
 - zen mode??
 - lsp server should restart on erring
 - make a workspace??
-- move these functions to utils
 - can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
 - grug far should open in its own buffer
@@ -20,6 +19,7 @@
 - tabs??
 - total load time
 - html folding
+- fold all funcs
 
 <!-- plugins to install -->
 

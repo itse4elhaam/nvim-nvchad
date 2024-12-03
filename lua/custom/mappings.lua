@@ -1,73 +1,9 @@
 ---@diagnostic disable: undefined-field
 -- remap functions:
 
-local function addDirective(directive)
-  local bufnr = vim.api.nvim_get_current_buf()
-  local first_line = vim.api.nvim_buf_get_lines(bufnr, 0, 1, false)[1] or ""
-
-  if not first_line:match("^['\"]" .. directive .. "['\"]") then
-    vim.api.nvim_buf_set_lines(bufnr, 0, 0, false, { '"' .. directive .. '"' })
-    print('"' .. directive .. '" added to the top of the file')
-  else
-    print('"' .. directive .. '" is already present')
-  end
-end
-
-function CopyDiagnosticToClip()
-  local diagnostics = vim.diagnostic.get(0, { lnum = vim.fn.line "." - 1 })
-  if #diagnostics == 0 then
-    print "No diagnostics on this line."
-    return
-  end
-
-  local diagnostic_message = diagnostics[1].message
-
-  vim.fn.setreg("+", diagnostic_message)
-  print("Copied diagnostic to clipboard: " .. diagnostic_message)
-end
-
-function OpenOrCreateFiles(filenames)
-  for _, filename in ipairs(filenames) do
-    -- Check if the file exists
-    if vim.fn.filereadable(filename) == 1 then
-      vim.cmd("edit " .. filename)
-      print(filename .. " opened")
-      return
-    end
-  end
-
-  -- If no file exists, ask the user before creating the file
-  local create_file = vim.fn.input("File not found. Do you want to create " .. filenames[1] .. "? (y/N): ")
-  if create_file:lower() == "y" then
-    vim.fn.writefile({}, filenames[1])
-    vim.cmd("edit " .. filenames[1])
-    print(filenames[1] .. " created and opened")
-  else
-    print "File creation aborted."
-  end
-end
-
--- TODO: fix these dig errors
-function ToggleDiagnostics()
-  if vim.diagnostic.is_disabled(0) then
-    vim.diagnostic.enable(0)
-    print "Diagnostics enabled for this buffer"
-  else
-    vim.diagnostic.disable(0)
-    print "Diagnostics disabled for this buffer"
-  end
-end
-
-function SearchGitConflicts()
-  local builtin = require "telescope.builtin"
-  builtin.live_grep {
-    prompt_title = "Search Git Conflicts",
-    default_text = "<<<< HEAD",
-    find_command = { "rg", "--files", "--glob", "*", "-t", "tracked" },
-  }
-end
-
 local M = {}
+
+local utils = require "custom.utils"
 
 M.gopher = {
   plugin = true,
@@ -98,13 +34,13 @@ M.general = {
     },
     ["<leader>uc"] = {
       function()
-        addDirective "use client"
+        utils.addDirective "use client"
       end,
       "Add 'use client' to the top of the file",
     },
     ["<leader>us"] = {
       function()
-        addDirective "use server"
+        utils.addDirective "use server"
       end,
       "Add 'use server' to the top of the file",
     },
@@ -112,7 +48,12 @@ M.general = {
     ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
-    ["<leader>td"] = { "<cmd>lua ToggleDiagnostics()<CR>", "Toogle Diagnostics" },
+    ["<leader>td"] = {
+      function()
+        utils.toggleDiagnostics()
+      end,
+      "Toggle Diagnostics",
+    },
     ["<leader>as"] = { "<cmd>ASToggle<CR>", "Toggle auto save" },
     ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
     ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
@@ -140,7 +81,12 @@ M.general = {
     },
 
     -- telescope remaps
-    ["<leader>fgc"] = { "<cmd>lua SearchGitConflicts()<CR>", "Search for git conflicts" },
+    ["<leader>fgc"] = {
+      function()
+        utils.searchGitConflicts()
+      end,
+      "Search for git conflicts",
+    },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
@@ -240,10 +186,26 @@ M.general = {
     ["sl"] = { "_" },
 
     ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
-    ["<leader>env"] = { "<cmd>lua OpenOrCreateFiles({'.env', '.env.local'})<CR>", desc = "Open .env file" },
-    ["<leader>gi"] = { "<cmd>lua OpenOrCreateFiles({'.gitignore'})<CR>", desc = "Open .env file" },
+    ["<leader>env"] = {
+      function()
+        utils.openOrCreateFiles { ".env", ".env.local" }
+      end,
+      "Open .env file",
+    },
 
-    ["<leader>cd"] = { "<cmd>lua CopyDiagnosticToClip() <CR>", desc = "Open .env file" },
+    ["<leader>gi"] = {
+      function()
+        utils.openOrCreateFiles { ".gitignore" }
+      end,
+      "Open .gitignore file",
+    },
+
+    ["<leader>cd"] = {
+      function()
+        utils.copyDiagnosticToClip()
+      end,
+      "Copy diagnostic to clipboard",
+    },
   },
 
   v = {
