@@ -3,7 +3,7 @@ local ui = {
   transparency = true,
   statusline = {
     theme = "default",
-    separator_style = "block",
+    separator_style = "round",
     overriden_modules = nil,
   },
 }
