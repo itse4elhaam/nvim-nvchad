@@ -179,7 +179,6 @@ M.general = {
     ["<leader>so"] = { ":source %<CR>", "Source the current file" },
     ["<leader>ya"] = { "<cmd>%y<CR>" },
     ["<leader>da"] = { "G$Vgg_d" },
-    ["<leader>yf"] = { "vi{joky" },
     ["<leader>ef"] = { "va{<ESC>" },
 
     -- splits
