@@ -182,7 +182,7 @@ local plugins = {
   {
     "kylechui/nvim-surround",
     version = "*",
-    event = "LspAttach",
+    lazy = false,
     config = function()
       require("nvim-surround").setup {}
     end,
