@@ -1,6 +1,5 @@
 - code snippets taker
 - non working null_ls tools
-- open link in browser ??
 - shift to mini tools
 - cursor changes on remap shift
 - if session things errs, create a new session
@@ -13,11 +12,7 @@
 - prose lint, write_good and alex
 - btw.nvim should show up if not files are open
 - space on the right when nvim-tree opens up
-- folds closed by default?
 - use markdown previwer
-- astro nvim??
-- tabs??
-- total load time
 - html folding
 - fold all funcs
 - notes in neovim??
@@ -27,7 +22,5 @@
 
 - https://github.com/andrewferrier/debugprint.nvim
 - https://github.com/Goose97/timber.nvim
-- https://github.com/jdrupal-dev/code-refactor.nvim
 - https://github.com/ggandor/leap.nvim
-- https://github.com/dmmulroy/tsc.nvim
 - https://github.com/stevearc/resession.nvim

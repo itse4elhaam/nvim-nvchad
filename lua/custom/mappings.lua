@@ -21,6 +21,8 @@ M.gopher = {
 
 M.general = {
   n = {
+    -- NOTE: this is WSL specific
+    ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
     -- remaps for tabs
     ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
     ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
@@ -34,7 +36,7 @@ M.general = {
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
     ["K"] = {
       function()
-        local winid = require('ufo').peekFoldedLinesUnderCursor()
+        local winid = require("ufo").peekFoldedLinesUnderCursor()
         if not winid then
           vim.lsp.buf.hover()
         end
@@ -218,6 +220,13 @@ M.general = {
   },
 
   v = {
+    ["<leader>o"] = {
+      function()
+        utils.openClosestLink()
+      end,
+      "Open closest URL under cursor",
+    },
+
     ["<leader>rv"] = {
       function()
         require("refactoring").debug.print_var()
