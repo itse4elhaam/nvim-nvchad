@@ -14,7 +14,6 @@ local plugins = {
       require("quicker").setup()
     end,
   },
-  -- TODO: organize this into files
   {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
@@ -26,50 +25,14 @@ local plugins = {
         save_on_toggle = true,
       },
     },
-    keys = function()
-      local keys = {
-        {
-          "<leader>H",
-          function()
-            require("harpoon"):list():add()
-          end,
-          desc = "Harpoon File",
-        },
-        {
-          "<leader>h",
-          function()
-            local harpoon = require "harpoon"
-            harpoon.ui:toggle_quick_menu(harpoon:list())
-          end,
-          desc = "Harpoon Quick Menu",
-        },
-      }
-
-      for i = 1, 9 do
-        table.insert(keys, {
-          "<leader>" .. i,
-          function()
-            require("harpoon"):list():select(i)
-          end,
-          desc = "Harpoon to File " .. i,
-        })
-      end
-      return keys
-    end,
+    keys = require "custom.configs.harpoon",
   },
-  -- {
-  --   "echasnovski/mini.ai",
-  --   version = "*",
-  --   lazy = false,
-  --   config = function()
-  --     require("mini.ai").setup()
-  --   end,
-  -- },
   { "kevinhwang91/promise-async" },
   {
     "kevinhwang91/nvim-ufo",
     requires = "kevinhwang91/promise-async",
-    lazy = false,
+    lazy = true,
+    event = "LspAttach",
     config = require "custom.configs.ufo",
   },
   {
@@ -106,7 +69,7 @@ local plugins = {
   { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
   {
     "pmizio/typescript-tools.nvim",
-    lazy = false,
+    event = "LspAttach",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
@@ -128,17 +91,12 @@ local plugins = {
     },
   },
   {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
-  {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
   {
     "MunifTanjim/prettier.nvim",
-    event = "VeryLazy",
+    event = "LspAttach",
     config = require "custom.configs.prettier",
   },
   {
@@ -154,14 +112,18 @@ local plugins = {
   },
   {
     "MagicDuck/grug-far.nvim",
-    event = "VeryLazy",
+    cmd = "GrugFar",
     config = function()
       require("grug-far").setup {}
     end,
   },
   {
     "sindrets/diffview.nvim",
-    event = "VeryLazy",
+    cmd = {
+      "DiffviewOpen",
+      "DiffviewClose",
+      "DiffviewOpen",
+    },
   },
   {
     "letieu/btw.nvim",
