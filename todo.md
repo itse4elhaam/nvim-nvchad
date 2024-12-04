@@ -4,7 +4,6 @@
 - cursor changes on remap shift
 - if session things errs, create a new session
 - zen mode??
-- lsp server should restart on erring
 - make a workspace??
 - can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
