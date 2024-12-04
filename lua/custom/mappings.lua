@@ -4,7 +4,6 @@
 local M = {}
 
 local utils = require "custom.utils"
-local ufo = require "ufo"
 
 M.gopher = {
   plugin = true,
@@ -35,7 +34,7 @@ M.general = {
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
     ["K"] = {
       function()
-        local winid = ufo.peekFoldedLinesUnderCursor()
+        local winid = require('ufo').peekFoldedLinesUnderCursor()
         if not winid then
           vim.lsp.buf.hover()
         end
