@@ -1,8 +1,20 @@
 local plugins = {
   {
+    "jdrupal-dev/code-refactor.nvim",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      { "<leader>cra", "<cmd>CodeActions all<CR>", desc = "Show code-refactor.nvim (not LSP code actions)" },
+    },
+    config = function()
+      require("code-refactor").setup {
+        -- Configuration here, or leave empty to use defaults.
+      }
+    end,
+  },
+  {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
