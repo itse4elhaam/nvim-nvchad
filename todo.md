@@ -14,7 +14,7 @@
 - btw.nvim should show up if not files are open
 - space on the right when nvim-tree opens up
 - folds closed by default?
-- use markdown previwer and persistance.nvim
+- use markdown previwer
 - astro nvim??
 - tabs??
 - total load time
@@ -31,7 +31,6 @@
 - https://github.com/stevearc/dressing.nvim
 - https://github.com/stevearc/quicker.nvim
 - https://github.com/ggandor/leap.nvim
-- https://github.com/kristijanhusak/vim-dadbod-ui.git
 - https://www.lazyvim.org/extras/editor/illuminate
 - https://www.lazyvim.org/extras/editor/outline
 - https://www.lazyvim.org/extras/editor/refactoring

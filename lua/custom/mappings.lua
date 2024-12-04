@@ -4,6 +4,7 @@
 local M = {}
 
 local utils = require "custom.utils"
+local ufo = require "ufo"
 
 M.gopher = {
   plugin = true,
@@ -21,13 +22,20 @@ M.gopher = {
 
 M.general = {
   n = {
+    -- remaps for tabs
+    ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
+    ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
+    ["<leader>tp"] = { "<cmd>tabprevious<CR>", "Go to previous tab" },
+    ["<leader>t1"] = { "<cmd>tabn 1<CR>", "Go to tab 1" },
+    ["<leader>t2"] = { "<cmd>tabn 2<CR>", "Go to tab 2" },
+
     ["<leader>du"] = { "<cmd>DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
     ["K"] = {
       function()
-        local winid = require("ufo").peekFoldedLinesUnderCursor()
+        local winid = ufo.peekFoldedLinesUnderCursor()
         if not winid then
           vim.lsp.buf.hover()
         end
@@ -126,7 +134,7 @@ M.general = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
       "Add // @ts-expect-error above the current line",
     },
-    ["<leader>tn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
+    ["<leader>tsn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
 
     ["<leader>ba"] = {
       "<cmd>%bd|e#<CR>",
