@@ -87,3 +87,20 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
     end
   end,
 })
+
+-- Automatically save the session on exit
+vim.api.nvim_create_autocmd("VimLeavePre", {
+  callback = function()
+    require("persistence").save()
+  end,
+})
+-- Automatically restore the last session
+vim.api.nvim_create_autocmd("VimEnter", {
+  callback = function()
+    print "loading"
+    require("persistence").load()
+    -- Only load the session if no file is specified on the command line
+    if vim.fn.argc() == 0 then
+    end
+  end,
+})
