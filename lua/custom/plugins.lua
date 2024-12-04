@@ -184,7 +184,7 @@ local plugins = {
       "nvim-lua/plenary.nvim",
       "nvim-tree/nvim-tree.lua",
     },
-    event = "VeryLazy",
+    event = "LspAttach",
     config = function()
       require("lsp-file-operations").setup()
     end,
@@ -192,14 +192,14 @@ local plugins = {
   {
     "kylechui/nvim-surround",
     version = "*",
-    event = "VeryLazy",
+    event = "LspAttach",
     config = function()
       require("nvim-surround").setup {}
     end,
   },
   {
     "folke/todo-comments.nvim",
-    event = "VeryLazy",
+    event = "LspAttach",
     dependencies = { "nvim-lua/plenary.nvim" },
     opts = {},
   },
@@ -211,17 +211,21 @@ local plugins = {
   },
   {
     "olrtg/nvim-emmet",
+    event = "LspAttach",
     config = function()
       vim.keymap.set({ "n", "v" }, "<leader>xe", require("nvim-emmet").wrap_with_abbreviation)
     end,
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    event = "VeryLazy",
+    lazy = true,
+    event = { "BufReadPost", "BufNewFile" },
     config = require "custom.configs.nvim-treesitter-context",
   },
   {
     "nvim-telescope/telescope.nvim",
+    lazy = true,
+    cmd = "Telescope",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "debugloop/telescope-undo.nvim",
@@ -251,7 +255,7 @@ local plugins = {
   {
 
     "nvimtools/none-ls.nvim",
-    event = "VeryLazy",
+    event = "LspAttach",
     opts = function()
       return require "custom.configs.null-ls"
     end,
@@ -265,12 +269,6 @@ local plugins = {
     end,
     build = function()
       vim.cmd [[silent! GoInstallDeps]]
-    end,
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-context",
-    opts = function()
-      require "custom.configs.treesitter"
     end,
   },
 }

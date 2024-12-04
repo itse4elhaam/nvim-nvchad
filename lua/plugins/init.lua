@@ -95,6 +95,7 @@ local default_plugins = {
 
   {
     "nvim-treesitter/nvim-treesitter",
+    lazy = true,
     event = { "BufReadPost", "BufNewFile" },
     dependencies = {
       "nvim-treesitter/nvim-treesitter-textobjects",
@@ -243,6 +244,7 @@ local default_plugins = {
   {
     "nvim-telescope/telescope.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
+    lazy = true,
     cmd = "Telescope",
     init = function()
       require("core.utils").load_mappings "telescope"
