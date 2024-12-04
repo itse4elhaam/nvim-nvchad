@@ -1,5 +1,22 @@
 local plugins = {
   {
+    "kristijanhusak/vim-dadbod-ui",
+    dependencies = {
+      { "tpope/vim-dadbod", lazy = true },
+      { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+    },
+    cmd = {
+      "DBUI",
+      "DBUIToggle",
+      "DBUIAddConnection",
+      "DBUIFindBuffer",
+    },
+    init = function()
+      -- Your DBUI configuration
+      vim.g.db_ui_use_nerd_fonts = 1
+    end,
+  },
+  {
     "nvim-treesitter/nvim-treesitter-textobjects",
     lazy = true,
     config = require "custom.configs.textobjects",
@@ -8,7 +25,6 @@ local plugins = {
     "stevearc/quicker.nvim",
     event = "FileType qf",
     ---@module "quicker"
-    ---@type quicker.SetupOptions
     opts = {},
     config = function()
       require("quicker").setup()

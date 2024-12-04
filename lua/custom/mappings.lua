@@ -21,6 +21,7 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>du"] = { "<cmd>DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
