@@ -15,7 +15,6 @@
 - html folding
 - fold all funcs
 - notes in neovim??
-- search fw for stuff on curosr
 
 <!-- plugins to install -->
 

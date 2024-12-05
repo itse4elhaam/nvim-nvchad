@@ -23,6 +23,16 @@ M.general = {
   n = {
     -- NOTE: this is WSL specific
     ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
+
+    ["<leader>gw"] = {
+      function()
+        require("telescope.builtin").live_grep {
+          default_text = vim.fn.expand "<cword>",
+        }
+      end,
+      "Live grep current word",
+    },
+
     -- remaps for tabs
     ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
     ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
@@ -219,6 +229,17 @@ M.general = {
   },
 
   v = {
+    ["<leader>gw"] = {
+      function()
+        vim.cmd 'noau normal! "vy"' -- Yank the selection into a register
+        local selection = vim.fn.getreg("v"):gsub("\n", " ")
+        require("telescope.builtin").live_grep {
+          default_text = selection,
+        }
+      end,
+      "Live grep visual selection",
+    },
+
     ["<leader>o"] = {
       function()
         utils.openClosestLink()
