@@ -153,6 +153,17 @@ M.general = {
     },
     -- GrugFar operations
     ["<leader>gf"] = { "<cmd>GrugFar<CR>", "Open GrugFar buffer" },
+    ["<leader>rw"] = {
+      function()
+        require("grug-far").open {
+          prefills = {
+            search = vim.fn.expand "<cword>",
+          },
+        }
+      end,
+      "Open GrugFar buffer with word under cursor",
+    },
+
     -- for git diff
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
     ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
@@ -229,6 +240,19 @@ M.general = {
   },
 
   v = {
+    ["<leader>rw"] = {
+      function()
+        vim.cmd 'noau normal! "vy"' -- Yank the selection into a register
+        local selection = vim.fn.getreg("v"):gsub("\n", " ")
+        require("grug-far").open {
+          prefills = {
+            search = selection,
+          },
+        }
+      end,
+      "Open GrugFar buffer with word under cursor",
+    },
+
     ["<leader>gw"] = {
       function()
         vim.cmd 'noau normal! "vy"' -- Yank the selection into a register
