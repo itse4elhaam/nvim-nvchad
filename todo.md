@@ -14,7 +14,7 @@
 - use markdown previwer
 - html folding
 - fold all funcs
-- notes in neovim??
+- notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 <!-- plugins to install -->
 
