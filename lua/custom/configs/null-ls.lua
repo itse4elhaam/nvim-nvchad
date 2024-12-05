@@ -19,7 +19,7 @@ local opts = {
     null_ls.builtins.diagnostics.marksman,
     -- null_ls.builtins.diagnostics.checkmake,
     -- null_ls.builtins.diagnostics.ruff,
-    -- null_ls.builtins.formatting.beautysh,
+    null_ls.builtins.formatting.beautysh,
     -- null_ls.builtins.diagnostics.eslint,
   },
   on_attach = function(client, bufnr)

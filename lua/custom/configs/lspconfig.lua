@@ -9,8 +9,6 @@ capabilities.textDocument.foldingRange = {
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
--- TODO: fix the function splits here
-
 -- Disable formatting for tailwindcss and cssls
 local function disable_formatting(client)
   if client.name == "tailwindcss" or client.name == "cssls" then
@@ -36,6 +34,24 @@ lspconfig.gopls.setup {
       },
     },
   },
+}
+
+lspconfig.marksman.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting for specific servers
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "markdown" },
+}
+
+lspconfig.bashls.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting for specific servers
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "sh", "bash", ".zshrc", ".bashrc" },
 }
 
 lspconfig.pyright.setup {

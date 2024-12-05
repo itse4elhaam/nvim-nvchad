@@ -19,6 +19,7 @@ return {
     "checkmake",
     "marksman",
     "grammarly-languageserver",
+    "bash-language-server",
     "prettierd",
   },
 }
