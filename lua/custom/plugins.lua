@@ -1,4 +1,15 @@
 local plugins = {
+  -- lazy.nvim
+  {
+    "folke/snacks.nvim",
+    opts = {
+      bigfile = {
+        -- your bigfile configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+    },
+  },
   {
     "jdrupal-dev/code-refactor.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
