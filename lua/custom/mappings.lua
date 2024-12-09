@@ -109,6 +109,7 @@ M.general = {
       "Search for git conflicts",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
+    ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },

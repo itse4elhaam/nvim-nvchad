@@ -1,15 +1,38 @@
 local plugins = {
-  -- lazy.nvim
+  {
+    "gbprod/yanky.nvim",
+    opts = {
+      -- your configuration comes here
+      -- or leave it empty to use the default settings
+      -- refer to the configuration section below
+    },
+    config = function()
+      require("yanky").setup {
+        preserve_cursor_position = {
+          enabled = true,
+        },
+        highlight = {
+          on_put = false,
+          on_yank = false,
+          timer = 500,
+        },
+      }
+    end,
+  },
   {
     "m4xshen/hardtime.nvim",
     dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
     opts = {},
     lazy = false,
+    enabled = false,
   },
   {
     "folke/snacks.nvim",
     opts = {
+      -- TODO: can I repace this with a autocmd?
       bigfile = {
+        on_put = false,
+        on_yank = false,
         -- your bigfile configuration comes here
         -- or leave it empty to use the default settings
         -- refer to the configuration section below

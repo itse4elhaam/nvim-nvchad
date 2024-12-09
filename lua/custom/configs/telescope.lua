@@ -15,4 +15,5 @@ return function()
   telescope.load_extension "undo"
   telescope.load_extension "refactoring"
   telescope.load_extension "ui-select"
+  telescope.load_extension "yank_history"
 end
