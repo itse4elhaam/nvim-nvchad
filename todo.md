@@ -1,10 +1,7 @@
 - code snippets taker
 - non working null_ls tools
 - shift to mini tools
-- cursor changes on remap shift
-- if session things errs, create a new session
 - zen mode??
-- make a workspace??
 - can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
 - grug far should open in its own buffer
@@ -15,6 +12,15 @@
 - html folding
 - fold all funcs
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
+
+- yanky.nvim conf
+- yazi.nvim conf
+
+ON WORK LAPTOP
+
+- typescript tools no code actions
+- ufo unable to fold html tags
+- formatting not correct
 
 <!-- plugins to install -->
 

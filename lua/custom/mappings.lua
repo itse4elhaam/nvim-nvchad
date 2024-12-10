@@ -33,6 +33,13 @@ M.general = {
       "Live grep current word",
     },
 
+    -- NOTE: added this here because core ones were not working
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+    ["<leader>ra"] = {
+      "<cmd>lua require('nvchad.renamer').open()<CR>",
+      "LSP rename",
+    },
+
     -- remaps for tabs
     ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
     ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
@@ -69,7 +76,7 @@ M.general = {
     ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
-    ["<leader>td"] = {
+    ["<leader>tdg"] = {
       function()
         utils.toggleDiagnostics()
       end,
@@ -109,6 +116,7 @@ M.general = {
       "Search for git conflicts",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
+    ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
@@ -240,6 +248,9 @@ M.general = {
   },
 
   v = {
+    -- NOTE: added this here because core ones were not working
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+
     ["<leader>rw"] = {
       function()
         vim.cmd 'noau normal! "vy"' -- Yank the selection into a register

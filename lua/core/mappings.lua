@@ -453,7 +453,7 @@ M.gitsigns = {
       "Blame line",
     },
 
-    ["<leader>td"] = {
+    ["<leader>gtd"] = {
       function()
         require("gitsigns").toggle_deleted()
       end,

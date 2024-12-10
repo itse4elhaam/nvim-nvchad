@@ -34,6 +34,48 @@ local plugins = {
     },
   },
   {
+    "atiladefreitas/dooing",
+    event = "VeryLazy",
+    config = function()
+      require("dooing").setup {
+        -- your custom config here (optional)
+      }
+    end,
+  },
+  {
+    "gbprod/yanky.nvim",
+    opts = {},
+    config = function()
+      require("yanky").setup {
+        preserve_cursor_position = {
+          enabled = true,
+        },
+        highlight = {
+          on_put = false,
+          on_yank = false,
+          timer = 500,
+        },
+      }
+    end,
+  },
+  {
+    "m4xshen/hardtime.nvim",
+    dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
+    opts = {},
+    lazy = false,
+    enabled = false,
+  },
+  {
+    "folke/snacks.nvim",
+    opts = {
+      -- TODO: can I repace this with a autocmd?
+      bigfile = {
+        on_put = false,
+        on_yank = false,
+      },
+    },
+  },
+  {
     "jdrupal-dev/code-refactor.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     keys = {
