@@ -14,6 +14,13 @@
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 - yanky.nvim conf
+- yazi.nvim conf
+
+ON WORK LAPTOP
+
+- typescript tools no code actions
+- ufo unable to fold html tags
+- formatting not correct
 
 <!-- plugins to install -->
 

@@ -1,11 +1,16 @@
 local plugins = {
   {
+    "atiladefreitas/dooing",
+    event = "VeryLazy",
+    config = function()
+      require("dooing").setup {
+        -- your custom config here (optional)
+      }
+    end,
+  },
+  {
     "gbprod/yanky.nvim",
-    opts = {
-      -- your configuration comes here
-      -- or leave it empty to use the default settings
-      -- refer to the configuration section below
-    },
+    opts = {},
     config = function()
       require("yanky").setup {
         preserve_cursor_position = {
@@ -33,9 +38,6 @@ local plugins = {
       bigfile = {
         on_put = false,
         on_yank = false,
-        -- your bigfile configuration comes here
-        -- or leave it empty to use the default settings
-        -- refer to the configuration section below
       },
     },
   },

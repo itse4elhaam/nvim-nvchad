@@ -76,7 +76,7 @@ M.general = {
     ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
-    ["<leader>td"] = {
+    ["<leader>tdg"] = {
       function()
         utils.toggleDiagnostics()
       end,
