@@ -1,4 +1,8 @@
 local plugins = {
+  {
+    "ThePrimeagen/vim-be-good",
+    cmd = "VimBeGood",
+  },
   ---@type LazySpec
   {
     "mikavilpas/yazi.nvim",
