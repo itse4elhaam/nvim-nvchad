@@ -33,6 +33,9 @@ M.general = {
       "Live grep current word",
     },
 
+    -- NOTE: added this here because core ones were not working
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+
     -- remaps for tabs
     ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
     ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
@@ -241,6 +244,9 @@ M.general = {
   },
 
   v = {
+    -- NOTE: added this here because core ones were not working
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+
     ["<leader>rw"] = {
       function()
         vim.cmd 'noau normal! "vy"' -- Yank the selection into a register
