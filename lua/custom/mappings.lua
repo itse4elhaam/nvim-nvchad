@@ -35,6 +35,10 @@ M.general = {
 
     -- NOTE: added this here because core ones were not working
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+    ["<leader>ra"] = {
+      "<cmd>lua require('nvchad.renamer').open()<CR>",
+      "LSP rename",
+    },
 
     -- remaps for tabs
     ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
