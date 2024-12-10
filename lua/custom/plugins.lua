@@ -67,10 +67,8 @@ local plugins = {
     "folke/snacks.nvim",
     opts = {
       -- TODO: can I repace this with a autocmd?
-      bigfile = {
-        on_put = false,
-        on_yank = false,
-      },
+      bigfile = {},
+      scroll = {},
     },
   },
   {
