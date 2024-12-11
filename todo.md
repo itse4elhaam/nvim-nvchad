@@ -14,8 +14,10 @@
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 - reduce plugins
--
+- replace/customize statusline
 - yanky.nvim conf
+- load times man??
+- install undo tree
 
 ON WORK LAPTOP
 
