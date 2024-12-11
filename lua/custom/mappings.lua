@@ -29,6 +29,13 @@ M.general = {
       "Wrap word under cursor with < />",
     },
 
+    ["<leader>ctl"] = {
+      function()
+        require("timber.actions").clear_log_statements { global = false }
+      end,
+      "Clear timber log statements in current buffer",
+    },
+
     -- NOTE: this is WSL specific
     ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
 

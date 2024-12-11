@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "Goose97/timber.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("timber").setup {}
+    end,
+  },
+  {
     "ThePrimeagen/vim-be-good",
     cmd = "VimBeGood",
   },
