@@ -13,8 +13,9 @@
 - fold all funcs
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
+- reduce plugins
+-
 - yanky.nvim conf
-- yazi.nvim conf
 
 ON WORK LAPTOP
 

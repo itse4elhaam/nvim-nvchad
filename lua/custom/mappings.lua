@@ -244,6 +244,14 @@ M.general = {
       end,
       "Copy diagnostic to clipboard",
     },
+    ["<leader>cln"] = {
+      function()
+        local line_number = vim.fn.line "."
+        vim.fn.setreg("+", tostring(line_number))
+        vim.notify("Copied line number: " .. line_number)
+      end,
+      "Copy current line number to clipboard",
+    },
   },
 
   v = {
@@ -281,13 +289,7 @@ M.general = {
       "Open closest URL under cursor",
     },
 
-    ["<leader>rv"] = {
-      function()
-        require("refactoring").debug.print_var()
-      end,
-      "Print variable for debugging",
-    },
-    ["<leader>dd"] = {
+    ["<leader>d"] = {
       [["_d"]],
       "Delete without overwriting register",
     },
@@ -311,14 +313,7 @@ M.general = {
       "Open refactoring options with Telescope",
     },
 
-    ["<leader>rv"] = {
-      function()
-        require("refactoring").debug.print_var()
-      end,
-      "Print variable for debugging",
-    },
-
-    ["<leader>dd"] = {
+    ["<leader>d"] = {
       [["_d"]],
       "Delete without overwriting register",
     },
