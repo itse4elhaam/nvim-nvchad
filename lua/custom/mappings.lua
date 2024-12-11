@@ -21,6 +21,14 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>rc"] = {
+      function()
+        local word = vim.fn.expand "<cword>"
+        vim.cmd("normal! ciw<" .. word .. " />")
+      end,
+      "Wrap word under cursor with < />",
+    },
+
     -- NOTE: this is WSL specific
     ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
 
@@ -132,22 +140,6 @@ M.general = {
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", desc = "Find buffer commits" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Lsp defination" },
-
-    -- Insert printf debugging statement
-    ["<leader>rp"] = {
-      function()
-        require("refactoring").dekug.printf { below = false }
-      end,
-      "Insert printf debug statement",
-    },
-
-    -- Cleanup debug statements
-    ["<leader>rc"] = {
-      function()
-        require("refactoring").debug.cleanup {}
-      end,
-      "Clean up debug statements",
-    },
 
     ["<leader>te"] = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
