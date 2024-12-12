@@ -216,6 +216,7 @@ M.general = {
 
     -- cmd
     ["<leader>wq"] = { "<cmd>wqa!<CR>" },
+    ["<leader>w"] = { "<cmd>wa<CR>" },
     ["<leader>q"] = { "<cmd>q!<CR>" },
 
     ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
