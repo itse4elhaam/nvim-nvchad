@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "Goose97/timber.nvim",
+    version = "*",
+    event = "VeryLazy",
+    config = function()
+      require("timber").setup {}
+    end,
+  },
+  {
     "ThePrimeagen/vim-be-good",
     cmd = "VimBeGood",
   },
@@ -24,7 +32,6 @@ local plugins = {
         desc = "Resume the last yazi session",
       },
     },
-    ---@type YaziConfig
     opts = {
       -- if you want to open yazi instead of netrw, see below for more info
       open_for_directories = false,

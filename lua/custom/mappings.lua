@@ -21,6 +21,21 @@ M.gopher = {
 
 M.general = {
   n = {
+    ["<leader>rc"] = {
+      function()
+        local word = vim.fn.expand "<cword>"
+        vim.cmd("normal! ciw<" .. word .. " />")
+      end,
+      "Wrap word under cursor with < />",
+    },
+
+    ["<leader>ctl"] = {
+      function()
+        require("timber.actions").clear_log_statements { global = false }
+      end,
+      "Clear timber log statements in current buffer",
+    },
+
     -- NOTE: this is WSL specific
     ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
 
@@ -133,22 +148,6 @@ M.general = {
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Lsp defination" },
 
-    -- Insert printf debugging statement
-    ["<leader>rp"] = {
-      function()
-        require("refactoring").dekug.printf { below = false }
-      end,
-      "Insert printf debug statement",
-    },
-
-    -- Cleanup debug statements
-    ["<leader>rc"] = {
-      function()
-        require("refactoring").debug.cleanup {}
-      end,
-      "Clean up debug statements",
-    },
-
     ["<leader>te"] = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
       "Add // @ts-expect-error above the current line",
@@ -246,6 +245,14 @@ M.general = {
       end,
       "Copy diagnostic to clipboard",
     },
+    ["<leader>cln"] = {
+      function()
+        local line_number = vim.fn.line "."
+        vim.fn.setreg("+", tostring(line_number))
+        vim.notify("Copied line number: " .. line_number)
+      end,
+      "Copy current line number to clipboard",
+    },
   },
 
   v = {
@@ -283,13 +290,7 @@ M.general = {
       "Open closest URL under cursor",
     },
 
-    ["<leader>rv"] = {
-      function()
-        require("refactoring").debug.print_var()
-      end,
-      "Print variable for debugging",
-    },
-    ["<leader>dd"] = {
+    ["<leader>d"] = {
       [["_d"]],
       "Delete without overwriting register",
     },
@@ -313,14 +314,7 @@ M.general = {
       "Open refactoring options with Telescope",
     },
 
-    ["<leader>rv"] = {
-      function()
-        require("refactoring").debug.print_var()
-      end,
-      "Print variable for debugging",
-    },
-
-    ["<leader>dd"] = {
+    ["<leader>d"] = {
       [["_d"]],
       "Delete without overwriting register",
     },
