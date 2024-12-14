@@ -1,5 +1,9 @@
 local plugins = {
   {
+    "mbbill/undotree",
+    cmd = "UndotreeToggle",
+  },
+  {
     "Goose97/timber.nvim",
     version = "*",
     event = "VeryLazy",

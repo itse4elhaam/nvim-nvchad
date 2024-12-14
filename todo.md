@@ -17,7 +17,6 @@
 - replace/customize statusline
 - yanky.nvim conf
 - load times man??
-- install undo tree
 - <> </>
 
 ON WORK LAPTOP
