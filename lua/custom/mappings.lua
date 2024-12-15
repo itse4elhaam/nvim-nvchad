@@ -123,6 +123,12 @@ M.general = {
       "Add Missing Imports",
     },
 
+    ["<leader>fw"] = {
+      function()
+        utils.multiGrep()
+      end,
+      "MultiGrep",
+    },
     -- telescope remaps
     ["<leader>fgc"] = {
       function()
