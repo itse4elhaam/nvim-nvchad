@@ -1,4 +1,5 @@
 local plugins = {
+  { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
@@ -182,7 +183,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",     lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
