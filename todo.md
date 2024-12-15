@@ -27,7 +27,11 @@ ON WORK LAPTOP
 
 <!-- plugins to install -->
 
+can replace C-d/u
+
+- https://github.com/aaronik/treewalker.nvim
 - https://github.com/andrewferrier/debugprint.nvim
 - https://github.com/Goose97/timber.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/resession.nvim
+- https://github.com/allcentury/telescope_csearch.nvim
