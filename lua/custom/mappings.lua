@@ -47,6 +47,12 @@ M.general = {
       end,
       "Live grep current word",
     },
+    ["<leader>fk"] = {
+      function()
+        require("telescope.builtin").keymaps()
+      end,
+      "Live grep current word",
+    },
 
     -- NOTE: added this here because core ones were not working
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
