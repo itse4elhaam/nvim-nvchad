@@ -17,6 +17,7 @@
 - replace/customize statusline
 - yanky.nvim conf
 - load times man??
+- non harpoon tabs
 - <> </>
 
 ON WORK LAPTOP
