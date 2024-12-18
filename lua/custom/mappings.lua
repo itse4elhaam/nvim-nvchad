@@ -136,12 +136,10 @@ M.general = {
       "MultiGrep",
     },
     -- telescope remaps
-    ["<leader>fgc"] = {
-      function()
-        utils.searchGitConflicts()
-      end,
-      "Search for git conflicts",
-    },
+    ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
+    ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
+    ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
+
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
@@ -149,7 +147,7 @@ M.general = {
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find command history" },
     ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
-    ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "Find command history" },
+    ["<leader>fcm"] = { "<cmd> Telescope commands <CR>", "Find command history" },
     ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "LSP References" },
     ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Type Definations" },
     ["<leader>u"] = {
