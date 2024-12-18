@@ -30,13 +30,13 @@
 - viq???
 - clean up mappings
 - move mappings from plugins to its own file
-
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - custom pickers with easypick
 - files sorted by lru
 - study snacks.nvim
 - study mini.nvim
 - formatting for yml .gitconfig files etc
+- lgit in the background - snakcs.nvim
 
 <!-- plugins to install -->
 
