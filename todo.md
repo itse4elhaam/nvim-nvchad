@@ -19,6 +19,7 @@
 - load times man??
 - non harpoon tabs
 - <> </>
+- delta for lazygit - snacks.nvim
 
 ON WORK LAPTOP
 
