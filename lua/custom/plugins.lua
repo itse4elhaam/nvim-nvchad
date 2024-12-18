@@ -1,5 +1,53 @@
 local plugins = {
   {
+    "echasnovski/mini.pairs",
+    event = "InsertEnter",
+    version = false,
+    config = function()
+      require("mini.pairs").setup()
+    end,
+  },
+  {
+    "saghen/blink.cmp",
+    event = "InsertEnter",
+    dependencies = "rafamadriz/friendly-snippets",
+    version = "v0.*",
+    opts = {
+      completion = {
+        accept = {
+          -- experimental auto-brackets support
+          auto_brackets = {
+            enabled = true,
+          },
+        },
+        menu = {
+          scrollbar = false,
+          draw = {
+            columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
+          },
+        },
+        documentation = {
+          auto_show = true,
+          auto_show_delay_ms = 200,
+        },
+        ghost_text = {
+          enabled = true,
+        },
+      },
+      keymap = { preset = "super-tab" },
+
+      appearance = {
+        nerd_font_variant = "mono",
+      },
+      sources = {
+        default = { "lsp", "path", "snippets", "buffer" },
+      },
+
+      signature = { enabled = true },
+    },
+    opts_extend = { "sources.default" },
+  },
+  {
     "tronikelis/ts-autotag.nvim",
     opts = {},
     -- ft = {}, optionally you can load it only in jsx/html
@@ -325,6 +373,7 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
+    dependencies = { "saghen/blink.cmp" },
     config = function()
       require "plugins.configs.lspconfig"
       require "custom.configs.lspconfig"

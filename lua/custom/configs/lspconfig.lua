@@ -1,5 +1,6 @@
 local on_attach = require("plugins.configs.lspconfig").on_attach
-local capabilities = require("plugins.configs.lspconfig").capabilities
+-- local capabilities = require("plugins.configs.lspconfig").capabilities
+local capabilities = require("blink.cmp").get_lsp_capabilities()
 
 capabilities.textDocument.foldingRange = {
   dynamicRegistration = false,

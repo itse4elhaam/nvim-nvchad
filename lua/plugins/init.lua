@@ -36,20 +36,20 @@ local default_plugins = {
       require("colorizer").setup {
         filetypes = { "*" },
         user_default_options = {
-          RGB = true, -- #RGB hex codes
-          RRGGBB = true, -- #RRGGBB hex codes
-          names = false, -- "Name" codes like Blue or blue
-          RRGGBBAA = false, -- #RRGGBBAA hex codes
-          AARRGGBB = false, -- 0xAARRGGBB hex codes
-          rgb_fn = false, -- CSS rgb() and rgba() functions
-          hsl_fn = false, -- CSS hsl() and hsla() functions
-          css = false, -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
-          css_fn = false, -- Enable all CSS *functions*: rgb_fn, hsl_fn
+          RGB = true,           -- #RGB hex codes
+          RRGGBB = true,        -- #RRGGBB hex codes
+          names = false,        -- "Name" codes like Blue or blue
+          RRGGBBAA = false,     -- #RRGGBBAA hex codes
+          AARRGGBB = false,     -- 0xAARRGGBB hex codes
+          rgb_fn = false,       -- CSS rgb() and rgba() functions
+          hsl_fn = false,       -- CSS hsl() and hsla() functions
+          css = false,          -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+          css_fn = false,       -- Enable all CSS *functions*: rgb_fn, hsl_fn
           -- Available modes for `mode`: foreground, background,  virtualtext
           mode = "virtualtext", -- Set the display mode.
           -- Available methods are false / true / "normal" / "lsp" / "both"
           -- True is same as normal
-          tailwind = false, -- Enable tailwind colors
+          tailwind = false,                               -- Enable tailwind colors
           -- parsers can contain values used in |user_default_options|
           sass = { enable = false, parsers = { "css" } }, -- Enable sass colors
           virtualtext = "■",
@@ -155,63 +155,64 @@ local default_plugins = {
   },
 
   -- load luasnips + cmp related in insert mode only
-  {
-    "hrsh7th/nvim-cmp",
-    event = "InsertEnter",
-    dependencies = {
-      {
-        -- snippet plugin
-        "L3MON4D3/LuaSnip",
-        dependencies = "rafamadriz/friendly-snippets",
-        opts = { history = true, updateevents = "TextChanged,TextChangedI" },
-        config = function(_, opts)
-          require("plugins.configs.others").luasnip(opts)
-        end,
-      },
-
-      -- autopairing of (){}[] etc
-      {
-        "windwp/nvim-autopairs",
-        opts = {
-          fast_wrap = {},
-          disable_filetype = { "TelescopePrompt", "vim" },
-          enable_check_bracket_line = false,
-        },
-        config = function(_, opts)
-          require("nvim-autopairs").setup(opts)
-
-          -- setup cmp for autopairs
-          local cmp_autopairs = require "nvim-autopairs.completion.cmp"
-          require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
-        end,
-      },
-
-      -- cmp sources plugins
-      {
-        "saadparwaiz1/cmp_luasnip",
-        "hrsh7th/cmp-nvim-lua",
-        "hrsh7th/cmp-nvim-lsp",
-        "hrsh7th/cmp-buffer",
-        "hrsh7th/cmp-path",
-      },
-    },
-    opts = function()
-      return require "plugins.configs.cmp"
-    end,
-    config = function(_, opts)
-      require("cmp").setup(opts)
-    end,
-  },
+  -- {
+  --   "hrsh7th/nvim-cmp",
+  --   enable = false,
+  --   event = "InsertEnter",
+  --   dependencies = {
+  --     {
+  --       -- snippet plugin
+  --       "L3MON4D3/LuaSnip",
+  --       dependencies = "rafamadriz/friendly-snippets",
+  --       opts = { history = true, updateevents = "TextChanged,TextChangedI" },
+  --       config = function(_, opts)
+  --         require("plugins.configs.others").luasnip(opts)
+  --       end,
+  --     },
+  --
+  --     -- autopairing of (){}[] etc
+  --     {
+  --       "windwp/nvim-autopairs",
+  --       opts = {
+  --         fast_wrap = {},
+  --         disable_filetype = { "TelescopePrompt", "vim" },
+  --         enable_check_bracket_line = false,
+  --       },
+  --       config = function(_, opts)
+  --         require("nvim-autopairs").setup(opts)
+  --
+  --         -- setup cmp for autopairs
+  --         local cmp_autopairs = require "nvim-autopairs.completion.cmp"
+  --         require("cmp").event:on("confirm_done", cmp_autopairs.on_confirm_done())
+  --       end,
+  --     },
+  --
+  --     -- cmp sources plugins
+  --     {
+  --       "saadparwaiz1/cmp_luasnip",
+  --       "hrsh7th/cmp-nvim-lua",
+  --       "hrsh7th/cmp-nvim-lsp",
+  --       "hrsh7th/cmp-buffer",
+  --       "hrsh7th/cmp-path",
+  --     },
+  --   },
+  --   opts = function()
+  --     return require "plugins.configs.cmp"
+  --   end,
+  --   config = function(_, opts)
+  --     require("cmp").setup(opts)
+  --   end,
+  -- },
 
   {
     "numToStr/Comment.nvim",
     keys = {
-      { "gcc", mode = "n", desc = "Comment toggle current line" },
-      { "gc", mode = { "n", "o" }, desc = "Comment toggle linewise" },
-      { "gc", mode = "x", desc = "Comment toggle linewise (visual)" },
-      { "gbc", mode = "n", desc = "Comment toggle current block" },
-      { "gb", mode = { "n", "o" }, desc = "Comment toggle blockwise" },
-      { "gb", mode = "x", desc = "Comment toggle blockwise (visual)" },
+      { "gcc", mode = "n",          desc = "Comment toggle current line" },
+      { "gc",  mode = { "n", "o" }, desc = "Comment toggle linewise" },
+      { "gc",  mode = "x",          desc = "Comment toggle linewise (visual)" },
+      { "gbc", mode = "n",          desc = "Comment toggle current block" },
+      { "gb",  mode = { "n", "o" }, desc = "Comment toggle blockwise" },
+      { "gb",  mode = "x",          desc = "Comment toggle blockwise (visual)" },
     },
     init = function()
       require("core.utils").load_mappings "comment"
