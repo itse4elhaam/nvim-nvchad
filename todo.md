@@ -18,6 +18,7 @@
 - yanky.nvim conf
 - load times man??
 - <> </>
+- use delta
 
 ON WORK LAPTOP
 
