@@ -20,6 +20,7 @@
 - non harpoon tabs
 - <> </>
 - delta for lazygit - snacks.nvim
+- https://www.reddit.com/r/neovim/s/7f0NRukJof
 
 ON WORK LAPTOP
 
