@@ -24,6 +24,7 @@
 - https://www.reddit.com/r/neovim/s/4f3eJxwRGh
 - ufo unable to fold html tags
 - move to blink.cmp
+- https://nanotipsforvim.prose.sh/motion-setup--hjkl-as-amplified-hjkl
 
 <!-- plugins to install -->
 
