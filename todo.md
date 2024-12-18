@@ -19,23 +19,24 @@
 - load times man??
 - non harpoon tabs
 - <> </>
-- delta for lazygit - snacks.nvim
 - https://www.reddit.com/r/neovim/s/7f0NRukJof
 - https://www.reddit.com/r/neovim/s/4f3eJxwRGh
 - ufo unable to fold html tags
-- move to blink.cmp
 - https://nanotipsforvim.prose.sh/motion-setup--hjkl-as-amplified-hjkl
 - ivory in telescope
 - upgrade to v0.11
 - oil.nvim
 - viq???
 - clean up mappings
+
 - toggle false to true and vice versa neovim - https://github.com/rmagatti/alternate-toggler
+
 - paste something on the next/up line
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - custom pickers with easypick
 - files sorted by lru
 - study snacks.nvim
+- formatting for yml .gitconfig files etc
 
 <!-- plugins to install -->
 
