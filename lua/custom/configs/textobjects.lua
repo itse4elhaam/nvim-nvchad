@@ -6,10 +6,10 @@ local config = function()
         lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
         keymaps = {
           -- You can use the capture groups defined in textobjects.scm
-          ["aa"] = { "@assignment.outer", "Outer assignment" },
-          ["ia"] = { "@assignment.inner", "Inner assignment" },
-          ["lhs"] = { "@assignment.lhs", "Left-hand side of assignment" },
-          ["rhs"] = { "@assignment.rhs", "Right-hand side of assignment" },
+          ["aa"] = "@assignment.outer",
+          ["ia"] = "@assignment.inner",
+          ["lhs"] = "@assignment.lhs",
+          ["rhs"] = "@assignment.rhs",
           ["am"] = "@parameter.outer",
           ["im"] = "@parameter.inner",
           ["af"] = "@function.outer",
