@@ -22,12 +22,8 @@
 - delta for lazygit - snacks.nvim
 - https://www.reddit.com/r/neovim/s/7f0NRukJof
 - https://www.reddit.com/r/neovim/s/4f3eJxwRGh
-
-ON WORK LAPTOP
-
-- typescript tools no code actions
 - ufo unable to fold html tags
-- formatting not correct
+- move to blink.cmp
 
 <!-- plugins to install -->
 
