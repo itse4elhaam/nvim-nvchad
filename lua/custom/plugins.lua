@@ -89,10 +89,29 @@ local plugins = {
   },
   {
     "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
     opts = {
-      -- TODO: can I repace this with a autocmd?
-      bigfile = {},
-      scroll = {},
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+      lazygit = { enabled = true },
+    },
+    keys = {
+      {
+        "<leader>lg",
+        function()
+          Snacks.lazygit()
+        end,
+        desc = "Lazygit",
+      },
+      {
+        "<leader>gl",
+        function()
+          Snacks.lazygit.log()
+        end,
+        desc = "Lazygit Log (cwd)",
+      },
     },
   },
   {
@@ -159,23 +178,6 @@ local plugins = {
   },
   {
     "nvim-telescope/telescope-ui-select.nvim",
-  },
-  {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
   },
   {
     "ThePrimeagen/refactoring.nvim",
