@@ -70,6 +70,7 @@ M.general = {
 
     ["<leader>du"] = { "<cmd>DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
+    ["<leader>;"] = { "mzA;<Esc>`z", "Add comma to the end of the line" },
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
     ["K"] = {
@@ -128,6 +129,10 @@ M.general = {
       "<cmd>TSToolsAddMissingImports<CR>",
       "Add Missing Imports",
     },
+    -- telescope remaps
+    ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
+    ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
+    ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
 
     ["<leader>fw"] = {
       function()
@@ -135,11 +140,6 @@ M.general = {
       end,
       "MultiGrep",
     },
-    -- telescope remaps
-    ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
-    ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
-    ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
-
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
@@ -185,7 +185,7 @@ M.general = {
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
     ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
     ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Toggle files git diff" },
-    ["<leader>dd"] = {
+    ["DD"] = {
       [["_dd"]],
       "Delete single line without overwriting reg",
     },
