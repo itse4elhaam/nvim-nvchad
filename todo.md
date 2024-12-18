@@ -18,6 +18,7 @@
 - yanky.nvim conf
 - load times man??
 - non harpoon tabs
+- harpoon files instead of auto session - put on reddit too maybe?
 - <> </>
 - https://www.reddit.com/r/neovim/s/7f0NRukJof
 - https://www.reddit.com/r/neovim/s/4f3eJxwRGh
@@ -28,8 +29,7 @@
 - oil.nvim
 - viq???
 - clean up mappings
-
-- toggle false to true and vice versa neovim - https://github.com/rmagatti/alternate-toggler
+- move mappings from plugins to its own file
 
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - custom pickers with easypick
@@ -41,10 +41,7 @@
 <!-- plugins to install -->
 
 can replace C-d/u
-
 - https://github.com/aaronik/treewalker.nvim
-- https://github.com/andrewferrier/debugprint.nvim
-- https://github.com/Goose97/timber.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/resession.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
