@@ -56,15 +56,6 @@ function M.toggleDiagnostics()
   end
 end
 
-function M.searchGitConflicts()
-  local builtin = require "telescope.builtin"
-  builtin.live_grep {
-    prompt_title = "Search Git Conflicts",
-    default_text = "<<<<< HEAD",
-    find_command = { "rg", "--files", "--glob", "*", "-t", "tracked" },
-  }
-end
-
 M.multiGrep = function(opts)
   local conf = require("telescope.config").values
   local finders = require "telescope.finders"

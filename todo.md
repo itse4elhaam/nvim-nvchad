@@ -18,24 +18,30 @@
 - yanky.nvim conf
 - load times man??
 - non harpoon tabs
+- harpoon files instead of auto session - put on reddit too maybe?
 - <> </>
-- delta for lazygit - snacks.nvim
 - https://www.reddit.com/r/neovim/s/7f0NRukJof
 - https://www.reddit.com/r/neovim/s/4f3eJxwRGh
 - ufo unable to fold html tags
-- move to blink.cmp
 - https://nanotipsforvim.prose.sh/motion-setup--hjkl-as-amplified-hjkl
 - ivory in telescope
 - upgrade to v0.11
 - oil.nvim
+- viq???
+- clean up mappings
+- move mappings from plugins to its own file
+- https://github.com/mikavilpas/blink-ripgrep.nvim
+- custom pickers with easypick
+- files sorted by lru
+- study snacks.nvim
+- study mini.nvim
+- formatting for yml .gitconfig files etc
+- lgit in the background - snakcs.nvim
 
 <!-- plugins to install -->
 
 can replace C-d/u
-
 - https://github.com/aaronik/treewalker.nvim
-- https://github.com/andrewferrier/debugprint.nvim
-- https://github.com/Goose97/timber.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/resession.nvim
 - https://github.com/allcentury/telescope_csearch.nvim

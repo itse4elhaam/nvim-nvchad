@@ -70,6 +70,7 @@ M.general = {
 
     ["<leader>du"] = { "<cmd>DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
+    ["<leader>;"] = { "mzA;<Esc>`z", "Add comma to the end of the line" },
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
     ["K"] = {
@@ -129,18 +130,20 @@ M.general = {
       "Add Missing Imports",
     },
 
+    -- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+    ["pd"] = { 'o<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste below" },
+    ["pu"] = { 'O<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste above" },
+    -- telescope remaps
+    ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
+    ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
+    ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
+
     ["<leader>fw"] = {
       function()
         utils.multiGrep()
       end,
       "MultiGrep",
-    },
-    -- telescope remaps
-    ["<leader>fgc"] = {
-      function()
-        utils.searchGitConflicts()
-      end,
-      "Search for git conflicts",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
@@ -149,7 +152,7 @@ M.general = {
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find command history" },
     ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
-    ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "Find command history" },
+    ["<leader>fcm"] = { "<cmd> Telescope commands <CR>", "Find command history" },
     ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "LSP References" },
     ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Type Definations" },
     ["<leader>u"] = {
@@ -187,7 +190,7 @@ M.general = {
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
     ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
     ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Toggle files git diff" },
-    ["<leader>dd"] = {
+    ["DD"] = {
       [["_dd"]],
       "Delete single line without overwriting reg",
     },

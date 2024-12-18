@@ -48,6 +48,29 @@ local plugins = {
     opts_extend = { "sources.default" },
   },
   {
+    "rmagatti/alternate-toggler",
+    config = function()
+      require("alternate-toggler").setup {
+        alternates = {
+          ["=="] = "!=",
+        },
+      }
+
+      vim.keymap.set(
+        "n",
+        "<leader><space>", -- <space><space>
+        "<cmd>lua require('alternate-toggler').toggleAlternate()<CR>"
+      )
+    end,
+    event = { "BufReadPost" }, -- lazy load after reading a buffer
+  },
+  {
+    "axkirillov/easypick.nvim",
+    requires = "nvim-telescope/telescope.nvim",
+    cmd = "Easypick",
+    config = require "custom.configs.easypick",
+  },
+  {
     "tronikelis/ts-autotag.nvim",
     opts = {},
     -- ft = {}, optionally you can load it only in jsx/html
@@ -131,10 +154,22 @@ local plugins = {
   },
   {
     "folke/snacks.nvim",
+    priority = 1000,
+    lazy = false,
+    ---@type snacks.Config
     opts = {
-      -- TODO: can I repace this with a autocmd?
-      bigfile = {},
-      scroll = {},
+      bigfile = { enabled = true },
+      quickfile = { enabled = true },
+      lazygit = { enabled = true },
+    },
+    keys = {
+      {
+        "<leader>lg",
+        function()
+          Snacks.lazygit()
+        end,
+        desc = "Lazygit",
+      },
     },
   },
   {
@@ -150,7 +185,7 @@ local plugins = {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -203,23 +238,6 @@ local plugins = {
     "nvim-telescope/telescope-ui-select.nvim",
   },
   {
-    "kdheepak/lazygit.nvim",
-    lazy = true,
-    cmd = {
-      "LazyGit",
-      "LazyGitConfig",
-      "LazyGitCurrentFile",
-      "LazyGitFilter",
-      "LazyGitFilterCurrentFile",
-    },
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    keys = {
-      { "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
-    },
-  },
-  {
     "ThePrimeagen/refactoring.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -237,7 +255,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  { "wakatime/vim-wakatime",     lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
