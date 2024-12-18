@@ -185,7 +185,7 @@ local plugins = {
   { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
   {
     "pmizio/typescript-tools.nvim",
-    event = "LspAttach",
+    lazy = false,
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
