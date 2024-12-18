@@ -105,13 +105,6 @@ local plugins = {
         end,
         desc = "Lazygit",
       },
-      {
-        "<leader>gl",
-        function()
-          Snacks.lazygit.log()
-        end,
-        desc = "Lazygit Log (cwd)",
-      },
     },
   },
   {
