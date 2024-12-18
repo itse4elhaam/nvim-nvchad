@@ -28,6 +28,14 @@
 - ivory in telescope
 - upgrade to v0.11
 - oil.nvim
+- viq???
+- telescope with only changed git files
+- clean up mappings
+- toggle false to true and vice versa neovim - https://github.com/rmagatti/alternate-toggler
+- leader ; like leader ,
+- DD instead of <leader>dd
+- paste something on the next/up line
+- https://github.com/mikavilpas/blink-ripgrep.nvim
 
 <!-- plugins to install -->
 
