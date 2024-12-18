@@ -31,11 +31,11 @@
 
 - toggle false to true and vice versa neovim - https://github.com/rmagatti/alternate-toggler
 
-- paste something on the next/up line
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - custom pickers with easypick
 - files sorted by lru
 - study snacks.nvim
+- study mini.nvim
 - formatting for yml .gitconfig files etc
 
 <!-- plugins to install -->

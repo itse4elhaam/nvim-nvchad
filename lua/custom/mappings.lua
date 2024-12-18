@@ -129,6 +129,11 @@ M.general = {
       "<cmd>TSToolsAddMissingImports<CR>",
       "Add Missing Imports",
     },
+
+    -- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+    ["pd"] = { 'o<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste below" },
+    ["pu"] = { 'O<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste above" },
     -- telescope remaps
     ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
     ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
