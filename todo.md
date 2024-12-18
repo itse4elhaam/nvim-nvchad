@@ -25,6 +25,9 @@
 - ufo unable to fold html tags
 - move to blink.cmp
 - https://nanotipsforvim.prose.sh/motion-setup--hjkl-as-amplified-hjkl
+- ivory in telescope
+- upgrade to v0.11
+- oil.nvim
 
 <!-- plugins to install -->
 
