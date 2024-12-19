@@ -33,11 +33,7 @@ local plugins = {
       },
       keymap = {
         preset = "super-tab",
-        ["<CR>"] = {
-          function(cmp)
-            cmp.accept()
-          end,
-        },
+        ["<CR>"] = { "accept", "fallback" },
         ["<A-1>"] = {
           function(cmp)
             cmp.accept { index = 1 }
@@ -233,7 +229,7 @@ local plugins = {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -303,7 +299,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  { "wakatime/vim-wakatime",     lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
