@@ -30,9 +30,6 @@ local plugins = {
           auto_show = true,
           auto_show_delay_ms = 200,
         },
-        ghost_text = {
-          enabled = true,
-        },
       },
       keymap = { preset = "super-tab" },
 
@@ -185,7 +182,7 @@ local plugins = {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -255,7 +252,7 @@ local plugins = {
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",     lazy = false },
   {
     "linux-cultist/venv-selector.nvim",
     dependencies = {
