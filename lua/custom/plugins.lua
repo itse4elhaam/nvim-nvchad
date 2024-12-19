@@ -31,8 +31,59 @@ local plugins = {
           auto_show_delay_ms = 200,
         },
       },
-      keymap = { preset = "super-tab" },
-
+      keymap = {
+        preset = "super-tab",
+        ["<CR>"] = {
+          function(cmp)
+            cmp.accept()
+          end,
+        },
+        ["<A-1>"] = {
+          function(cmp)
+            cmp.accept { index = 1 }
+          end,
+        },
+        ["<A-2>"] = {
+          function(cmp)
+            cmp.accept { index = 2 }
+          end,
+        },
+        ["<A-3>"] = {
+          function(cmp)
+            cmp.accept { index = 3 }
+          end,
+        },
+        ["<A-4>"] = {
+          function(cmp)
+            cmp.accept { index = 4 }
+          end,
+        },
+        ["<A-5>"] = {
+          function(cmp)
+            cmp.accept { index = 5 }
+          end,
+        },
+        ["<A-6>"] = {
+          function(cmp)
+            cmp.accept { index = 6 }
+          end,
+        },
+        ["<A-7>"] = {
+          function(cmp)
+            cmp.accept { index = 7 }
+          end,
+        },
+        ["<A-8>"] = {
+          function(cmp)
+            cmp.accept { index = 8 }
+          end,
+        },
+        ["<A-9>"] = {
+          function(cmp)
+            cmp.accept { index = 9 }
+          end,
+        },
+      },
       appearance = {
         nerd_font_variant = "mono",
       },
