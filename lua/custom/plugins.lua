@@ -22,6 +22,7 @@ local plugins = {
         },
         menu = {
           scrollbar = false,
+          border = "rounded",
           draw = {
             columns = { { "label", "label_description", gap = 1 }, { "kind_icon", "kind", gap = 1 } },
           },
