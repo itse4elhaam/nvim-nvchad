@@ -12,7 +12,6 @@
 - html folding
 - fold all funcs
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
-
 - reduce plugins
 - replace/customize statusline
 - yanky.nvim conf
@@ -27,7 +26,6 @@
 - ivory in telescope
 - upgrade to v0.11
 - oil.nvim
-- viq???
 - clean up mappings
 - move mappings from plugins to its own file
 - https://github.com/mikavilpas/blink-ripgrep.nvim
@@ -35,7 +33,6 @@
 - files sorted by lru
 - study snacks.nvim
 - study mini.nvim
-- formatting for yml .gitconfig files etc
 - lgit in the background - snakcs.nvim
 
 <!-- plugins to install -->
