@@ -1,5 +1,13 @@
 local plugins = {
   {
+    "echasnovski/mini.ai",
+    event = "InsertEnter",
+    version = false,
+    config = function()
+      require("mini.ai").setup()
+    end,
+  },
+  {
     "rmagatti/alternate-toggler",
     config = function()
       require("alternate-toggler").setup {
