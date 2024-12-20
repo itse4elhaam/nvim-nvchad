@@ -38,7 +38,6 @@
 <!-- plugins to install -->
 
 can replace C-d/u
-- https://github.com/aaronik/treewalker.nvim
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/resession.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
