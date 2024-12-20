@@ -1,18 +1,12 @@
 - code snippets taker
-- non working null_ls tools
 - shift to mini tools
 - zen mode??
-- can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
-- grug far should open in its own buffer
 - prose lint, write_good and alex
-- btw.nvim should show up if not files are open
-- space on the right when nvim-tree opens up
 - use markdown previwer
 - html folding
 - fold all funcs
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
-
 - reduce plugins
 - replace/customize statusline
 - yanky.nvim conf
@@ -27,21 +21,18 @@
 - ivory in telescope
 - upgrade to v0.11
 - oil.nvim
-- viq???
 - clean up mappings
 - move mappings from plugins to its own file
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - custom pickers with easypick
 - files sorted by lru
-- study snacks.nvim
 - study mini.nvim
-- formatting for yml .gitconfig files etc
 - lgit in the background - snakcs.nvim
 
 <!-- plugins to install -->
 
-can replace C-d/u
-- https://github.com/aaronik/treewalker.nvim
+- https://github.com/echasnovski/mini.nvim/blob/2d0f10540efdbb1f5c480ebe19ce4de451936a5d/doc/mini-surround.txt#L501
+- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/resession.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
