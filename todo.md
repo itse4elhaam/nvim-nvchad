@@ -29,6 +29,7 @@
 - study mini.nvim
 - lgit in the background - snakcs.nvim
 - nullls automatically generated file - solved ?
+- null check in typescript???
 
 - * gopher.nvim not working
 
