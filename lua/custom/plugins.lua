@@ -35,6 +35,7 @@ local plugins = {
       keymap = {
         preset = "super-tab",
         ["<CR>"] = { "accept", "fallback" },
+        -- TODO: replace with a loop
         ["<A-1>"] = {
           function(cmp)
             cmp.accept { index = 1 }
