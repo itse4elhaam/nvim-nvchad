@@ -28,6 +28,9 @@
 - files sorted by lru
 - study mini.nvim
 - lgit in the background - snakcs.nvim
+- nullls automatically generated file - solved ?
+
+- * gopher.nvim not working
 
 <!-- plugins to install -->
 
