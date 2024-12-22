@@ -28,6 +28,7 @@
 - files sorted by lru
 - study mini.nvim
 - lgit in the background - snakcs.nvim
+- https://www.reddit.com/r/neovim/s/yAeDNuFHZp
 
 <!-- plugins to install -->
 
