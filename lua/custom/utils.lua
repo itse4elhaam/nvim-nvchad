@@ -70,14 +70,14 @@ M.multiGrep = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
   opts.shortcuts = opts.shortcuts
-      or {
-        ["l"] = "*.lua",
-        ["v"] = "*.vim",
-        ["n"] = "*.{vim,lua}",
-        ["c"] = "*.c",
-        ["r"] = "*.rs",
-        ["g"] = "*.go",
-      }
+    or {
+      ["l"] = "*.lua",
+      ["v"] = "*.vim",
+      ["n"] = "*.{vim,lua}",
+      ["c"] = "*.c",
+      ["r"] = "*.rs",
+      ["g"] = "*.go",
+    }
   opts.pattern = opts.pattern or "%s"
 
   local custom_grep = finders.new_async_job {
@@ -120,13 +120,46 @@ M.multiGrep = function(opts)
   }
 
   pickers
-      .new(opts, {
-        debounce = 100,
-        prompt_title = "Live Grep (with shortcuts)",
-        finder = custom_grep,
-        previewer = conf.grep_previewer(opts),
-        sorter = require("telescope.sorters").empty(),
-      })
-      :find()
+    .new(opts, {
+      debounce = 100,
+      prompt_title = "Live Grep (with shortcuts)",
+      finder = custom_grep,
+      previewer = conf.grep_previewer(opts),
+      sorter = require("telescope.sorters").empty(),
+    })
+    :find()
 end
+
+function M.copyTypeDefinition()
+  local params = vim.lsp.util.make_position_params()
+
+  vim.lsp.buf_request(0, "textDocument/hover", params, function(err, result, ctx, config)
+    if err then
+      vim.notify("Error fetching type: " .. err.message, vim.log.levels.ERROR)
+      return
+    end
+    if not result or not result.contents then
+      vim.notify("No type definition available", vim.log.levels.WARN)
+      return
+    end
+
+    -- Convert hover contents to markdown lines
+    local type_info = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
+    if type(type_info) == "table" then
+      type_info = table.concat(type_info, "\n")
+    end
+
+    -- Extract the type definition block between curly braces
+    local annotation = type_info:match "{.*}"
+    if not annotation then
+      vim.notify("Type annotation not found in hover response", vim.log.levels.WARN)
+      return
+    end
+
+    -- Copy the annotation to the clipboard
+    vim.fn.setreg("+", annotation)
+    vim.notify("Copied type annotation to clipboard:\n" .. annotation, vim.log.levels.INFO)
+  end)
+end
+
 return M
