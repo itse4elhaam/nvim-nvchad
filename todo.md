@@ -24,6 +24,8 @@
 - null check in typescript???
 - vim.notify
 - all mini tools?
+- log watcher in timber.nvim
+- remove all consoles from a file/ask before doing it - with timber.nvim?
 
 MY PLUGIN:
 - null-check.nvim ????
