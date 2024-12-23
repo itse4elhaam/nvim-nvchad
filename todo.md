@@ -31,9 +31,12 @@
 - nullls automatically generated file - solved ?
 - null check in typescript???
 - copy the type of current Shift k
+- search component/function in telescope under cursor
 
 - * gopher.nvim not working
 
+- https://www.reddit.com/r/neovim/s/yAeDNuFHZp
+- https://www.reddit.com/r/neovim/s/DV1LRgsCFA
 <!-- plugins to install -->
 
 - https://github.com/echasnovski/mini.nvim/blob/2d0f10540efdbb1f5c480ebe19ce4de451936a5d/doc/mini-surround.txt#L501
