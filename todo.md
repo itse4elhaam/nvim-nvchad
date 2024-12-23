@@ -30,7 +30,7 @@
 - lgit in the background - snakcs.nvim
 - nullls automatically generated file - solved ?
 - null check in typescript???
-- remap to copy the name of the current function im inside/on
+- vim.notify
 
 - * gopher.nvim not working
 

@@ -197,7 +197,10 @@ M.general = {
       end,
       "Open GrugFar buffer with word under cursor",
     },
-
+    ["<leader>cf"] = {
+      utils.copyCurrentScopeFunction(),
+      "Copy the current function name (inside or at the start) to clipboard",
+    },
     -- for git diff
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
     ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
