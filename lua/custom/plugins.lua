@@ -1,7 +1,6 @@
 local plugins = {
   {
     "johmsalas/text-case.nvim",
-    enabled = false,
     cmd = {
       "Subs",
       "TextCaseOpenTelescope",
