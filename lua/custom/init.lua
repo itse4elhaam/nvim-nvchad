@@ -94,3 +94,28 @@ vim.api.nvim_create_autocmd("CmdlineEnter", {
   end,
 })
 
+-- this is for testing the lsp I made
+function TestLearningLsp()
+  local client = vim.lsp.start_client {
+    name = "learninglsp",
+    cmd = { "/home/e4elhaam/coding/projects/go-lsp/main" },
+    on_attach = require("plugins.configs.lspconfig").on_attach,
+  }
+
+  if not client then
+    vim.notify("Failed to start LSP client: learninglsp", vim.log.levels.ERROR)
+    return
+  end
+
+  vim.lsp.buf_attach_client(0, client)
+
+  vim.notify("LSP client 'learninglsp' successfully started and attached!", vim.log.levels.INFO)
+end
+
+vim.api.nvim_create_user_command(
+  "TestLearningLsp", -- The command name
+  function()
+    TestLearningLsp()
+  end,
+  { desc = "Test the custom LSP client: learninglsp" } -- Optional description
+)
