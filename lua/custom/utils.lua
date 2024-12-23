@@ -182,7 +182,7 @@ function M.copyTypeDefinition()
 
     -- Copy the annotation to clipboard
     vim.fn.setreg("+", annotation) -- Copies to the clipboard
-    vim.notify("Type annotation copied to clipboard: " .. annotation, vim.log.levels.INFO)
+    vim.notify("Type annotation copied to clipboard: ", vim.log.levels.INFO)
   end)
 end
 
