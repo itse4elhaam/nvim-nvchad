@@ -31,6 +31,8 @@
 - nullls automatically generated file - solved ?
 - null check in typescript???
 - vim.notify
+- all mini tools?
+- does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
 
 - * gopher.nvim not working
 

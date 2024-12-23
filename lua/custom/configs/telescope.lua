@@ -17,4 +17,5 @@ return function()
   telescope.load_extension "ui-select"
   telescope.load_extension "yank_history"
   telescope.load_extension "fzf"
+  telescope.load_extension "textcase"
 end
