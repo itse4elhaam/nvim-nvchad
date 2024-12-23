@@ -202,4 +202,38 @@ function M.addAngleBracket()
   }
 end
 
+function M.copyCurrentScopeFunction()
+  -- Get the current line where the cursor is
+  local line_number = vim.fn.line "."
+
+  -- Get the line content
+  local line_content = vim.fn.getline(line_number)
+
+  -- Regular expression to match function names (for languages like JavaScript, Python, etc.)
+  local function_name = line_content:match "function%s+(%w+)"
+    or line_content:match "class%s+[%w_]+"
+    or line_content:match "def%s+(%w+)" -- for Python
+
+  -- If no function name is found in the current line, try searching for the function name in previous lines
+  if not function_name then
+    for i = line_number, 1, -1 do
+      local prev_line = vim.fn.getline(i)
+      function_name = prev_line:match "function%s+(%w+)"
+        or prev_line:match "class%s+[%w_]+"
+        or prev_line:match "def%s+(%w+)" -- for Python
+      if function_name then
+        break
+      end
+    end
+  end
+
+  -- If we find a function name, copy it to the clipboard
+  if function_name then
+    vim.fn.setreg("+", function_name)
+    vim.notify("Copied function name: " .. function_name)
+  else
+    vim.notify("No function name found", vim.log.levels.WARN)
+  end
+end
+
 return M
