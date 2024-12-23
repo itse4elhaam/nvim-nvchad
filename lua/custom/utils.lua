@@ -149,16 +149,40 @@ function M.copyTypeDefinition()
       type_info = table.concat(type_info, "\n")
     end
 
-    -- Extract the type definition block between curly braces
-    local annotation = type_info:match "{.*}"
-    if not annotation then
+    local annotation
+
+    -- Step 1: Remove markdown code block (if present) and extract the type definition
+    type_info = type_info:gsub("`", "") -- Remove backticks from the type_info
+
+    -- Step 2: Check for type in curly braces
+    annotation = type_info:match "{(.*)}"
+    if annotation then
+      annotation = "{ " .. annotation .. " }" -- Reconstruct curly brace block
+    else
+      -- Step 3: Try to extract type after ":" but before "=" or end of line
+      annotation = type_info:match ":([^=]*)" -- Match everything after ":"
+      if annotation then
+        annotation = annotation:match "^%s*(.-)%s*$" -- Trim spaces
+      end
+
+      -- Step 4: Handle alias case like "(alias)..."
+      if not annotation then
+        annotation = type_info:match "%(alias%)[^:]*:%s*([^=]*)"
+        if annotation then
+          annotation = annotation:match "^%s*(.-)%s*$" -- Trim spaces
+        end
+      end
+    end
+
+    -- Step 5: If no valid annotation is found, notify and return
+    if not annotation or annotation == "" then
       vim.notify("Type annotation not found in hover response", vim.log.levels.WARN)
       return
     end
 
-    -- Copy the annotation to the clipboard
-    vim.fn.setreg("+", annotation)
-    vim.notify("Copied type annotation to clipboard:\n" .. annotation, vim.log.levels.INFO)
+    -- Copy the annotation to clipboard
+    vim.fn.setreg("+", annotation) -- Copies to the clipboard
+    vim.notify("Type annotation copied to clipboard: " .. annotation, vim.log.levels.INFO)
   end)
 end
 
