@@ -260,6 +260,12 @@ M.general = {
       end,
       "Copy diagnostic to clipboard",
     },
+    ["<leader>ct"] = {
+      function()
+        utils.copyTypeDefinition()
+      end,
+      "Copy type defination to clipboard",
+    },
     ["<leader>cln"] = {
       function()
         local line_number = vim.fn.line "."
