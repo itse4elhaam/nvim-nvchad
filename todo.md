@@ -29,6 +29,7 @@
 - study mini.nvim
 - lgit in the background - snakcs.nvim
 - nullls automatically generated file - solved ?
+- search component/function in telescope under cursor
 
 - * gopher.nvim not working
 
