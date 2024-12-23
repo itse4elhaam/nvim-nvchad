@@ -1,8 +1,15 @@
 local plugins = {
   {
+    "echasnovski/mini.operators",
+    version = "*",
+    config = function()
+      require("mini.operators").setup()
+    end,
+  },
+  {
     "echasnovski/mini.pairs",
     event = "InsertEnter",
-    version = false,
+    version = "*",
     config = function()
       require("mini.pairs").setup()
     end,
@@ -96,7 +103,7 @@ local plugins = {
   {
     "echasnovski/mini.ai",
     event = "InsertEnter",
-    version = false,
+    version = "*",
     config = function()
       require("mini.ai").setup()
     end,
