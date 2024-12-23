@@ -25,9 +25,8 @@
 - vim.notify
 - all mini tools?
 
+MY PLUGIN:
 - null-check.nvim ????
-
-- * gopher.nvim not working
 
 <!-- articles -->
 

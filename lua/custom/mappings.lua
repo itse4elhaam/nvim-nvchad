@@ -39,6 +39,12 @@ M.general = {
       end,
       "Clear timber log statements in current buffer",
     },
+    ["<leader>tls"] = {
+      function()
+        require("timber.summary").open { focus = true }
+      end,
+      "Clear timber log statements in current buffer",
+    },
 
     -- NOTE: this is WSL specific
     ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
