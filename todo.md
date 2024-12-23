@@ -32,11 +32,7 @@
 <!-- articles -->
 
 - https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
-- https://www.reddit.com/r/neovim/s/yAeDNuFHZp
 - https://www.reddit.com/r/neovim/s/DV1LRgsCFA
-- https://nanotipsforvim.prose.sh/motion-setup--hjkl-as-amplified-hjkl
-- https://www.reddit.com/r/neovim/s/7f0NRukJof
-- https://www.reddit.com/r/neovim/s/4f3eJxwRGh
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 <!-- plugins to install -->

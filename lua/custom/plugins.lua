@@ -18,6 +18,7 @@ local plugins = {
   },
   {
     "echasnovski/mini.operators",
+    event = "VeryLazy",
     version = "*",
     config = function()
       require("mini.operators").setup()
