@@ -30,6 +30,7 @@
 - lgit in the background - snakcs.nvim
 - nullls automatically generated file - solved ?
 - null check in typescript???
+- copy the type of current Shift k
 
 - * gopher.nvim not working
 
