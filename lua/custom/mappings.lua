@@ -208,10 +208,14 @@ M.general = {
     ["fws"] = { "1z=", "Fix word speling under cursor" },
     ["dd"] = {
       function()
+        -- Check if the current line is empty
         if vim.fn.getline "." == "" then
-          return '"_dd'
+          -- If empty, delete the line without affecting the register
+          vim.cmd 'normal! "_dd'
+        else
+          -- Otherwise, delete the line normally
+          vim.cmd "normal! dd"
         end
-        return "dd"
       end,
       "cut line if it is not empty",
     },
