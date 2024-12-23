@@ -60,6 +60,8 @@ M.general = {
       "<cmd>lua require('nvchad.renamer').open()<CR>",
       "LSP rename",
     },
+    ["<A-j>"] = { "6j", "Move 6 lines down" },
+    ["<A-k>"] = { "6k", "Move 6 lines up" },
 
     -- remaps for tabs
     ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
@@ -202,6 +204,16 @@ M.general = {
         utils.copyCurrentScopeFunction()
       end,
       "Copy the current function name (inside or at the start) to clipboard",
+    },
+    ["fws"] = { "1z=", "Fix word speling under cursor" },
+    ["dd"] = {
+      function()
+        if vim.fn.getline "." == "" then
+          return '"_dd'
+        end
+        return "dd"
+      end,
+      "cut line if it is not empty",
     },
     -- for git diff
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
