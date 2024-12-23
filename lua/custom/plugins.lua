@@ -119,7 +119,7 @@ local plugins = {
   },
   {
     "echasnovski/mini.ai",
-    event = "InsertEnter",
+    event = "VeryLazy",
     version = "*",
     config = function()
       require("mini.ai").setup()
