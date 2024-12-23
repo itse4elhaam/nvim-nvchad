@@ -198,7 +198,9 @@ M.general = {
       "Open GrugFar buffer with word under cursor",
     },
     ["<leader>cf"] = {
-      utils.copyCurrentScopeFunction(),
+      function()
+        utils.copyCurrentScopeFunction()
+      end,
       "Copy the current function name (inside or at the start) to clipboard",
     },
     -- for git diff
