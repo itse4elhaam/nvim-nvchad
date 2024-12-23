@@ -364,7 +364,7 @@ M.general = {
       "Open refactoring options with Telescope",
     },
 
-    ["<leader>d"] = {
+    ["DD"] = {
       [["_d"]],
       "Delete without overwriting register",
     },
