@@ -30,8 +30,6 @@
 - lgit in the background - snakcs.nvim
 - nullls automatically generated file - solved ?
 - null check in typescript???
-- copy the type of current Shift k
-- search component/function in telescope under cursor
 - remap to copy the name of the current function im inside/on
 
 - * gopher.nvim not working

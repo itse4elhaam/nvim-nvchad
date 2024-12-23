@@ -186,4 +186,20 @@ function M.copyTypeDefinition()
   end)
 end
 
+function M.addParentheses()
+  local word = vim.fn.expand "<cword>" -- Get the word under the cursor
+  local word_with_paren = word .. "\\(" -- Add `\(` to it
+  require("telescope.builtin").find_files {
+    prompt_title = word_with_paren,
+  }
+end
+
+function M.addAngleBracket()
+  local word = vim.fn.expand "<cword>" -- Get the word under the cursor
+  local word_with_angle_bracket = "<" .. word -- Add `<` to the start of it
+  require("telescope.builtin").find_files {
+    prompt_title = word_with_angle_bracket,
+  }
+end
+
 return M

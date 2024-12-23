@@ -135,6 +135,18 @@ M.general = {
     ["pd"] = { 'o<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste below" },
     ["pu"] = { 'O<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste above" },
     -- telescope remaps
+    ["<leader>ffn"] = {
+      function()
+        utils.addParentheses()
+      end,
+      "Search function under cursor",
+    },
+    ["<leader>frc"] = {
+      function()
+        utils.addAngleBracket()
+      end,
+      "Search component under cursor",
+    },
     ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
     ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
     ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
