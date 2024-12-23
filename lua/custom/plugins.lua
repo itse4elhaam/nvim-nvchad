@@ -1,5 +1,23 @@
 local plugins = {
   {
+    "johmsalas/text-case.nvim",
+    enabled = false,
+    cmd = {
+      "Subs",
+      "TextCaseOpenTelescope",
+      "TextCaseOpenTelescopeQuickChange",
+      "TextCaseOpenTelescopeLSPChange",
+      "TextCaseStartReplacingCommand",
+    },
+    dependencies = { "nvim-telescope/telescope.nvim" },
+    config = function()
+      require("textcase").setup {}
+    end,
+    keys = {
+      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
+    },
+  },
+  {
     "echasnovski/mini.operators",
     version = "*",
     config = function()
