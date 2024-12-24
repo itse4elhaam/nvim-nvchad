@@ -81,15 +81,6 @@ local plugins = {
 
   -- lsp related
   {
-    "folke/lazydev.nvim",
-    ft = "lua",
-    opts = {
-      library = {
-        { path = "luvit-meta/library", words = { "vim%.uv" } },
-      },
-    },
-  },
-  {
     "folke/trouble.nvim",
     opts = {},
     cmd = "Trouble",
@@ -307,7 +298,6 @@ local plugins = {
     cmd = "Yazi",
     keys = load_mappings "yazi",
     opts = {
-      -- if you want to open yazi instead of netrw, see below for more info
       open_for_directories = false,
       keymaps = {
         show_help = "<f1>",
@@ -368,7 +358,6 @@ local plugins = {
       "DiffviewOpen",
     },
   },
-
   {
     "letieu/btw.nvim",
     config = function()
