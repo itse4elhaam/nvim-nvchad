@@ -1,12 +1,11 @@
+local load_mappings = require("core.utils").load_mappings
+
 local plugins = {
   {
-    -- `lazydev` configures Lua LSP for your Neovim config, runtime and plugins
-    -- used for completion, annotations and signatures of Neovim apis
     "folke/lazydev.nvim",
     ft = "lua",
     opts = {
       library = {
-        -- Load luvit types when the `vim.uv` word is found
         { path = "luvit-meta/library", words = { "vim%.uv" } },
       },
     },
@@ -24,9 +23,7 @@ local plugins = {
     config = function()
       require("textcase").setup {}
     end,
-    keys = {
-      { "ga.", "<cmd>TextCaseOpenTelescope<CR>", mode = { "n", "x" }, desc = "Telescope" },
-    },
+    keys = load_mappings "text_case",
   },
   {
     "echasnovski/mini.operators",
@@ -66,6 +63,7 @@ local plugins = {
       require("alternate-toggler").setup {
         alternates = {
           ["=="] = "!=",
+          ["up"] = "down",
         },
       }
 
@@ -108,23 +106,7 @@ local plugins = {
   {
     "mikavilpas/yazi.nvim",
     cmd = "Yazi",
-    keys = {
-      {
-        "<leader>yz",
-        "<cmd>Yazi<cr>",
-        desc = "Open yazi at the current file",
-      },
-      {
-        "<leader>cw",
-        "<cmd>Yazi cwd<cr>",
-        desc = "Open the file manager in nvim's working directory",
-      },
-      {
-        "<c-up>",
-        "<cmd>Yazi toggle<cr>",
-        desc = "Resume the last yazi session",
-      },
-    },
+    keys = load_mappings "yazi",
     opts = {
       -- if you want to open yazi instead of netrw, see below for more info
       open_for_directories = false,
@@ -143,18 +125,7 @@ local plugins = {
   {
     "gbprod/yanky.nvim",
     opts = {},
-    config = function()
-      require("yanky").setup {
-        preserve_cursor_position = {
-          enabled = true,
-        },
-        highlight = {
-          on_put = false,
-          on_yank = false,
-          timer = 500,
-        },
-      }
-    end,
+    config = require "custom.configs.yanky",
   },
   {
     "m4xshen/hardtime.nvim",
@@ -174,36 +145,12 @@ local plugins = {
       lazygit = { enabled = true },
       scratch = { enabled = true },
     },
-    keys = {
-      {
-        "<leader>.",
-        function()
-          Snacks.scratch()
-        end,
-        desc = "Toggle Scratch Buffer",
-      },
-      {
-        "<leader>S",
-        function()
-          Snacks.scratch.select()
-        end,
-        desc = "Select Scratch Buffer",
-      },
-      {
-        "<leader>lg",
-        function()
-          Snacks.lazygit()
-        end,
-        desc = "Lazygit",
-      },
-    },
+    keys = load_mappings "snacks",
   },
   {
     "jdrupal-dev/code-refactor.nvim",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
-    keys = {
-      { "<leader>cra", "<cmd>CodeActions all<CR>", desc = "Show code-refactor.nvim (not LSP code actions)" },
-    },
+    -- keys = load_mappings "code_refactor",
     config = function()
       require("code-refactor").setup {}
     end,
@@ -294,9 +241,7 @@ local plugins = {
       require("venv-selector").setup()
     end,
     ft = { "python" },
-    keys = {
-      { "<leader>vs", "<cmd>VenvSelect<cr>" },
-    },
+    -- keys = load_mappings "venv_selector",
   },
   {
     "nvim-lua/plenary.nvim",

@@ -23,6 +23,83 @@ M.gopher = {
   },
 }
 
+M.venv_selector = {
+  plugin = true,
+  n = {
+    ["<leader>vs"] = {
+      "<cmd>VenvSelect<cr>",
+      "Venv selector",
+    },
+  },
+}
+
+M.text_case = {
+  plugin = true,
+  n = {
+    ["ga."] = {
+      "<cmd>TextCaseOpenTelescope<CR>",
+      "Telescope for text case",
+    },
+  },
+  x = {
+    ["ga."] = {
+      "<cmd>TextCaseOpenTelescope<CR>",
+      "Telescope for text case",
+    },
+  },
+}
+
+M.yazi = {
+  plugin = true,
+  n = {
+    ["<leader>yz"] = {
+      "<cmd>Yazi<cr>",
+      "Open yazi at the current file",
+    },
+    ["<leader>cw"] = {
+      "<cmd>Yazi cwd<cr>",
+      "Open the file manager in nvim's working directory",
+    },
+    ["<c-up>"] = {
+      "<cmd>Yazi toggle<cr>",
+      "Resume the last yazi session",
+    },
+  },
+}
+
+M.snacks = {
+  plugin = true,
+  n = {
+    ["<leader>."] = {
+      function()
+        Snacks.scratch()
+      end,
+      "Toggle Scratch Buffer",
+    },
+    ["<leader>S"] = {
+      function()
+        Snacks.scratch.select()
+      end,
+      "Select Scratch Buffer",
+    },
+    ["<leader>lg"] = {
+      function()
+        Snacks.lazygit()
+      end,
+      "Lazygit",
+    },
+  },
+}
+
+M.code_refactor = {
+  plugin = true,
+  n = {
+    ["<leader>cra"] = {
+      "<cmd>CodeActions all<CR>",
+      "Show code-refactor.nvim (not LSP code actions)",
+    },
+  },
+}
 M.general = {
   n = {
     ["<leader>rc"] = {
@@ -183,9 +260,9 @@ M.general = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",
     },
-    ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", desc = "Find buffer commits" },
+    ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", "Find buffer commits" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
-    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Lsp defination" },
+    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
     ["<leader>te"] = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
@@ -282,7 +359,7 @@ M.general = {
     ["el"] = { "$" },
     ["sl"] = { "_" },
 
-    ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
+    ["<leader>ts"] = { "<cmd>set spell!<CR>", "Toggle spell check" },
     ["<leader>env"] = {
       function()
         utils.openOrCreateFiles { ".env", ".env.local" }
