@@ -49,7 +49,7 @@ local plugins = {
     event = "InsertEnter",
     dependencies = "rafamadriz/friendly-snippets",
     version = "v0.*",
-    opts = require "lua.custom.configs.blink.cmp",
+    opts = require "custom.configs.blink",
     opts_extend = { "sources.default" },
   },
   {
