@@ -24,6 +24,7 @@
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
 - more raw stuff, less reliance on plugins
+- convert into ${}
 
 MY PLUGIN:
 - null-check.nvim ????
