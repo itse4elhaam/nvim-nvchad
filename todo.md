@@ -45,3 +45,4 @@ fixes cmd neovim
 - https://github.com/stevearc/resession.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
 - https://github.com/chrisgrieser/nvim-early-retirement
+- https://github.com/nvim-telescope/telescope-frecency.nvim
