@@ -75,7 +75,7 @@ local opts = {
     default = { "lsp", "path", "snippets", "buffer" },
   },
 
-  signature = { enabled = true },
+  signature = { enabled = false },
 }
 
 return opts
