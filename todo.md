@@ -26,6 +26,7 @@
 - more raw stuff, less reliance on plugins
 - convert into ${}
 - better delta
+- plugin to have similar mappings between tmux and neovim panes
 
 MY PLUGIN:
 - null-check.nvim ????
