@@ -62,6 +62,7 @@ local plugins = {
         alternates = {
           ["=="] = "!=",
           ["up"] = "down",
+          ["let"] = "const",
         },
       }
 
