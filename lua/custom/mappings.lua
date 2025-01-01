@@ -360,7 +360,7 @@ M.general = {
     -- open files
     ["<leader>env"] = {
       function()
-        utils.openOrCreateFiles { ".env", ".env.local" }
+        utils.openOrCreateFiles { ".env", ".env.local", "development.env" }
       end,
       "Open .env file",
     },
