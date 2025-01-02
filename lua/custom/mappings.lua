@@ -151,6 +151,10 @@ M.general = {
       "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
       "Add // @ts-expect-error above the current line",
     },
+    ["<leader>ti"] = {
+      "<cmd>execute 'normal! O// @ts-ignore'<CR>j",
+      "Add // @ts-ignore above the current line",
+    },
     ["<leader>tsn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
     ["<leader>ra"] = {
