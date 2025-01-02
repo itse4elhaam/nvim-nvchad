@@ -395,6 +395,10 @@ M.general = {
   },
 
   v = {
+    ["<leader>w$"] = {
+      'c${<C-r>"}<Esc>',
+      "Wrap selection with ${} and return to normal mode",
+    },
     -- NOTE: added this here because core ones were not working
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
 
