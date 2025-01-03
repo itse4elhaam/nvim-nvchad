@@ -341,6 +341,7 @@ local plugins = {
       quickfile = { enabled = true },
       lazygit = { enabled = true },
       scratch = { enabled = true },
+      gitbrowse = { enabled = true },
     },
     keys = load_mappings "snacks",
   },

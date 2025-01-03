@@ -88,6 +88,12 @@ M.snacks = {
       end,
       "Lazygit",
     },
+    ["<leader>gB"] = {
+      function()
+        Snacks.gitbrowse()
+      end,
+      "Lazygit",
+    },
   },
 }
 
