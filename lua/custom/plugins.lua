@@ -303,6 +303,32 @@ local plugins = {
 
   -- Misc
   {
+    "epwalsh/obsidian.nvim",
+    version = "*", -- recommended, use latest release instead of latest commit
+    lazy = true,
+    event = {
+      "BufReadPre /home/e4elhaam/vaults/obsidian-notes/*.md",
+      "BufNewFile /home/e4elhaam/vaults/obsidian-notes/*.md",
+    },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+    },
+    opts = {
+      ui = { enabled = false },
+      workspaces = {
+        {
+          name = "personal",
+          path = "/home/e4elhaam/vaults/obsidian-notes",
+        },
+      },
+      templates = {
+        folder = "templates",
+        date_format = "%Y-%m-%d-%a",
+        time_format = "%H:%M",
+      },
+    },
+  },
+  {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
   },
