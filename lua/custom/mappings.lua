@@ -405,6 +405,8 @@ M.general = {
   },
 
   v = {
+    ["<A-j>"] = { "6j", "Move 6 lines down" },
+    ["<A-k>"] = { "6k", "Move 6 lines up" },
     ["<leader>w$"] = {
       'c${<C-r>"}<Esc>',
       "Wrap selection with ${} and return to normal mode",
@@ -460,6 +462,8 @@ M.general = {
   },
 
   x = {
+    ["<A-j>"] = { "6j", "Move 6 lines down" },
+    ["<A-k>"] = { "6k", "Move 6 lines up" },
     ["<leader>rr"] = {
       function()
         require("telescope").extensions.refactoring.refactors()
