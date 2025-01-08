@@ -42,6 +42,8 @@ fixes cmd neovim
 
 install and check these out
 - https://dotfyle.com/chrisgrieser
+- https://github.com/kndndrj/nvim-dbee
+- https://github.com/Xemptuous/sqlua.nvim
 
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
