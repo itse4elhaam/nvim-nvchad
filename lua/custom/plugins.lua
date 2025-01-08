@@ -2,9 +2,10 @@ local load_mappings = require("core.utils").load_mappings
 
 local plugins = {
   -- text editing
+  { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
-    lazy = false, -- plugin lazy-loads itself. Can also load on filetypes.
+    lazy = false,
   },
   {
     "kylechui/nvim-surround",
