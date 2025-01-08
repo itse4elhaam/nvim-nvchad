@@ -27,6 +27,7 @@
 - convert into ${}
 - better delta
 - plugin to have similar mappings between tmux and neovim panes
+- reconsider smear cursor
 
 MY PLUGIN:
 - null-check.nvim ????
@@ -38,6 +39,9 @@ fixes cmd neovim
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 <!-- plugins to install -->
+
+install and check these out
+- https://dotfyle.com/chrisgrieser
 
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
