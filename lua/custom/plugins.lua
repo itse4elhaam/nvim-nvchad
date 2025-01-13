@@ -95,6 +95,7 @@ local plugins = {
   },
 
   -- lsp related
+  { "chrisgrieser/nvim-rulebook", cmd = "Rulebook", keys = load_mappings "rulebook" },
   {
     "MeanderingProgrammer/render-markdown.nvim",
     event = "LspAttach",
