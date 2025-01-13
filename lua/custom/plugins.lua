@@ -11,7 +11,7 @@ local plugins = {
       },
     },
   },
-  { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
+  { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
     lazy = false,
@@ -389,7 +389,7 @@ local plugins = {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -403,8 +403,23 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
+  { "akinsho/git-conflict.nvim",                version = "*", config = true, event = "VeryLazy" },
 
+  {
+    "chrisgrieser/nvim-rip-substitute",
+    cmd = "RipSubstitute",
+    opts = {},
+    keys = {
+      {
+        "<leader>rs",
+        function()
+          require("rip-substitute").sub()
+        end,
+        mode = { "n", "x" },
+        desc = " rip substitute",
+      },
+    },
+  },
   {
     "MagicDuck/grug-far.nvim",
     cmd = "GrugFar",
@@ -443,7 +458,7 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",     lazy = false },
 }
 
 return plugins
