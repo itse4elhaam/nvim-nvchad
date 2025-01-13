@@ -34,7 +34,7 @@ MY PLUGIN:
 <!-- articles -->
 fixes cmd neovim
 - https://www.reddit.com/r/neovim/s/qyKbIjYlGH 
-https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
+- https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
 - https://www.reddit.com/r/neovim/s/DV1LRgsCFA
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
