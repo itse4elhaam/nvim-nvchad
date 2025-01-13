@@ -16,12 +16,9 @@
 
 ON WORK LAPTOP
 
-- typescript tools no code actions
 - ufo unable to fold html tags
 - upgrade to v0.11
 - oil.nvim
-- clean up mappings
-- files sorted by lru
 - study mini.nvim
 - nullls automatically generated file - solved ?
 - vim.notify
@@ -29,23 +26,22 @@ ON WORK LAPTOP
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
 - more raw stuff, less reliance on plugins
-- convert into ${}
-- better delta
 - plugin to have similar mappings between tmux and neovim panes
-- reconsider smear cursor
 
 MY PLUGIN:
 - null-check.nvim ????
 
 <!-- articles -->
 fixes cmd neovim
-- https://www.reddit.com/r/neovim/s/qyKbIjYlGH https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
+- https://www.reddit.com/r/neovim/s/qyKbIjYlGH 
+https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
 - https://www.reddit.com/r/neovim/s/DV1LRgsCFA
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 <!-- plugins to install -->
 
 install and check these out
+- https://github.com/chrisgrieser/nvim-various-textobjs
 - https://dotfyle.com/chrisgrieser
 - https://github.com/kndndrj/nvim-dbee
 - https://github.com/Xemptuous/sqlua.nvim
