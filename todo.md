@@ -28,6 +28,7 @@
 - better delta
 - plugin to have similar mappings between tmux and neovim panes
 - reconsider smear cursor
+- consider nvim-chainsaw instead of timer.nvim
 
 MY PLUGIN:
 - null-check.nvim ????
@@ -44,6 +45,7 @@ install and check these out
 - https://dotfyle.com/chrisgrieser
 - https://github.com/kndndrj/nvim-dbee
 - https://github.com/Xemptuous/sqlua.nvim
+- https://github.com/chrisgrieser/nvim-chainsaw
 
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
