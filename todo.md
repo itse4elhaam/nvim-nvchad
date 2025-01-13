@@ -29,6 +29,7 @@
 - plugin to have similar mappings between tmux and neovim panes
 - reconsider smear cursor
 - consider nvim-chainsaw instead of timer.nvim
+- look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
 
 MY PLUGIN:
 - null-check.nvim ????
