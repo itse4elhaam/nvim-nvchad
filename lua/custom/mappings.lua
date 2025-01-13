@@ -295,7 +295,7 @@ M.general = {
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
     ["<leader>ba"] = {
-      "<cmd>%bd|e#<CR>",
+      "<cmd>%bdelete|e#<CR>",
       "Close all other buffers except the current one",
     },
     -- GrugFar operations
