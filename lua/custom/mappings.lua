@@ -153,6 +153,38 @@ M.spider_motion = {
   },
 }
 
+M.rulebook = {
+  plugin = true,
+  n = {
+    ["<leader>ri"] = {
+      function()
+        require("rulebook").ignoreRule()
+      end,
+      "Ignore a rule",
+    },
+    ["<leader>rl"] = {
+      function()
+        require("rulebook").lookupRule()
+      end,
+      "Lookup a rule",
+    },
+    ["<leader>ry"] = {
+      function()
+        require("rulebook").yankDiagnosticCode()
+      end,
+      "Yank diagnostic code",
+    },
+  },
+  x = {
+    ["<leader>rf"] = {
+      function()
+        require("rulebook").suppressFormatter()
+      end,
+      "Suppress formatter",
+    },
+  },
+}
+
 M.general = {
   n = {
 
