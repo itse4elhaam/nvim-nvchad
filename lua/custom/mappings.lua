@@ -16,54 +16,149 @@ M.gopher = {
       "<cmd> GoTagAdd yaml <CR>",
       "Add yaml struct tags",
     },
+    ["<leader>gie"] = {
+      "<cmd> GoIfErr <CR>",
+      "Add json struct tags",
+    },
+  },
+}
+
+M.venv_selector = {
+  plugin = true,
+  n = {
+    ["<leader>vs"] = {
+      "<cmd>VenvSelect<cr>",
+      "Venv selector",
+    },
+  },
+}
+
+M.text_case = {
+  plugin = true,
+  n = {
+    ["ga."] = {
+      "<cmd>TextCaseOpenTelescope<CR>",
+      "Telescope for text case",
+    },
+  },
+  x = {
+    ["ga."] = {
+      "<cmd>TextCaseOpenTelescope<CR>",
+      "Telescope for text case",
+    },
+  },
+}
+
+M.yazi = {
+  plugin = true,
+  n = {
+    ["<leader>yz"] = {
+      "<cmd>Yazi<cr>",
+      "Open yazi at the current file",
+    },
+    ["<leader>cw"] = {
+      "<cmd>Yazi cwd<cr>",
+      "Open the file manager in nvim's working directory",
+    },
+    ["<c-up>"] = {
+      "<cmd>Yazi toggle<cr>",
+      "Resume the last yazi session",
+    },
+  },
+}
+
+M.snacks = {
+  plugin = true,
+  n = {
+    ["<leader>."] = {
+      function()
+        Snacks.scratch()
+      end,
+      "Toggle Scratch Buffer",
+    },
+    ["<leader>S"] = {
+      function()
+        Snacks.scratch.select()
+      end,
+      "Select Scratch Buffer",
+    },
+    ["<leader>lg"] = {
+      function()
+        Snacks.lazygit()
+      end,
+      "Lazygit",
+    },
+    ["<leader>gB"] = {
+      function()
+        Snacks.gitbrowse()
+      end,
+      "Lazygit",
+    },
+  },
+}
+
+M.code_refactor = {
+  plugin = true,
+  n = {
+    ["<leader>cra"] = {
+      "<cmd>CodeActions all<CR>",
+      "Show code-refactor.nvim (not LSP code actions)",
+    },
+  },
+}
+
+M.spider_motion = {
+  plugin = true,
+  n = {
+    ["w"] = {
+      "<cmd>lua require('spider').motion('w')<CR>",
+      "Spider-w",
+    },
+    ["e"] = {
+      "<cmd>lua require('spider').motion('e')<CR>",
+      "Spider-e",
+    },
+    ["b"] = {
+      "<cmd>lua require('spider').motion('b')<CR>",
+      "Spider-b",
+    },
+  },
+  o = {
+    ["w"] = {
+      "<cmd>lua require('spider').motion('w')<CR>",
+      "Spider-w",
+    },
+    ["e"] = {
+      "<cmd>lua require('spider').motion('e')<CR>",
+      "Spider-e",
+    },
+    ["b"] = {
+      "<cmd>lua require('spider').motion('b')<CR>",
+      "Spider-b",
+    },
+  },
+  x = {
+    ["w"] = {
+      "<cmd>lua require('spider').motion('w')<CR>",
+      "Spider-w",
+    },
+    ["e"] = {
+      "<cmd>lua require('spider').motion('e')<CR>",
+      "Spider-e",
+    },
+    ["b"] = {
+      "<cmd>lua require('spider').motion('b')<CR>",
+      "Spider-b",
+    },
   },
 }
 
 M.general = {
   n = {
-    ["<leader>rc"] = {
-      function()
-        local word = vim.fn.expand "<cword>"
-        vim.cmd("normal! ciw<" .. word .. " />")
-      end,
-      "Wrap word under cursor with < />",
-    },
 
-    ["<leader>ctl"] = {
-      function()
-        require("timber.actions").clear_log_statements { global = false }
-      end,
-      "Clear timber log statements in current buffer",
-    },
-
-    -- NOTE: this is WSL specific
-    ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
-
-    ["<leader>gw"] = {
-      function()
-        require("telescope.builtin").live_grep {
-          default_text = vim.fn.expand "<cword>",
-        }
-      end,
-      "Live grep current word",
-    },
-
-    -- NOTE: added this here because core ones were not working
-    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
-    ["<leader>ra"] = {
-      "<cmd>lua require('nvchad.renamer').open()<CR>",
-      "LSP rename",
-    },
-
-    -- remaps for tabs
-    ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
-    ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
-    ["<leader>tp"] = { "<cmd>tabprevious<CR>", "Go to previous tab" },
-    ["<leader>t1"] = { "<cmd>tabn 1<CR>", "Go to tab 1" },
-    ["<leader>t2"] = { "<cmd>tabn 2<CR>", "Go to tab 2" },
-
+    -- plugin specifics:
     ["<leader>du"] = { "<cmd>DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
-    ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
+    -- ufo
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
     ["K"] = {
@@ -75,32 +170,50 @@ M.general = {
       end,
       "Peek Fold/Hover",
     },
-    ["<leader>uc"] = {
+    -- timber.nvim
+    ["<leader>ctl"] = {
       function()
-        utils.addDirective "use client"
+        require("timber.actions").clear_log_statements { global = false }
       end,
-      "Add 'use client' to the top of the file",
+      "Clear timber log statements in current buffer",
     },
-    ["<leader>us"] = {
+    ["<leader>tls"] = {
       function()
-        utils.addDirective "use server"
+        require("timber.summary").open { focus = true }
       end,
-      "Add 'use server' to the top of the file",
+      "Clear timber log statements in current buffer",
     },
-    ["ul"] = { "O<Esc>:normal j<CR>", "Insert line above and move down" },
-    ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
-    ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
-    ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
+
+    -- remaps for tabs
+    ["<leader>tn"] = { "<cmd>tabnext<CR>", "Go to next tab" },
+    ["<leader>tx"] = { "<cmd>tabclose<CR>", "Go to next tab" },
+    ["<leader>tp"] = { "<cmd>tabprevious<CR>", "Go to previous tab" },
+    ["<leader>t1"] = { "<cmd>tabn 1<CR>", "Go to tab 1" },
+    ["<leader>t2"] = { "<cmd>tabn 2<CR>", "Go to tab 2" },
+
     ["<leader>tdg"] = {
       function()
         utils.toggleDiagnostics()
       end,
       "Toggle Diagnostics",
     },
-    ["<leader>as"] = { "<cmd>ASToggle<CR>", "Toggle auto save" },
-    ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
-    ["<leader>cp"] = { ":bd | q<CR>", "Close Buffer/Pane" },
+
     -- lsp remaps
+    ["<leader>te"] = {
+      "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
+      "Add // @ts-expect-error above the current line",
+    },
+    ["<leader>ti"] = {
+      "<cmd>execute 'normal! O// @ts-ignore'<CR>j",
+      "Add // @ts-ignore above the current line",
+    },
+    ["<leader>tsn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
+    ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
+    ["<leader>ra"] = {
+      "<cmd>lua require('nvchad.renamer').open()<CR>",
+      "LSP rename",
+    },
+    ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<leader>ld"] = {
       "<cmd>LspStop<CR>",
       "Start LSP",
@@ -122,13 +235,46 @@ M.general = {
       "<cmd>TSToolsAddMissingImports<CR>",
       "Add Missing Imports",
     },
+    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
+    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>" },
+    ["<leader>ts"] = { "<cmd>set spell!<CR>", "Toggle spell check" },
 
     -- telescope remaps
-    ["<leader>fgc"] = {
+    ["<leader>gw"] = {
       function()
-        utils.searchGitConflicts()
+        require("telescope.builtin").live_grep {
+          default_text = vim.fn.expand "<cword>",
+        }
       end,
-      "Search for git conflicts",
+      "Live grep current word",
+    },
+    ["<leader>fk"] = {
+      function()
+        require("telescope.builtin").keymaps()
+      end,
+      "Live grep current word",
+    },
+    ["<leader>ffn"] = {
+      function()
+        utils.addParentheses()
+      end,
+      "Search function under cursor",
+    },
+    ["<leader>frc"] = {
+      function()
+        utils.addAngleBracket()
+      end,
+      "Search component under cursor",
+    },
+    ["<leader>fc"] = { "<cmd>Easypick changed_files<CR>", "Show changed files" },
+    ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
+    ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
+
+    ["<leader>fw"] = {
+      function()
+        utils.multiGrep()
+      end,
+      "MultiGrep",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
@@ -137,22 +283,16 @@ M.general = {
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find command history" },
     ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
-    ["<leader>fc"] = { "<cmd> Telescope commands <CR>", "Find command history" },
+    ["<leader>fcm"] = { "<cmd> Telescope commands <CR>", "Find command history" },
     ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "LSP References" },
     ["gt"] = { "<cmd> Telescope lsp_type_definitions <CR>", "Type Definations" },
     ["<leader>u"] = {
       "<cmd>Telescope undo<cr>",
       "Open undo history using Telescope",
     },
-    ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", desc = "Find buffer commits" },
+    ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", "Find buffer commits" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
-    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", desc = "Lsp defination" },
-
-    ["<leader>te"] = {
-      "<cmd>execute 'normal! O// @ts-expect-error'<CR>j",
-      "Add // @ts-expect-error above the current line",
-    },
-    ["<leader>tsn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
+    ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
     ["<leader>ba"] = {
       "<cmd>%bd|e#<CR>",
@@ -170,12 +310,65 @@ M.general = {
       end,
       "Open GrugFar buffer with word under cursor",
     },
-
+    ["<leader>cf"] = {
+      function()
+        utils.copyCurrentScopeFunction()
+      end,
+      "Copy the current function name (inside or at the start) to clipboard",
+    },
+    ["fws"] = { "1z=", "Fix word speling under cursor" },
     -- for git diff
     ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
     ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
     ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Toggle files git diff" },
-    ["<leader>dd"] = {
+
+    -- basic operation remaps
+    ["<leader>rc"] = {
+      function()
+        local word = vim.fn.expand "<cword>"
+        vim.cmd("normal! ciw<" .. word .. " />")
+      end,
+      "Wrap word under cursor with < />",
+    },
+    ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
+    ["<A-j>"] = { "6j", "Move 6 lines down" },
+    ["<A-k>"] = { "6k", "Move 6 lines up" },
+    ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
+    ["<leader>;"] = { "mzA;<Esc>`z", "Add comma to the end of the line" },
+    ["<leader>uc"] = {
+      function()
+        utils.addDirective "use client"
+      end,
+      "Add 'use client' to the top of the file",
+    },
+    ["<leader>us"] = {
+      function()
+        utils.addDirective "use server"
+      end,
+      "Add 'use server' to the top of the file",
+    },
+    ["ul"] = { "O<Esc>:normal j<CR>", "Insert line above and move down" },
+    ["dl"] = { "o<Esc>:normal k<CR>", "Insert line below and move up" },
+    ["<C-sa>"] = { "<cmd> wa <CR>", "Save file" },
+    ["<leader>lz"] = { "<cmd>Lazy<CR>", "Open Lazy" },
+    ["dd"] = {
+      function()
+        -- Check if the current line is empty
+        if vim.fn.getline "." == "" then
+          -- If empty, delete the line without affecting the register
+          vim.cmd 'normal! "_dd'
+        else
+          -- Otherwise, delete the line normally
+          vim.cmd "normal! dd"
+        end
+      end,
+      "cut line if it is not empty",
+    },
+    -- Don't copy the replaced text after pasting in visual mode
+    -- https://vim.fandom.com/wiki/Replace_a_word_with_yanked_text#Alternative_mapping_for_paste
+    ["pd"] = { 'o<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste below" },
+    ["pu"] = { 'O<Esc>:normal p:let @+=@0<CR>:let @"=@0<CR>', "Paste above" },
+    ["DD"] = {
       [["_dd"]],
       "Delete single line without overwriting reg",
     },
@@ -204,10 +397,10 @@ M.general = {
       "Search and replace",
     },
     ["sa"] = { "G$Vgg", "Select all" },
-    ["<leader>so"] = { ":source %<CR>", "Source the current file" },
-    ["<leader>ya"] = { "<cmd>%y<CR>" },
     ["<leader>da"] = { "G$Vgg_d" },
     ["<leader>ef"] = { "va{<ESC>" },
+    ["el"] = { "$" },
+    ["sl"] = { "_" },
 
     -- splits
     ["<leader>v"] = { "<cmd>vsplit<CR>" },
@@ -217,21 +410,16 @@ M.general = {
     ["<leader>wq"] = { "<cmd>wqa!<CR>" },
     ["<leader>w"] = { "<cmd>wa<CR>" },
     ["<leader>q"] = { "<cmd>q!<CR>" },
+    ["<leader>so"] = { ":source %<CR>", "Source the current file" },
+    ["<leader>ya"] = { "<cmd>%y<CR>" },
 
-    ["[d"] = { "<cmd>lua vim.diagnostic.goto_prev()<CR>" },
-    ["]d"] = { "<cmd>lua vim.diagnostic.goto_next()<CR>" },
-
-    ["el"] = { "$" },
-    ["sl"] = { "_" },
-
-    ["<leader>ts"] = { "<cmd>set spell!<CR>", desc = "Toggle spell check" },
+    -- open files
     ["<leader>env"] = {
       function()
-        utils.openOrCreateFiles { ".env", ".env.local" }
+        utils.openOrCreateFiles { ".env", ".env.local", "development.env" }
       end,
       "Open .env file",
     },
-
     ["<leader>gi"] = {
       function()
         utils.openOrCreateFiles { ".gitignore" }
@@ -239,11 +427,18 @@ M.general = {
       "Open .gitignore file",
     },
 
+    -- copy to clipboard
     ["<leader>cd"] = {
       function()
         utils.copyDiagnosticToClip()
       end,
       "Copy diagnostic to clipboard",
+    },
+    ["<leader>ct"] = {
+      function()
+        utils.copyTypeDefinition()
+      end,
+      "Copy type defination to clipboard",
     },
     ["<leader>cln"] = {
       function()
@@ -256,6 +451,12 @@ M.general = {
   },
 
   v = {
+    ["<A-j>"] = { "6j", "Move 6 lines down" },
+    ["<A-k>"] = { "6k", "Move 6 lines up" },
+    ["<leader>w$"] = {
+      'c${<C-r>"}<Esc>',
+      "Wrap selection with ${} and return to normal mode",
+    },
     -- NOTE: added this here because core ones were not working
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
 
@@ -307,6 +508,8 @@ M.general = {
   },
 
   x = {
+    ["<A-j>"] = { "6j", "Move 6 lines down" },
+    ["<A-k>"] = { "6k", "Move 6 lines up" },
     ["<leader>rr"] = {
       function()
         require("telescope").extensions.refactoring.refactors()
@@ -314,7 +517,7 @@ M.general = {
       "Open refactoring options with Telescope",
     },
 
-    ["<leader>d"] = {
+    ["DD"] = {
       [["_d"]],
       "Delete without overwriting register",
     },

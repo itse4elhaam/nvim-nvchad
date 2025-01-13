@@ -1,22 +1,16 @@
 - code snippets taker
-- non working null_ls tools
-- shift to mini tools
 - zen mode??
-- can the lgit work in the background in case of push or anything?
 - how to zoom into a pan?
-- grug far should open in its own buffer
 - prose lint, write_good and alex
-- btw.nvim should show up if not files are open
-- space on the right when nvim-tree opens up
 - use markdown previwer
 - html folding
 - fold all funcs
-- notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
-
 - reduce plugins
 - replace/customize statusline
 - yanky.nvim conf
 - load times man??
+- non harpoon tabs
+- harpoon files instead of auto session - put on reddit too maybe?
 - <> </>
 - use delta
 
@@ -24,11 +18,44 @@ ON WORK LAPTOP
 
 - typescript tools no code actions
 - ufo unable to fold html tags
-- formatting not correct
+- upgrade to v0.11
+- oil.nvim
+- clean up mappings
+- files sorted by lru
+- study mini.nvim
+- nullls automatically generated file - solved ?
+- vim.notify
+- all mini tools?
+- log watcher in timber.nvim
+- remove all consoles from a file/ask before doing it - with timber.nvim?
+- more raw stuff, less reliance on plugins
+- convert into ${}
+- better delta
+- plugin to have similar mappings between tmux and neovim panes
+- reconsider smear cursor
+
+MY PLUGIN:
+- null-check.nvim ????
+
+<!-- articles -->
+fixes cmd neovim
+- https://www.reddit.com/r/neovim/s/qyKbIjYlGH https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
+- https://www.reddit.com/r/neovim/s/DV1LRgsCFA
+- notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
 <!-- plugins to install -->
 
-- https://github.com/andrewferrier/debugprint.nvim
-- https://github.com/Goose97/timber.nvim
+install and check these out
+- https://dotfyle.com/chrisgrieser
+- https://github.com/kndndrj/nvim-dbee
+- https://github.com/Xemptuous/sqlua.nvim
+
+- https://github.com/mikavilpas/blink-ripgrep.nvim
+- does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
+- https://github.com/echasnovski/mini.nvim/blob/2d0f10540efdbb1f5c480ebe19ce4de451936a5d/doc/mini-surround.txt#L501
+- https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
 - https://github.com/ggandor/leap.nvim
 - https://github.com/stevearc/resession.nvim
+- https://github.com/allcentury/telescope_csearch.nvim
+- https://github.com/chrisgrieser/nvim-early-retirement
+- https://github.com/nvim-telescope/telescope-frecency.nvim
