@@ -2,6 +2,15 @@ local load_mappings = require("core.utils").load_mappings
 
 local plugins = {
   -- text editing
+  {
+    "chrisgrieser/nvim-various-textobjs",
+    event = "VeryLazy",
+    opts = {
+      keymaps = {
+        useDefaults = true,
+      },
+    },
+  },
   { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
