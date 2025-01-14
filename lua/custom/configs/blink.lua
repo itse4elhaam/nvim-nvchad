@@ -1,12 +1,12 @@
 local opts = {
   completion = {
+    trigger = {
+      show_on_insert_on_trigger_character = false,
+    },
     accept = {
       -- experimental auto-brackets support
       auto_brackets = {
         enabled = true,
-      },
-      trigger = {
-        show_on_insert_on_trigger_character = false,
       },
     },
     menu = {
