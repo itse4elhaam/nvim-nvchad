@@ -323,6 +323,7 @@ M.general = {
       "Open undo history using Telescope",
     },
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", "Find buffer commits" },
+    ["<leader>gvh"] = { "<cmd>Gitsigns select_hunk<CR>", "Visual selection for the git hunk" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
