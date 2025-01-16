@@ -189,7 +189,7 @@ M.general = {
   n = {
 
     -- plugin specifics:
-    ["<leader>du"] = { "<cmd>DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
+    ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     -- ufo
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
@@ -222,6 +222,7 @@ M.general = {
     ["<leader>tp"] = { "<cmd>tabprevious<CR>", "Go to previous tab" },
     ["<leader>t1"] = { "<cmd>tabn 1<CR>", "Go to tab 1" },
     ["<leader>t2"] = { "<cmd>tabn 2<CR>", "Go to tab 2" },
+    ["<leader>t3"] = { "<cmd>tabn 2<CR>", "Go to tab 3" },
 
     ["<leader>tdg"] = {
       function()
@@ -323,6 +324,7 @@ M.general = {
       "Open undo history using Telescope",
     },
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", "Find buffer commits" },
+    ["<leader>gvh"] = { "<cmd>Gitsigns select_hunk<CR>", "Visual selection for the git hunk" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
