@@ -11,7 +11,7 @@ local plugins = {
       },
     },
   },
-  { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
+  { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
     lazy = false,
@@ -62,12 +62,11 @@ local plugins = {
     end,
   },
   {
-    "echasnovski/mini.pairs",
+    "windwp/nvim-autopairs",
     event = "InsertEnter",
-    version = "*",
-    config = function()
-      require("mini.pairs").setup()
-    end,
+    config = true,
+    opts = {},
+    -- this is equivalent to setup({}) function
   },
   {
     "rmagatti/alternate-toggler",
@@ -389,7 +388,7 @@ local plugins = {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -403,7 +402,7 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  { "akinsho/git-conflict.nvim",                version = "*", config = true, event = "VeryLazy" },
+  { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
 
   {
     "chrisgrieser/nvim-rip-substitute",
@@ -458,7 +457,7 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
-  { "wakatime/vim-wakatime",     lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
 }
 
 return plugins
