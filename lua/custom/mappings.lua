@@ -460,6 +460,12 @@ M.general = {
       end,
       "Open .gitignore file",
     },
+    ["<leader>mk"] = {
+      function()
+        utils.openOrCreateFiles { "Makefile" }
+      end,
+      "Open .gitignore file",
+    },
 
     -- copy to clipboard
     ["<leader>cd"] = {
