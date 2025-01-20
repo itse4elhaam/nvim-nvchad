@@ -3,32 +3,16 @@ local config = function()
     log_templates = {
       default = {
         typescript = [[
-  console.log(`
-    %filename:%line_number
-    %log_target ->
-    ${%log_target}
-  `)
+console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
 ]],
         javascript = [[
-  console.log(`
-    %filename:%line_number
-    %log_target ->
-    ${%log_target}
-  `)
+console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
 ]],
         jsx = [[
-  console.log(`
-    %filename:%line_number
-    %log_target ->
-    ${%log_target}
-  `)
+console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
 ]],
         tsx = [[
-  console.log(`
-    %filename:%line_number
-    %log_target ->
-    ${%log_target}
-  `)
+console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
 ]],
       },
     },
