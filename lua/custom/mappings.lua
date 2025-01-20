@@ -367,6 +367,14 @@ M.general = {
     ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
     ["<A-j>"] = { "6j", "Move 6 lines down" },
     ["<A-k>"] = { "6k", "Move 6 lines up" },
+    ["<leader>ex"] = {
+      "<cmd>execute 'normal! Iexport '<CR>",
+      "Add 'export' at the start of the current line",
+    },
+    ["<leader>exd"] = {
+      "<cmd>execute 'normal! Iexport default '<CR>",
+      "Add 'export default' at the start of the current line",
+    },
     ["<leader>,"] = { "mzA,<Esc>`z", "Add comma to the end of the line" },
     ["<leader>;"] = { "mzA;<Esc>`z", "Add comma to the end of the line" },
     ["<leader>uc"] = {
