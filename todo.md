@@ -2,8 +2,6 @@
 - zen mode??
 - how to zoom into a pan?
 - prose lint, write_good and alex
-- use markdown previwer
-- html folding
 - fold all funcs
 - reduce plugins
 - replace/customize statusline
@@ -14,20 +12,13 @@
 - <> </>
 - ufo unable to fold html tags
 - upgrade to v0.11
-- oil.nvim
-- clean up mappings
-- files sorted by lru
 - study mini.nvim
 - nullls automatically generated file - solved ?
 - vim.notify
-- all mini tools?
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
 - more raw stuff, less reliance on plugins
-- convert into ${}
-- better delta
 - plugin to have similar mappings between tmux and neovim panes
-- reconsider smear cursor
 - consider nvim-chainsaw instead of timer.nvim
 - look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
 
