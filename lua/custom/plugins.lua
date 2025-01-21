@@ -317,6 +317,19 @@ local plugins = {
 
   -- Misc
   {
+    "Pocco81/true-zen.nvim",
+    cmd = {
+      "TZNarrow",
+      "TZFocus",
+      "TZMinimalist",
+      "TZAtaraxis",
+    },
+    config = function()
+      require("true-zen").setup {}
+    end,
+    keys = load_mappings "true_zen",
+  },
+  {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,

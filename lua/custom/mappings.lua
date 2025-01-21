@@ -185,6 +185,34 @@ M.rulebook = {
   },
 }
 
+M.true_zen = {
+  plugin = true,
+  n = {
+    ["<leader>znn"] = {
+      "<cmd>TZNarrow<CR>",
+      "Enable TZNarrow in normal mode",
+    },
+    ["<leader>znf"] = {
+      "<cmd>TZFocus<CR>",
+      "Enable TZFocus in normal mode",
+    },
+    ["<leader>znm"] = {
+      "<cmd>TZMinimalist<CR>",
+      "Enable TZMinimalist in normal mode",
+    },
+    ["<leader>zna"] = {
+      "<cmd>TZAtaraxis<CR>",
+      "Enable TZAtaraxis in normal mode",
+    },
+  },
+  v = {
+    ["<leader>znn"] = {
+      ":'<,'>TZNarrow<CR>",
+      "Enable TZNarrow in visual mode",
+    },
+  },
+}
+
 M.general = {
   n = {
 
