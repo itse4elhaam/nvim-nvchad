@@ -1,21 +1,21 @@
 local config = function()
   require("timber").setup {
-    log_templates = {
-      default = {
-        typescript = [[
-console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
-]],
-        javascript = [[
-console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
-]],
-        jsx = [[
-console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
-]],
-        tsx = [[
-console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
-]],
-      },
-    },
+    --     log_templates = {
+    --       default = {
+    --         typescript = [[
+    -- console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
+    -- ]],
+    --         javascript = [[
+    -- console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
+    -- ]],
+    --         jsx = [[
+    -- console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
+    -- ]],
+    --         tsx = [[
+    -- console.log("\n\n%filename:%line_number\n%log_target ->\n" , %log_target , "\n\n");
+    -- ]],
+    --       },
+    --     },
     batch_log_templates = {
       default = {
         javascript = [[console.table({ %repeat<"%log_target": %log_target><, > })]],
