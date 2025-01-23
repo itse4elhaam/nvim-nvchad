@@ -2,9 +2,9 @@ local null_ls = require "null-ls"
 
 local opts = {
   sources = {
-    null_ls.builtins.formatting.gofumpt.with({ temp_dir = '/tmp', }),
-    null_ls.builtins.formatting.goimports_reviser.with({ temp_dir = '/tmp', }),
-    null_ls.builtins.formatting.golines.with({ temp_dir = '/tmp', }),
+    null_ls.builtins.formatting.gofumpt.with { temp_dir = "/tmp" },
+    null_ls.builtins.formatting.goimports_reviser.with { temp_dir = "/tmp" },
+    null_ls.builtins.formatting.golines.with { temp_dir = "/tmp" },
     null_ls.builtins.formatting.black.with {
       filetypes = { "python" },
     },
@@ -19,7 +19,7 @@ local opts = {
     -- null_ls.builtins.diagnostics.checkmake,
     -- null_ls.builtins.diagnostics.ruff,
     null_ls.builtins.formatting.beautysh,
-    -- null_ls.builtins.diagnostics.eslint,
+    null_ls.builtins.diagnostics.eslint,
   },
   on_attach = function(client, bufnr)
     if client.supports_method "textDocument/formatting" then
