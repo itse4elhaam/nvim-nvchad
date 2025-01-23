@@ -90,7 +90,7 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
 
 vim.api.nvim_create_autocmd("CmdlineEnter", {
   callback = function()
-    vim.api.nvim_set_keymap('c', '<CR>', '<CR>', { noremap = true, silent = true })
+    vim.api.nvim_set_keymap("c", "<CR>", "<CR>", { noremap = true, silent = true })
   end,
 })
 
@@ -119,3 +119,16 @@ vim.api.nvim_create_user_command(
   end,
   { desc = "Test the custom LSP client: learninglsp" } -- Optional description
 )
+
+local eslint_active = true
+
+vim.api.nvim_create_user_command("ToggleESLint", function()
+  eslint_active = not eslint_active
+  if eslint_active then
+    vim.lsp.start_client { name = "eslint" }
+    print "ESLint enabled"
+  else
+    vim.lsp.stop_client(vim.lsp.get_active_clients({ name = "eslint" })[1].id)
+    print "ESLint disabled"
+  end
+end, {})
