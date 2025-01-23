@@ -216,8 +216,8 @@ M.true_zen = {
 M.general = {
   n = {
 
-    ["<leader>tmt"] = { ":silent !tmuxt", "Toggle tmux status bar" },
-    ["<leader>poc"] = { ":silent !git poc", "Push to the current brancToggle tmux status barh" },
+    ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
+    ["<leader>poc"] = { ":silent !git poc &<CR>", "Push to the current branch in the background" },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     -- ufo
