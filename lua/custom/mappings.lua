@@ -216,6 +216,8 @@ M.true_zen = {
 M.general = {
   n = {
 
+    ["<leader>tmt"] = { ":silent !tmuxt", "Toggle tmux status bar" },
+    ["<leader>poc"] = { ":silent !git poc", "Push to the current brancToggle tmux status barh" },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     -- ufo
@@ -571,8 +573,6 @@ M.general = {
       [["_d"]],
       "Delete without overwriting register",
     },
-    ["<leader>tmt"] = { ":silent !tmuxt", "Toggle tmux status bar" },
-    ["<leader>poc"] = { ":silent !git poc", "Push to the current branch" },
     ["<"] = { "<gv" },
     [">"] = { ">gv" },
     ["J"] = {
