@@ -571,7 +571,7 @@ M.general = {
       [["_d"]],
       "Delete without overwriting register",
     },
-    ["<leader>tmt"] = { ":silent !tmux set-option status #{?status,on,off}<CR>", "Toggle tmux status bar" },
+    ["<leader>tmt"] = { ":silent !tmuxt", "Toggle tmux status bar" },
     ["<"] = { "<gv" },
     [">"] = { ">gv" },
     ["J"] = {
