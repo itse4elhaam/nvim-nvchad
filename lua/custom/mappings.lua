@@ -572,6 +572,7 @@ M.general = {
       "Delete without overwriting register",
     },
     ["<leader>tmt"] = { ":silent !tmuxt", "Toggle tmux status bar" },
+    ["<leader>poc"] = { ":silent !git poc", "Push to the current branch" },
     ["<"] = { "<gv" },
     [">"] = { ">gv" },
     ["J"] = {
