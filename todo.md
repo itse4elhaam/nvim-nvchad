@@ -1,9 +1,7 @@
 - code snippets taker
-- zen mode??
 - how to zoom into a pan?
 - prose lint, write_good and alex
 - fold all funcs
-- reduce plugins
 - replace/customize statusline
 - yanky.nvim conf
 - load times man??
