@@ -120,7 +120,7 @@ vim.api.nvim_create_user_command(
   { desc = "Test the custom LSP client: learninglsp" } -- Optional description
 )
 
-local eslint_active = true
+local eslint_active = false
 
 vim.api.nvim_create_user_command("ToggleESLint", function()
   eslint_active = not eslint_active
