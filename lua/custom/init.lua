@@ -132,3 +132,12 @@ vim.api.nvim_create_user_command("ToggleESLint", function()
     print "ESLint disabled"
   end
 end, {})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    if string.find(vim.bo.filetype, "sql") then
+      vim.bo.commentstring = "-- %s"
+    end
+  end,
+})
