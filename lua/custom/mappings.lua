@@ -215,7 +215,10 @@ M.true_zen = {
 
 M.general = {
   n = {
-
+    ["<leader>wpt"] = {
+      "viwocPromise<<Esc>pa><Esc>",
+      "Wrap selected type in Promise<>",
+    },
     ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
     ["<leader>poc"] = { ":silent !git poc &<CR>", "Push to the current branch in the background" },
     -- plugin specifics:
