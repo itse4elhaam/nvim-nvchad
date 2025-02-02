@@ -42,6 +42,7 @@ install and check these out
 - https://github.com/kndndrj/nvim-dbee
 - https://github.com/Xemptuous/sqlua.nvim
 - https://github.com/chrisgrieser/nvim-chainsaw
+- https://github.com/nvzone/typr
 
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
