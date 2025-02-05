@@ -7,11 +7,7 @@
 - load times man??
 - non harpoon tabs
 - harpoon files instead of auto session - put on reddit too maybe?
-- <> </>
-- use delta
-
 ON WORK LAPTOP
-
 - ufo unable to fold html tags
 - upgrade to v0.11
 - study mini.nvim
@@ -23,6 +19,7 @@ ON WORK LAPTOP
 - plugin to have similar mappings between tmux and neovim panes
 - consider nvim-chainsaw instead of timer.nvim
 - look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
+- what about visual block mode?
 
 MY PLUGIN:
 - null-check.nvim ????
