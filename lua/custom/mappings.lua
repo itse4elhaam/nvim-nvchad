@@ -417,6 +417,12 @@ M.general = {
       end,
       "Add 'use client' to the top of the file",
     },
+    ["<leader>sh"] = {
+      function()
+        utils.prepareBashFile()
+      end,
+      "Add 'use client' to the top of the file",
+    },
     ["<leader>us"] = {
       function()
         utils.addDirective "use server"
