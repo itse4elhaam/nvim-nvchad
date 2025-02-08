@@ -348,7 +348,7 @@ M.general = {
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
-    ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find command history" },
+    ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find diagnostics" },
     ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
     ["<leader>fcm"] = { "<cmd> Telescope commands <CR>", "Find command history" },
     ["<leader>flr"] = { "<cmd> Telescope lsp_references <CR>", "LSP References" },
@@ -404,6 +404,10 @@ M.general = {
     ["<leader>ex"] = {
       "<cmd>execute 'normal! Iexport '<CR>",
       "Add 'export' at the start of the current line",
+    },
+    ["<leader>asc"] = {
+      "<cmd>execute 'normal! Iasync '<CR>",
+      "Add 'async' at the start of the current line",
     },
     ["<leader>exd"] = {
       "<cmd>execute 'normal! Iexport default '<CR>",
