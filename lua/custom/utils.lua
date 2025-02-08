@@ -236,4 +236,26 @@ function M.copyCurrentScopeFunction()
   end
 end
 
+-- this add shebang on the top and makes the file executable
+function M.prepareBashFile()
+  local file = vim.api.nvim_buf_get_name(0)
+  if file == "" then
+    vim.notify("No file name detected", vim.log.levels.WARN)
+    return
+  end
+
+  vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#!/bin/bash" })
+  --  this makes sure that the file is on the disk
+  vim.cmd "write"
+
+  -- Make the file executable
+  local result = vim.fn.system("chmod +x " .. vim.fn.shellescape(file))
+
+  if vim.v.shell_error == 0 then
+    vim.notify("File made executable: " .. file, vim.log.levels.INFO)
+  else
+    vim.notify("Failed to make executable: " .. result, vim.log.levels.WARN)
+  end
+end
+
 return M

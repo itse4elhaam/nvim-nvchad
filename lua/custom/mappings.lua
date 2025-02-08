@@ -363,7 +363,7 @@ M.general = {
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
     ["<leader>ba"] = {
-      "<cmd>%bd|e#<CR>",
+      "<cmd>%bdelete|e#<CR>",
       "Close all other buffers except the current one",
     },
     -- GrugFar operations
@@ -414,6 +414,12 @@ M.general = {
     ["<leader>uc"] = {
       function()
         utils.addDirective "use client"
+      end,
+      "Add 'use client' to the top of the file",
+    },
+    ["<leader>sh"] = {
+      function()
+        utils.prepareBashFile()
       end,
       "Add 'use client' to the top of the file",
     },

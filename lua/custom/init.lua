@@ -141,3 +141,13 @@ vim.api.nvim_create_autocmd("FileType", {
     end
   end,
 })
+
+vim.api.nvim_create_autocmd("BufReadPost", {
+  pattern = "*",
+  callback = function()
+    local bufname = vim.api.nvim_buf_get_name(0)
+    if bufname:match "env" then
+      vim.lsp.stop_client(vim.lsp.get_clients { bufnr = 0 })
+    end
+  end,
+})
