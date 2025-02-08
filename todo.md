@@ -20,6 +20,7 @@ ON WORK LAPTOP
 - consider nvim-chainsaw instead of timer.nvim
 - look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
 - what about visual block mode?
+- mapping conflicts in :checkhealth
 
 MY PLUGIN:
 - null-check.nvim ????
@@ -40,7 +41,6 @@ install and check these out
 - https://github.com/Xemptuous/sqlua.nvim
 - https://github.com/chrisgrieser/nvim-chainsaw
 - https://github.com/nvzone/typr
-
 - https://github.com/mikavilpas/blink-ripgrep.nvim
 - does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
 - https://github.com/echasnovski/mini.nvim/blob/2d0f10540efdbb1f5c480ebe19ce4de451936a5d/doc/mini-surround.txt#L501
