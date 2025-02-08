@@ -421,7 +421,7 @@ M.general = {
       function()
         utils.prepareBashFile()
       end,
-      "Add 'use client' to the top of the file",
+      "Prepare a bash file by adding shebang and then allowing it to execute",
     },
     ["<leader>us"] = {
       function()
