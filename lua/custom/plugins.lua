@@ -347,6 +347,17 @@ local plugins = {
 
   -- Misc
   {
+    "Wansmer/treesj",
+    lazy = true,
+    cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
+    keys = {
+      { "gJ", "<cmd>TSJToggle<CR>", desc = "Toggle Split/Join" },
+    },
+    opts = {
+      use_default_keymaps = false,
+    },
+  },
+  {
     "gbprod/stay-in-place.nvim",
     lazy = false,
     config = true, -- run require("stay-in-place").setup()

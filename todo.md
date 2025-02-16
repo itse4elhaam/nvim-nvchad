@@ -26,6 +26,7 @@ ON WORK LAPTOP
 - install this https://github.com/mrjones2014/smart-splits.nvim
 - consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
+- https://github.com/ecosse3/nvim/blob/master/lua/plugins/tabout.lua
 
 MY PLUGIN:
 - null-check.nvim ????
