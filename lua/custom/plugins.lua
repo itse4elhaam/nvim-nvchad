@@ -347,6 +347,60 @@ local plugins = {
 
   -- Misc
   {
+    "chrisgrieser/nvim-scissors",
+    event = "BufEnter",
+    dependencies = "nvim-telescope/telescope.nvim",
+    opts = {
+      snippetDir = vim.fn.stdpath "config" .. "/snippets",
+    },
+    keys = {
+      "<Leader>asa",
+      "<Leader>ase",
+    },
+    config = function()
+      local present, wk = pcall(require, "which-key")
+      if not present then
+        return
+      end
+
+      wk.add {
+        { "<leader>as", group = "Snippets", nowait = false, remap = false },
+        {
+          "<leader>asa",
+          '<cmd>lua require("scissors").addNewSnippet()<CR>',
+          desc = "Add new snippet",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>ase",
+          '<cmd>lua require("scissors").editSnippet()<CR>',
+          desc = "Edit snippet",
+          nowait = false,
+          remap = false,
+        },
+      }
+
+      wk.add {
+        {
+          "<leader>as",
+          group = "Snippets",
+          mode = "x",
+          nowait = false,
+          remap = false,
+        },
+        {
+          "<leader>asa",
+          '<cmd>lua require("scissors").addNewSnippet()<CR>',
+          desc = "Add new snippet from selection",
+          mode = "x",
+          nowait = false,
+          remap = false,
+        },
+      }
+    end,
+  },
+  {
     "vuki656/package-info.nvim",
     event = "BufEnter package.json",
     opts = {
@@ -361,10 +415,6 @@ local plugins = {
       hide_up_to_date = true, -- It hides up to date versions when displaying virtual text
       hide_unstable_versions = true, -- It hides unstable versions from version list e.g next-11.1.3-canary3
 
-      -- Can be `npm` or `yarn`. Used for `delete`, `install` etc...
-      -- The plugin will try to auto-detect the package manager based on
-      -- `yarn.lock` or `package-lock.json`. If none are found it will use the
-      -- provided one,                              if nothing is provided it will use `yarn`
       package_manager = "yarn",
     },
   },
