@@ -71,12 +71,30 @@ M.multiGrep = function(opts)
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
   opts.shortcuts = opts.shortcuts
     or {
-      ["l"] = "*.lua",
       ["v"] = "*.vim",
       ["n"] = "*.{vim,lua}",
       ["c"] = "*.c",
       ["r"] = "*.rs",
       ["g"] = "*.go",
+      ["js"] = "*.{js,jsx}",
+      ["json"] = "*.json",
+      ["l"] = "*.lua",
+      ["lua"] = "*.lua",
+      ["md"] = "*.md",
+      ["styles"] = "{styles.tsx,styles.ts,styles.js,*.styles.tsx,*.styles.ts,*.styles.js}",
+      ["stories"] = "{stories.tsx,stories.ts,stories.js,*.stories.tsx,*.stories.ts,*.stories.js}",
+      ["test"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+      ["tests"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+      ["typescript"] = "*.ts",
+      ["ts"] = {
+        "*.{ts,tsx}",
+        "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+      },
+      ["tsx"] = {
+        "*.tsx",
+        "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+      },
+      ["xml"] = "*.xml",
     }
   opts.pattern = opts.pattern or "%s"
 
