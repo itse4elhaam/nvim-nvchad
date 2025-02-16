@@ -347,6 +347,11 @@ local plugins = {
 
   -- Misc
   {
+    "gbprod/stay-in-place.nvim",
+    lazy = false,
+    config = true, -- run require("stay-in-place").setup()
+  },
+  {
     "chrisgrieser/nvim-scissors",
     event = "BufEnter",
     dependencies = "nvim-telescope/telescope.nvim",
