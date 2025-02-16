@@ -347,10 +347,20 @@ local plugins = {
 
   -- Misc
   {
+    "chentoast/marks.nvim",
+    event = "BufEnter",
+    config = true,
+  },
+  {
     "j-hui/fidget.nvim",
     opts = {
       -- options
     },
+  },
+  {
+    "nacro90/numb.nvim",
+    lazy = false,
+    opts = {},
   },
   {
     "MaximilianLloyd/tw-values.nvim",
