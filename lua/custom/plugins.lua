@@ -326,6 +326,12 @@ local plugins = {
 
   -- Misc
   {
+    "j-hui/fidget.nvim",
+    opts = {
+      -- options
+    },
+  },
+  {
     "MaximilianLloyd/tw-values.nvim",
     keys = {
       { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },

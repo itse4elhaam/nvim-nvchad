@@ -15,6 +15,22 @@ local keys = function()
       end,
       desc = "Harpoon Quick Menu",
     },
+    {
+      "<Leader>[",
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():prev()
+      end,
+      desc = "Harpoon Prev",
+    },
+    {
+      "<Leader>]",
+      function()
+        local harpoon = require "harpoon"
+        harpoon:list():next()
+      end,
+      desc = "Harpoon Next",
+    },
   }
 
   for i = 1, 9 do

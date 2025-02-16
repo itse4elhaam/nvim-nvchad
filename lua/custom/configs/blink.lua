@@ -1,7 +1,16 @@
 local opts = {
   completion = {
     trigger = {
-      show_on_insert_on_trigger_character = false,
+      -- When true, will show the completion window after typing a trigger character
+      show_on_trigger_character = true,
+      -- When both this and show_on_trigger_character are true, will show the completion window
+      -- when the cursor comes after a trigger character when entering insert mode
+      show_on_insert_on_trigger_character = true,
+      -- List of trigger characters (on top of `show_on_blocked_trigger_characters`) that won't trigger
+      -- the completion window when the cursor comes after a trigger character when
+      -- entering insert mode/accepting an item
+      show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
+      -- or a function, similar to show_on_blocked_trigger_character
     },
     accept = {
       -- experimental auto-brackets support
