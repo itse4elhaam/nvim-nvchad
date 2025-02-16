@@ -417,7 +417,12 @@ local plugins = {
     end,
   },
   {
+    "MunifTanjim/nui.nvim",
+    lazy = true, -- Load only when needed
+  },
+  {
     "vuki656/package-info.nvim",
+    dependencies = { "MunifTanjim/nui.nvim" },
     event = "BufEnter package.json",
     opts = {
       colors = {

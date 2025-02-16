@@ -315,6 +315,12 @@ M.general = {
       end,
       "Live grep current word",
     },
+    ["<leader>fpk"] = {
+      function()
+        require("telescope").extensions.package_info.package_info()
+      end,
+      "Show package info",
+    },
     ["<leader>fk"] = {
       function()
         require("telescope.builtin").keymaps()
