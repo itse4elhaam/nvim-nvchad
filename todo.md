@@ -27,6 +27,7 @@ ON WORK LAPTOP
 - consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/tabout.lua
+- optimize this for fe by studyying ecovim
 
 MY PLUGIN:
 - null-check.nvim ????
