@@ -22,6 +22,10 @@ ON WORK LAPTOP
 - what about visual block mode?
 - mapping conflicts in :checkhealth
 - think of this https://github.com/ecosse3/nvim/blob/master/lua/plugins/formatting.lua
+- replace autosession with this https://github.com/ecosse3/nvim/blob/master/lua/plugins/session-manager.lua
+- install this https://github.com/mrjones2014/smart-splits.nvim
+- consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
+- https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
 
 MY PLUGIN:
 - null-check.nvim ????
