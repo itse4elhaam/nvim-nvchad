@@ -21,6 +21,7 @@ ON WORK LAPTOP
 - look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
 - what about visual block mode?
 - mapping conflicts in :checkhealth
+- think of this https://github.com/ecosse3/nvim/blob/master/lua/plugins/formatting.lua
 
 MY PLUGIN:
 - null-check.nvim ????
