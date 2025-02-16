@@ -197,7 +197,15 @@ local plugins = {
   {
     "pmizio/typescript-tools.nvim",
     lazy = false,
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "neovim/nvim-lspconfig",
+      {
+        "saghen/blink.cmp",
+        lazy = false,
+        priority = 1000,
+      },
+    },
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
     opts = {},
   },
@@ -317,6 +325,28 @@ local plugins = {
   },
 
   -- Misc
+  {
+    "MaximilianLloyd/tw-values.nvim",
+    keys = {
+      { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },
+    },
+    opts = {
+      border = "rounded", -- Valid window border style,
+      show_unknown_classes = true, -- Shows the unknown classes popup
+    },
+  },
+  {
+    "dmmulroy/ts-error-translator.nvim",
+    config = true,
+  },
+  {
+    "razak17/tailwind-fold.nvim",
+    opts = {
+      min_chars = 50,
+    },
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    ft = { "html", "svelte", "astro", "vue", "typescriptreact" },
+  },
   {
     "Pocco81/true-zen.nvim",
     cmd = {
