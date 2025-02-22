@@ -21,5 +21,6 @@ return {
     "grammarly-languageserver",
     "bash-language-server",
     "prettierd",
+    "lua-language-server",
   },
 }
