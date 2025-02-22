@@ -222,6 +222,20 @@ M.general = {
     ["T"] = { "<cmd>b#<CR>", "Open last closed buffer" },
     ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
     ["<leader>poc"] = { ":silent !git poc &<CR>", "Push to the current branch in the background" },
+    ["<leader>acp"] = {
+      function()
+        vim.ui.input({ prompt = "Commit message: " }, function(msg)
+          if msg and msg ~= "" then
+            local cmd = "git acp " .. vim.fn.shellescape(msg) .. " &"
+            vim.fn.system(cmd) -- Run silently in the background
+            print("✅ Committing & pushing: " .. msg)
+          else
+            print "❌ Commit aborted: No message provided."
+          end
+        end)
+      end,
+      "Git commit & push",
+    },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     -- ufo
@@ -410,6 +424,7 @@ M.general = {
       function()
         local file = vim.fn.expand "<cfile>"                -- Get the file/URL under cursor
         local escaped_file = vim.fn.shellescape(file, true) -- Escape it safely
+        vim.fn.system("wslview " .. escaped_file .. " &")   -- Escape it safely
         vim.fn.system("wslview " .. escaped_file .. " &")   -- Run in background
       end,
       "Open file with xdg-open silently",
