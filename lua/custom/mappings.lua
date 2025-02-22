@@ -424,7 +424,6 @@ M.general = {
       function()
         local file = vim.fn.expand "<cfile>"                -- Get the file/URL under cursor
         local escaped_file = vim.fn.shellescape(file, true) -- Escape it safely
-        vim.fn.system("wslview " .. escaped_file .. " &")   -- Escape it safely
         vim.fn.system("wslview " .. escaped_file .. " &")   -- Run in background
       end,
       "Open file with xdg-open silently",
