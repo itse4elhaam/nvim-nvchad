@@ -22,7 +22,6 @@ ON WORK LAPTOP
 - what about visual block mode?
 - mapping conflicts in :checkhealth
 - think of this https://github.com/ecosse3/nvim/blob/master/lua/plugins/formatting.lua
-- replace autosession with this https://github.com/ecosse3/nvim/blob/master/lua/plugins/session-manager.lua
 - install this https://github.com/mrjones2014/smart-splits.nvim
 - consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
@@ -34,9 +33,7 @@ MY PLUGIN:
 - null-check.nvim ????
 
 <!-- articles -->
-fixes cmd neovim
-- https://www.reddit.com/r/neovim/s/qyKbIjYlGH 
-- https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable
+- https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable -> plugins not working with require
 - https://www.reddit.com/r/neovim/s/DV1LRgsCFA
 - notes in neovim?? - https://www.youtube.com/watch?v=5ht8NYkU9wQ
 
