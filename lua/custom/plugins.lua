@@ -13,6 +13,7 @@ local plugins = {
   },
   {
     "sphamba/smear-cursor.nvim",
+    enabled = vim.g.fancyScroll,
     lazy = false,
     opts = {},
   },
@@ -560,7 +561,7 @@ local plugins = {
       lazygit = { enabled = true },
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
-      scroll = { enabled = true },
+      scroll = { enabled = vim.g.fancyScroll },
     },
     keys = load_mappings "snacks",
   },
