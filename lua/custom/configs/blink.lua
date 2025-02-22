@@ -1,9 +1,17 @@
 local opts = {
+  enabled = function()
+    return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
+  end,
   cmdline = {
     keymap = {
       preset = "super-tab",
       ["<Tab>"] = { "show", "select_next", "fallback" },
       ["<S-Tab>"] = { "select_prev", "fallback" },
+    },
+    completion = {
+      menu = {
+        auto_show = false,
+      },
     },
   },
   completion = {
@@ -16,7 +24,7 @@ local opts = {
       -- List of trigger characters (on top of `show_on_blocked_trigger_characters`) that won't trigger
       -- the completion window when the cursor comes after a trigger character when
       -- entering insert mode/accepting an item
-      show_on_x_blocked_trigger_characters = { "'", '"', "(", "{" },
+      show_on_x_blocked_trigger_characters = { "'", '"', "(", "{", ">" },
       -- or a function, similar to show_on_blocked_trigger_character
     },
     accept = {
