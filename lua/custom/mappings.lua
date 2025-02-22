@@ -369,7 +369,9 @@ M.general = {
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
     ["<leader>ba"] = {
-      "<cmd>mark z | keepjumps %bd | e# | bd# | keepjumps normal! 'z<CR>",
+      function()
+        utils.closeOtherBuffers()
+      end,
       "Close all other buffers except the current one and retain position",
     },
     -- GrugFar operations

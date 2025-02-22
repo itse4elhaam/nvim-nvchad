@@ -28,6 +28,7 @@ ON WORK LAPTOP
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/tabout.lua
 - optimize this for fe by studyying ecovim
 - disable completion in <leadeR>ra
+- use refacorting.nvim and various text objects more
 
 MY PLUGIN:
 - null-check.nvim ????

@@ -70,32 +70,32 @@ M.multiGrep = function(opts)
   opts = opts or {}
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
   opts.shortcuts = opts.shortcuts
-    or {
-      ["v"] = "*.vim",
-      ["n"] = "*.{vim,lua}",
-      ["c"] = "*.c",
-      ["r"] = "*.rs",
-      ["g"] = "*.go",
-      ["js"] = "*.{js,jsx}",
-      ["json"] = "*.json",
-      ["l"] = "*.lua",
-      ["lua"] = "*.lua",
-      ["md"] = "*.md",
-      ["styles"] = "{styles.tsx,styles.ts,styles.js,*.styles.tsx,*.styles.ts,*.styles.js}",
-      ["stories"] = "{stories.tsx,stories.ts,stories.js,*.stories.tsx,*.stories.ts,*.stories.js}",
-      ["test"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
-      ["tests"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
-      ["typescript"] = "*.ts",
-      ["ts"] = {
-        "*.{ts,tsx}",
-        "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
-      },
-      ["tsx"] = {
-        "*.tsx",
-        "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
-      },
-      ["xml"] = "*.xml",
-    }
+      or {
+        ["v"] = "*.vim",
+        ["n"] = "*.{vim,lua}",
+        ["c"] = "*.c",
+        ["r"] = "*.rs",
+        ["g"] = "*.go",
+        ["js"] = "*.{js,jsx}",
+        ["json"] = "*.json",
+        ["l"] = "*.lua",
+        ["lua"] = "*.lua",
+        ["md"] = "*.md",
+        ["styles"] = "{styles.tsx,styles.ts,styles.js,*.styles.tsx,*.styles.ts,*.styles.js}",
+        ["stories"] = "{stories.tsx,stories.ts,stories.js,*.stories.tsx,*.stories.ts,*.stories.js}",
+        ["test"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+        ["tests"] = "*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+        ["typescript"] = "*.ts",
+        ["ts"] = {
+          "*.{ts,tsx}",
+          "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+        },
+        ["tsx"] = {
+          "*.tsx",
+          "!*{.test.tsx,.test.ts,.test.js,-test.tsx,-test.ts,-test.js}",
+        },
+        ["xml"] = "*.xml",
+      }
   opts.pattern = opts.pattern or "%s"
 
   local custom_grep = finders.new_async_job {
@@ -138,14 +138,14 @@ M.multiGrep = function(opts)
   }
 
   pickers
-    .new(opts, {
-      debounce = 100,
-      prompt_title = "Live Grep (with shortcuts)",
-      finder = custom_grep,
-      previewer = conf.grep_previewer(opts),
-      sorter = require("telescope.sorters").empty(),
-    })
-    :find()
+      .new(opts, {
+        debounce = 100,
+        prompt_title = "Live Grep (with shortcuts)",
+        finder = custom_grep,
+        previewer = conf.grep_previewer(opts),
+        sorter = require("telescope.sorters").empty(),
+      })
+      :find()
 end
 
 function M.copyTypeDefinition()
@@ -178,7 +178,7 @@ function M.copyTypeDefinition()
       annotation = "{ " .. annotation .. " }" -- Reconstruct curly brace block
     else
       -- Step 3: Try to extract type after ":" but before "=" or end of line
-      annotation = type_info:match ":([^=]*)" -- Match everything after ":"
+      annotation = type_info:match ":([^=]*)"        -- Match everything after ":"
       if annotation then
         annotation = annotation:match "^%s*(.-)%s*$" -- Trim spaces
       end
@@ -205,7 +205,7 @@ function M.copyTypeDefinition()
 end
 
 function M.addParentheses()
-  local word = vim.fn.expand "<cword>" -- Get the word under the cursor
+  local word = vim.fn.expand "<cword>"  -- Get the word under the cursor
   local word_with_paren = word .. "\\(" -- Add `\(` to it
   require("telescope.builtin").find_files {
     prompt_title = word_with_paren,
@@ -213,7 +213,7 @@ function M.addParentheses()
 end
 
 function M.addAngleBracket()
-  local word = vim.fn.expand "<cword>" -- Get the word under the cursor
+  local word = vim.fn.expand "<cword>"        -- Get the word under the cursor
   local word_with_angle_bracket = "<" .. word -- Add `<` to the start of it
   require("telescope.builtin").find_files {
     prompt_title = word_with_angle_bracket,
@@ -229,16 +229,16 @@ function M.copyCurrentScopeFunction()
 
   -- Regular expression to match function names (for languages like JavaScript, Python, etc.)
   local function_name = line_content:match "function%s+(%w+)"
-    or line_content:match "class%s+[%w_]+"
-    or line_content:match "def%s+(%w+)" -- for Python
+      or line_content:match "class%s+[%w_]+"
+      or line_content:match "def%s+(%w+)" -- for Python
 
   -- If no function name is found in the current line, try searching for the function name in previous lines
   if not function_name then
     for i = line_number, 1, -1 do
       local prev_line = vim.fn.getline(i)
       function_name = prev_line:match "function%s+(%w+)"
-        or prev_line:match "class%s+[%w_]+"
-        or prev_line:match "def%s+(%w+)" -- for Python
+          or prev_line:match "class%s+[%w_]+"
+          or prev_line:match "def%s+(%w+)" -- for Python
       if function_name then
         break
       end
@@ -274,6 +274,15 @@ function M.prepareBashFile()
   else
     vim.notify("Failed to make executable: " .. result, vim.log.levels.WARN)
   end
+end
+
+function M.closeOtherBuffers()
+  vim.cmd "mark z"               -- Save cursor position
+  vim.cmd "keepjumps %bd"        -- Delete all buffers
+  vim.cmd "e#"                   -- Reopen the last active buffer
+  vim.cmd "bd#"                  -- Delete the temporary buffer
+  vim.cmd "keepjumps normal! 'z" -- Restore cursor position
+  vim.cmd "delmark z"            -- deletes the mark
 end
 
 return M
