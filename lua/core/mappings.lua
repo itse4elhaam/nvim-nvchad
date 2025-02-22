@@ -183,14 +183,6 @@ M.lspconfig = {
       "LSP code action",
     },
 
-    -- TODO: is this needed
-    -- ["lr"] = {
-    --   function()
-    --     vim.lsp.buf.references()
-    --   end,
-    --   "LSP references",
-    -- },
-
     ["<leader>lf"] = {
       function()
         vim.diagnostic.open_float { border = "rounded" }

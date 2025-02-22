@@ -406,7 +406,14 @@ M.general = {
       end,
       "Wrap word under cursor with < />",
     },
-    ["gx"] = { "<CMD>execute '!wslview ' .. shellescape(expand('<cfile>'), v:true)<CR>", "Open file with xdg-open" },
+    ["<leader>gx"] = {
+      function()
+        local file = vim.fn.expand "<cfile>"                -- Get the file/URL under cursor
+        local escaped_file = vim.fn.shellescape(file, true) -- Escape it safely
+        vim.fn.system("wslview " .. escaped_file .. " &")   -- Run in background
+      end,
+      "Open file with xdg-open silently",
+    },
     ["<A-j>"] = { "6j", "Move 6 lines down" },
     ["<A-k>"] = { "6k", "Move 6 lines up" },
     ["<leader>ex"] = {

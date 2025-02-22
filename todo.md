@@ -16,7 +16,6 @@
 - plugin to have similar mappings between tmux and neovim panes
 - consider nvim-chainsaw instead of timer.nvim
 - look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
-- what about visual block mode?
 - mapping conflicts in :checkhealth
 - think of this https://github.com/ecosse3/nvim/blob/master/lua/plugins/formatting.lua
 - install this https://github.com/mrjones2014/smart-splits.nvim
