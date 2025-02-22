@@ -28,7 +28,6 @@ ON WORK LAPTOP
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/tabout.lua
 - optimize this for fe by studyying ecovim
-- disable cmp in cmd line mode
 - disable completion in <leadeR>ra
 
 MY PLUGIN:

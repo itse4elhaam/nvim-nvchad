@@ -1,7 +1,4 @@
 local opts = {
-  enabled = function()
-    return vim.bo.buftype ~= "prompt" and vim.b.completion ~= false
-  end,
   cmdline = {
     keymap = {
       preset = "super-tab",
