@@ -22,5 +22,6 @@ return {
     "bash-language-server",
     "prettierd",
     "lua-language-server",
+    "emmet-ls",
   },
 }

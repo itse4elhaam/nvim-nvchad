@@ -1,4 +1,11 @@
 local opts = {
+  cmdline = {
+    keymap = {
+      preset = "super-tab",
+      ["<Tab>"] = { "show", "select_next", "fallback" },
+      ["<S-Tab>"] = { "select_prev", "fallback" },
+    },
+  },
   completion = {
     trigger = {
       -- When true, will show the completion window after typing a trigger character

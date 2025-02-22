@@ -89,11 +89,11 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
   end,
 })
 
-vim.api.nvim_create_autocmd("CmdlineEnter", {
-  callback = function()
-    vim.api.nvim_set_keymap("c", "<CR>", "<CR>", { noremap = true, silent = true })
-  end,
-})
+-- vim.api.nvim_create_autocmd("CmdlineEnter", {
+--   callback = function()
+--     vim.api.nvim_set_keymap("c", "<CR>", "<CR>", { noremap = true, silent = true })
+--   end,
+-- })
 
 -- this is for testing the lsp I made
 function TestLearningLsp()
