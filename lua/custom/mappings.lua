@@ -582,13 +582,6 @@ M.general = {
       "Live grep visual selection",
     },
 
-    ["<leader>o"] = {
-      function()
-        utils.openClosestLink()
-      end,
-      "Open closest URL under cursor",
-    },
-
     ["<leader>d"] = {
       [["_d"]],
       "Delete without overwriting register",
