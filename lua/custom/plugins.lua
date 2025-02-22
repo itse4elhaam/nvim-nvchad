@@ -11,7 +11,12 @@ local plugins = {
       },
     },
   },
-  { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
+  {
+    "sphamba/smear-cursor.nvim",
+    lazy = false,
+    opts = {},
+  },
+  { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
     lazy = false,
@@ -179,6 +184,7 @@ local plugins = {
   },
   {
     "neovim/nvim-lspconfig",
+    event = "User FilePost",
     dependencies = { "saghen/blink.cmp" },
     config = function()
       require "plugins.configs.lspconfig"
@@ -217,7 +223,7 @@ local plugins = {
   },
   {
     "pmizio/typescript-tools.nvim",
-    lazy = false,
+    event = "VeryLazy",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",
@@ -427,13 +433,13 @@ local plugins = {
     opts = {
       colors = {
         up_to_date = "#3C4048", -- Text color for up to date package virtual text
-        outdated = "#fc514e", -- Text color for outdated package virtual text
+        outdated = "#fc514e",   -- Text color for outdated package virtual text
       },
       icons = {
-        enable = true, -- Whether to display icons
+        enable = true,               -- Whether to display icons
       },
-      autostart = true, -- Whether to autostart when `package.json` is opened
-      hide_up_to_date = true, -- It hides up to date versions when displaying virtual text
+      autostart = true,              -- Whether to autostart when `package.json` is opened
+      hide_up_to_date = true,        -- It hides up to date versions when displaying virtual text
       hide_unstable_versions = true, -- It hides unstable versions from version list e.g next-11.1.3-canary3
 
       package_manager = "yarn",
@@ -461,7 +467,7 @@ local plugins = {
       { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },
     },
     opts = {
-      border = "rounded", -- Valid window border style,
+      border = "rounded",          -- Valid window border style,
       show_unknown_classes = true, -- Shows the unknown classes popup
     },
   },
@@ -554,13 +560,14 @@ local plugins = {
       lazygit = { enabled = true },
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
+      scroll = { enabled = true },
     },
     keys = load_mappings "snacks",
   },
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -574,7 +581,7 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
+  { "akinsho/git-conflict.nvim",                version = "*", config = true, event = "VeryLazy" },
 
   {
     "chrisgrieser/nvim-rip-substitute",
@@ -629,7 +636,7 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",     lazy = false },
 }
 
 return plugins
