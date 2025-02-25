@@ -25,6 +25,7 @@
 - disable completion in <leader>ra
 - use refacorting.nvim and various text objects more
 - do something about large ts files
+- automagically detect the current new buffer type
 https://github.com/LintaoAmons/bookmarks.nvim
 
 - https://github.com/kndndrj/nvim-dbee and related stuff with projector as well and its completions as well
