@@ -143,6 +143,7 @@ local plugins = {
   },
   {
     "folke/trouble.nvim",
+    enabled = false,
     opts = {},
     cmd = "Trouble",
     keys = require "custom.configs.trouble",
@@ -289,6 +290,7 @@ local plugins = {
   },
   {
     "jdrupal-dev/code-refactor.nvim",
+    enabled = false,
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     -- keys = load_mappings "code_refactor",
     config = function()
@@ -605,14 +607,6 @@ local plugins = {
     config = function()
       require("grug-far").setup {}
     end,
-  },
-  {
-    "sindrets/diffview.nvim",
-    cmd = {
-      "DiffviewOpen",
-      "DiffviewClose",
-      "DiffviewOpen",
-    },
   },
   {
     "letieu/btw.nvim",
