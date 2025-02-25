@@ -282,6 +282,12 @@ M.general = {
     },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
+    ["<leader>db"] = {
+      function()
+        require("dbee").toggle()
+      end,
+      "Toggle Dadbod UI in a new tab",
+    },
     -- ufo
     ["zR"] = { "<cmd>lua require('ufo').openAllFolds()<CR>", "Open all folds" },
     ["zM"] = { "<cmd>lua require('ufo').closeAllFolds()<CR>", "Close all folds" },
