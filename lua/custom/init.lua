@@ -161,7 +161,7 @@ vim.api.nvim_create_autocmd("BufReadPost", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = { "nvcheatsheet", "neo-tree", "dbui" },
+  pattern = { "nvcheatsheet", "neo-tree", "dbui", "dbee" },
   callback = function()
     require("ufo").detach()
     vim.opt_local.foldenable = false
