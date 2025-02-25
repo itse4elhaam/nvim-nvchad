@@ -224,7 +224,7 @@ local plugins = {
   },
   {
     "pmizio/typescript-tools.nvim",
-    event = "VeryLazy",
+    event = "LspAttach",
     dependencies = {
       "nvim-lua/plenary.nvim",
       "neovim/nvim-lspconfig",
@@ -632,12 +632,12 @@ local plugins = {
   },
 
   -- utils
-  { "kevinhwang91/promise-async" },
+  { "kevinhwang91/promise-async", lazy = false },
   {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
-  { "wakatime/vim-wakatime",     lazy = false },
+  { "wakatime/vim-wakatime",      lazy = false },
 }
 
 return plugins
