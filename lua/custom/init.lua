@@ -6,7 +6,7 @@ local opt = vim.opt
 
 opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
-vim.g.fancyScroll = true
+vim.g.fancyScroll = false
 vim.o.swapfile = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
