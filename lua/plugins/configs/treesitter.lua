@@ -1,4 +1,5 @@
 local options = {
+  -- TODO: update these
   ensure_installed = { "lua", "vim", "vimdoc" },
 
   highlight = {
