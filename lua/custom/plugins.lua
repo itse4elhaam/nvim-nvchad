@@ -100,6 +100,7 @@ local plugins = {
           ["=="] = "!=",
           ["up"] = "down",
           ["let"] = "const",
+          ["development"] = "production",
         },
       }
 
