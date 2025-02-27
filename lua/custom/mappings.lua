@@ -569,6 +569,16 @@ M.general = {
       end,
       "Copy current line number to clipboard",
     },
+
+    ["<leader>b1"] = { "<cmd>buffer 1<CR>", "Select buffer 1" },
+    ["<leader>b2"] = { "<cmd>buffer 2<CR>", "Select buffer 2" },
+    ["<leader>b3"] = { "<cmd>buffer 3<CR>", "Select buffer 3" },
+    ["<leader>b4"] = { "<cmd>buffer 4<CR>", "Select buffer 4" },
+    ["<leader>b5"] = { "<cmd>buffer 5<CR>", "Select buffer 5" },
+    ["<leader>b6"] = { "<cmd>buffer 6<CR>", "Select buffer 6" },
+    ["<leader>b7"] = { "<cmd>buffer 7<CR>", "Select buffer 7" },
+    ["<leader>b8"] = { "<cmd>buffer 8<CR>", "Select buffer 8" },
+    ["<leader>b9"] = { "<cmd>buffer 9<CR>", "Select buffer 9" },
   },
 
   v = {
