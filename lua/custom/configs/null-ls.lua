@@ -22,7 +22,8 @@ local opts = {
     -- null_ls.builtins.diagnostics.eslint,
   },
   on_attach = function(client, bufnr)
-    if client.supports_method "textDocument/formatting" then
+    local line_count = vim.api.nvim_buf_line_count(bufnr)
+    if client.supports_method "textDocument/formatting" and line_count <= 3500 then
       vim.api.nvim_clear_autocmds {
         group = augroup,
         buffer = bufnr,
