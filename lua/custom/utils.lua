@@ -278,7 +278,7 @@ end
 
 function M.closeOtherBuffers()
   vim.cmd "mark z"               -- Save cursor position
-  vim.cmd "keepjumps %bd"        -- Delete all buffers
+  vim.cmd "keepjumps %bd!"       -- Delete all buffers
   vim.cmd "e#"                   -- Reopen the last active buffer
   vim.cmd "bd#"                  -- Delete the temporary buffer
   vim.cmd "keepjumps normal! 'z" -- Restore cursor position
