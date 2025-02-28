@@ -110,6 +110,19 @@ lspconfig.jsonls.setup {
   },
 }
 
+lspconfig.sqls.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting(client)
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  cmd = { "sqls" },
+  filetypes = { "sql", "mysql", "plsql" },
+  settings = {
+    sqls = {},
+  },
+}
+
 -- local servers = { "tailwindcss", "cssls", "eslint" }
 local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do

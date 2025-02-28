@@ -139,7 +139,8 @@ end, {})
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
-    if string.find(vim.bo.filetype, "sql") then
+    local filetypes = { "sql", "mysql", "psql" }
+    if vim.tbl_contains(filetypes, vim.bo.filetype) then
       vim.bo.commentstring = "-- %s"
     end
   end,

@@ -13,7 +13,7 @@ local plugins = {
       { "stevearc/dressing.nvim" }, -- optional: better UI
     },
     config = function()
-      local opts = {}                  -- check the "./lua/bookmarks/default-config.lua" file for all the options
+      local opts = {} -- check the "./lua/bookmarks/default-config.lua" file for all the options
       require("bookmarks").setup(opts) -- you must call setup to init sqlite db
     end,
   },
@@ -36,10 +36,10 @@ local plugins = {
       "TmuxNavigatorProcessList",
     },
     keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
@@ -58,7 +58,7 @@ local plugins = {
     lazy = false,
     opts = {},
   },
-  { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
+  { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
     lazy = false,
@@ -291,7 +291,7 @@ local plugins = {
       end,
       settings = {
         tsserver_disable_suggestions = true, -- Disable built-in TypeScript IntelliSense (use nvim-cmp instead)
-        tsserver_log_verbosity = "off",      -- No logs for better performance
+        tsserver_log_verbosity = "off", -- No logs for better performance
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
           includeCompletionsForModuleExports = true,
@@ -506,13 +506,13 @@ local plugins = {
     opts = {
       colors = {
         up_to_date = "#3C4048", -- Text color for up to date package virtual text
-        outdated = "#fc514e",   -- Text color for outdated package virtual text
+        outdated = "#fc514e", -- Text color for outdated package virtual text
       },
       icons = {
-        enable = true,               -- Whether to display icons
+        enable = true, -- Whether to display icons
       },
-      autostart = true,              -- Whether to autostart when `package.json` is opened
-      hide_up_to_date = true,        -- It hides up to date versions when displaying virtual text
+      autostart = true, -- Whether to autostart when `package.json` is opened
+      hide_up_to_date = true, -- It hides up to date versions when displaying virtual text
       hide_unstable_versions = true, -- It hides unstable versions from version list e.g next-11.1.3-canary3
 
       package_manager = "yarn",
@@ -540,7 +540,7 @@ local plugins = {
       { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },
     },
     opts = {
-      border = "rounded",          -- Valid window border style,
+      border = "rounded", -- Valid window border style,
       show_unknown_classes = true, -- Shows the unknown classes popup
     },
   },
@@ -640,7 +640,7 @@ local plugins = {
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod",                     lazy = true },
+      { "tpope/vim-dadbod", lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -654,7 +654,7 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  { "akinsho/git-conflict.nvim",                version = "*", config = true, event = "VeryLazy" },
+  { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
 
   {
     "chrisgrieser/nvim-rip-substitute",
@@ -701,7 +701,7 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
-  { "wakatime/vim-wakatime",      lazy = false },
+  { "wakatime/vim-wakatime", lazy = false },
 }
 
 return plugins

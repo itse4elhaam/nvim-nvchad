@@ -23,5 +23,6 @@ return {
     "prettierd",
     "lua-language-server",
     "emmet-ls",
+    "sqls",
   },
 }
