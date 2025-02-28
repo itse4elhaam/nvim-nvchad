@@ -3,6 +3,13 @@ local load_mappings = require("core.utils").load_mappings
 local plugins = {
   -- text editing
   {
+    "ggandor/leap.nvim",
+    lazy = false,
+    config = function()
+      require("leap").add_default_mappings()
+    end,
+  },
+  {
     "christoomey/vim-tmux-navigator",
     cmd = {
       "TmuxNavigateLeft",
