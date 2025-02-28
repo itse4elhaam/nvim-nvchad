@@ -3,7 +3,23 @@ local load_mappings = require("core.utils").load_mappings
 local plugins = {
   -- text editing
   {
+    "LintaoAmons/bookmarks.nvim",
+    lazy = false,
+    -- backup your bookmark sqlite db when there are breaking changes
+    -- tag = "v2.3.0",
+    dependencies = {
+      { "kkharji/sqlite.lua" },
+      { "nvim-telescope/telescope.nvim" },
+      { "stevearc/dressing.nvim" }, -- optional: better UI
+    },
+    config = function()
+      local opts = {}                  -- check the "./lua/bookmarks/default-config.lua" file for all the options
+      require("bookmarks").setup(opts) -- you must call setup to init sqlite db
+    end,
+  },
+  {
     "ggandor/leap.nvim",
+    -- TODO: fix this late on
     lazy = false,
     config = function()
       require("leap").add_default_mappings()

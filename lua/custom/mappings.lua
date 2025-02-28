@@ -215,6 +215,13 @@ M.true_zen = {
 
 M.general = {
   n = {
+
+    ["<leader>bm"] = { "<cmd>BookmarksMark<CR>", "Mark/Toggle bookmark" },
+    ["<leader>bg"] = { "<cmd>BookmarksGoto<CR>", "Go to bookmark" },
+    ["<leader>bn"] = { "<cmd>BookmarksNewList<CR>", "Create new bookmark list" },
+    ["<leader>bl"] = { "<cmd>BookmarksLists<CR>", "Pick bookmark list" },
+    ["<leader>bc"] = { "<cmd>BookmarksCommands<CR>", "Find bookmark commands" },
+
     ["<leader>wpt"] = {
       "viwocPromise<<Esc>pa><Esc>",
       "Wrap selected type in Promise<>",
