@@ -7,7 +7,7 @@ local opt = vim.opt
 opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
 vim.g.fancyScroll = false
-vim.g.customBigFileOpt = true
+vim.g.customBigFileOpt = false
 vim.o.swapfile = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
@@ -206,3 +206,5 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     vim.opt_local.spell = false
   end,
 })
+-- had to use this post nvim v11 upgrade because the buffer background colors were weird
+vim.api.nvim_set_hl(0, "TabLine", { bg = "NONE" })

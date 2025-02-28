@@ -22,9 +22,7 @@
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/tabout.lua
 - optimize this for fe by studyying ecovim
-- disable completion in <leader>ra
 - use refacorting.nvim and various text objects more
-- do something about large ts files
 - automagically detect the current new buffer type
 https://github.com/LintaoAmons/bookmarks.nvim
 
