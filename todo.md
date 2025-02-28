@@ -1,7 +1,5 @@
 - code snippets taker
 - how to zoom into a pan?
-- prose lint, write_good and alex
-- fold all funcs
 - replace/customize statusline
 - yanky.nvim conf
 - non harpoon tabs
@@ -34,8 +32,6 @@ MY PLUGIN:
 <!-- articles -->
 - https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable -> plugins not working with require
 
-<!-- plugins to install -->
-
 install and check these out
 - https://dotfyle.com/chrisgrieser
 - https://github.com/chrisgrieser/nvim-chainsaw
@@ -45,7 +41,5 @@ install and check these out
 - https://github.com/echasnovski/mini.nvim/blob/2d0f10540efdbb1f5c480ebe19ce4de451936a5d/doc/mini-surround.txt#L501
 - https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
 - https://github.com/ggandor/leap.nvim
-- https://github.com/stevearc/resession.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
 - https://github.com/chrisgrieser/nvim-early-retirement
-- https://github.com/nvim-telescope/telescope-frecency.nvim
