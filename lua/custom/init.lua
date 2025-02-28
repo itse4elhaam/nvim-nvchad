@@ -7,6 +7,7 @@ local opt = vim.opt
 opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
 vim.g.fancyScroll = false
+vim.g.customBigFileOpt = true
 vim.o.swapfile = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
@@ -173,7 +174,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 
     -- TODO: unify this
     local max_filesize = 500 * 1024
-    if size < max_filesize then
+    if size < max_filesize or not vim.g.customBigFileOpt then
       return
     end
 
