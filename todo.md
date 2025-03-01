@@ -22,8 +22,7 @@
 - optimize this for fe by studyying ecovim
 - use refacorting.nvim and various text objects more
 - automagically detect the current new buffer type
-- https://github.com/LintaoAmons/bookmarks.nvim
-- SQL LSP/autocompelte
+- review plugins
 
 - https://github.com/kndndrj/nvim-dbee and related stuff with projector as well and its completions as well
 
