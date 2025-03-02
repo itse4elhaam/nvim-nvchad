@@ -226,7 +226,7 @@ M.true_zen = {
 
 M.general = {
   n = {
-
+    ["G"] = { "Gzz", "center after touching bottom" },
     ["<leader>bm"] = { "<cmd>BookmarksMark<CR>", "Mark/Toggle bookmark" },
     ["<leader>bg"] = { "<cmd>BookmarksGoto<CR>", "Go to bookmark" },
     ["<leader>bn"] = { "<cmd>BookmarksNewList<CR>", "Create new bookmark list" },
