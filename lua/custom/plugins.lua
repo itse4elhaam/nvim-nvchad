@@ -36,22 +36,20 @@ local plugins = {
   },
   {
     "LintaoAmons/bookmarks.nvim",
-    lazy = false,
-    -- backup your bookmark sqlite db when there are breaking changes
-    -- tag = "v2.3.0",
+    cmd = { "BookmarksMark", "BookmarksGoto", "BookmarksNewList", "BookmarksLists", "BookmarksCommands" },
     dependencies = {
       { "kkharji/sqlite.lua" },
       { "nvim-telescope/telescope.nvim" },
-      { "stevearc/dressing.nvim" }, -- optional: better UI
+      { "stevearc/dressing.nvim" },
     },
     config = function()
-      local opts = {}                  -- check the "./lua/bookmarks/default-config.lua" file for all the options
-      require("bookmarks").setup(opts) -- you must call setup to init sqlite db
+      local opts = {}
+      require("bookmarks").setup(opts)
     end,
   },
   {
     "ggandor/leap.nvim",
-    -- TODO: fix this late on
+    -- TODO: fix this later on
     lazy = false,
     config = function()
       require("leap").add_default_mappings()
@@ -67,13 +65,7 @@ local plugins = {
       "TmuxNavigatePrevious",
       "TmuxNavigatorProcessList",
     },
-    keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
-      { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
-    },
+    keys = load_mappings "vim_tmux_navigator",
   },
   {
     "chrisgrieser/nvim-various-textobjs",
@@ -145,7 +137,6 @@ local plugins = {
     event = "InsertEnter",
     config = true,
     opts = {},
-    -- this is equivalent to setup({}) function
   },
   {
     "rmagatti/alternate-toggler",

@@ -23,6 +23,17 @@ M.gopher = {
   },
 }
 
+M.vim_tmux_navigator = {
+  plugin = true,
+  n = {
+    ["<c-h>"] = { "<cmd><C-U>TmuxNavigateLeft<cr>", "Tmux Navigate Left" },
+    ["<c-j>"] = { "<cmd><C-U>TmuxNavigateDown<cr>", "Tmux Navigate Down" },
+    ["<c-k>"] = { "<cmd><C-U>TmuxNavigateUp<cr>", "Tmux Navigate Up" },
+    ["<c-l>"] = { "<cmd><C-U>TmuxNavigateRight<cr>", "Tmux Navigate Right" },
+    ["<c-\\>"] = { "<cmd><C-U>TmuxNavigatePrevious<cr>", "Tmux Navigate Previous" },
+  },
+}
+
 M.venv_selector = {
   plugin = true,
   n = {
@@ -431,6 +442,7 @@ M.general = {
       function()
         local file = vim.fn.expand "<cfile>"                -- Get the file/URL under cursor
         local escaped_file = vim.fn.shellescape(file, true) -- Escape it safely
+        vim.fn.system("wslview " .. escaped_file .. " &")   -- Escape it safely
         vim.fn.system("wslview " .. escaped_file .. " &")   -- Run in background
       end,
       "Open file with xdg-open silently",
