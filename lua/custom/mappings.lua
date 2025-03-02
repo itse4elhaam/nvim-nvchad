@@ -26,11 +26,11 @@ M.gopher = {
 M.vim_tmux_navigator = {
   plugin = true,
   n = {
-    ["<c-h>"] = { "<cmd><C-U>TmuxNavigateLeft<cr>", "Tmux Navigate Left" },
-    ["<c-j>"] = { "<cmd><C-U>TmuxNavigateDown<cr>", "Tmux Navigate Down" },
-    ["<c-k>"] = { "<cmd><C-U>TmuxNavigateUp<cr>", "Tmux Navigate Up" },
-    ["<c-l>"] = { "<cmd><C-U>TmuxNavigateRight<cr>", "Tmux Navigate Right" },
-    ["<c-\\>"] = { "<cmd><C-U>TmuxNavigatePrevious<cr>", "Tmux Navigate Previous" },
+    ["<c-h>"] = { "<cmd>TmuxNavigateLeft<cr>", "Tmux Navigate Left" },
+    ["<c-j>"] = { "<cmd>TmuxNavigateDown<cr>", "Tmux Navigate Down" },
+    ["<c-k>"] = { "<cmd>TmuxNavigateUp<cr>", "Tmux Navigate Up" },
+    ["<c-l>"] = { "<cmd>TmuxNavigateRight<cr>", "Tmux Navigate Right" },
+    ["<c-\\>"] = { "<cmd>TmuxNavigatePrevious<cr>", "Tmux Navigate Previous" },
   },
 }
 
