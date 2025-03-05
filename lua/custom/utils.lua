@@ -283,6 +283,7 @@ function M.closeOtherBuffers()
   vim.cmd "bd#"                  -- Delete the temporary buffer
   vim.cmd "keepjumps normal! 'z" -- Restore cursor position
   vim.cmd "delmark z"            -- deletes the mark
+  vim.cmd "normal! zz"           -- centers you
 end
 
 return M

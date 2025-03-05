@@ -23,19 +23,23 @@ local opts = {
   },
   on_attach = function(client, bufnr)
     local line_count = vim.api.nvim_buf_line_count(bufnr)
-    if client.supports_method "textDocument/formatting" and line_count <= 3500 then
-      vim.api.nvim_clear_autocmds {
-        group = augroup,
-        buffer = bufnr,
-      }
-      vim.api.nvim_create_autocmd("BufWritePre", {
-        group = augroup,
-        buffer = bufnr,
-        callback = function()
-          vim.lsp.buf.format { bufnr = bufnr }
-        end,
-      })
+    local block_large_file_format = vim.g.customBigFileOpt and line_count > 3500
+
+    if not client.supports_method "textDocument/formatting" or block_large_file_format then
+      return
     end
+
+    vim.api.nvim_clear_autocmds {
+      group = augroup,
+      buffer = bufnr,
+    }
+    vim.api.nvim_create_autocmd("BufWritePre", {
+      group = augroup,
+      buffer = bufnr,
+      callback = function()
+        vim.lsp.buf.format { bufnr = bufnr }
+      end,
+    })
   end,
 }
 return opts
