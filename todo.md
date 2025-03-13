@@ -23,7 +23,8 @@
 - use refacorting.nvim and various text objects more
 - automagically detect the current new buffer type
 - review plugins
-- if no prettier attached, use typescript-tools and why no prettier attached
+- if no prettierrc in the project, use typescript-tools and why no prettier attached
+- search global functions?
 
 - https://github.com/kndndrj/nvim-dbee and related stuff with projector as well and its completions as well
 
