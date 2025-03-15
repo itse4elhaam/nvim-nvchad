@@ -309,6 +309,7 @@ local plugins = {
         client.server_capabilities.documentRangeFormattingProvider = false
 
         -- Disable semantic tokens for large files (prevents lag)
+        -- TODO: check if you need this or not
         if vim.api.nvim_buf_line_count(bufnr) > 3500 then
           client.server_capabilities.semanticTokensProvider = nil
         end
@@ -399,8 +400,7 @@ local plugins = {
   {
     "kevinhwang91/nvim-ufo",
     requires = "kevinhwang91/promise-async",
-    lazy = true,
-    event = "LspAttach",
+    lazy = false,
     config = require "custom.configs.ufo",
   },
 
