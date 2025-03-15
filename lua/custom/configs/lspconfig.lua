@@ -123,6 +123,12 @@ lspconfig.sqls.setup {
   },
 }
 
+lspconfig.svelte.setup {
+  cmd = { "svelteserver", "--stdio" },
+  filetypes = { "svelte" },
+  root_dir = util.root_pattern("package.json", ".git"),
+}
+
 -- local servers = { "tailwindcss", "cssls", "eslint" }
 local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
