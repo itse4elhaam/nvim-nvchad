@@ -25,6 +25,7 @@
 - review plugins
 - if no prettierrc in the project, use typescript-tools and why no prettier attached
 - search global functions?
+- delete mark on the current line
 
 - https://github.com/kndndrj/nvim-dbee and related stuff with projector as well and its completions as well
 
