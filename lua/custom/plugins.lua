@@ -301,7 +301,7 @@ local plugins = {
         priority = 1000,
       },
     },
-    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
+    ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte" },
     opts = {
       on_attach = function(client, bufnr)
         -- Disable formatting to use a dedicated formatter (like conform.nvim or null-ls)
