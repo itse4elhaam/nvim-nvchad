@@ -133,7 +133,19 @@ lspconfig.svelte.setup {
 local servers = { "tailwindcss", "cssls" }
 for _, lsp in ipairs(servers) do
   lspconfig[lsp].setup {
-    filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
+    filetypes = {
+      "css",
+      "html",
+      "javascriptreact",
+      "less",
+      "sass",
+      "scss",
+      "pug",
+      "typescriptreact",
+      "svelte",
+      -- NOTE: can be disabled sometimes
+      "typescript",
+    },
     on_attach = function(client, bufnr)
       disable_formatting(client) -- Disable formatting for specific servers
       on_attach(client, bufnr)
