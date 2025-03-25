@@ -209,3 +209,15 @@ vim.api.nvim_create_autocmd("BufReadPre", {
 })
 -- had to use this post nvim v11 upgrade because the buffer background colors were weird
 vim.api.nvim_set_hl(0, "TabLine", { bg = "NONE" })
+
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
+  callback = function(ev)
+    for _, client in pairs((vim.lsp.get_clients {})) do
+      if client.name == "tailwindcss" then
+        client.server_capabilities.completionProvider.triggerCharacters =
+        { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+      end
+    end
+  end,
+})
