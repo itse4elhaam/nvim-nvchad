@@ -387,6 +387,7 @@ M.general = {
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
+    ["<leader>gs"] = { "<cmd>Telescope lsp_workspace_symbols query=q<CR>", "Global Symbols" },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find diagnostics" },
     ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
     ["<leader>fcm"] = { "<cmd> Telescope commands <CR>", "Find command history" },
