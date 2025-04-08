@@ -353,9 +353,9 @@ local plugins = {
 
         -- Disable semantic tokens for large files (prevents lag)
         -- TODO: check if you need this or not
-        if vim.api.nvim_buf_line_count(bufnr) > 3500 then
-          client.server_capabilities.semanticTokensProvider = nil
-        end
+        -- if vim.api.nvim_buf_line_count(bufnr) > 3500 then
+        --   client.server_capabilities.semanticTokensProvider = nil
+        -- end
       end,
       settings = {
         tsserver_disable_suggestions = true, -- Disable built-in TypeScript IntelliSense (use nvim-cmp instead)
