@@ -171,19 +171,19 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   desc = "Disable features on big files",
   callback = function(args)
     local bufnr = args.buf
-    local size = vim.fn.getfsize(vim.fn.expand "%")
-
-    -- TODO: unify this
+    local size = vim.fn.getfsize(vim.fn.expand("%"))
     local max_filesize = 500 * 1024
+
     if size < max_filesize or not vim.g.customBigFileOpt then
       return
     end
 
-    vim.api.nvim_buf_set_var(bufnr, "bigfile_disable", 1)
+    vim.b[bufnr].bigfile_disable = true
 
-    -- Disable treesitter
-    require("nvim-treesitter.configs").get_module("indent").disable = function()
-      return vim.api.nvim_buf_get_var(bufnr, "bigfile_disable") == 1
+    -- Set up Treesitter module disable
+    local module = require("nvim-treesitter.configs").get_module("indent")
+    module.disable = function(lang, bufnr)
+      return vim.b[bufnr].bigfile_disable == true
     end
 
     -- Disable autoindent
@@ -216,7 +216,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     for _, client in pairs((vim.lsp.get_clients {})) do
       if client.name == "tailwindcss" then
         client.server_capabilities.completionProvider.triggerCharacters =
-        { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+          { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
       end
     end
   end,
