@@ -32,8 +32,9 @@ local opts = {
     local block_large_file_format = vim.g.customBigFileOpt and line_count > 3500
 
     local no_format_needed = not client.supports_method "textDocument/formatting"
-        or block_large_file_format
-        or is_disabled_filetype
+      or block_large_file_format
+      or is_disabled_filetype
+      or vim.g.disableFormat
 
     if no_format_needed then
       return
