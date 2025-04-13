@@ -24,5 +24,6 @@ return {
     "lua-language-server",
     "emmet-ls",
     "sqls",
+    "deno"
   },
 }

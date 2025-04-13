@@ -129,15 +129,25 @@ lspconfig.svelte.setup {
   root_dir = util.root_pattern("package.json", ".git"),
 }
 
--- local servers = { "tailwindcss", "cssls", "eslint" }
-local servers = { "tailwindcss", "cssls" }
-for _, lsp in ipairs(servers) do
-  lspconfig[lsp].setup {
+lspconfig.denols.setup {
+  on_attach = on_attach,
+  root_dir = util.root_pattern("deno.json", "deno.jsonc")
+}
+
+lspconfig.cssls.setup {
+  filetypes = { "css", "html", "less", "sass", "scss", "pug" },
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting for specific servers
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+}
+
+lspconfig.tailwindcss.setup {
     filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
-    on_attach = function(client, bufnr)
-      disable_formatting(client) -- Disable formatting for specific servers
-      on_attach(client, bufnr)
-    end,
-    capabilities = capabilities,
-  }
-end
+  on_attach = function(client, bufnr)
+    disable_formatting(client)
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+}
