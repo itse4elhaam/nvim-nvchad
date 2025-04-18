@@ -125,8 +125,9 @@ local plugins = {
     enabled = true,
     lazy = false,
     opts = {
-      stiffness = 0.5,
+      stiffness = 1,
       trailing_stiffness = 0.49,
+      smear_insert_mode = true,
     },
   },
   { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
@@ -703,6 +704,7 @@ local plugins = {
       lazygit = { enabled = true },
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
+      -- TODO: remove j and k from here
       scroll = { enabled = vim.g.fancyScroll },
     },
     keys = load_mappings "snacks",
