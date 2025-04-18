@@ -6,10 +6,11 @@ local opt = vim.opt
 
 opt.relativenumber = true
 vim.g.lazyvim_prettier_needs_config = false
-vim.g.fancyScroll = false
+vim.g.fancyScroll = true
 vim.g.customBigFileOpt = true
 vim.o.swapfile = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
+vim.g.disableFormat = false
 
 vim.api.nvim_create_augroup("PasteRemoveCarriageReturn", { clear = true })
 vim.g.maplocalleader = ","
@@ -171,7 +172,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
   desc = "Disable features on big files",
   callback = function(args)
     local bufnr = args.buf
-    local size = vim.fn.getfsize(vim.fn.expand("%"))
+    local size = vim.fn.getfsize(vim.fn.expand "%")
     local max_filesize = 500 * 1024
 
     if size < max_filesize or not vim.g.customBigFileOpt then
@@ -181,7 +182,7 @@ vim.api.nvim_create_autocmd("BufReadPre", {
     vim.b[bufnr].bigfile_disable = true
 
     -- Set up Treesitter module disable
-    local module = require("nvim-treesitter.configs").get_module("indent")
+    local module = require("nvim-treesitter.configs").get_module "indent"
     module.disable = function(lang, bufnr)
       return vim.b[bufnr].bigfile_disable == true
     end
@@ -216,7 +217,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
     for _, client in pairs((vim.lsp.get_clients {})) do
       if client.name == "tailwindcss" then
         client.server_capabilities.completionProvider.triggerCharacters =
-          { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+        { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
       end
     end
   end,
