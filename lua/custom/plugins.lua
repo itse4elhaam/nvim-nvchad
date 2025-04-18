@@ -51,14 +51,14 @@ local plugins = {
     lazy = false,
     config = function()
       require("tabout").setup {
-        tabkey = "<Tab>", -- key to trigger tabout, set to an empty string to disable
+        tabkey = "<Tab>",             -- key to trigger tabout, set to an empty string to disable
         backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-        act_as_tab = true, -- shift content if tab out is not possible
-        act_as_shift_tab = false, -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-        default_tab = "<C-t>", -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-        default_shift_tab = "<C-d>", -- reverse shift default action,
-        enable_backwards = true, -- well ...
-        completion = false, -- if the tabkey is used in a completion pum
+        act_as_tab = true,            -- shift content if tab out is not possible
+        act_as_shift_tab = false,     -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
+        default_tab = "<C-t>",        -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
+        default_shift_tab = "<C-d>",  -- reverse shift default action,
+        enable_backwards = true,      -- well ...
+        completion = false,           -- if the tabkey is used in a completion pum
         tabouts = {
           { open = "'", close = "'" },
           { open = '"', close = '"' },
@@ -74,7 +74,7 @@ local plugins = {
     dependencies = { -- These are optional
       "nvim-treesitter/nvim-treesitter",
     },
-    opt = true, -- Set this to true if the plugin is optional
+    opt = true,              -- Set this to true if the plugin is optional
     event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
     priority = 1000,
   },
@@ -149,9 +149,9 @@ local plugins = {
       delay_after_key = 4,
 
       -- Main mode animation
-      stiffness = 0.8, -- Snappy cursor
-      trailing_stiffness = 0.45, -- A bit of trailing effect
-      trailing_exponent = 2, -- Curve favors the head
+      stiffness = 0.8,                -- Snappy cursor
+      trailing_stiffness = 0.45,      -- A bit of trailing effect
+      trailing_exponent = 2,          -- Curve favors the head
       distance_stop_animating = 0.15, -- Stops early for crispness
 
       -- Insert mode animation
@@ -165,7 +165,7 @@ local plugins = {
       max_length_insert_mode = 1,
     },
   },
-  { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
+  { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
   {
     "chrisgrieser/nvim-puppeteer",
     lazy = false,
@@ -398,7 +398,7 @@ local plugins = {
       end,
       settings = {
         tsserver_disable_suggestions = true, -- Disable built-in TypeScript IntelliSense (use nvim-cmp instead)
-        tsserver_log_verbosity = "off", -- No logs for better performance
+        tsserver_log_verbosity = "off",      -- No logs for better performance
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
           includeCompletionsForModuleExports = true,
@@ -612,13 +612,13 @@ local plugins = {
     opts = {
       colors = {
         up_to_date = "#3C4048", -- Text color for up to date package virtual text
-        outdated = "#fc514e", -- Text color for outdated package virtual text
+        outdated = "#fc514e",   -- Text color for outdated package virtual text
       },
       icons = {
-        enable = true, -- Whether to display icons
+        enable = true,               -- Whether to display icons
       },
-      autostart = true, -- Whether to autostart when `package.json` is opened
-      hide_up_to_date = true, -- It hides up to date versions when displaying virtual text
+      autostart = true,              -- Whether to autostart when `package.json` is opened
+      hide_up_to_date = true,        -- It hides up to date versions when displaying virtual text
       hide_unstable_versions = true, -- It hides unstable versions from version list e.g next-11.1.3-canary3
 
       package_manager = "yarn",
@@ -646,7 +646,7 @@ local plugins = {
       { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },
     },
     opts = {
-      border = "rounded", -- Valid window border style,
+      border = "rounded",          -- Valid window border style,
       show_unknown_classes = true, -- Shows the unknown classes popup
     },
   },
@@ -739,15 +739,23 @@ local plugins = {
       lazygit = { enabled = true },
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
-      -- TODO: remove j and k from here
-      scroll = { enabled = vim.g.fancyScroll },
+      scroll = {
+        enabled = vim.g.fancyScroll,
+        animate = {
+          duration = { step = 12, total = 180 }, -- nice and smooth
+        },
+        animate_repeat = {
+          delay = 80,                         -- if next scroll happens within 80ms, use fast mode
+          duration = { step = 1, total = 1 }, -- basically instant
+        },
+      },
     },
     keys = load_mappings "snacks",
   },
   {
     "kristijanhusak/vim-dadbod-ui",
     dependencies = {
-      { "tpope/vim-dadbod", lazy = true },
+      { "tpope/vim-dadbod",                     lazy = true },
       { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
     },
     cmd = {
@@ -761,7 +769,7 @@ local plugins = {
       vim.g.db_ui_use_nerd_fonts = 1
     end,
   },
-  { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
+  { "akinsho/git-conflict.nvim",                version = "*", config = true, event = "VeryLazy" },
 
   {
     "chrisgrieser/nvim-rip-substitute",
@@ -808,7 +816,7 @@ local plugins = {
     "nvim-lua/plenary.nvim",
     config = require "custom.configs.plenary",
   },
-  { "wakatime/vim-wakatime", lazy = false },
+  { "wakatime/vim-wakatime",      lazy = false },
 }
 
 return plugins
