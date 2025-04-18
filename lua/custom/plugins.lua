@@ -122,7 +122,6 @@ local plugins = {
   },
   {
     "sphamba/smear-cursor.nvim",
-    -- i am tryiung to rite somethiung
     enabled = true,
     lazy = false,
     opts = {
