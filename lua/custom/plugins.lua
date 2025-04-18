@@ -122,9 +122,12 @@ local plugins = {
   },
   {
     "sphamba/smear-cursor.nvim",
-    enabled = vim.g.fancyScroll,
+    enabled = true,
     lazy = false,
-    opts = {},
+    opts = {
+      stiffness = 0.5,
+      trailing_stiffness = 0.49,
+    },
   },
   { "chrisgrieser/nvim-spider",   lazy = false,     keys = load_mappings "spider_motion" },
   {
