@@ -3,6 +3,19 @@ local load_mappings = require("core.utils").load_mappings
 local plugins = {
   -- text editing
   {
+    "rasulomaroff/reactive.nvim",
+    event = "VeryLazy",
+    config = function()
+      require("reactive").setup {
+        builtin = {
+          cursorline = true,
+          cursor = true,
+          modemsg = true,
+        },
+      }
+    end,
+  },
+  {
     "danielfalk/smart-open.nvim",
     lazy = false,
     branch = "0.2.x",
