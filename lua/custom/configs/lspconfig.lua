@@ -131,7 +131,7 @@ lspconfig.svelte.setup {
 
 lspconfig.denols.setup {
   on_attach = on_attach,
-  root_dir = util.root_pattern("deno.json", "deno.jsonc")
+  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
 }
 
 lspconfig.cssls.setup {
@@ -144,10 +144,20 @@ lspconfig.cssls.setup {
 }
 
 lspconfig.tailwindcss.setup {
-    filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
+  -- filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
+  filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "svelte" },
   on_attach = function(client, bufnr)
     disable_formatting(client)
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
+}
+
+lspconfig.asm_lsp.setup {
+  on_attach = function(client, bufnr)
+    disable_formatting(client) -- Disable formatting if desired
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "asm", "s", "S" }, -- Common assembly file extensions
 }
