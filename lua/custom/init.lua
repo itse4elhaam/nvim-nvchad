@@ -222,3 +222,4 @@ vim.api.nvim_create_autocmd("LspAttach", {
     end
   end,
 })
+vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ffffff", bg = "#ff007c", bold = true })
