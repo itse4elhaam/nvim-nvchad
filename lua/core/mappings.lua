@@ -23,9 +23,6 @@ M.general = {
     -- ["<C-j>"] = { "<C-w>j", "Window down" },
     -- ["<C-k>"] = { "<C-w>k", "Window up" },
 
-    -- save
-    ["<C-s>"] = { "<cmd> w <CR>", "Save file" },
-
     -- line numbers
     ["<leader>n"] = { "<cmd> set nu! <CR>", "Toggle line number" },
     ["<leader>rn"] = { "<cmd> set rnu! <CR>", "Toggle relative number" },
