@@ -4,6 +4,7 @@ local plugins = {
   -- text editing
   {
     "rasulomaroff/reactive.nvim",
+    enabled = false,
     event = "VeryLazy",
     config = function()
       require("reactive").setup {
