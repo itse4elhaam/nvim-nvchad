@@ -10,7 +10,6 @@
 - vim.notify
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
-- plugin to have similar mappings between tmux and neovim panes
 - consider nvim-chainsaw instead of timer.nvim
 - look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
 - mapping conflicts in :checkhealth
@@ -18,7 +17,6 @@
 - install this https://github.com/mrjones2014/smart-splits.nvim
 - consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
-- https://github.com/ecosse3/nvim/blob/master/lua/plugins/tabout.lua
 - optimize this for fe by studyying ecovim
 - use refacorting.nvim and various text objects more
 - automagically detect the current new buffer type
