@@ -100,9 +100,10 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
 
 -- this is for testing the lsp I made
 function TestLearningLsp()
+  local basePath = "/home/elhaam/workspace/learning/go-lsp"
   local client = vim.lsp.start_client {
     name = "learninglsp",
-    cmd = { "/home/e4elhaam/coding/projects/go-lsp/main" },
+    cmd = { basePath .. "/main" },
     on_attach = require("plugins.configs.lspconfig").on_attach,
   }
 
