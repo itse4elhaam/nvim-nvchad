@@ -46,3 +46,4 @@ install and check these out
 - https://github.com/ggandor/leap.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
 - https://github.com/chrisgrieser/nvim-early-retirement
+- https://github.com/jake-stewart/multicursor.nvim
