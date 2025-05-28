@@ -558,6 +558,13 @@ local plugins = {
 
   -- Misc
   {
+    "m4xshen/hardtime.nvim",
+    lazy = false,
+    enabled = false,
+    dependencies = { "MunifTanjim/nui.nvim" },
+    opts = {},
+  },
+  {
     "Wansmer/treesj",
     lazy = true,
     cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
