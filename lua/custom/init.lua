@@ -11,6 +11,7 @@ vim.g.customBigFileOpt = true
 vim.o.swapfile = false
 vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 vim.g.disableFormat = false
+vim.g.nvchad_hot_reload = false
 
 vim.api.nvim_create_augroup("PasteRemoveCarriageReturn", { clear = true })
 vim.g.maplocalleader = ","

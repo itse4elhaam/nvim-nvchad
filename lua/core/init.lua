@@ -79,6 +79,9 @@ autocmd("BufWritePost", {
   group = vim.api.nvim_create_augroup("ReloadNvChad", {}),
 
   callback = function(opts)
+    if not vim.g.nvchad_hot_reload then
+      return
+    end
     local fp = vim.fn.fnamemodify(vim.fs.normalize(vim.api.nvim_buf_get_name(opts.buf)), ":r") --[[@as string]]
     local app_name = vim.env.NVIM_APPNAME and vim.env.NVIM_APPNAME or "nvim"
     local module = string.gsub(fp, "^.*/" .. app_name .. "/lua/", ""):gsub("/", ".")
@@ -137,5 +140,5 @@ vim.api.nvim_create_autocmd({ "UIEnter", "BufReadPost", "BufNewFile" }, {
 local new_cmd = vim.api.nvim_create_user_command
 
 new_cmd("NvChadUpdate", function()
-  require "nvchad.updater"()
+  require "nvchad.updater" ()
 end, {})
