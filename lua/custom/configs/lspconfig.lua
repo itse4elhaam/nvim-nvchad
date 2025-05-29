@@ -129,10 +129,10 @@ lspconfig.svelte.setup {
   root_dir = util.root_pattern("package.json", ".git"),
 }
 
-lspconfig.denols.setup {
-  on_attach = on_attach,
-  root_dir = util.root_pattern("deno.json", "deno.jsonc"),
-}
+-- lspconfig.denols.setup {
+--   on_attach = on_attach,
+--   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
+-- }
 
 lspconfig.cssls.setup {
   filetypes = { "css", "html", "less", "sass", "scss", "pug" },
