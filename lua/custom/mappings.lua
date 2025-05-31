@@ -532,7 +532,7 @@ M.general = {
       [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/cgI<Left><Left><Left>]],
       "Search and replace",
     },
-    ["sa"] = { "G$Vgg", "Select all" },
+    ["<leader>sa"] = { "G$Vgg", "Select all" },
     ["<leader>da"] = { "G$Vgg_d" },
     ["<leader>ef"] = { "va{<ESC>" },
     ["el"] = { "$" },
