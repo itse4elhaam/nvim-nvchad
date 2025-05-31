@@ -774,13 +774,14 @@ local plugins = {
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
       scroll = {
-        enabled = vim.g.fancyScroll,
+        -- enabled = vim.g.fancyScroll,
+        enabled = false,
         animate = {
           duration = { step = 12, total = 180 }, -- nice and smooth
         },
         animate_repeat = {
-          delay = 80,                         -- if next scroll happens within 80ms, use fast mode
-          duration = { step = 1, total = 1 }, -- basically instant
+          delay = 500,                            -- if next scroll happens within 80ms, use fast mode
+          duration = { step = 0.1, total = 0.1 }, -- basically instant
         },
       },
     },
