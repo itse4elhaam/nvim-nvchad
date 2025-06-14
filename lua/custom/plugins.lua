@@ -774,7 +774,7 @@ local plugins = {
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
       scroll = {
-        enabled = vim.g.fancyScroll,
+        enabled = false,
         animate = {
           duration = { step = 12, total = 180 }, -- nice and smooth
         },
