@@ -37,9 +37,10 @@ local config = function()
     },
     ["null-ls"] = {
       condition = function()
-        return prettier.config_exists {
-          check_package_json = true,
-        }
+        -- return prettier.config_exists {
+        --   check_package_json = true,
+        -- }
+        return true
       end,
       runtime_condition = function(params)
         return true
