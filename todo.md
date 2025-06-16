@@ -28,12 +28,15 @@
 - https://github.com/kndndrj/nvim-dbee and related stuff with projector as well and its completions as well
 
 MY PLUGIN:
+
 - null-check.nvim ????
 
 <!-- articles -->
+
 - https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable -> plugins not working with require
 
 install and check these out
+
 - https://dotfyle.com/chrisgrieser
 - https://github.com/chrisgrieser/nvim-chainsaw
 - https://github.com/nvzone/typr - does not work
@@ -45,3 +48,9 @@ install and check these out
 - https://github.com/allcentury/telescope_csearch.nvim
 - https://github.com/chrisgrieser/nvim-early-retirement
 - https://github.com/jake-stewart/multicursor.nvim
+
+plugins to install thru reddit:
+
+- https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
+- https://github.com/SyedAsimShah1/quick-todo.nvim
+- https://github.com/stevearc/oil.nvim
