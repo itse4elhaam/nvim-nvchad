@@ -54,3 +54,5 @@ plugins to install thru reddit:
 - https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
 - https://github.com/SyedAsimShah1/quick-todo.nvim
 - https://github.com/stevearc/oil.nvim
+
+- alt + 2 etc donot work on pop os
