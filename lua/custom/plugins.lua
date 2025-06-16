@@ -3,6 +3,14 @@ local load_mappings = require("core.utils").load_mappings
 local plugins = {
   -- text editing
   {
+    "olimorris/codecompanion.nvim",
+    opts = {},
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+  },
+  {
     "zbirenbaum/copilot.lua",
     enabled = vim.g.auto_ai,
     cmd = "Copilot",

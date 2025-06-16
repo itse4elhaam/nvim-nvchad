@@ -57,3 +57,5 @@ plugins to install thru reddit:
 
 - alt + 2 etc donot work on pop os
 - why does the first tab not work, it should selected as well
+
+- clean this todo list up
