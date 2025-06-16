@@ -3,6 +3,14 @@ local load_mappings = require("core.utils").load_mappings
 local plugins = {
   -- text editing
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = "InsertEnter",
+    config = function()
+      require("copilot").setup {}
+    end,
+  },
+  {
     "rasulomaroff/reactive.nvim",
     enabled = false,
     event = "VeryLazy",
@@ -474,7 +482,7 @@ local plugins = {
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
-    dependencies = "rafamadriz/friendly-snippets",
+    dependencies = { "rafamadriz/friendly-snippets", "fang2hou/blink-copilot" },
     version = "v0.*",
     opts = require "custom.configs.blink",
     opts_extend = { "sources.default" },
