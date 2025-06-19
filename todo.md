@@ -54,6 +54,7 @@ plugins to install thru reddit:
 - https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
 - https://github.com/SyedAsimShah1/quick-todo.nvim
 - https://github.com/stevearc/oil.nvim
+- https://github.com/artemave/workspace-diagnostics.nvim
 
 - alt + 2 etc donot work on pop os
 - why does the first tab not work, it should selected as well
