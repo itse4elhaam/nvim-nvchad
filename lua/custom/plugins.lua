@@ -778,6 +778,7 @@ local plugins = {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
+      picker = { enabled = true },
       quickfile = { enabled = true },
       lazygit = { enabled = true },
       scratch = { enabled = true },
