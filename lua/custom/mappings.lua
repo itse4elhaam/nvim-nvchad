@@ -226,7 +226,7 @@ M.true_zen = {
 
 M.general = {
   n = {
-    -- ["G"] = { "G", "center after touching bottom" },
+    ["G"] = { "Gzz", "center after touching bottom" },
     ["<leader>fy"] = { "<cmd>let @+ = expand('%:t:r')<CR>", "Yank current file's name" },
     ["<leader>bm"] = { "<cmd>BookmarksMark<CR>", "Mark/Toggle bookmark" },
     ["<leader>bg"] = { "<cmd>BookmarksGoto<CR>", "Go to bookmark" },
