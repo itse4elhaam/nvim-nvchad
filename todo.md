@@ -58,3 +58,5 @@ plugins to install thru reddit:
 
 - alt + 2 etc donot work on pop os
 - why does the first tab not work, it should selected as well
+- https://github.com/ThePrimeagen/harpoon/issues/502
+  https://github.com/EvWilson/spelunk.nvim
