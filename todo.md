@@ -1,30 +1,21 @@
 - how to zoom into a pan?
 - replace/customize statusline
 - yanky.nvim conf
-- non harpoon tabs
+- close non harpoon tabs only
 - harpoon files instead of auto session - put on reddit too maybe?
 - ufo unable to fold html tags
 - vim.notify
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
-
 - consider nvim-chainsaw instead of timer.nvim
-
 - mapping conflicts in :checkhealth
-
-- think of this https://github.com/ecosse3/nvim/blob/master/lua/plugins/formatting.lua
 - install this https://github.com/mrjones2014/smart-splits.nvim
-- consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
 - https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
 - optimize this for fe by studyying ecovim
 - use refacorting.nvim and various text objects more
 - automagically detect the current new buffer type
 - review plugins
-- if no prettierrc in the project, use typescript-tools and why no prettier attached
 - search global functions?
-- delete mark on the current line
-
-- https://github.com/kndndrj/nvim-dbee and related stuff with projector as well and its completions as well
 
 MY PLUGIN:
 
@@ -53,6 +44,7 @@ plugins to install thru reddit:
 - https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
 
 - alt + 2 etc donot work on pop os
+- remove that x on the side
 - https://github.com/ThePrimeagen/harpoon/issues/502
   https://github.com/EvWilson/spelunk.nvim
 
