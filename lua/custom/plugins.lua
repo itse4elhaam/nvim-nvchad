@@ -706,17 +706,6 @@ local plugins = {
     ft = { "html", "svelte", "astro", "vue", "typescriptreact" },
   },
   {
-    "Pocco81/true-zen.nvim",
-    cmd = {
-      "TZNarrow",
-      "TZFocus",
-      "TZMinimalist",
-      "TZAtaraxis",
-    },
-    config = require "custom.configs.true-zen",
-    keys = load_mappings "true_zen",
-  },
-  {
     "epwalsh/obsidian.nvim",
     version = "*", -- recommended, use latest release instead of latest commit
     lazy = true,
@@ -778,6 +767,7 @@ local plugins = {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
+      dim = { enabled = true },
       quickfile = { enabled = true },
       lazygit = { enabled = true },
       scratch = { enabled = true },
