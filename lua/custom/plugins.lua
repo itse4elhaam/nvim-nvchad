@@ -782,6 +782,7 @@ local plugins = {
       lazygit = { enabled = true },
       scratch = { enabled = true },
       gitbrowse = { enabled = true },
+      notifier = { enabled = true },
       scroll = {
         enabled = false,
         animate = {
@@ -884,7 +885,6 @@ local plugins = {
     dependencies = { "stevearc/oil.nvim" },
     opts = {},
   },
-
 
   -- utils
   { "kevinhwang91/promise-async", lazy = false },

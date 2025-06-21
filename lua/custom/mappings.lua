@@ -103,7 +103,19 @@ M.snacks = {
       function()
         Snacks.gitbrowse()
       end,
-      "Lazygit",
+      "Git browse",
+    },
+    ["<leader>nh"] = {
+      function()
+        Snacks.notifier.show_history()
+      end,
+      "Git browse",
+    },
+    ["<leader>nw"] = {
+      function()
+        Snacks.notifier.hide()
+      end,
+      "Git browse",
     },
   },
 }

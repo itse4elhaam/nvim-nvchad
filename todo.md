@@ -1,18 +1,17 @@
-- code snippets taker
 - how to zoom into a pan?
 - replace/customize statusline
 - yanky.nvim conf
 - non harpoon tabs
 - harpoon files instead of auto session - put on reddit too maybe?
 - ufo unable to fold html tags
-- study mini.nvim
-- nullls automatically generated file - solved ?
 - vim.notify
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
+
 - consider nvim-chainsaw instead of timer.nvim
-- look into this insto of lsp-files shit https://github.com/chrisgrieser/nvim-genghis
+
 - mapping conflicts in :checkhealth
+
 - think of this https://github.com/ecosse3/nvim/blob/master/lua/plugins/formatting.lua
 - install this https://github.com/mrjones2014/smart-splits.nvim
 - consider https://github.com/folke/snacks.nvim/blob/main/docs/picker.md
@@ -52,10 +51,11 @@ install and check these out
 plugins to install thru reddit:
 
 - https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
-- https://github.com/SyedAsimShah1/quick-todo.nvim
-- https://github.com/stevearc/oil.nvim
-- https://github.com/artemave/workspace-diagnostics.nvim
 
 - alt + 2 etc donot work on pop os
 - https://github.com/ThePrimeagen/harpoon/issues/502
   https://github.com/EvWilson/spelunk.nvim
+
+parked
+
+- https://github.com/artemave/workspace-diagnostics.nvim - includes node_modules as well in the workspace level stuff
