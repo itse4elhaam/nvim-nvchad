@@ -117,6 +117,19 @@ M.snacks = {
       end,
       "Git browse",
     },
+    ["<leader>zn"] = {
+      function()
+        -- TODO: find diff bw Snacks.zen.zen() and Snacks.zen()
+        Snacks.zen.zen()
+      end,
+      "Toggle Zen",
+    },
+    ["<leader>zz"] = {
+      function()
+        Snacks.zen.zoom()
+      end,
+      "Toggle zoom Zen",
+    },
   },
 }
 
@@ -454,10 +467,10 @@ M.general = {
     },
     ["<leader>gx"] = {
       function()
-        local file = vim.fn.expand "<cfile>"                -- Get the file/URL under cursor
+        local file = vim.fn.expand "<cfile>" -- Get the file/URL under cursor
         local escaped_file = vim.fn.shellescape(file, true) -- Escape it safely
-        vim.fn.system("wslview " .. escaped_file .. " &")   -- Escape it safely
-        vim.fn.system("wslview " .. escaped_file .. " &")   -- Run in background
+        vim.fn.system("wslview " .. escaped_file .. " &") -- Escape it safely
+        vim.fn.system("wslview " .. escaped_file .. " &") -- Run in background
       end,
       "Open file with xdg-open silently",
     },
