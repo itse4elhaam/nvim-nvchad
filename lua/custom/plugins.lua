@@ -483,7 +483,7 @@ local plugins = {
   {
     "saghen/blink.cmp",
     event = "InsertEnter",
-    dependencies = { "rafamadriz/friendly-snippets", "fang2hou/blink-copilot" },
+    dependencies = { "rafamadriz/friendly-snippets", "fang2hou/blink-copilot", "archie-judd/blink-cmp-words" },
     version = "v0.*",
     opts = require "custom.configs.blink",
     opts_extend = { "sources.default" },
