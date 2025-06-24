@@ -47,6 +47,7 @@ plugins to install thru reddit:
 - remove that x on the side
 - https://github.com/ThePrimeagen/harpoon/issues/502
   https://github.com/EvWilson/spelunk.nvim
+- https://www.reddit.com/r/neovim/comments/1lir33g/allow_telescope_to_see_dotfiles/
 
 parked
 
