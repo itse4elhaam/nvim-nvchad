@@ -52,3 +52,4 @@ plugins to install thru reddit:
 parked
 
 - https://github.com/artemave/workspace-diagnostics.nvim - includes node_modules as well in the workspace level stuff
+- https://github.com/sschleemilch/slimline.nvim
