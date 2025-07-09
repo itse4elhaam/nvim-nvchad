@@ -432,8 +432,8 @@ local plugins = {
         -- end
       end,
       settings = {
-        tsserver_disable_suggestions = true, -- Disable built-in TypeScript IntelliSense (use nvim-cmp instead)
-        tsserver_log_verbosity = "off",      -- No logs for better performance
+        tsserver_disable_suggestions = true,
+        tsserver_log_verbosity = "off",
         tsserver_file_preferences = {
           includeInlayParameterNameHints = "all",
           includeCompletionsForModuleExports = true,
@@ -447,6 +447,8 @@ local plugins = {
           "remove_unused_imports",
           "organize_imports",
         },
+        tsserver_max_memory = 8192, -- MB
+        tsserver_fsa_use_browser_implementation = false,
       },
     },
   },

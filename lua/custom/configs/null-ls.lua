@@ -24,7 +24,7 @@ local opts = {
   on_attach = function(client, bufnr)
     local filetype = vim.bo[bufnr].filetype
 
-    local disabled_filetypes = { "sql" }
+    local disabled_filetypes = { "sql", "tsx" }
 
     local is_disabled_filetype = vim.tbl_contains(disabled_filetypes, filetype)
 
@@ -32,9 +32,9 @@ local opts = {
     local block_large_file_format = vim.g.customBigFileOpt and line_count > 3500
 
     local no_format_needed = not client.supports_method "textDocument/formatting"
-      or block_large_file_format
-      or is_disabled_filetype
-      or vim.g.disableFormat
+        or block_large_file_format
+        or is_disabled_filetype
+        or vim.g.disableFormat
 
     if no_format_needed then
       return
