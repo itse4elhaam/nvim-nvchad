@@ -96,7 +96,7 @@ local opts = {
     nerd_font_variant = "mono",
   },
   sources = {
-    default = { "copilot", "lsp", "path", "snippets", "buffer", "dictionary" },
+    default = { "copilot", "lsp", "path", "snippets", "buffer" },
 
     per_filetype = {
       sql = { "snippets", "dadbod", "buffer" },

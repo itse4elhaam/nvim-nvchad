@@ -431,6 +431,7 @@ M.general = {
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", "Find buffer commits" },
     ["<leader>gvh"] = { "<cmd>Gitsigns select_hunk<CR>", "Visual selection for the git hunk" },
     ["<C-p>"] = { "<cmd>Telescope find_files<CR>" },
+    ["<C-g>"] = { "<cmd>Telescope git_status<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
 
     ["<leader>ba"] = {
@@ -473,10 +474,10 @@ M.general = {
     },
     ["<leader>gx"] = {
       function()
-        local file = vim.fn.expand "<cfile>" -- Get the file/URL under cursor
+        local file = vim.fn.expand "<cfile>"                -- Get the file/URL under cursor
         local escaped_file = vim.fn.shellescape(file, true) -- Escape it safely
-        vim.fn.system("wslview " .. escaped_file .. " &") -- Escape it safely
-        vim.fn.system("wslview " .. escaped_file .. " &") -- Run in background
+        vim.fn.system("wslview " .. escaped_file .. " &")   -- Escape it safely
+        vim.fn.system("wslview " .. escaped_file .. " &")   -- Run in background
       end,
       "Open file with xdg-open silently",
     },
