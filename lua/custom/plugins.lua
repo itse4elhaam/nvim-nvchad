@@ -8,18 +8,8 @@ local function get_ai_plugins()
     {
       "olimorris/codecompanion.nvim",
       cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
-      opts = require "custom.configs.codecompanion",
-      dependencies = {
-        "ravitemer/codecompanion-history.nvim",
-        "nvim-lua/plenary.nvim",
-        "nvim-treesitter/nvim-treesitter",
-        {
-          "ravitemer/mcphub.nvim",
-          cmd = "MCPHub",
-          build = "npm install -g mcp-hub@latest",
-          config = true,
-        },
-      },
+      opts = require("custom.configs.codecompanion").opts,
+      dependencies = require("custom.configs.codecompanion").dependencies,
       keys = load_mappings "code_companion",
     },
     {
@@ -68,13 +58,7 @@ local function get_editing_enhancement_plugins()
     },
     {
       "johmsalas/text-case.nvim",
-      cmd = {
-        "Subs",
-        "TextCaseOpenTelescope",
-        "TextCaseOpenTelescopeQuickChange",
-        "TextCaseOpenTelescopeLSPChange",
-        "TextCaseStartReplacingCommand",
-      },
+      cmd = require("custom.configs.text-case").cmd,
       dependencies = { "nvim-telescope/telescope.nvim" },
       config = function()
         require("textcase").setup {}
@@ -158,14 +142,7 @@ local function get_motion_plugins()
     },
     {
       "christoomey/vim-tmux-navigator",
-      cmd = {
-        "TmuxNavigateLeft",
-        "TmuxNavigateDown",
-        "TmuxNavigateUp",
-        "TmuxNavigateRight",
-        "TmuxNavigatePrevious",
-        "TmuxNavigatorProcessList",
-      },
+      cmd = require("custom.configs.vim-tmux-navigator").cmd,
       keys = load_mappings "vim_tmux_navigator",
     },
     { "chrisgrieser/nvim-spider", lazy = false, keys = load_mappings "spider_motion" },
@@ -192,13 +169,6 @@ local function get_lsp_and_completion_plugins()
         "BufNewFile",
       },
       config = require "custom.configs.nvim-lint",
-    },
-    {
-      "folke/trouble.nvim",
-      enabled = false,
-      opts = {},
-      cmd = "Trouble",
-      keys = require "custom.configs.trouble",
     },
     {
       "antosha417/nvim-lsp-file-operations",
@@ -354,15 +324,6 @@ local function get_language_specific_plugins()
       config = true,
     },
     {
-      "razak17/tailwind-fold.nvim",
-      enabled = false,
-      opts = {
-        min_chars = 100,
-      },
-      dependencies = { "nvim-treesitter/nvim-treesitter" },
-      ft = { "html", "svelte", "astro", "vue", "typescriptreact" },
-    },
-    {
       "vuki656/package-info.nvim",
       dependencies = { "MunifTanjim/nui.nvim" },
       event = "BufEnter package.json",
@@ -479,15 +440,8 @@ local function get_picker_plugins()
     {
       "ThePrimeagen/harpoon",
       branch = "harpoon2",
-      opts = {
-        menu = {
-          width = vim.api.nvim_win_get_width(0) - 4,
-        },
-        settings = {
-          save_on_toggle = true,
-        },
-      },
-      keys = require "custom.configs.harpoon",
+      opts = require("custom.configs.harpoon").opts,
+      keys = require("custom.configs.harpoon").keys,
     },
   }
 end
@@ -511,16 +465,9 @@ local function get_file_management_plugins()
   return {
     {
       "LintaoAmons/bookmarks.nvim",
-      cmd = { "BookmarksMark", "BookmarksGoto", "BookmarksNewList", "BookmarksLists", "BookmarksCommands" },
-      dependencies = {
-        { "kkharji/sqlite.lua" },
-        { "nvim-telescope/telescope.nvim" },
-        { "stevearc/dressing.nvim" },
-      },
-      config = function()
-        local opts = {}
-        require("bookmarks").setup(opts)
-      end,
+      cmd = require("custom.configs.bookmarks").cmd,
+      dependencies = require("custom.configs.bookmarks").dependencies,
+      config = require("custom.configs.bookmarks").config,
     },
     {
       "epwalsh/obsidian.nvim",
@@ -614,16 +561,8 @@ local function get_database_plugins()
     },
     {
       "kristijanhusak/vim-dadbod-ui",
-      dependencies = {
-        { "tpope/vim-dadbod",                     lazy = true },
-        { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
-      },
-      cmd = {
-        "DBUI",
-        "DBUIToggle",
-        "DBUIAddConnection",
-        "DBUIFindBuffer",
-      },
+      dependencies = require("custom.configs.vim-dadbod-ui").dependencies,
+      cmd = require("custom.configs.vim-dadbod-ui").cmd,
       init = function()
         vim.g.db_ui_use_nerd_fonts = 1
       end,
@@ -643,15 +582,6 @@ local function get_snippet_and_refactor_plugins()
       event = "VeryLazy",
       config = function()
         require("refactoring").setup()
-      end,
-    },
-    {
-      "jdrupal-dev/code-refactor.nvim",
-      enabled = false,
-      dependencies = { "nvim-treesitter/nvim-treesitter" },
-      -- keys = load_mappings "code_refactor",
-      config = function()
-        require("code-refactor").setup {}
       end,
     },
     {
