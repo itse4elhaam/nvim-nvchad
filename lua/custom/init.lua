@@ -1,221 +1,187 @@
+-- =============================================================================
+-- Options
+-- =============================================================================
 local opt = vim.opt
-local utils = require("custom.utils")
+local g = vim.g
+local cmd = vim.cmd
+local api = vim.api
 
--- opt.foldmethod = "expr"
--- opt.foldexpr = "nvim_treesitter#foldexpr()"
--- opt.foldlevelstart = 99
-
+-- General
 opt.relativenumber = true
-vim.g.lazyvim_prettier_needs_config = false
-vim.g.fancyScroll = true
-vim.g.auto_ai = false
-vim.g.customBigFileOpt = true
-vim.o.swapfile = false
-vim.o.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
-vim.g.disableFormat = false
-vim.g.nvchad_hot_reload = false
+opt.swapfile = false
+opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
-vim.api.nvim_create_augroup("PasteRemoveCarriageReturn", { clear = true })
-vim.g.maplocalleader = ","
+-- Global variables
+g.lazyvim_prettier_needs_config = false
+g.fancyScroll = true
+g.auto_ai = false
+g.customBigFileOpt = true
+g.disableFormat = false
+g.nvchad_hot_reload = false
+g.maplocalleader = ","
 
--- adds .env to sh group
-vim.cmd [[
-  autocmd BufRead,BufNewFile *.env* set filetype=sh
-]]
+-- =============================================================================
+-- Autocommands
+-- =============================================================================
 
--- removes out commenting of next lines
-vim.cmd [[autocmd FileType * set formatoptions-=ro]]
+local function augroup(name)
+  return api.nvim_create_augroup("custom_" .. name, { clear = true })
+end
 
--- Remove carriage returns after pasting in normal mode
-vim.api.nvim_create_autocmd("VimEnter", {
-  group = "PasteRemoveCarriageReturn",
+-- Editing Enhancements
+api.nvim_create_autocmd("TextYankPost", {
+  group = augroup "HighlightYank",
   callback = function()
-    vim.cmd [[
-      nnoremap <silent> P :execute "normal! P" <bar> silent! %s/\r//g<CR>
-      nnoremap <silent> p :execute "normal! p" <bar> silent! %s/\r//g<CR>
-    ]]
+    vim.highlight.on_yank { higroup = "Visual", timeout = 300 }
   end,
 })
 
--- Remove carriage returns after pasting in insert mode
--- nnoremap <silent> <C-r> :execute "normal! <C-r>" <bar> silent! %s/\r//g<CR>
-vim.api.nvim_create_autocmd("InsertLeave", {
-  group = "PasteRemoveCarriageReturn",
+api.nvim_create_autocmd({ "InsertLeave" }, {
+  group = augroup "LineNumberToggle",
+  command = "setlocal relativenumber",
+})
+api.nvim_create_autocmd({ "InsertEnter" }, {
+  group = augroup "LineNumberToggle",
+  command = "setlocal norelativenumber",
+})
+
+-- UI Customization
+api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
+  group = augroup "CustomHighlights",
   callback = function()
-    vim.cmd [[
-      silent! %s/\r//g
-    ]]
+    local highLightClr = "#3e4451"
+    api.nvim_set_hl(0, "LspReferenceRead", { fg = highLightClr })
+    api.nvim_set_hl(0, "LspReferenceWrite", { fg = highLightClr })
+    api.nvim_set_hl(0, "LspReferenceText", { fg = highLightClr })
+    api.nvim_set_hl(0, "TabLine", { bg = "NONE" })
+    api.nvim_set_hl(0, "FlashLabel", { fg = "#ffffff", bg = "#ff007c", bold = true })
   end,
 })
 
--- Define autocmd group
-vim.cmd [[
-  augroup LineNumberToggle
-    autocmd!
-    autocmd InsertLeave * setlocal relativenumber
-    autocmd InsertEnter * setlocal norelativenumber
-  augroup END
-]]
-
-local highLightClr = "#3e4451"
-
--- set highlight color as this
-vim.api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
-  group = vim.api.nvim_create_augroup("Color", {}),
-  pattern = "*",
-  callback = function()
-    vim.api.nvim_set_hl(0, "LspReferenceRead", { fg = highLightClr })
-    vim.api.nvim_set_hl(0, "LspReferenceWrite", { fg = highLightClr })
-    vim.api.nvim_set_hl(0, "LspReferenceText", { fg = highLightClr })
-  end,
-})
-
--- highlight yanked text for 200ms using the "Visual" highlight group
-vim.cmd [[
-  augroup highlight_yank
-    autocmd!
-    au TextYankPost * silent! lua vim.highlight.on_yank({higroup="Visual", timeout=300})
-  augroup END
-]]
-
-vim.api.nvim_create_augroup("Shape", { clear = true })
-vim.api.nvim_create_autocmd("VimLeave", {
-  group = "Shape",
-  -- this is for underscore
+api.nvim_create_autocmd("VimLeave", {
+  group = augroup "CursorShape",
   command = "set guicursor=a:hor30",
 })
 
-local uv = vim.loop
+-- Filetype-Specific Settings
+api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
+  group = augroup "FiletypeDetection",
+  pattern = "*.env*",
+  command = "set filetype=sh",
+})
 
-vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
+api.nvim_create_autocmd("FileType", {
+  group = augroup "FormatOptions",
+  command = "set formatoptions-=ro",
+})
+
+api.nvim_create_autocmd("FileType", {
+  group = augroup "SqlSettings",
+  pattern = { "sql", "mysql", "psql" },
   callback = function()
-    if vim.env.TMUX_PLUGIN_MANAGER_PATH then
-      uv.spawn(vim.env.TMUX_PLUGIN_MANAGER_PATH .. "/tmux-window-name/scripts/rename_session_windows.py", {})
-    end
+    vim.bo.commentstring = "-- %s"
   end,
 })
 
--- vim.api.nvim_create_autocmd("CmdlineEnter", {
---   callback = function()
---     vim.api.nvim_set_keymap("c", "<CR>", "<CR>", { noremap = true, silent = true })
---   end,
--- })
-
--- TODO: move this to utils and create a seperate file for these user comands
--- this is for testing the lsp I made
-
-vim.api.nvim_create_user_command(
-  "TestLearningLsp", -- The command name
-  function()
-    utils.TestLearningLsp()
-  end,
-  { desc = "Test the custom LSP client: learninglsp" } -- Optional description
-)
-
-local eslint_active = false
-
-vim.api.nvim_create_user_command("ToggleESLint", function()
-  eslint_active = not eslint_active
-  if eslint_active then
-    vim.lsp.start_client { name = "eslint" }
-    print "ESLint enabled"
-  else
-    vim.lsp.stop_client(vim.lsp.get_active_clients({ name = "eslint" })[1].id)
-    print "ESLint disabled"
-  end
-end, {})
-
-vim.api.nvim_create_autocmd("FileType", {
-  pattern = "*",
-  callback = function()
-    local filetypes = { "sql", "mysql", "psql" }
-    if vim.tbl_contains(filetypes, vim.bo.filetype) then
-      vim.bo.commentstring = "-- %s"
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd("BufReadPost", {
-  pattern = "*",
-  callback = function()
-    local bufname = vim.api.nvim_buf_get_name(0)
-    if bufname:match "env" then
-      vim.lsp.stop_client(vim.lsp.get_clients { bufnr = 0 })
-    end
-  end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
+api.nvim_create_autocmd("FileType", {
+  group = augroup "UfoDetach",
   pattern = { "nvcheatsheet", "neo-tree", "dbui", "dbee" },
   callback = function()
-    require("ufo").detach()
-    vim.opt_local.foldenable = false
+    if pcall(require, "ufo") then
+      require("ufo").detach()
+      vim.opt_local.foldenable = false
+    end
   end,
 })
 
-vim.loader.enable()
-
-vim.api.nvim_create_autocmd("BufReadPre", {
-  pattern = "*",
-  desc = "Disable features on big files",
+-- Performance for large files
+api.nvim_create_autocmd("BufReadPre", {
+  group = augroup "BigFilePerformance",
   callback = function(args)
     local bufnr = args.buf
-    local size = vim.fn.getfsize(vim.fn.expand "%")
-    local max_filesize = 500 * 1024
-
-    if size < max_filesize or not vim.g.customBigFileOpt then
+    local max_filesize = 500 * 1024 -- 500 KB
+    local ok, size = pcall(vim.uv.fs_stat, vim.api.nvim_buf_get_name(bufnr))
+    if not ok or not size or size.size < max_filesize or not g.customBigFileOpt then
       return
     end
 
     vim.b[bufnr].bigfile_disable = true
-
-    -- Set up Treesitter module disable
-    local module = require("nvim-treesitter.configs").get_module "indent"
-    module.disable = function(lang, bufnr)
-      return vim.b[bufnr].bigfile_disable == true
+    local ts_indent = require("nvim-treesitter.configs").get_module "indent"
+    ts_indent.disable = function(_, b)
+      return vim.b[b] and vim.b[b].bigfile_disable
     end
-
-    -- Disable autoindent
-    vim.bo.indentexpr = ""
-    vim.bo.autoindent = false
-    vim.bo.smartindent = false
-    -- Disable folding
+    vim.bo[bufnr].autoindent = false
+    vim.bo[bufnr].smartindent = false
     vim.opt_local.foldmethod = "manual"
-    vim.opt_local.foldexpr = "0"
-    -- Disable statuscolumn
     vim.opt_local.statuscolumn = ""
-    -- Disable search highlight
     vim.opt_local.hlsearch = false
-    -- Disable line wrapping
     vim.opt_local.wrap = false
-    -- Disable cursorline
     vim.opt_local.cursorline = false
-    -- Disable swapfile
     vim.opt_local.swapfile = false
-    -- Disable spell checking
     vim.opt_local.spell = false
   end,
 })
--- had to use this post nvim v11 upgrade because the buffer background colors were weird
-vim.api.nvim_set_hl(0, "TabLine", { bg = "NONE" })
 
-vim.api.nvim_create_autocmd("LspAttach", {
-  group = vim.api.nvim_create_augroup("UserLspConfig", {}),
-  callback = function(ev)
-    for _, client in pairs((vim.lsp.get_clients {})) do
-      if client.name == "tailwindcss" then
-        client.server_capabilities.completionProvider.triggerCharacters =
-        { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+-- LSP and Integrations
+api.nvim_create_autocmd("BufReadPost", {
+  group = augroup "LspManagement",
+  callback = function()
+    if vim.api.nvim_buf_get_name(0):match "env" then
+      for _, client in ipairs(vim.lsp.get_clients { bufnr = 0 }) do
+        vim.lsp.stop_client(client.id)
       end
     end
   end,
 })
-vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ffffff", bg = "#ff007c", bold = true })
 
-vim.api.nvim_create_user_command(
-  "RemoveComments", -- The command name
-  function()
-    utils.clearComments()
+api.nvim_create_autocmd("LspAttach", {
+  group = augroup "LspCustomAttach",
+  callback = function(_)
+    for _, client in ipairs(vim.lsp.get_clients {}) do
+      if client.name == "tailwindcss" then
+        client.server_capabilities.completionProvider.triggerCharacters =
+          { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+      end
+    end
   end,
-  { desc = "Test the custom LSP client: learninglsp" } -- Optional description
-)
+})
+
+api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
+  group = augroup "TmuxIntegration",
+  callback = function()
+    if vim.env.TMUX_PLUGIN_MANAGER_PATH then
+      vim.loop.spawn(vim.env.TMUX_PLUGIN_MANAGER_PATH .. "/tmux-window-name/scripts/rename_session_windows.py", {})
+    end
+  end,
+})
+
+-- =============================================================================
+-- User Commands
+-- =============================================================================
+local utils = require "custom.utils"
+
+api.nvim_create_user_command("TestLearningLsp", function()
+  utils.TestLearningLsp()
+end, { desc = "Test the custom LSP client: learninglsp" })
+
+api.nvim_create_user_command("RemoveComments", function()
+  utils.clearComments()
+end, { desc = "Remove all comments from the current buffer" })
+
+api.nvim_create_user_command("ToggleESLint", function()
+  local eslint_clients = vim.lsp.get_clients { name = "eslint" }
+  if #eslint_clients > 0 then
+    for _, client in ipairs(eslint_clients) do
+      vim.lsp.stop_client(client.id)
+    end
+    print "ESLint disabled"
+  else
+    cmd "LspStart eslint"
+    print "ESLint enabled"
+  end
+end, { desc = "Toggle ESLint LSP server" })
+
+-- =============================================================================
+-- Final Setup
+-- =============================================================================
+vim.loader.enable()
