@@ -1,4 +1,5 @@
 local opt = vim.opt
+local utils = require("custom.utils")
 
 -- opt.foldmethod = "expr"
 -- opt.foldexpr = "nvim_treesitter#foldexpr()"
@@ -100,29 +101,13 @@ vim.api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
 --   end,
 -- })
 
+-- TODO: move this to utils and create a seperate file for these user comands
 -- this is for testing the lsp I made
-function TestLearningLsp()
-  local basePath = "/home/elhaam/workspace/learning/go-lsp"
-  local client = vim.lsp.start_client {
-    name = "learninglsp",
-    cmd = { basePath .. "/main" },
-    on_attach = require("plugins.configs.lspconfig").on_attach,
-  }
-
-  if not client then
-    vim.notify("Failed to start LSP client: learninglsp", vim.log.levels.ERROR)
-    return
-  end
-
-  vim.lsp.buf_attach_client(0, client)
-
-  vim.notify("LSP client 'learninglsp' successfully started and attached!", vim.log.levels.INFO)
-end
 
 vim.api.nvim_create_user_command(
   "TestLearningLsp", -- The command name
   function()
-    TestLearningLsp()
+    utils.TestLearningLsp()
   end,
   { desc = "Test the custom LSP client: learninglsp" } -- Optional description
 )
@@ -226,3 +211,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
   end,
 })
 vim.api.nvim_set_hl(0, "FlashLabel", { fg = "#ffffff", bg = "#ff007c", bold = true })
+
+vim.api.nvim_create_user_command(
+  "RemoveComments", -- The command name
+  function()
+    utils.clearComments()
+  end,
+  { desc = "Test the custom LSP client: learninglsp" } -- Optional description
+)

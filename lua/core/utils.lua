@@ -115,4 +115,22 @@ M.lazy_load = function(plugin)
   })
 end
 
+function M.TestLearningLsp()
+  local basePath = "/home/elhaam/workspace/learning/go-lsp"
+  local client = vim.lsp.start_client {
+    name = "learninglsp",
+    cmd = { basePath .. "/main" },
+    on_attach = require("plugins.configs.lspconfig").on_attach,
+  }
+
+  if not client then
+    vim.notify("Failed to start LSP client: learninglsp", vim.log.levels.ERROR)
+    return
+  end
+
+  vim.lsp.buf_attach_client(0, client)
+
+  vim.notify("LSP client 'learninglsp' successfully started and attached!", vim.log.levels.INFO)
+end
+
 return M

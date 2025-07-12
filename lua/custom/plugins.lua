@@ -1,9 +1,3 @@
--- lua/custom/plugins.lua
-
--- This file is now organized into functional categories.
--- Each category is a function that returns a list of plugins.
--- The final `plugins` table is a merged list of all categories.
-
 local load_mappings = require("core.utils").load_mappings
 
 local merge_plugins = require("custom.utils").mergePlugins
@@ -16,11 +10,11 @@ local function get_ai_plugins()
       cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
       opts = require "custom.configs.codecompanion",
       dependencies = {
-        "ravitemer/codecompanion-history.nvim", -- Save and load conversation history
+        "ravitemer/codecompanion-history.nvim",
         "nvim-lua/plenary.nvim",
         "nvim-treesitter/nvim-treesitter",
         {
-          "ravitemer/mcphub.nvim", -- Manage MCP servers
+          "ravitemer/mcphub.nvim",
           cmd = "MCPHub",
           build = "npm install -g mcp-hub@latest",
           config = true,
@@ -47,33 +41,12 @@ local function get_editing_enhancement_plugins()
       "abecodes/tabout.nvim",
       enabled = false,
       lazy = false,
-      config = function()
-        require("tabout").setup {
-          tabkey = "<Tab>",             -- key to trigger tabout, set to an empty string to disable
-          backwards_tabkey = "<S-Tab>", -- key to trigger backwards tabout, set to an empty string to disable
-          act_as_tab = true,            -- shift content if tab out is not possible
-          act_as_shift_tab = false,     -- reverse shift content if tab out is not possible (if your keyboard/terminal supports <S-Tab>)
-          default_tab = "<C-t>",        -- shift default action (only at the beginning of a line, otherwise <TAB> is used)
-          default_shift_tab = "<C-d>",  -- reverse shift default action,
-          enable_backwards = true,      -- well ...
-          completion = false,           -- if the tabkey is used in a completion pum
-          tabouts = {
-            { open = "'", close = "'" },
-            { open = '"', close = '"' },
-            { open = "`", close = "`" },
-            { open = "(", close = ")" },
-            { open = "[", close = "]" },
-            { open = "{", close = "}" },
-          },
-          ignore_beginning = true, --[[ if the cursor is at the beginning of a filled element it will rather tab out than shift the content ]]
-          exclude = {}, -- tabout will ignore these filetypes
-        }
-      end,
-      dependencies = { -- These are optional
+      config = require "custom.configs.tabout",
+      dependencies = {
         "nvim-treesitter/nvim-treesitter",
       },
-      opt = true,              -- Set this to true if the plugin is optional
-      event = "InsertCharPre", -- Set the event to 'InsertCharPre' for better compatibility
+      opt = true,
+      event = "InsertCharPre",
       priority = 1000,
     },
     {
@@ -169,7 +142,7 @@ local function get_editing_enhancement_plugins()
     {
       "gbprod/stay-in-place.nvim",
       lazy = false,
-      config = true, -- run require("stay-in-place").setup()
+      config = true,
     },
     {
       "letieu/btw.nvim",
@@ -513,20 +486,6 @@ end
 local function get_ui_and_visual_plugins()
   return {
     {
-      "rasulomaroff/reactive.nvim",
-      enabled = false,
-      event = "VeryLazy",
-      config = function()
-        require("reactive").setup {
-          builtin = {
-            cursorline = true,
-            cursor = true,
-            modemsg = true,
-          },
-        }
-      end,
-    },
-    {
       "jinh0/eyeliner.nvim",
       enabled = true,
       lazy = false,
@@ -810,15 +769,10 @@ local function get_file_management_plugins()
     },
     {
       "stevearc/oil.nvim",
-      ---@module 'oil'
-      ---@type oil.SetupOpts
       opts = {
         default_file_explorer = false,
       },
-      -- Optional dependencies
       dependencies = { { "echasnovski/mini.icons", opts = {} } },
-      -- dependencies = { "nvim-tree/nvim-web-devicons" }, -- use if you prefer nvim-web-devicons
-      -- Lazy loading is not recommended because it is very tricky to make it work correctly in all situations.
       lazy = false,
       config = function()
         require("oil").setup {

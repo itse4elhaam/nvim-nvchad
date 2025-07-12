@@ -296,4 +296,21 @@ function M.mergePlugins(...)
   return merged
 end
 
+function M.clearComments()
+  vim.ui.input({ prompt = "Comment string to remove (e.g., -- or //): " }, function(comment)
+    if not comment or comment == "" then
+      return
+    end
+
+    -- Escape Lua magic characters
+    local escaped = comment:gsub("([^%w])", "%%%1")
+
+    -- Build regex for single-line comments
+    local pattern = escaped .. ".*"
+
+    -- Delete all single-line comments
+    vim.cmd("silent! %s/" .. pattern .. "//g")
+  end)
+end
+
 return M
