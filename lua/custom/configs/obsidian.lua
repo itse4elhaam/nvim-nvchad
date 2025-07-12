@@ -3,7 +3,7 @@ return {
   workspaces = {
     {
       name = "personal",
-      path = "/home/e4elhaam/vaults/obsidian-notes",
+      path = vim.fn.expand "~/vaults/obsidian-notes",
     },
   },
   templates = {
