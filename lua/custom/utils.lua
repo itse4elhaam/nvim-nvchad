@@ -286,4 +286,14 @@ function M.closeOtherBuffers()
   vim.cmd "normal! zz"           -- centers you
 end
 
+function M.mergePlugins(...)
+  local merged = {}
+  for _, tbl in ipairs { ... } do
+    for _, plugin in ipairs(tbl) do
+      table.insert(merged, plugin)
+    end
+  end
+  return merged
+end
+
 return M
