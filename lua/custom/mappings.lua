@@ -267,6 +267,78 @@ M.true_zen = {
   },
 }
 
+M.flash = {
+  plugin = true,
+  n = {
+    ["s"] = {
+      function()
+        require("flash").jump()
+      end,
+      "Flash",
+    },
+    ["S"] = {
+      function()
+        require("flash").treesitter()
+      end,
+      "Flash Treesitter",
+    },
+  },
+  x = {
+    ["s"] = {
+      function()
+        require("flash").jump()
+      end,
+      "Flash",
+    },
+    ["S"] = {
+      function()
+        require("flash").treesitter()
+      end,
+      "Flash Treesitter",
+    },
+    ["R"] = {
+      function()
+        require("flash").treesitter_search()
+      end,
+      "Treesitter Search",
+    },
+  },
+  o = {
+    ["s"] = {
+      function()
+        require("flash").jump()
+      end,
+      "Flash",
+    },
+    ["S"] = {
+      function()
+        require("flash").treesitter()
+      end,
+      "Flash Treesitter",
+    },
+    ["r"] = {
+      function()
+        require("flash").remote()
+      end,
+      "Remote Flash",
+    },
+    ["R"] = {
+      function()
+        require("flash").treesitter_search()
+      end,
+      "Treesitter Search",
+    },
+  },
+  c = {
+    ["<c-s>"] = {
+      function()
+        require("flash").toggle()
+      end,
+      "Toggle Flash Search",
+    },
+  },
+}
+
 M.general = {
   n = {
     ["G"] = { "Gzz", "center after touching bottom" },

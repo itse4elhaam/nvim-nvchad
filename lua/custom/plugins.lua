@@ -105,23 +105,8 @@ local function get_editing_enhancement_plugins()
     },
     {
       "rmagatti/alternate-toggler",
-      config = function()
-        require("alternate-toggler").setup {
-          alternates = {
-            ["=="] = "!=",
-            ["up"] = "down",
-            ["let"] = "const",
-            ["development"] = "production",
-          },
-        }
-
-        vim.keymap.set(
-          "n",
-          "<leader><space>", -- <space><space>
-          "<cmd>lua require('alternate-toggler').toggleAlternate()<CR>"
-        )
-      end,
-      event = { "BufReadPost" }, -- lazy load after reading a buffer
+      config = require "custom.configs.alternate-toggler",
+      event = { "BufReadPost" },
     },
     {
       "gbprod/yanky.nvim",
@@ -169,13 +154,7 @@ local function get_motion_plugins()
         },
       },
       -- stylua: ignore
-      keys = {
-        { "s",     mode = { "n", "x", "o" }, function() require("flash").jump() end,              desc = "Flash" },
-        { "S",     mode = { "n", "x", "o" }, function() require("flash").treesitter() end,        desc = "Flash Treesitter" },
-        { "r",     mode = "o",               function() require("flash").remote() end,            desc = "Remote Flash" },
-        { "R",     mode = { "o", "x" },      function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
-        { "<c-s>", mode = { "c" },           function() require("flash").toggle() end,            desc = "Toggle Flash Search" },
-      },
+      keys = load_mappings "flash",
     },
     {
       "christoomey/vim-tmux-navigator",
@@ -196,9 +175,7 @@ local function get_motion_plugins()
       branch = "0.2.x",
       dependencies = {
         "kkharji/sqlite.lua",
-        -- Only required if using match_algorithm fzf
         { "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-        -- Optional.  If installed, native fzy will be used when match_algorithm is fzy
         { "nvim-telescope/telescope-fzy-native.nvim" },
       },
     },
@@ -214,22 +191,7 @@ local function get_lsp_and_completion_plugins()
         "BufReadPre",
         "BufNewFile",
       },
-      config = function()
-        local lint = require "lint"
-
-        lint.linters_by_ft = {
-          javascript = { "eslint_d" },
-          typescript = { "eslint_d" },
-          javascriptreact = { "eslint_d" },
-          typescriptreact = { "eslint_d" },
-          svelte = { "eslint_d" },
-          python = { "pylint" },
-        }
-
-        vim.keymap.set("n", "<leader>ln", function()
-          lint.try_lint()
-        end, { desc = "lint file" })
-      end,
+      config = require "custom.configs.nvim-lint",
     },
     {
       "folke/trouble.nvim",
@@ -290,9 +252,7 @@ local function get_lsp_and_completion_plugins()
     },
     {
       "j-hui/fidget.nvim",
-      opts = {
-        -- options
-      },
+      opts = {},
     },
   }
 end
@@ -303,7 +263,7 @@ local function get_language_specific_plugins()
     {
       "MeanderingProgrammer/render-markdown.nvim",
       event = "LspAttach",
-      dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" }, -- if you use the mini.nvim suite
+      dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
       ---@module 'render-markdown'
       ---@type render.md.UserConfig
       opts = {},
@@ -348,38 +308,7 @@ local function get_language_specific_plugins()
         },
       },
       ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte" },
-      opts = {
-        on_attach = function(client, bufnr)
-          -- Disable formatting to use a dedicated formatter (like conform.nvim or null-ls)
-          client.server_capabilities.documentFormattingProvider = false
-          client.server_capabilities.documentRangeFormattingProvider = false
-
-          -- Disable semantic tokens for large files (prevents lag)
-          -- TODO: check if you need this or not
-          -- if vim.api.nvim_buf_line_count(bufnr) > 3500 then
-          --   client.server_capabilities.semanticTokensProvider = nil
-          -- end
-        end,
-        settings = {
-          tsserver_disable_suggestions = true,
-          tsserver_log_verbosity = "off",
-          tsserver_file_preferences = {
-            includeInlayParameterNameHints = "all",
-            includeCompletionsForModuleExports = true,
-            includeCompletionsWithInsertText = true,
-          },
-          tsserver_format_options = {}, -- Explicitly empty to disable formatting
-          expose_as_code_action = {
-            "fix_all",
-            "add_missing_imports",
-            "remove_unused",
-            "remove_unused_imports",
-            "organize_imports",
-          },
-          tsserver_max_memory = 8192, -- MB
-          tsserver_fsa_use_browser_implementation = false,
-        },
-      },
+      opts = require "custom.configs.typescript-tools",
     },
     {
       "linux-cultist/venv-selector.nvim",
@@ -388,12 +317,11 @@ local function get_language_specific_plugins()
         "mfussenegger/nvim-dap",
         { "nvim-telescope/telescope.nvim", branch = "0.1.x", dependencies = { "nvim-lua/plenary.nvim" } },
       },
-      branch = "regexp", -- This is the regexp branch, use this for the new version
+      branch = "regexp",
       config = function()
         require("venv-selector").setup()
       end,
       ft = { "python" },
-      -- keys = load_mappings "venv_selector",
     },
     {
       "MunifTanjim/prettier.nvim",
@@ -403,7 +331,6 @@ local function get_language_specific_plugins()
     {
       "tronikelis/ts-autotag.nvim",
       opts = {},
-      -- ft = {}, optionally you can load it only in jsx/html
       event = "VeryLazy",
     },
     {
@@ -418,8 +345,8 @@ local function get_language_specific_plugins()
         { "<Leader>cv", "<CMD>TWValues<CR>", desc = "Tailwind CSS values" },
       },
       opts = {
-        border = "rounded",          -- Valid window border style,
-        show_unknown_classes = true, -- Shows the unknown classes popup
+        border = "rounded",
+        show_unknown_classes = true,
       },
     },
     {
@@ -439,20 +366,7 @@ local function get_language_specific_plugins()
       "vuki656/package-info.nvim",
       dependencies = { "MunifTanjim/nui.nvim" },
       event = "BufEnter package.json",
-      opts = {
-        colors = {
-          up_to_date = "#3C4048", -- Text color for up to date package virtual text
-          outdated = "#fc514e",   -- Text color for outdated package virtual text
-        },
-        icons = {
-          enable = true,               -- Whether to display icons
-        },
-        autostart = true,              -- Whether to autostart when `package.json` is opened
-        hide_up_to_date = true,        -- It hides up to date versions when displaying virtual text
-        hide_unstable_versions = true, -- It hides unstable versions from version list e.g next-11.1.3-canary3
-
-        package_manager = "yarn",
-      },
+      opts = require "custom.configs.package-info",
     },
   }
 end
@@ -489,77 +403,13 @@ local function get_ui_and_visual_plugins()
       "jinh0/eyeliner.nvim",
       enabled = true,
       lazy = false,
-      config = function()
-        require("eyeliner").setup {
-          -- show highlights only after keypress
-          highlight_on_key = true,
-
-          -- dim all other characters if set to true (recommended!)
-          dim = false,
-
-          -- set the maximum number of characters eyeliner.nvim will check from
-          -- your current cursor position; this is useful if you are dealing with
-          -- large files: see https://github.com/jinh0/eyeliner.nvim/issues/41
-          max_length = 9999,
-
-          -- filetypes for which eyeliner should be disabled;
-          -- e.g., to disable on help files:
-          -- disabled_filetypes = {"help"}
-          disabled_filetypes = {},
-
-          -- buftypes for which eyeliner should be disabled
-          -- e.g., disabled_buftypes = {"nofile"}
-          disabled_buftypes = {},
-
-          -- add eyeliner to f/F/t/T keymaps;
-          -- see section on advanced configuration for more information
-          default_keymaps = true,
-        }
-      end,
+      config = require "custom.configs.eyeliner",
     },
     {
       "sphamba/smear-cursor.nvim",
       enabled = true,
       lazy = false,
-      opts = {
-        smear_between_buffers = true,
-        smear_between_neighbor_lines = true,
-        smear_horizontally = true,
-        smear_vertically = true,
-        smear_diagonally = true,
-
-        smear_to_cmd = true,
-        smear_insert_mode = true,
-        smear_replace_mode = false,
-        smear_terminal_mode = false,
-
-        vertical_bar_cursor = true,
-        vertical_bar_cursor_insert_mode = true,
-        horizontal_bar_cursor_replace_mode = true,
-
-        never_draw_over_target = true,
-        hide_target_hack = false,
-
-        time_interval = 16, -- ~60FPS
-        delay_event_to_smear = 2,
-        delay_after_key = 4,
-
-        -- Main mode animation
-        stiffness = 0.8,                -- Snappy cursor
-        trailing_stiffness = 0.45,      -- A bit of trailing effect
-        trailing_exponent = 2,          -- Curve favors the head
-        distance_stop_animating = 0.15, -- Stops early for crispness
-
-        -- Insert mode animation
-        stiffness_insert_mode = 0.55,
-        trailing_stiffness_insert_mode = 0.35,
-        trailing_exponent_insert_mode = 1.2,
-        distance_stop_animating_vertical_bar = 0.6,
-
-        -- Smear limits
-        max_length = 20,
-        max_length_insert_mode = 1,
-      },
+      opts = require "custom.configs.smear-cursor",
     },
     {
       "folke/todo-comments.nvim",
@@ -578,45 +428,7 @@ local function get_ui_and_visual_plugins()
       priority = 1000,
       lazy = false,
       ---@type snacks.Config
-      opts = {
-        bigfile = { enabled = true },
-        zen = {
-          enabled = true,
-          on_open = function(_)
-            vim.fn.system "tmux set-option status off"
-          end,
-          --- Callback when the window is closed.
-          ---@param win snacks.win
-          on_close = function(_)
-            vim.fn.system "tmux set-option status on"
-          end,
-          --- Options for the `Snacks.zen.zoom()`
-          ---@type snacks.zen.Config
-          zoom = {
-            toggles = {},
-            show = { statusline = false, tabline = false },
-            win = {
-              backdrop = false,
-              width = 0, -- full width
-            },
-          },
-        },
-        quickfile = { enabled = true },
-        lazygit = { enabled = true },
-        scratch = { enabled = true },
-        gitbrowse = { enabled = true },
-        notifier = { enabled = true },
-        scroll = {
-          enabled = false,
-          animate = {
-            duration = { step = 12, total = 180 }, -- nice and smooth
-          },
-          animate_repeat = {
-            delay = 80,                         -- if next scroll happens within 80ms, use fast mode
-            duration = { step = 1, total = 1 }, -- basically instant
-          },
-        },
-      },
+      opts = require "custom.configs.snacks",
       keys = load_mappings "snacks",
     },
     {
@@ -721,20 +533,7 @@ local function get_file_management_plugins()
       dependencies = {
         "nvim-lua/plenary.nvim",
       },
-      opts = {
-        ui = { enabled = false },
-        workspaces = {
-          {
-            name = "personal",
-            path = "/home/e4elhaam/vaults/obsidian-notes",
-          },
-        },
-        templates = {
-          folder = "templates",
-          date_format = "%Y-%m-%d-%a",
-          time_format = "%H:%M",
-        },
-      },
+      opts = require "custom.configs.obsidian",
     },
     {
       "mbbill/undotree",
@@ -807,13 +606,10 @@ local function get_database_plugins()
       },
       cmd = "Dbee",
       build = function()
-        -- Install tries to automatically detect the install method.
-        -- if it fails, try calling it with one of these parameters:
-        --    "curl", "wget", "bitsadmin", "go"
         require("dbee").install()
       end,
       config = function()
-        require("dbee").setup( --[[optional config]])
+        require("dbee").setup()
       end,
     },
     {
@@ -829,7 +625,6 @@ local function get_database_plugins()
         "DBUIFindBuffer",
       },
       init = function()
-        -- Your DBUI configuration
         vim.g.db_ui_use_nerd_fonts = 1
       end,
     },
@@ -870,48 +665,7 @@ local function get_snippet_and_refactor_plugins()
         "<Leader>asa",
         "<Leader>ase",
       },
-      config = function()
-        local present, wk = pcall(require, "which-key")
-        if not present then
-          return
-        end
-
-        wk.add {
-          { "<leader>as", group = "Snippets", nowait = false, remap = false },
-          {
-            "<leader>asa",
-            '<cmd>lua require("scissors").addNewSnippet()<CR>',
-            desc = "Add new snippet",
-            nowait = false,
-            remap = false,
-          },
-          {
-            "<leader>ase",
-            '<cmd>lua require("scissors").editSnippet()<CR>',
-            desc = "Edit snippet",
-            nowait = false,
-            remap = false,
-          },
-        }
-
-        wk.add {
-          {
-            "<leader>as",
-            group = "Snippets",
-            mode = "x",
-            nowait = false,
-            remap = false,
-          },
-          {
-            "<leader>asa",
-            '<cmd>lua require("scissors").addNewSnippet()<CR>',
-            desc = "Add new snippet from selection",
-            mode = "x",
-            nowait = false,
-            remap = false,
-          },
-        }
-      end,
+      config = require "custom.configs.scissors",
     },
     {
       "chrisgrieser/nvim-rip-substitute",
