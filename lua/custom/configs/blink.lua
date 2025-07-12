@@ -103,6 +103,7 @@ local opts = {
       mysql = { "snippets", "dadbod", "buffer" },
       text = { "dictionary" },
       markdown = { "thesaurus" },
+      codecompanion = { "codecompanion" },
     },
     -- add vim-dadbod-completion to your completion providers
     providers = {

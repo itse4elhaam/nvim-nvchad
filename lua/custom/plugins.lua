@@ -3,8 +3,44 @@ local load_mappings = require("core.utils").load_mappings
 local plugins = {
   -- text editing
   {
+    "olimorris/codecompanion.nvim",
+    cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
+    opts = require "custom.configs.codecompanion",
+    dependencies = {
+      "ravitemer/codecompanion-history.nvim", -- Save and load conversation history
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      {
+        "ravitemer/mcphub.nvim", -- Manage MCP servers
+        cmd = "MCPHub",
+        build = "npm install -g mcp-hub@latest",
+        config = true,
+      },
+    },
+    keys = {
+      {
+        "<leader>cca",
+        "<cmd>CodeCompanionActions<CR>",
+        desc = "Open the action palette",
+        mode = { "n", "v" },
+      },
+      {
+        "<Leader>a",
+        "<cmd>CodeCompanionChat Toggle<CR>",
+        desc = "Toggle a chat buffer",
+        mode = { "n", "v" },
+      },
+      {
+        "<LocalLeader>a",
+        "<cmd>CodeCompanionChat Add<CR>",
+        desc = "Add code to a chat buffer",
+        mode = { "v" },
+      },
+    },
+  },
+  {
     "zbirenbaum/copilot.lua",
-    enabled = vim.g.auto_ai,
+    enabled = true,
     cmd = "Copilot",
     event = "InsertEnter",
     config = function()

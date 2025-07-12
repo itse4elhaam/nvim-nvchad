@@ -60,6 +60,24 @@ M.text_case = {
   },
 }
 
+M.code_companion = {
+  plugin = true,
+  n = {
+    ["<leader>cca"] = {
+      "<cmd>CodeCompanionActions<CR>",
+      "Open the action palette",
+    },
+    ["<leader>ac"] = {
+      "<cmd>CodeCompanionChat Toggle<CR>",
+      "Toggle a chat buffer",
+    },
+    ["<leader>cai"] = {
+      "<cmd>CodeCompanionChat Add<CR>",
+      "Add code to a chat buffer",
+    },
+  },
+}
+
 M.yazi = {
   plugin = true,
   n = {
