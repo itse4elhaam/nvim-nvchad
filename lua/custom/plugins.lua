@@ -26,26 +26,7 @@ local function get_ai_plugins()
           config = true,
         },
       },
-      keys = {
-        {
-          "<leader>cca",
-          "<cmd>CodeCompanionActions<CR>",
-          desc = "Open the action palette",
-          mode = { "n", "v" },
-        },
-        {
-          "<Leader>a",
-          "<cmd>CodeCompanionChat Toggle<CR>",
-          desc = "Toggle a chat buffer",
-          mode = { "n", "v" },
-        },
-        {
-          "<LocalLeader>a",
-          "<cmd>CodeCompanionChat Add<CR>",
-          desc = "Add code to a chat buffer",
-          mode = { "v" },
-        },
-      },
+      keys = load_mappings "code_companion",
     },
     {
       "zbirenbaum/copilot.lua",
