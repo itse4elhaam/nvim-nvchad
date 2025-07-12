@@ -4,13 +4,11 @@
 - close non harpoon tabs only
 - harpoon files instead of auto session - put on reddit too maybe?
 - ufo unable to fold html tags
-- vim.notify
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
 - consider nvim-chainsaw instead of timer.nvim
 - mapping conflicts in :checkhealth
 - install this https://github.com/mrjones2014/smart-splits.nvim
-- https://github.com/ecosse3/nvim/blob/master/lua/plugins/sops.lua
 - optimize this for fe by studyying ecovim
 - use refacorting.nvim and various text objects more
 - automagically detect the current new buffer type
@@ -20,8 +18,6 @@
 MY PLUGIN:
 
 - null-check.nvim ????
-
-<!-- articles -->
 
 - https://nanotipsforvim.prose.sh/using-pcall-to-make-your-config-more-stable -> plugins not working with require
 
