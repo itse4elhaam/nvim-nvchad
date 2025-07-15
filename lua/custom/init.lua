@@ -36,14 +36,13 @@ api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
-api.nvim_create_autocmd({ "InsertLeave" }, {
-  group = augroup "LineNumberToggle",
-  command = "setlocal relativenumber",
-})
-api.nvim_create_autocmd({ "InsertEnter" }, {
-  group = augroup "LineNumberToggle",
-  command = "setlocal norelativenumber",
-})
+vim.cmd [[
+  augroup LineNumberToggle
+    autocmd!
+    autocmd InsertLeave * setlocal relativenumber
+    autocmd InsertEnter * setlocal norelativenumber
+  augroup END
+]]
 
 -- UI Customization
 api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
@@ -140,7 +139,7 @@ api.nvim_create_autocmd("LspAttach", {
     for _, client in ipairs(vim.lsp.get_clients {}) do
       if client.name == "tailwindcss" then
         client.server_capabilities.completionProvider.triggerCharacters =
-          { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+        { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
       end
     end
   end,
