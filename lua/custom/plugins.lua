@@ -14,7 +14,7 @@ local function get_ai_plugins()
     },
     {
       "zbirenbaum/copilot.lua",
-      enabled = true,
+      enabled = false,
       cmd = "Copilot",
       event = "InsertEnter",
       config = function()
