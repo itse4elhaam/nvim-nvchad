@@ -49,3 +49,5 @@ parked
 
 - https://github.com/artemave/workspace-diagnostics.nvim - includes node_modules as well in the workspace level stuff
 - https://github.com/sschleemilch/slimline.nvim
+
+- check which code has gemini-cli omitted after doing this shit show debugging and code transfer

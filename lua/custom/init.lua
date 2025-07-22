@@ -28,6 +28,28 @@ local function augroup(name)
   return api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
+-- Remove carriage returns after pasting in normal mode
+vim.api.nvim_create_autocmd("VimEnter", {
+  group = augroup "PasteRemoveCarriageReturn",
+  callback = function()
+    vim.cmd [[
+      nnoremap <silent> P :execute "normal! P" <bar> silent! %s/\r//g<CR>
+      nnoremap <silent> p :execute "normal! p" <bar> silent! %s/\r//g<CR>
+    ]]
+  end,
+})
+
+-- Remove carriage returns after pasting in insert mode
+-- nnoremap <silent> <C-r> :execute "normal! <C-r>" <bar> silent! %s/\r//g<CR>
+vim.api.nvim_create_autocmd("InsertLeave", {
+  group = augroup "PasteRemoveCarriageReturn",
+  callback = function()
+    vim.cmd [[
+      silent! %s/\r//g
+    ]]
+  end,
+})
+
 -- Editing Enhancements
 api.nvim_create_autocmd("TextYankPost", {
   group = augroup "HighlightYank",
