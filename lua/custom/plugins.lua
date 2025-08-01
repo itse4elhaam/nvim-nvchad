@@ -323,12 +323,6 @@ local function get_language_specific_plugins()
       "dmmulroy/ts-error-translator.nvim",
       config = true,
     },
-    {
-      "vuki656/package-info.nvim",
-      dependencies = { "MunifTanjim/nui.nvim" },
-      event = "BufEnter package.json",
-      opts = require "custom.configs.package-info",
-    },
   }
 end
 
