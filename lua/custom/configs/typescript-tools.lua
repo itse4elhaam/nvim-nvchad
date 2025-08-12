@@ -11,6 +11,8 @@ return {
     -- end
   end,
   settings = {
+    publish_diagnostic_on = "insert_leave",
+    separate_diagnostic_server = true,
     tsserver_disable_suggestions = true,
     tsserver_log_verbosity = "off",
     tsserver_file_preferences = {
