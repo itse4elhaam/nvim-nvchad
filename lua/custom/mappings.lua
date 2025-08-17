@@ -400,6 +400,62 @@ M.opencode = {
   },
 }
 
+M.wtf = {
+  plugin = true,
+  n = {
+    ["<leader>wd"] = {
+      function()
+        require("wtf").diagnose()
+      end,
+      "Debug diagnostic with AI",
+    },
+    ["<leader>wf"] = {
+      function()
+        require("wtf").fix()
+      end,
+      "Fix diagnostic with AI",
+    },
+    ["<leader>ws"] = {
+      function()
+        require("wtf").search()
+      end,
+      "Search diagnostic with Google",
+    },
+    ["<leader>wp"] = {
+      function()
+        require("wtf").pick_provider()
+      end,
+      "Pick provider",
+    },
+    ["<leader>wh"] = {
+      function()
+        require("wtf").history()
+      end,
+      "Populate the quickfix list with previous chat history",
+    },
+    ["<leader>wg"] = {
+      function()
+        require("wtf").grep_history()
+      end,
+      "Grep previous chat history with Telescope",
+    },
+  },
+  x = {
+    ["<leader>wd"] = {
+      function()
+        require("wtf").diagnose()
+      end,
+      "Debug diagnostic with AI",
+    },
+    ["<leader>wf"] = {
+      function()
+        require("wtf").fix()
+      end,
+      "Fix diagnostic with AI",
+    },
+  },
+}
+
 M.general = {
   n = {
     ["G"] = { "Gzz", "center after touching bottom" },
