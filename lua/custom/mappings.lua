@@ -339,6 +339,67 @@ M.flash = {
   },
 }
 
+M.opencode = {
+  n = {
+    ["<leader>ot"] = {
+      function()
+        require("opencode").toggle()
+      end,
+      "Toggle embedded opencode",
+    },
+    ["<leader>oa"] = {
+      function()
+        require("opencode").ask "@cursor: "
+      end,
+      "Ask opencode",
+    },
+    ["<leader>op"] = {
+      function()
+        require("opencode").select_prompt()
+      end,
+      "Select prompt",
+    },
+    ["<leader>on"] = {
+      function()
+        require("opencode").command "session_new"
+      end,
+      "New session",
+    },
+    ["<leader>oy"] = {
+      function()
+        require("opencode").command "messages_copy"
+      end,
+      "Copy last message",
+    },
+    ["<leader>ok"] = {
+      function()
+        require("opencode").command "messages_half_page_up"
+      end,
+      "Scroll messages up",
+    },
+    ["<leader>oj"] = {
+      function()
+        require("opencode").command "messages_half_page_down"
+      end,
+      "Scroll messages down",
+    },
+  },
+  v = {
+    ["<leader>oa"] = {
+      function()
+        require("opencode").ask "@selection: "
+      end,
+      "Ask opencode about selection",
+    },
+    ["<leader>op"] = {
+      function()
+        require("opencode").select_prompt()
+      end,
+      "Select prompt",
+    },
+  },
+}
+
 M.general = {
   n = {
     ["G"] = { "Gzz", "center after touching bottom" },

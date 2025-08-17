@@ -16,19 +16,66 @@ local function get_ai_plugins()
       "NickvanDyke/opencode.nvim",
       dependencies = { "folke/snacks.nvim" },
       ---@type opencode.Config
-      opts = {
-        -- Your configuration, if any
+      opts = {},
+      keys = load_mappings "opencode",
+    },
+    {
+      "piersolenski/wtf.nvim",
+      dependencies = {
+        "nvim-lua/plenary.nvim",
+        "MunifTanjim/nui.nvim",
+        "nvim-telescope/telescope.nvim", -- Optional: For WtfGrepHistory
       },
-      -- stylua: ignore
+      opts = {},
       keys = {
-        { '<leader>ot', function() require('opencode').toggle() end,                           desc = 'Toggle embedded opencode', },
-        { '<leader>oa', function() require('opencode').ask('@cursor: ') end,                   desc = 'Ask opencode',                 mode = 'n', },
-        { '<leader>oa', function() require('opencode').ask('@selection: ') end,                desc = 'Ask opencode about selection', mode = 'v', },
-        { '<leader>op', function() require('opencode').select_prompt() end,                    desc = 'Select prompt',                mode = { 'n', 'v', }, },
-        { '<leader>on', function() require('opencode').command('session_new') end,             desc = 'New session', },
-        { '<leader>oy', function() require('opencode').command('messages_copy') end,           desc = 'Copy last message', },
-        { '<leader>ok', function() require('opencode').command('messages_half_page_up') end,   desc = 'Scroll messages up', },
-        { '<leader>oj', function() require('opencode').command('messages_half_page_down') end, desc = 'Scroll messages down', },
+        {
+          "<leader>wd",
+          mode = { "n", "x" },
+          function()
+            require("wtf").diagnose()
+          end,
+          desc = "Debug diagnostic with AI",
+        },
+        {
+          "<leader>wf",
+          mode = { "n", "x" },
+          function()
+            require("wtf").fix()
+          end,
+          desc = "Fix diagnostic with AI",
+        },
+        {
+          mode = { "n" },
+          "<leader>ws",
+          function()
+            require("wtf").search()
+          end,
+          desc = "Search diagnostic with Google",
+        },
+        {
+          mode = { "n" },
+          "<leader>wp",
+          function()
+            require("wtf").pick_provider()
+          end,
+          desc = "Pick provider",
+        },
+        {
+          mode = { "n" },
+          "<leader>wh",
+          function()
+            require("wtf").history()
+          end,
+          desc = "Populate the quickfix list with previous chat history",
+        },
+        {
+          mode = { "n" },
+          "<leader>wg",
+          function()
+            require("wtf").grep_history()
+          end,
+          desc = "Grep previous chat history with Telescope",
+        },
       },
     },
   }
