@@ -424,6 +424,20 @@ end
 local function get_picker_plugins()
   return {
     {
+      "dmtrKovalenko/fff.nvim",
+      build = "cargo build --release",
+      opts = {},
+      keys = {
+        {
+          "<C-p>",
+          function()
+            require("fff").find_files()
+          end,
+          desc = "Open file picker",
+        },
+      },
+    },
+    {
       "nvim-telescope/telescope-ui-select.nvim",
     },
     {
