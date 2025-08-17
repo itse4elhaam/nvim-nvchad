@@ -12,15 +12,6 @@ local function get_ai_plugins()
       dependencies = require("custom.configs.codecompanion").dependencies,
       keys = load_mappings "code_companion",
     },
-    {
-      "zbirenbaum/copilot.lua",
-      enabled = false,
-      cmd = "Copilot",
-      event = "InsertEnter",
-      config = function()
-        require("copilot").setup {}
-      end,
-    },
   }
 end
 
