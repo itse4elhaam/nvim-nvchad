@@ -1,5 +1,25 @@
 return {
   opts = {
+    default_strategy = "chat",
+    strategies = {
+      chat = {
+        adapter = "gemini",
+      },
+    },
+    adapters = {
+      gemini = function()
+        return require("codecompanion.adapters").extend("gemini", {
+          env = {
+            api_key = "GEMINI_API_KEY",
+          },
+          schema = {
+            model = {
+              default = "gemini-2.5-pro",
+            },
+          },
+        })
+      end,
+    },
     chat = {
       layout = "float",
       width = 80,
