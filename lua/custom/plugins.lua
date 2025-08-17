@@ -15,6 +15,7 @@ local function get_ai_plugins()
     {
       "NickvanDyke/opencode.nvim",
       dependencies = { "folke/snacks.nvim" },
+      ---@class opencode.Config
       ---@type opencode.Config
       opts = {},
       keys = load_mappings "opencode",
@@ -31,7 +32,7 @@ local function get_ai_plugins()
         popup_type = "popup",
         provider = "gemini",
         providers = {
-          anthropic = {
+          gemini = {
             api_key = function()
               return os.getenv "GEMINI_API_KEY"
             end,
