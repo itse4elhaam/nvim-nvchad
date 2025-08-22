@@ -426,7 +426,9 @@ local function get_picker_plugins()
     {
       "dmtrKovalenko/fff.nvim",
       build = "cargo build --release",
-      opts = {},
+      opts = {
+        prompt = "> ",
+      },
       keys = {
         {
           "<C-p>",
