@@ -614,6 +614,20 @@ local function get_snippet_and_refactor_plugins()
       end,
     },
     {
+      "jameswolensky/marker-groups.nvim",
+      lazy = false,
+      event = "VeryLazy",
+      dependencies = {
+        "nvim-lua/plenary.nvim",         -- Required
+        "nvim-telescope/telescope.nvim", -- Optional: for fuzzy search
+      },
+      config = function()
+        require("marker-groups").setup {
+          -- Your configuration here
+        }
+      end,
+    },
+    {
       "chrisgrieser/nvim-scissors",
       event = "BufEnter",
       dependencies = "nvim-telescope/telescope.nvim",
