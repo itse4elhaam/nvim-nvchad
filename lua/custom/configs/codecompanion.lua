@@ -5,8 +5,23 @@ return {
       chat = {
         adapter = "gemini",
       },
+      inline = {
+        adapter = "gemini",
+      },
+      cmd = {
+        adapter = "gemini",
+      },
     },
     adapters = {
+      acp = {
+        qwen = function()
+          return require("codecompanion.adapters").extend("gemini_cli", {
+            defaults = {
+              auth_method = "oauth-personal",
+            },
+          })
+        end,
+      },
       gemini = function()
         return require("codecompanion.adapters").extend("gemini", {
           env = {

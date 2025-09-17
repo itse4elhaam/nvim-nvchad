@@ -79,10 +79,10 @@ api.nvim_create_autocmd({ "ColorScheme", "VimEnter" }, {
   end,
 })
 
-api.nvim_create_autocmd("VimLeave", {
-  group = augroup "CursorShape",
-  command = "set guicursor=a:hor30",
-})
+-- api.nvim_create_autocmd("VimLeave", {
+--   group = augroup "CursorShape",
+--   command = "set guicursor=a:hor30",
+-- })
 
 -- Filetype-Specific Settings
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
