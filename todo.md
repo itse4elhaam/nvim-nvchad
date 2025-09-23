@@ -51,3 +51,4 @@ parked
 - https://github.com/sschleemilch/slimline.nvim
 
 - check which code has gemini-cli omitted after doing this shit show debugging and code transfer
+  https://github.com/rebelot/heirline.nvim
