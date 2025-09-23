@@ -76,6 +76,12 @@ M.code_companion = {
       "Add code to a chat buffer",
     },
   },
+  v = {
+    ["<leader>gai"] = {
+      "<cmd>CodeCompanion<CR>",
+      "Inline Editor",
+    },
+  },
 }
 
 M.yazi = {
