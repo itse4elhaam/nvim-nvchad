@@ -349,7 +349,7 @@ M.opencode = {
     },
     ["<leader>oa"] = {
       function()
-        require("opencode").ask "@cursor: "
+        require("opencode").ask "@AI: "
       end,
       "Ask opencode",
     },
