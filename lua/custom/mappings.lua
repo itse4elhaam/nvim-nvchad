@@ -71,15 +71,15 @@ M.code_companion = {
       "<cmd>CodeCompanionChat Toggle<CR>",
       "Toggle a chat buffer",
     },
-    ["<leader>cai"] = {
-      "<cmd>CodeCompanionChat Add<CR>",
-      "Add code to a chat buffer",
-    },
   },
   v = {
-    ["<leader>gai"] = {
+    ["<leader>cai"] = {
       "<cmd>CodeCompanion<CR>",
       "Inline Editor",
+    },
+    ["<leader>gai"] = {
+      "<cmd>CodeCompanionChat Add<CR>",
+      "Add code to a chat buffer",
     },
   },
 }
