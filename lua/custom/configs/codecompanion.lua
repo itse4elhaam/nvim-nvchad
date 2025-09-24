@@ -13,6 +13,25 @@ return {
       },
     },
     adapters = {
+      http = {
+        gemini = function()
+          local api_key = vim.fn.getenv "GEMINI_API_KEY"
+          if api_key == vim.NIL or api_key == "" then
+            error "GEMINI_API_KEY environment variable is not set. Please set it in your shell."
+          end
+
+          return require("codecompanion.adapters").extend("gemini", {
+            env = {
+              api_key = api_key,
+            },
+            schema = {
+              model = {
+                default = "gemini-2.5-flash",
+              },
+            },
+          })
+        end,
+      },
       acp = {
         qwen = function()
           return require("codecompanion.adapters").extend("gemini_cli", {
@@ -22,18 +41,6 @@ return {
           })
         end,
       },
-      gemini = function()
-        return require("codecompanion.adapters").extend("gemini", {
-          env = {
-            api_key = "GEMINI_API_KEY",
-          },
-          schema = {
-            model = {
-              default = "gemini-2.5-flash",
-            },
-          },
-        })
-      end,
     },
     chat = {
       layout = "float",
