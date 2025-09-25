@@ -3,9 +3,8 @@ local config = function()
     textobjects = {
       select = {
         enable = true,
-        lookahead = true, -- Automatically jump forward to textobj, similar to targets.vim
+        lookahead = true,
         keymaps = {
-          -- You can use the capture groups defined in textobjects.scm
           ["aa"] = "@assignment.outer",
           ["ia"] = "@assignment.inner",
           ["lhs"] = "@assignment.lhs",
@@ -25,7 +24,7 @@ local config = function()
       },
       move = {
         enable = true,
-        set_jumps = true, -- whether to set jumps in the jumplist
+        set_jumps = true,
         goto_next_start = {
           ["]f"] = "@function.outer",
           ["]]"] = "@class.outer",
@@ -56,11 +55,9 @@ local config = function()
   }
   local ts_repeat_move = require "nvim-treesitter.textobjects.repeatable_move"
 
-  -- vim way: ; goes to the direction you were moving.
   vim.keymap.set({ "n", "x", "o" }, ";", ts_repeat_move.repeat_last_move)
   vim.keymap.set({ "n", "x", "o" }, ",", ts_repeat_move.repeat_last_move_opposite)
 
-  -- Optionally, make builtin f, F, t, T also repeatable with ; and ,
   vim.keymap.set({ "n", "x", "o" }, "f", ts_repeat_move.builtin_f)
   vim.keymap.set({ "n", "x", "o" }, "F", ts_repeat_move.builtin_F)
   vim.keymap.set({ "n", "x", "o" }, "t", ts_repeat_move.builtin_t)
