@@ -86,12 +86,25 @@ local function get_editing_enhancement_plugins()
       end,
       keys = load_mappings "text_case",
     },
+    -- TODO: move all mini things to a new file
     {
       "echasnovski/mini.ai",
       event = "VeryLazy",
       version = "*",
-      config = function()
-        require("mini.ai").setup()
+      opts = function()
+        local ai = require "mini.ai"
+        return {
+          n_lines = 500,
+          custom_textobjects = {
+            d = { "%f[%d]%d+" },
+            e = {
+              { "%u[%l%d]+%f[^%l%d]", "%f[%S][%l%d]+%f[^%l%d]", "%f[%P][%l%d]+%f[^%l%d]", "^[%l%d]+%f[^%l%d]" },
+              "^().*()$",
+            },
+            u = ai.gen_spec.function_call(),
+            U = ai.gen_spec.function_call { name_pattern = "[%w_]" },
+          },
+        }
       end,
     },
     {
