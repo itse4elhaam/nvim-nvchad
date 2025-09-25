@@ -36,7 +36,7 @@ local function get_ai_plugins()
             api_key = function()
               return os.getenv "GEMINI_API_KEY"
             end,
-            model_id = "gemini-2.5-pro",
+            model_id = "gemini-2.5-flash",
           },
         },
       },
