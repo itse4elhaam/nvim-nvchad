@@ -347,23 +347,23 @@ M.flash = {
 
 M.opencode = {
   n = {
-    ["<leader>ot"] = {
+    ["<leader>oca"] = {
       function()
-        require("opencode").toggle()
+        require("opencode").ask()
       end,
-      "Toggle embedded opencode",
+      "Ask",
     },
     ["<leader>oa"] = {
       function()
         require("opencode").ask "@cursor: "
       end,
-      "Ask opencode",
+      "Ask about this",
     },
-    ["<leader>op"] = {
+    ["<leader>o+"] = {
       function()
-        require("opencode").select_prompt()
+        require("opencode").append_prompt "@buffer"
       end,
-      "Select prompt",
+      "Add buffer to prompt",
     },
     ["<leader>on"] = {
       function()
@@ -371,23 +371,53 @@ M.opencode = {
       end,
       "New session",
     },
-    ["<leader>oy"] = {
+    ["<leader>oe"] = {
       function()
-        require("opencode").command "messages_copy"
+        require("opencode").prompt "Explain @cursor and its context"
       end,
-      "Copy last message",
+      "Explain this code",
     },
-    ["<leader>ok"] = {
+    ["<leader>ob"] = {
       function()
-        require("opencode").command "messages_half_page_up"
+        require("opencode").ask "@buffer: "
       end,
-      "Scroll messages up",
+      "Ask about buffer",
     },
-    ["<leader>oj"] = {
+    ["<leader>oB"] = {
       function()
-        require("opencode").command "messages_half_page_down"
+        require("opencode").ask "@buffers: "
       end,
-      "Scroll messages down",
+      "Ask about open buffers",
+    },
+    ["<leader>ov"] = {
+      function()
+        require("opencode").ask "@visible: "
+      end,
+      "Ask about visible text",
+    },
+    ["<leader>od"] = {
+      function()
+        require("opencode").ask "@diagnostic: "
+      end,
+      "Ask about current diagnostic",
+    },
+    ["<leader>oD"] = {
+      function()
+        require("opencode").ask "@diagnostics: "
+      end,
+      "Ask about buffer diagnostics",
+    },
+    ["<leader>oq"] = {
+      function()
+        require("opencode").ask "@quickfix: "
+      end,
+      "Ask about quickfix list",
+    },
+    ["<leader>og"] = {
+      function()
+        require("opencode").ask "@diff: "
+      end,
+      "Ask about git diff",
     },
   },
   v = {
@@ -395,13 +425,49 @@ M.opencode = {
       function()
         require("opencode").ask "@selection: "
       end,
-      "Ask opencode about selection",
+      "Ask about selection",
     },
-    ["<leader>op"] = {
+    ["<leader>o+"] = {
       function()
-        require("opencode").select_prompt()
+        require("opencode").append_prompt "@selection"
+      end,
+      "Add selection to prompt",
+    },
+    ["<leader>os"] = {
+      function()
+        require("opencode").select()
       end,
       "Select prompt",
+    },
+    ["<leader>ov"] = {
+      function()
+        require("opencode").append_prompt "@visible"
+      end,
+      "Add visible text to prompt",
+    },
+    ["<leader>od"] = {
+      function()
+        require("opencode").append_prompt "@diagnostic"
+      end,
+      "Add current diagnostic to prompt",
+    },
+    ["<leader>oD"] = {
+      function()
+        require("opencode").append_prompt "@diagnostics"
+      end,
+      "Add buffer diagnostics to prompt",
+    },
+    ["<leader>oq"] = {
+      function()
+        require("opencode").append_prompt "@quickfix"
+      end,
+      "Add quickfix list to prompt",
+    },
+    ["<leader>og"] = {
+      function()
+        require("opencode").append_prompt "@diff"
+      end,
+      "Add git diff to prompt",
     },
   },
 }
