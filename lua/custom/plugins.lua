@@ -15,23 +15,11 @@ local function get_ai_plugins()
     {
       "sudo-tee/opencode.nvim",
       lazy = false,
+      opts = require("custom.configs.opencode").opts,
+      dependencies = require("custom.configs.opencode").dependencies,
       config = function()
-        require("opencode").setup {}
+        require("opencode").setup(require("custom.configs.opencode").opts)
       end,
-      dependencies = {
-        "nvim-lua/plenary.nvim",
-        {
-          "MeanderingProgrammer/render-markdown.nvim",
-          opts = {
-            anti_conceal = { enabled = false },
-            file_types = { "markdown", "opencode_output" },
-          },
-          ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
-        },
-        -- Optional, for file mentions and commands completion, pick only one
-        "saghen/blink.cmp",
-        "nvim-telescope/telescope.nvim",
-      },
     },
     {
       "piersolenski/wtf.nvim",
