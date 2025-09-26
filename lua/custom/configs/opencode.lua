@@ -2,10 +2,25 @@ return {
   opts = {
     ui = {
       display_cost = false,
+      icons = {
+        preset = "text",
+        overrides = {},
+      },
+      input = {
+        text = {
+          wrap = true,
+        },
+      },
+    },
+    completion = {
+      file_sources = {
+        enabled = true,
+        preferred_cli_tool = "rg",
+      },
     },
     context = {
       cursor_data = {
-        enabled = true, -- Include cursor position and line content in the context
+        enabled = true,
       },
     },
   },
@@ -19,7 +34,6 @@ return {
       },
       ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
     },
-    -- Optional, for file mentions and commands completion, pick only one
     "saghen/blink.cmp",
     "nvim-telescope/telescope.nvim",
   },
