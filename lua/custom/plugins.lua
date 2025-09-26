@@ -13,12 +13,13 @@ local function get_ai_plugins()
       keys = load_mappings "code_companion",
     },
     {
-      "NickvanDyke/opencode.nvim",
-      dependencies = { "folke/snacks.nvim" },
-      ---@class opencode.Config
-      ---@type opencode.Config
-      opts = {},
-      keys = load_mappings "opencode",
+      "sudo-tee/opencode.nvim",
+      lazy = false,
+      opts = require("custom.configs.opencode").opts,
+      dependencies = require("custom.configs.opencode").dependencies,
+      config = function()
+        require("opencode").setup(require("custom.configs.opencode").opts)
+      end,
     },
     {
       "piersolenski/wtf.nvim",
