@@ -202,6 +202,45 @@ api.nvim_create_user_command("ToggleESLint", function()
   end
 end, { desc = "Toggle ESLint LSP server" })
 
+-- Copilot User Commands
+api.nvim_create_user_command("CopilotSignIn", function()
+  vim.lsp.buf.execute_command({
+    command = "signIn",
+    arguments = {},
+  })
+end, { desc = "Sign in to GitHub Copilot" })
+
+api.nvim_create_user_command("CopilotSignOut", function()
+  vim.lsp.buf.execute_command({
+    command = "signOut", 
+    arguments = {},
+  })
+end, { desc = "Sign out of GitHub Copilot" })
+
+api.nvim_create_user_command("CopilotStatus", function()
+  local clients = vim.lsp.get_clients({ name = "copilot" })
+  if #clients > 0 then
+    vim.notify("Copilot LSP is running", vim.log.levels.INFO)
+    -- Request status from Copilot
+    vim.lsp.buf.execute_command({
+      command = "getCompletions",
+      arguments = {},
+    })
+  else
+    vim.notify("Copilot LSP is not running", vim.log.levels.WARN)
+  end
+end, { desc = "Check GitHub Copilot status" })
+
+api.nvim_create_user_command("CopilotEnable", function()
+  vim.g.copilot_enabled = true
+  vim.notify("Copilot enabled", vim.log.levels.INFO)
+end, { desc = "Enable GitHub Copilot" })
+
+api.nvim_create_user_command("CopilotDisable", function()
+  vim.g.copilot_enabled = false
+  vim.notify("Copilot disabled", vim.log.levels.INFO)
+end, { desc = "Disable GitHub Copilot" })
+
 -- =============================================================================
 -- Final Setup
 -- =============================================================================

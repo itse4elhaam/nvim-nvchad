@@ -10,6 +10,13 @@ capabilities.textDocument.foldingRange = {
 local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
+-- Try to load schemastore, fallback if not available
+local schemastore = {}
+local ok, store = pcall(require, "schemastore")
+if ok then
+  schemastore = store
+end
+
 -- Disable formatting for tailwindcss and cssls
 local function disable_formatting(client)
   if client.name == "tailwindcss" or client.name == "cssls" then
@@ -96,7 +103,9 @@ lspconfig.jsonls.setup {
   capabilities = capabilities,
   on_new_config = function(new_config)
     new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-    vim.list_extend(new_config.settings.json.schemas, schemastore.json.schemas())
+    if schemastore.json then
+      vim.list_extend(new_config.settings.json.schemas, schemastore.json.schemas())
+    end
   end,
   settings = {
     json = {
@@ -161,3 +170,11 @@ lspconfig.asm_lsp.setup {
   capabilities = capabilities,
   filetypes = { "asm", "s", "S" }, -- Common assembly file extensions
 }
+
+-- Load copilot LSP configuration in a deferred way
+vim.defer_fn(function()
+  local ok, copilot_config = pcall(require, "custom.configs.copilot")
+  if not ok then
+    vim.notify("Failed to load copilot configuration: " .. tostring(copilot_config), vim.log.levels.ERROR)
+  end
+end, 100) -- Delay by 100ms to ensure everything is loaded

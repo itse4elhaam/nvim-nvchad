@@ -157,6 +157,143 @@ M.snacks = {
   },
 }
 
+M.sidekick = {
+  plugin = true,
+  n = {
+    ["<leader>sk"] = {
+      function()
+        -- if there is a next edit, jump to it, otherwise apply it if any
+        if not require("sidekick").nes_jump_or_apply() then
+          vim.notify("No next edit suggestions available", vim.log.levels.INFO)
+        end
+      end,
+      "Goto/Apply Next Edit Suggestion",
+    },
+    ["<c-.>"] = {
+      function()
+        require("sidekick.cli").focus()
+      end,
+      "Sidekick Switch Focus",
+    },
+    ["<leader>aa"] = {
+      function()
+        require("sidekick.cli").toggle({ focus = true })
+      end,
+      "Sidekick Toggle CLI",
+    },
+    ["<leader>as"] = {
+      function()
+        require("sidekick.cli").select_prompt()
+      end,
+      "Sidekick Ask Prompt",
+    },
+    ["<leader>ach"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "claude", focus = true })
+      end,
+      "Sidekick Claude Toggle",
+    },
+    ["<leader>acp"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "copilot", focus = true })
+      end,
+      "Sidekick Copilot CLI Toggle",
+    },
+    ["<leader>agm"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "gemini", focus = true })
+      end,
+      "Sidekick Gemini Toggle",
+    },
+    ["<leader>agr"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "grok", focus = true })
+      end,
+      "Sidekick Grok Toggle",
+    },
+    -- Manual NES controls
+    ["<leader>sn"] = {
+      function()
+        require("sidekick.nes").update()
+      end,
+      "Update Next Edit Suggestions",
+    },
+    ["<leader>sj"] = {
+      function()
+        require("sidekick.nes").jump()
+      end,
+      "Jump to Next Edit",
+    },
+    ["<leader>sa"] = {
+      function()
+        require("sidekick.nes").apply()
+      end,
+      "Apply Next Edit Suggestions",
+    },
+    ["<leader>sc"] = {
+      function()
+        require("sidekick").clear()
+      end,
+      "Clear Sidekick Suggestions",
+    },
+  },
+  v = {
+    ["<c-.>"] = {
+      function()
+        require("sidekick.cli").focus()
+      end,
+      "Sidekick Switch Focus",
+    },
+    ["<leader>aa"] = {
+      function()
+        require("sidekick.cli").toggle({ focus = true })
+      end,
+      "Sidekick Toggle CLI",
+    },
+    ["<leader>as"] = {
+      function()
+        require("sidekick.cli").select_prompt()
+      end,
+      "Sidekick Ask Prompt",
+    },
+    ["<leader>ach"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "claude", focus = true })
+      end,
+      "Sidekick Claude Toggle",
+    },
+    ["<leader>acp"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "copilot", focus = true })
+      end,
+      "Sidekick Copilot CLI Toggle",
+    },
+    ["<leader>agm"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "gemini", focus = true })
+      end,
+      "Sidekick Gemini Toggle",
+    },
+    ["<leader>agr"] = {
+      function()
+        require("sidekick.cli").toggle({ name = "grok", focus = true })
+      end,
+      "Sidekick Grok Toggle",
+    },
+  },
+}
+
+M.copilot = {
+  plugin = true,
+  n = {
+    ["<leader>cps"] = { "<cmd>CopilotStatus<CR>", "Copilot Status" },
+    ["<leader>cpi"] = { "<cmd>CopilotSignIn<CR>", "Copilot Sign In" },
+    ["<leader>cpo"] = { "<cmd>CopilotSignOut<CR>", "Copilot Sign Out" },
+    ["<leader>cpe"] = { "<cmd>CopilotEnable<CR>", "Copilot Enable" },
+    ["<leader>cpd"] = { "<cmd>CopilotDisable<CR>", "Copilot Disable" },
+  },
+}
+
 M.code_refactor = {
   plugin = true,
   n = {

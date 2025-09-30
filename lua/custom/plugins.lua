@@ -43,6 +43,14 @@ local function get_ai_plugins()
       },
       keys = load_mappings "wtf",
     },
+    {
+      "folke/sidekick.nvim",
+      lazy = false,
+      opts = require("custom.configs.sidekick").opts,
+      config = require("custom.configs.sidekick").config,
+      keys = load_mappings "sidekick",
+      cmd = { "Sidekick", "SidekickCli" },
+    },
   }
 end
 
