@@ -1,6 +1,7 @@
 return {
   opts = {
     ui = {
+      window_width = 0.50,
       display_cost = false,
       icons = {
         preset = "text",
