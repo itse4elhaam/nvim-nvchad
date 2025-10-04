@@ -428,6 +428,12 @@ M.gitsigns = {
       end,
       "Reset hunk",
     },
+    ["<leader>sg"] = {
+      function()
+        require("gitsigns").stage_hunk()
+      end,
+      "Reset hunk",
+    },
 
     ["<leader>ph"] = {
       function()
