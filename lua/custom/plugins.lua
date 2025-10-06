@@ -67,7 +67,7 @@ local function get_ai_plugins()
           function()
             require("sidekick.cli").send({
               msg =
-              "<context>{selection} inside {file} at {position} with {diagnostics}<context> \n -- \n"
+              "{selection}"
             })
           end,
           mode = { "x" },
