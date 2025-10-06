@@ -64,7 +64,12 @@ local function get_ai_plugins()
         },
         {
           "<leader>av",
-          function() require("sidekick.cli").send({ msg = "{selection}" }) end,
+          function()
+            require("sidekick.cli").send({
+              msg =
+              "<context>{selection} inside {file} at {position} with {diagnostics}<context> \n -- \n"
+            })
+          end,
           mode = { "x" },
           desc = "Send Visual Selection",
         },
@@ -75,7 +80,7 @@ local function get_ai_plugins()
           desc = "Sidekick Select Prompt",
         },
         {
-          "<c-.>",
+          "<leader>,",
           function() require("sidekick.cli").focus() end,
           mode = { "n", "x", "i", "t" },
           desc = "Sidekick Switch Focus",
