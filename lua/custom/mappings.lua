@@ -32,6 +32,13 @@ M.vim_tmux_navigator = {
     ["<c-l>"] = { "<cmd>TmuxNavigateRight<cr>", "Tmux Navigate Right" },
     ["<c-\\>"] = { "<cmd>TmuxNavigatePrevious<cr>", "Tmux Navigate Previous" },
   },
+  t = {
+    ["<c-h>"] = { "<c-\\><c-n><cmd>TmuxNavigateLeft<cr>", "Tmux Navigate Left" },
+    ["<c-j>"] = { "<c-\\><c-n><cmd>TmuxNavigateDown<cr>", "Tmux Navigate Down" },
+    ["<c-k>"] = { "<c-\\><c-n><cmd>TmuxNavigateUp<cr>", "Tmux Navigate Up" },
+    ["<c-l>"] = { "<c-\\><c-n><cmd>TmuxNavigateRight<cr>", "Tmux Navigate Right" },
+    ["<c-\\>"] = { "<c-\\><c-n><cmd>TmuxNavigatePrevious<cr>", "Tmux Navigate Previous" },
+  },
 }
 
 M.venv_selector = {

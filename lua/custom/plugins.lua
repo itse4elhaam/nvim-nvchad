@@ -25,11 +25,20 @@ local function get_ai_plugins()
       "folke/sidekick.nvim",
       lazy = false,
       opts = {
-        -- add any options here
         cli = {
           mux = {
             backend = "tmux",
             enabled = true,
+          },
+          win = {
+            keys = {
+              say_hi = {
+                "<c-h>",
+                function()
+                  require("sidekick.cli").focus()
+                end,
+              },
+            },
           },
         },
       },
