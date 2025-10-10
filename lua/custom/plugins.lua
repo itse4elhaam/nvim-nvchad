@@ -495,6 +495,9 @@ local function get_picker_plugins()
       build = "cargo build --release",
       opts = {
         prompt = "> ",
+        hl = {
+          matched = "",
+        },
       },
       keys = {
         {
