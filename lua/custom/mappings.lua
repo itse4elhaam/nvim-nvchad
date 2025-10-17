@@ -21,6 +21,16 @@ M.sidekick = {
       mode = { "n", "x" },
       desc = "Sidekick Select Prompt",
     },
+    ["<leader>ad"] = {
+      function() require("sidekick.cli").close() end,
+      desc = "Detach a CLI Session",
+    },
+    ["<leader>af"] = {
+      function() require("sidekick.cli").send({ msg = "{file}" }) end,
+      desc = "Send File",
+    },
+  },
+  v = {
     ["<leader>at"] = {
       function() require("sidekick.cli").send({ msg = "{this}" }) end,
       desc = "Send This",
@@ -32,14 +42,6 @@ M.sidekick = {
         })
       end,
       desc = "Send Visual Selection",
-    },
-    ["<leader>ad"] = {
-      function() require("sidekick.cli").close() end,
-      desc = "Detach a CLI Session",
-    },
-    ["<leader>af"] = {
-      function() require("sidekick.cli").send({ msg = "{file}" }) end,
-      desc = "Send File",
     },
   },
 }
