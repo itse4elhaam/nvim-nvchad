@@ -43,6 +43,14 @@ M.sidekick = {
       end,
       desc = "Send Visual Selection",
     },
+    ["<leader>ad"] = {
+      function() require("sidekick.cli").close() end,
+      desc = "Detach a CLI Session",
+    },
+    ["<leader>af"] = {
+      function() require("sidekick.cli").send({ msg = "{file}" }) end,
+      desc = "Send File",
+    },
   },
 }
 
