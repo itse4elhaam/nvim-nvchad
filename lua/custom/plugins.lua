@@ -205,9 +205,31 @@ local function get_lsp_and_completion_plugins()
       opts = require "custom.configs.mason",
     },
     {
+      "williamboman/mason-lspconfig.nvim",
+      dependencies = { "williamboman/mason.nvim" },
+      config = function()
+        require("mason-lspconfig").setup {
+          ensure_installed = {
+            "bashls",
+            "clangd",
+            "cssls",
+            "emmet_language_server",
+            "gopls",
+            "jsonls",
+            "marksman",
+            "pyright",
+            "sqls",
+            "svelte",
+            "tailwindcss",
+            "lua_ls",
+          },
+        }
+      end,
+    },
+    {
       "neovim/nvim-lspconfig",
       event = "User FilePost",
-      dependencies = { "saghen/blink.cmp" },
+      dependencies = { "mason-lspconfig.nvim", "saghen/blink.cmp" },
       config = function()
         require "plugins.configs.lspconfig"
         require "custom.configs.lspconfig"

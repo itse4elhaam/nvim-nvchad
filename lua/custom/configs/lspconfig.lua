@@ -1,4 +1,7 @@
+local M = {}
+
 local on_attach = require("plugins.configs.lspconfig").on_attach
+local on_init = require("plugins.configs.lspconfig").on_init
 local preDefinedCapabilities = require("plugins.configs.lspconfig").capabilities
 local capabilities = require("blink.cmp").get_lsp_capabilities(preDefinedCapabilities)
 
@@ -7,9 +10,6 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-local lspconfig = require "lspconfig"
-local util = require "lspconfig/util"
-
 -- Disable formatting for tailwindcss and cssls
 local function disable_formatting(client)
   if client.name == "tailwindcss" or client.name == "cssls" then
@@ -17,147 +17,144 @@ local function disable_formatting(client)
   end
 end
 
-lspconfig.gopls.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  cmd = { "gopls" },
-  filetypes = { "go", "gomod", "gowork", "gotmpl" },
-  root_dir = util.root_pattern("go.work", "go.mod", ".git"),
-  settings = {
-    gopls = {
-      completeUnimported = true,
-      usePlaceholders = true,
-      analyses = {
-        unusedparams = true,
+local function on_attach_custom(client, bufnr)
+  disable_formatting(client)
+  on_attach(client, bufnr)
+end
+
+local servers = {
+  "bashls",
+  "clangd",
+  "cssls",
+  "emmet_language_server",
+  "gopls",
+  "jsonls",
+  "marksman",
+  "pyright",
+  "sqls",
+  "svelte",
+  "tailwindcss",
+  "asm_lsp",
+  "lua_ls",
+}
+
+local util = require "lspconfig/util"
+
+local server_configs = {
+  lua_ls = {
+    settings = {
+      Lua = {
+        diagnostics = {
+          globals = { "vim" },
+        },
+        workspace = {
+          library = {
+            [vim.fn.expand "$VIMRUNTIME/lua"] = true,
+            [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true,
+            [vim.fn.stdpath "data" .. "/lazy/ui/nvchad_types"] = true,
+            [vim.fn.stdpath "data" .. "/lazy/lazy.nvim/lua/lazy"] = true,
+          },
+          maxPreload = 100000,
+          preloadFileSize = 10000,
+        },
       },
     },
   },
-}
-
-lspconfig.marksman.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = { "markdown" },
-}
-
-lspconfig.bashls.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = { "sh", "bash", ".zshrc", ".bashrc" },
-}
-
-lspconfig.pyright.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = { "python" },
-}
-
-lspconfig.emmet_language_server.setup {
-  filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
-  init_options = {
-    includeLanguages = {},
-    excludeLanguages = {},
-    extensionsPath = {},
-    preferences = {},
-    showAbbreviationSuggestions = true,
-    showExpandedAbbreviation = "always",
-    showSuggestionsAsSnippets = false,
-    syntaxProfiles = {},
-    variables = {},
-  },
-}
-
-lspconfig.clangd.setup {
-  on_attach = function(client, bufnr)
-    client.server_capabilities_signatureHelpProvider = false
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-}
-
-lspconfig.jsonls.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  on_new_config = function(new_config)
-    new_config.settings.json.schemas = new_config.settings.json.schemas or {}
-    vim.list_extend(new_config.settings.json.schemas, schemastore.json.schemas())
-  end,
-  settings = {
-    json = {
-      format = {
-        enable = true, -- Enable JSON formatting
-      },
-      validate = {
-        enable = true, -- Enable JSON validation
+  gopls = {
+    cmd = { "gopls" },
+    filetypes = { "go", "gomod", "gowork", "gotmpl" },
+    root_dir = util.root_pattern("go.work", "go.mod", ".git"),
+    settings = {
+      gopls = {
+        completeUnimported = true,
+        usePlaceholders = true,
+        analyses = {
+          unusedparams = true,
+        },
       },
     },
   },
-}
-
-lspconfig.sqls.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client)
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  cmd = { "sqls" },
-  filetypes = { "sql", "mysql", "plsql" },
-  settings = {
-    sqls = {},
+  marksman = {
+    filetypes = { "markdown" },
+  },
+  bashls = {
+    filetypes = { "sh", "bash", ".zshrc", ".bashrc" },
+  },
+  pyright = {
+    filetypes = { "python" },
+  },
+  emmet_language_server = {
+    filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
+    init_options = {
+      includeLanguages = {},
+      excludeLanguages = {},
+      extensionsPath = {},
+      preferences = {},
+      showAbbreviationSuggestions = true,
+      showExpandedAbbreviation = "always",
+      showSuggestionsAsSnippets = false,
+      syntaxProfiles = {},
+      variables = {},
+    },
+  },
+  clangd = {
+    on_attach = function(client, bufnr)
+      client.server_capabilities_signatureHelpProvider = false
+      on_attach_custom(client, bufnr)
+    end,
+  },
+  jsonls = {
+    on_new_config = function(new_config)
+      new_config.settings.json.schemas = new_config.settings.json.schemas or {}
+      vim.list_extend(new_config.settings.json.schemas, require("schemastore").json.schemas())
+    end,
+    settings = {
+      json = {
+        format = {
+          enable = true,
+        },
+        validate = {
+          enable = true,
+        },
+      },
+    },
+  },
+  sqls = {
+    cmd = { "sqls" },
+    filetypes = { "sql", "mysql", "plsql" },
+    settings = {
+      sqls = {},
+    },
+  },
+  svelte = {
+    cmd = { "svelteserver", "--stdio" },
+    filetypes = { "svelte" },
+    root_dir = util.root_pattern("package.json", ".git"),
+  },
+  cssls = {
+    filetypes = { "css", "html", "less", "sass", "scss", "pug" },
+  },
+  tailwindcss = {
+    filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "svelte" },
+  },
+  asm_lsp = {
+    filetypes = { "asm", "s", "S" },
   },
 }
 
-lspconfig.svelte.setup {
-  cmd = { "svelteserver", "--stdio" },
-  filetypes = { "svelte" },
-  root_dir = util.root_pattern("package.json", ".git"),
-}
+for _, server in ipairs(servers) do
+  local config = {
+    on_attach = on_attach_custom,
+    on_init = on_init,
+    capabilities = capabilities,
+  }
+  if server_configs[server] then
+    config = vim.tbl_deep_extend("force", config, server_configs[server])
+  end
+  vim.lsp.config(server, config)
+  vim.lsp.enable(server)
+end
 
--- lspconfig.denols.setup {
---   on_attach = on_attach,
---   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
--- }
+-- vim.notify("LSP servers configured using native API!", vim.log.levels.INFO)
 
-lspconfig.cssls.setup {
-  filetypes = { "css", "html", "less", "sass", "scss", "pug" },
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting for specific servers
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-}
-
-lspconfig.tailwindcss.setup {
-  -- filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
-  filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "svelte" },
-  on_attach = function(client, bufnr)
-    disable_formatting(client)
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-}
-
-lspconfig.asm_lsp.setup {
-  on_attach = function(client, bufnr)
-    disable_formatting(client) -- Disable formatting if desired
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = { "asm", "s", "S" }, -- Common assembly file extensions
-}
+return M
