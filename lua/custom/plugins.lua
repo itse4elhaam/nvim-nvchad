@@ -27,6 +27,11 @@ local function get_ai_plugins()
       opts = require "custom.configs.sidekick",
       keys = load_mappings "sidekick",
     },
+    {
+      "supermaven-inc/supermaven-nvim",
+      event = "InsertEnter",
+      opts = {},
+    },
   }
 end
 
@@ -234,10 +239,29 @@ local function get_lsp_and_completion_plugins()
     {
       "saghen/blink.cmp",
       event = "InsertEnter",
-      dependencies = { "rafamadriz/friendly-snippets", "fang2hou/blink-copilot", "archie-judd/blink-cmp-words" },
+      dependencies = {
+        "rafamadriz/friendly-snippets",
+        "fang2hou/blink-copilot",
+        "archie-judd/blink-cmp-words",
+        {
+          "supermaven-inc/supermaven-nvim",
+          opts = {
+            keymaps = {
+              accept_suggestion = nil,
+            },
+            disable_inline_completion = true,
+          },
+        },
+      },
       version = "v0.*",
       opts = require "custom.configs.blink",
       opts_extend = { "sources.default" },
+    },
+    {
+      "saghen/blink.compat",
+      version = "2.*",
+      lazy = true,
+      opts = {},
     },
     {
       "j-hui/fidget.nvim",
