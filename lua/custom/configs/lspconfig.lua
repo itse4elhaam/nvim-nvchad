@@ -7,7 +7,6 @@ capabilities.textDocument.foldingRange = {
   lineFoldingOnly = true,
 }
 
-local lspconfig = require "lspconfig"
 local util = require "lspconfig/util"
 
 -- Disable formatting for tailwindcss and cssls
@@ -17,7 +16,8 @@ local function disable_formatting(client)
   end
 end
 
-lspconfig.gopls.setup {
+-- Configure gopls
+vim.lsp.config("gopls", {
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
@@ -35,36 +35,52 @@ lspconfig.gopls.setup {
       },
     },
   },
-}
+})
 
-lspconfig.marksman.setup {
+-- Enable gopls
+vim.lsp.enable({"gopls"})
+
+-- Configure marksman
+vim.lsp.config("marksman", {
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
   filetypes = { "markdown" },
-}
+})
 
-lspconfig.bashls.setup {
+-- Enable marksman
+vim.lsp.enable({"marksman"})
+
+-- Configure bashls
+vim.lsp.config("bashls", {
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
   filetypes = { "sh", "bash", ".zshrc", ".bashrc" },
-}
+})
 
-lspconfig.pyright.setup {
+-- Enable bashls
+vim.lsp.enable({"bashls"})
+
+-- Configure pyright
+vim.lsp.config("pyright", {
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
   filetypes = { "python" },
-}
+})
 
-lspconfig.emmet_language_server.setup {
+-- Enable pyright
+vim.lsp.enable({"pyright"})
+
+-- Configure emmet_language_server
+vim.lsp.config("emmet_language_server", {
   filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
   init_options = {
     includeLanguages = {},
@@ -77,18 +93,26 @@ lspconfig.emmet_language_server.setup {
     syntaxProfiles = {},
     variables = {},
   },
-}
+})
 
-lspconfig.clangd.setup {
+-- Enable emmet_language_server
+vim.lsp.enable({"emmet_language_server"})
+
+-- Configure clangd
+vim.lsp.config("clangd", {
   on_attach = function(client, bufnr)
     client.server_capabilities_signatureHelpProvider = false
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
-}
+})
 
-lspconfig.jsonls.setup {
+-- Enable clangd
+vim.lsp.enable({"clangd"})
+
+-- Configure jsonls
+vim.lsp.config("jsonls", {
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
@@ -108,9 +132,13 @@ lspconfig.jsonls.setup {
       },
     },
   },
-}
+})
 
-lspconfig.sqls.setup {
+-- Enable jsonls
+vim.lsp.enable({"jsonls"})
+
+-- Configure sqls
+vim.lsp.config("sqls", {
   on_attach = function(client, bufnr)
     disable_formatting(client)
     on_attach(client, bufnr)
@@ -121,29 +149,36 @@ lspconfig.sqls.setup {
   settings = {
     sqls = {},
   },
-}
+})
 
-lspconfig.svelte.setup {
+-- Enable sqls
+vim.lsp.enable({"sqls"})
+
+-- Configure svelte
+vim.lsp.config("svelte", {
   cmd = { "svelteserver", "--stdio" },
   filetypes = { "svelte" },
   root_dir = util.root_pattern("package.json", ".git"),
-}
+})
 
--- lspconfig.denols.setup {
---   on_attach = on_attach,
---   root_dir = util.root_pattern("deno.json", "deno.jsonc"),
--- }
+-- Enable svelte
+vim.lsp.enable({"svelte"})
 
-lspconfig.cssls.setup {
+-- Configure cssls
+vim.lsp.config("cssls", {
   filetypes = { "css", "html", "less", "sass", "scss", "pug" },
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
-}
+})
 
-lspconfig.tailwindcss.setup {
+-- Enable cssls
+vim.lsp.enable({"cssls"})
+
+-- Configure tailwindcss
+vim.lsp.config("tailwindcss", {
   -- filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "typescriptreact", "svelte" },
   filetypes = { "css", "html", "javascriptreact", "less", "sass", "scss", "pug", "svelte" },
   on_attach = function(client, bufnr)
@@ -151,13 +186,20 @@ lspconfig.tailwindcss.setup {
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
-}
+})
 
-lspconfig.asm_lsp.setup {
+-- Enable tailwindcss
+vim.lsp.enable({"tailwindcss"})
+
+-- Configure asm_lsp
+vim.lsp.config("asm_lsp", {
   on_attach = function(client, bufnr)
     disable_formatting(client) -- Disable formatting if desired
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
   filetypes = { "asm", "s", "S" }, -- Common assembly file extensions
-}
+})
+
+-- Enable asm_lsp
+vim.lsp.enable({"asm_lsp"})
