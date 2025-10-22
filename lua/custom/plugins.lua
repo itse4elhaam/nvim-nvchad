@@ -29,7 +29,11 @@ local function get_ai_plugins()
     },
     {
       "supermaven-inc/supermaven-nvim",
-      lazy = false,
+      event = "InsertEnter",
+      cmd = {
+        "SupermavenUseFree",
+        "SupermavenUsePro",
+      },
       config = function()
         require("supermaven-nvim").setup {
           keymaps = {
