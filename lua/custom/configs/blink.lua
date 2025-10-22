@@ -97,7 +97,6 @@ local opts = {
   },
   sources = {
     default = { "copilot", "lsp", "path", "snippets", "buffer" },
-    compat = { "supermaven" },
 
     per_filetype = {
       sql = { "snippets", "dadbod", "buffer" },

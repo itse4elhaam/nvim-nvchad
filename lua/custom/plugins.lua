@@ -29,8 +29,16 @@ local function get_ai_plugins()
     },
     {
       "supermaven-inc/supermaven-nvim",
-      event = "InsertEnter",
-      opts = {},
+      lazy = false,
+      config = function()
+        require("supermaven-nvim").setup {
+          keymaps = {
+            accept_suggestion = "<Tab>",
+            clear_suggestion = "<C-]>",
+            accept_word = "<C-j>",
+          },
+        }
+      end,
     },
   }
 end
@@ -243,25 +251,19 @@ local function get_lsp_and_completion_plugins()
         "rafamadriz/friendly-snippets",
         "fang2hou/blink-copilot",
         "archie-judd/blink-cmp-words",
-        {
-          "supermaven-inc/supermaven-nvim",
-          opts = {
-            keymaps = {
-              accept_suggestion = nil,
-            },
-            disable_inline_completion = true,
-          },
-        },
+        -- {
+        --   "supermaven-inc/supermaven-nvim",
+        --   opts = {
+        --     keymaps = {
+        --       accept_suggestion = nil,
+        --     },
+        --     disable_inline_completion = true,
+        --   },
+        -- },
       },
       version = "v0.*",
       opts = require "custom.configs.blink",
       opts_extend = { "sources.default" },
-    },
-    {
-      "saghen/blink.compat",
-      version = "2.*",
-      lazy = true,
-      opts = {},
     },
     {
       "j-hui/fidget.nvim",
