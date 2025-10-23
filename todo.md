@@ -3,7 +3,6 @@
 - yanky.nvim conf
 - close non harpoon tabs only
 - harpoon files instead of auto session - put on reddit too maybe?
-- ufo unable to fold html tags
 - log watcher in timber.nvim
 - remove all consoles from a file/ask before doing it - with timber.nvim?
 - consider nvim-chainsaw instead of timer.nvim
