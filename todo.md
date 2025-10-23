@@ -38,8 +38,6 @@ plugins to install thru reddit:
 
 - https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
 
-- alt + 2 etc donot work on pop os
-- remove that x on the side
 - https://github.com/ThePrimeagen/harpoon/issues/502
   https://github.com/EvWilson/spelunk.nvim
 - https://www.reddit.com/r/neovim/comments/1lir33g/allow_telescope_to_see_dotfiles/
