@@ -331,4 +331,37 @@ function M.TestLearningLsp()
   vim.notify("LSP client 'learninglsp' successfully started and attached!", vim.log.levels.INFO)
 end
 
+M.wakatime_stats = "..."
+
+local function update_wakatime()
+  local wakatime_cli = vim.fn.expand "~/.wakatime/wakatime-cli"
+
+  if vim.fn.filereadable(wakatime_cli) ~= 1 then
+    return
+  end
+
+  vim.system({ wakatime_cli, "--today" }, {}, function(obj)
+    if obj.code == 0 and obj.stdout then
+      local time = obj.stdout:match "^%s*(.-)%s*$"
+      if time and time ~= "" then
+        M.wakatime_stats = time
+        vim.schedule(function()
+          vim.cmd "redrawstatus"
+        end)
+      end
+    end
+  end)
+end
+
+vim.defer_fn(function()
+  update_wakatime()
+
+  local timer = vim.uv.new_timer()
+  timer:start(0, 900000, vim.schedule_wrap(update_wakatime))
+
+  vim.api.nvim_create_autocmd("FocusGained", {
+    callback = update_wakatime,
+  })
+end, 100)
+
 return M

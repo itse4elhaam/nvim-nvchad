@@ -4,7 +4,10 @@ local ui = {
   statusline = {
     theme = "default",
     separator_style = "round",
-    overriden_modules = nil,
+    overriden_modules = function(modules)
+      local utils = require "custom.utils"
+      modules[3] = "%#St_gitIcons#  " .. utils.wakatime_stats
+    end,
   },
   tabufline = {
     enabled = true,
