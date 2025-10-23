@@ -37,7 +37,7 @@ local function get_ai_plugins()
       config = function()
         require("supermaven-nvim").setup {
           keymaps = {
-            accept_suggestion = "<Right>",
+            accept_suggestion = "<Tab>",
             clear_suggestion = "<C-]>",
             accept_word = "<C-j>",
           },
@@ -681,7 +681,7 @@ end
 local function get_utility_plugins()
   return {
     { "chrisgrieser/nvim-puppeteer", lazy = false },
-    { "chrisgrieser/nvim-rulebook", cmd = "Rulebook", keys = load_mappings "rulebook" },
+    { "chrisgrieser/nvim-rulebook",  cmd = "Rulebook", keys = load_mappings "rulebook" },
     {
       "m4xshen/hardtime.nvim",
       lazy = false,
@@ -702,7 +702,7 @@ local function get_utility_plugins()
       "nvim-lua/plenary.nvim",
       config = require "custom.configs.plenary",
     },
-    { "wakatime/vim-wakatime", lazy = false },
+    { "wakatime/vim-wakatime",      lazy = false },
   }
 end
 
