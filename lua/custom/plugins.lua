@@ -37,8 +37,7 @@ local function get_ai_plugins()
       config = function()
         require("supermaven-nvim").setup {
           keymaps = {
-            -- accept_suggestion = "<Right>",
-            accept_suggestion = "l",
+            accept_suggestion = "<Right>",
             clear_suggestion = "<C-]>",
             accept_word = "<C-j>",
           },
