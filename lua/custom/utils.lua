@@ -418,9 +418,33 @@ local function update_wakatime()
 
   vim.system({ wakatime_cli, "--today" }, {}, function(obj)
     if obj.code == 0 and obj.stdout then
-      local time = obj.stdout:match "^%s*(.-)%s*$"
-      if time and time ~= "" then
-        M.wakatime_stats = time
+      local output = obj.stdout:match "^%s*(.-)%s*$"
+      if output and output ~= "" then
+        local total_minutes = 0
+
+        -- match both hr/hrs and min/mins (case-insensitive)
+        for h in output:gmatch "(%d+)%s*h[r]?[s]?" do
+          total_minutes = total_minutes + (tonumber(h) * 60)
+        end
+        for m in output:gmatch "(%d+)%s*m[i]?[n]?[s]?" do
+          total_minutes = total_minutes + tonumber(m)
+        end
+
+        local total_hours = math.floor(total_minutes / 60)
+        local remaining_minutes = total_minutes % 60
+
+        local total_time = ""
+
+        if total_minutes == 0 then
+          -- fallback: show raw wakatime text
+          total_time = output
+        elseif total_hours > 0 then
+          total_time = string.format("%dh %dm", total_hours, remaining_minutes)
+        else
+          total_time = string.format("%dm", remaining_minutes)
+        end
+
+        M.wakatime_stats = " ⚡ " .. total_time .. " "
         vim.schedule(function()
           vim.cmd "redrawstatus"
         end)
