@@ -332,6 +332,82 @@ function M.TestLearningLsp()
 end
 
 M.wakatime_stats = "..."
+M.vim_zen = ""
+
+local zen_quotes = {
+  "🧘 zen",
+  "🍃 flow",
+  "✨ vibe",
+  "🔥 cook",
+  "⚡ zap",
+  "🎯 lock",
+  "🌊 wave",
+  "💫 zone",
+}
+
+local function update_vim_zen()
+  M.vim_zen = zen_quotes[math.random(#zen_quotes)]
+  vim.cmd "redrawstatus"
+end
+
+M.buffer_size = "..."
+
+local function update_buffer_size()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_line_count(bufnr)
+
+  if lines < 100 then
+    M.buffer_size = "🐛 " .. lines
+  elseif lines < 500 then
+    M.buffer_size = "📄 " .. lines
+  elseif lines < 1000 then
+    M.buffer_size = "📚 " .. lines
+  elseif lines < 5000 then
+    M.buffer_size = "🏔️ " .. lines
+  elseif lines < 10000 then
+    M.buffer_size = "🌋 " .. lines
+  else
+    M.buffer_size = "🌌 " .. lines
+  end
+end
+
+M.key_streak = 0
+M.streak_display = ""
+
+local last_key_time = 0
+local streak_timer = nil
+
+local function update_key_streak()
+  local current_time = vim.loop.hrtime() / 1e9
+
+  if current_time - last_key_time < 0.5 then
+    M.key_streak = M.key_streak + 1
+  else
+    M.key_streak = 1
+  end
+
+  last_key_time = current_time
+
+  if M.key_streak > 20 then
+    M.streak_display = "🔥 " .. M.key_streak
+  elseif M.key_streak > 10 then
+    M.streak_display = "⚡ " .. M.key_streak
+  else
+    M.streak_display = ""
+  end
+
+  vim.cmd "redrawstatus"
+
+  if streak_timer then
+    streak_timer:stop()
+  end
+
+  streak_timer = vim.defer_fn(function()
+    M.key_streak = 0
+    M.streak_display = ""
+    vim.cmd "redrawstatus"
+  end, 1000)
+end
 
 local function update_wakatime()
   local wakatime_cli = vim.fn.expand "~/.wakatime/wakatime-cli"
@@ -361,6 +437,19 @@ vim.defer_fn(function()
 
   vim.api.nvim_create_autocmd("FocusGained", {
     callback = update_wakatime,
+  })
+
+  update_vim_zen()
+  local zen_timer = vim.uv.new_timer()
+  zen_timer:start(0, 300000, vim.schedule_wrap(update_vim_zen))
+
+  vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
+    callback = update_buffer_size,
+  })
+  update_buffer_size()
+
+  vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged" }, {
+    callback = update_key_streak,
   })
 end, 100)
 

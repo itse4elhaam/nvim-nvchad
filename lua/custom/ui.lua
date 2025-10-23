@@ -22,10 +22,16 @@ local ui = {
       -- 1=mode, 2=fileInfo, 3=git, 4=%=, 5=LSP_progress, 6=%=, 7=LSP_Diagnostics, 8=LSP_status, 9=cwd, 10=cursor_position
 
       local utils = require "custom.utils"
-      modules[3] = ""
-      modules[8] = ""
-      modules[9] = ""
-      modules[10] = "%#St_file_txt#" .. utils.wakatime_stats
+      modules[3] = "%#St_gitIcons#" .. " " .. utils.vim_zen .. " "
+      modules[8] = "%#St_lspHints#" .. " " .. utils.buffer_size .. " "
+      modules[9] = (function()
+        if utils.streak_display ~= "" then
+          return "%#St_lspWarning#" .. " " .. utils.streak_display .. " "
+        else
+          return ""
+        end
+      end)()
+      modules[10] = "%#St_file_txt#" .. " | " .. utils.wakatime_stats
     end,
   },
   tabufline = {
