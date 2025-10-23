@@ -433,10 +433,22 @@ local function update_wakatime()
         local total_hours = math.floor(total_minutes / 60)
         local remaining_minutes = total_minutes % 60
 
-        local total_time = ""
+        -- Pick emoji based on hours coded
+        local emoji = "☕"
+        if total_hours == 0 then
+          emoji = "🐢"
+        elseif total_hours >= 1 and total_hours < 3 then
+          emoji = "⚡"
+        elseif total_hours >= 3 and total_hours < 5 then
+          emoji = "💥"
+        elseif total_hours >= 5 and total_hours < 8 then
+          emoji = "🦾"
+        elseif total_hours >= 8 then
+          emoji = "🌀"
+        end
 
+        local total_time = ""
         if total_minutes == 0 then
-          -- fallback: show raw wakatime text
           total_time = output
         elseif total_hours > 0 then
           total_time = string.format("%dh %dm", total_hours, remaining_minutes)
@@ -444,7 +456,7 @@ local function update_wakatime()
           total_time = string.format("%dm", remaining_minutes)
         end
 
-        M.wakatime_stats = " ⚡ " .. total_time .. " "
+        M.wakatime_stats = string.format(" %s %s ", emoji, total_time)
         vim.schedule(function()
           vim.cmd "redrawstatus"
         end)
