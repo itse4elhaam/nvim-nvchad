@@ -491,18 +491,27 @@ end, 100)
 
 
 function M.git_push_background()
-  local branch = vim.fn.system "git rev-parse --abbrev-ref HEAD"
-  branch = branch:gsub("%s+", "") -- trim whitespace
+  local Job = require('plenary.job')
 
-  vim.notify("Pushing to " .. branch .. "...", vim.log.levels.INFO)
+  local branch = vim.fn.trim(vim.fn.system("git rev-parse --abbrev-ref HEAD"))
+  vim.notify("Pushing to " .. branch .. "...", vim.log.levels.INFO, { title = "Git" })
 
-  vim.fn.system("git push origin " .. branch .. " &")
-
-  if vim.v.shell_error == 0 then
-    vim.notify("Push successful!", vim.log.levels.INFO)
-  else
-    vim.notify("Push failed. Check git output.", vim.log.levels.ERROR)
-  end
+  Job:new({
+    command = "bash",
+    args = { "-ic", "git poc" },
+    on_exit = function(j, return_val)
+      if return_val == 0 then
+        vim.schedule(function()
+          vim.notify("Successfully pushed to " .. branch, vim.log.levels.INFO, { title = "Git" })
+        end)
+      else
+        local error_messages = table.concat(j:stderr_result(), "\n")
+        vim.schedule(function()
+          vim.notify("Push failed for branch " .. branch .. ":\n" .. error_messages, vim.log.levels.ERROR, { title = "Git" })
+        end)
+      end
+    end,
+  }):start()
 end
 
 return M
