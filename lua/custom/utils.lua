@@ -489,4 +489,20 @@ vim.defer_fn(function()
   })
 end, 100)
 
+
+function M.git_push_background()
+  local branch = vim.fn.system "git rev-parse --abbrev-ref HEAD"
+  branch = branch:gsub("%s+", "") -- trim whitespace
+
+  vim.notify("Pushing to " .. branch .. "...", vim.log.levels.INFO)
+
+  vim.fn.system("git push origin " .. branch .. " &")
+
+  if vim.v.shell_error == 0 then
+    vim.notify("Push successful!", vim.log.levels.INFO)
+  else
+    vim.notify("Push failed. Check git output.", vim.log.levels.ERROR)
+  end
+end
+
 return M

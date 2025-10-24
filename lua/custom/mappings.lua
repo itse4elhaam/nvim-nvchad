@@ -465,7 +465,12 @@ M.general = {
     },
     ["T"] = { "<cmd>b#<CR>", "Open last closed buffer" },
     ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
-    ["<leader>poc"] = { ":silent !git poc &<CR>", "Push to the current branch in the background" },
+    ["<leader>poc"] = {
+      function()
+        utils.git_push_background()
+      end,
+      "Push to the current branch in the background",
+    },
     ["<leader>acp"] = {
       function()
         vim.ui.input({ prompt = "Commit message: " }, function(msg)
