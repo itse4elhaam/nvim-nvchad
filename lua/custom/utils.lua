@@ -332,6 +332,82 @@ function M.TestLearningLsp()
 end
 
 M.wakatime_stats = "..."
+M.vim_zen = ""
+
+local zen_quotes = {
+  "🧘 zen",
+  "🍃 flow",
+  "✨ vibe",
+  "🔥 cook",
+  "⚡ zap",
+  "🎯 lock",
+  "🌊 wave",
+  "💫 zone",
+}
+
+local function update_vim_zen()
+  M.vim_zen = zen_quotes[math.random(#zen_quotes)]
+  vim.cmd "redrawstatus"
+end
+
+M.buffer_size = "..."
+
+local function update_buffer_size()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_line_count(bufnr)
+
+  if lines < 100 then
+    M.buffer_size = "🐛 " .. lines
+  elseif lines < 500 then
+    M.buffer_size = "📄 " .. lines
+  elseif lines < 1000 then
+    M.buffer_size = "📚 " .. lines
+  elseif lines < 5000 then
+    M.buffer_size = "🏔️ " .. lines
+  elseif lines < 10000 then
+    M.buffer_size = "🌋 " .. lines
+  else
+    M.buffer_size = "🌌 " .. lines
+  end
+end
+
+M.key_streak = 0
+M.streak_display = ""
+
+local last_key_time = 0
+local streak_timer = nil
+
+local function update_key_streak()
+  local current_time = vim.loop.hrtime() / 1e9
+
+  if current_time - last_key_time < 0.5 then
+    M.key_streak = M.key_streak + 1
+  else
+    M.key_streak = 1
+  end
+
+  last_key_time = current_time
+
+  if M.key_streak > 20 then
+    M.streak_display = "🔥 " .. M.key_streak
+  elseif M.key_streak > 10 then
+    M.streak_display = "⚡ " .. M.key_streak
+  else
+    M.streak_display = ""
+  end
+
+  vim.cmd "redrawstatus"
+
+  if streak_timer then
+    streak_timer:stop()
+  end
+
+  streak_timer = vim.defer_fn(function()
+    M.key_streak = 0
+    M.streak_display = ""
+    vim.cmd "redrawstatus"
+  end, 1000)
+end
 
 local function update_wakatime()
   local wakatime_cli = vim.fn.expand "~/.wakatime/wakatime-cli"
@@ -342,9 +418,45 @@ local function update_wakatime()
 
   vim.system({ wakatime_cli, "--today" }, {}, function(obj)
     if obj.code == 0 and obj.stdout then
-      local time = obj.stdout:match "^%s*(.-)%s*$"
-      if time and time ~= "" then
-        M.wakatime_stats = time
+      local output = obj.stdout:match "^%s*(.-)%s*$"
+      if output and output ~= "" then
+        local total_minutes = 0
+
+        -- match both hr/hrs and min/mins (case-insensitive)
+        for h in output:gmatch "(%d+)%s*h[r]?[s]?" do
+          total_minutes = total_minutes + (tonumber(h) * 60)
+        end
+        for m in output:gmatch "(%d+)%s*m[i]?[n]?[s]?" do
+          total_minutes = total_minutes + tonumber(m)
+        end
+
+        local total_hours = math.floor(total_minutes / 60)
+        local remaining_minutes = total_minutes % 60
+
+        -- Pick emoji based on hours coded
+        local emoji = "☕"
+        if total_hours == 0 then
+          emoji = "🐢"
+        elseif total_hours >= 1 and total_hours < 3 then
+          emoji = "⚡"
+        elseif total_hours >= 3 and total_hours < 5 then
+          emoji = "💥"
+        elseif total_hours >= 5 and total_hours < 8 then
+          emoji = "🦾"
+        elseif total_hours >= 8 then
+          emoji = "🌀"
+        end
+
+        local total_time = ""
+        if total_minutes == 0 then
+          total_time = output
+        elseif total_hours > 0 then
+          total_time = string.format("%dh %dm", total_hours, remaining_minutes)
+        else
+          total_time = string.format("%dm", remaining_minutes)
+        end
+
+        M.wakatime_stats = string.format(" %s %s ", emoji, total_time)
         vim.schedule(function()
           vim.cmd "redrawstatus"
         end)
@@ -362,6 +474,44 @@ vim.defer_fn(function()
   vim.api.nvim_create_autocmd("FocusGained", {
     callback = update_wakatime,
   })
+
+  update_vim_zen()
+  local zen_timer = vim.uv.new_timer()
+  zen_timer:start(0, 300000, vim.schedule_wrap(update_vim_zen))
+
+  vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
+    callback = update_buffer_size,
+  })
+  update_buffer_size()
+
+  vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged" }, {
+    callback = update_key_streak,
+  })
 end, 100)
+
+
+function M.git_push_background()
+  local Job = require('plenary.job')
+
+  local branch = vim.fn.trim(vim.fn.system("git rev-parse --abbrev-ref HEAD"))
+  vim.notify("Pushing to " .. branch .. "...", vim.log.levels.INFO, { title = "Git" })
+
+  Job:new({
+    command = "bash",
+    args = { "-ic", "git poc" },
+    on_exit = function(j, return_val)
+      if return_val == 0 then
+        vim.schedule(function()
+          vim.notify("Successfully pushed to " .. branch, vim.log.levels.INFO, { title = "Git" })
+        end)
+      else
+        local error_messages = table.concat(j:stderr_result(), "\n")
+        vim.schedule(function()
+          vim.notify("Push failed for branch " .. branch .. ":\n" .. error_messages, vim.log.levels.ERROR, { title = "Git" })
+        end)
+      end
+    end,
+  }):start()
+end
 
 return M

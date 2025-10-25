@@ -4,7 +4,6 @@
 - close non harpoon tabs only
 - harpoon files instead of auto session - put on reddit too maybe?
 - log watcher in timber.nvim
-- remove all consoles from a file/ask before doing it - with timber.nvim?
 - consider nvim-chainsaw instead of timer.nvim
 - mapping conflicts in :checkhealth
 - install this https://github.com/mrjones2014/smart-splits.nvim
@@ -12,7 +11,7 @@
 - use refacorting.nvim and various text objects more
 - automagically detect the current new buffer type
 - review plugins
-- search global functions?
+- show harpoon indications
 
 MY PLUGIN:
 
@@ -29,7 +28,6 @@ install and check these out
 - does mini.operators replace https://github.com/Wansmer/sibling-swap.nvim?
 - https://github.com/echasnovski/mini.nvim/blob/2d0f10540efdbb1f5c480ebe19ce4de451936a5d/doc/mini-surround.txt#L501
 - https://github.com/echasnovski/mini.nvim/blob/main/readmes/mini-bracketed.md
-- https://github.com/ggandor/leap.nvim
 - https://github.com/allcentury/telescope_csearch.nvim
 - https://github.com/chrisgrieser/nvim-early-retirement
 - https://github.com/jake-stewart/multicursor.nvim
@@ -38,14 +36,6 @@ plugins to install thru reddit:
 
 - https://www.reddit.com/r/neovim/comments/1lbzm1z/floaterm_beautiful_terminal_buffer_manager/
 
-- https://github.com/ThePrimeagen/harpoon/issues/502
   https://github.com/EvWilson/spelunk.nvim
+
 - https://www.reddit.com/r/neovim/comments/1lir33g/allow_telescope_to_see_dotfiles/
-
-parked
-
-- https://github.com/artemave/workspace-diagnostics.nvim - includes node_modules as well in the workspace level stuff
-
-- check which code has gemini-cli omitted after doing this shit show debugging and code transfer
-  https://github.com/rebelot/heirline.nvim
-- https://github.com/aweis89/ai-terminals.nvim

@@ -411,7 +411,7 @@ local function get_ui_and_visual_plugins()
     },
     {
       "sphamba/smear-cursor.nvim",
-      enabled = true,
+      enabled = vim.g.smear_cursor,
       lazy = false,
       opts = require "custom.configs.smear-cursor",
     },
