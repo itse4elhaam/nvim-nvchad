@@ -15,8 +15,10 @@ opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,te
 g.lazyvim_prettier_needs_config = false
 g.fancyScroll = true
 g.auto_ai = false
+g.fancy_statusline = os.getenv "NVIM_FANCY_STATUSLINE" == "true"
 g.customBigFileOpt = true
-g.disableFormat = false
+g.disableFormat = os.getenv "NVIM_DISABLE_FORMAT" == "true"
+g.smear_cursor = os.getenv "NVIM_SMEAR_CURSOR" == "true"
 g.nvchad_hot_reload = false
 g.maplocalleader = ","
 
