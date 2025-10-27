@@ -474,15 +474,7 @@ M.general = {
     },
     ["<leader>acp"] = {
       function()
-        vim.ui.input({ prompt = "Commit message: " }, function(msg)
-          if msg and msg ~= "" then
-            local cmd = "git acp " .. vim.fn.shellescape(msg) .. " &"
-            vim.fn.system(cmd) -- Run silently in the background
-            print("✅ Committing & pushing: " .. msg)
-          else
-            print "❌ Commit aborted: No message provided."
-          end
-        end)
+        utils.git_commit_and_push()
       end,
       "Git commit & push",
     },

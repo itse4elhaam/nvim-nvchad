@@ -64,9 +64,6 @@ M.multiGrep = function(opts)
 
   local flatten = vim.tbl_flatten
 
-  -- i would like to be able to do telescope
-  -- and have telescope do some filtering on files and some grepping
-
   opts = opts or {}
   opts.cwd = opts.cwd and vim.fn.expand(opts.cwd) or vim.loop.cwd()
   opts.shortcuts = opts.shortcuts
@@ -104,17 +101,14 @@ M.multiGrep = function(opts)
         return nil
       end
 
-      -- splitting it so that we can search in .txs files only with this -> test  *.tsx, this is split by space
       local prompt_split = vim.split(prompt, "  ")
 
-      -- this gives the actual prompt
       local args = { "rg" }
       if prompt_split[1] then
         table.insert(args, "-e")
         table.insert(args, prompt_split[1])
       end
 
-      -- this gives the flags
       if prompt_split[2] then
         table.insert(args, "-g")
 
@@ -161,7 +155,6 @@ function M.copyTypeDefinition()
       return
     end
 
-    -- Convert hover contents to markdown lines
     local type_info = vim.lsp.util.convert_input_to_markdown_lines(result.contents)
     if type(type_info) == "table" then
       type_info = table.concat(type_info, "\n")
@@ -169,83 +162,71 @@ function M.copyTypeDefinition()
 
     local annotation
 
-    -- Step 1: Remove markdown code block (if present) and extract the type definition
-    type_info = type_info:gsub("`", "") -- Remove backticks from the type_info
+    type_info = type_info:gsub("`", "")
 
-    -- Step 2: Check for type in curly braces
     annotation = type_info:match "{(.*)}"
     if annotation then
-      annotation = "{ " .. annotation .. " }" -- Reconstruct curly brace block
+      annotation = "{ " .. annotation .. " }"
     else
-      -- Step 3: Try to extract type after ":" but before "=" or end of line
-      annotation = type_info:match ":([^=]*)"        -- Match everything after ":"
+      annotation = type_info:match ":([^=]*)"
       if annotation then
-        annotation = annotation:match "^%s*(.-)%s*$" -- Trim spaces
+        annotation = annotation:match "^%s*(.-)%s*$"
       end
 
-      -- Step 4: Handle alias case like "(alias)..."
       if not annotation then
         annotation = type_info:match "%(alias%)[^:]*:%s*([^=]*)"
         if annotation then
-          annotation = annotation:match "^%s*(.-)%s*$" -- Trim spaces
+          annotation = annotation:match "^%s*(.-)%s*$"
         end
       end
     end
 
-    -- Step 5: If no valid annotation is found, notify and return
     if not annotation or annotation == "" then
       vim.notify("Type annotation not found in hover response", vim.log.levels.WARN)
       return
     end
 
-    -- Copy the annotation to clipboard
-    vim.fn.setreg("+", annotation) -- Copies to the clipboard
+    vim.fn.setreg("+", annotation)
     vim.notify("Type annotation copied to clipboard: ", vim.log.levels.INFO)
   end)
 end
 
 function M.addParentheses()
-  local word = vim.fn.expand "<cword>"  -- Get the word under the cursor
-  local word_with_paren = word .. "\\(" -- Add `\(` to it
+  local word = vim.fn.expand "<cword>"
+  local word_with_paren = word .. "\\("
   require("telescope.builtin").find_files {
     prompt_title = word_with_paren,
   }
 end
 
 function M.addAngleBracket()
-  local word = vim.fn.expand "<cword>"        -- Get the word under the cursor
-  local word_with_angle_bracket = "<" .. word -- Add `<` to the start of it
+  local word = vim.fn.expand "<cword>"
+  local word_with_angle_bracket = "<" .. word
   require("telescope.builtin").find_files {
     prompt_title = word_with_angle_bracket,
   }
 end
 
 function M.copyCurrentScopeFunction()
-  -- Get the current line where the cursor is
   local line_number = vim.fn.line "."
-
-  -- Get the line content
   local line_content = vim.fn.getline(line_number)
 
-  -- Regular expression to match function names (for languages like JavaScript, Python, etc.)
   local function_name = line_content:match "function%s+(%w+)"
       or line_content:match "class%s+[%w_]+"
-      or line_content:match "def%s+(%w+)" -- for Python
+      or line_content:match "def%s+(%w+)"
 
-  -- If no function name is found in the current line, try searching for the function name in previous lines
   if not function_name then
     for i = line_number, 1, -1 do
       local prev_line = vim.fn.getline(i)
       function_name = prev_line:match "function%s+(%w+)"
           or prev_line:match "class%s+[%w_]+"
-          or prev_line:match "def%s+(%w+)" -- for Python
+          or prev_line:match "def%s+(%w+)"
       if function_name then
         break
       end
     end
   end
 
-  -- If we find a function name, copy it to the clipboard
   if function_name then
     vim.fn.setreg("+", function_name)
     vim.notify("Copied function name: " .. function_name)
@@ -254,7 +235,6 @@ function M.copyCurrentScopeFunction()
   end
 end
 
--- this add shebang on the top and makes the file executable
 function M.prepareBashFile()
   local file = vim.api.nvim_buf_get_name(0)
   if file == "" then
@@ -263,10 +243,8 @@ function M.prepareBashFile()
   end
 
   vim.api.nvim_buf_set_lines(0, 0, 0, false, { "#!/bin/bash" })
-  --  this makes sure that the file is on the disk
   vim.cmd "write"
 
-  -- Make the file executable
   local result = vim.fn.system("chmod +x " .. vim.fn.shellescape(file))
 
   if vim.v.shell_error == 0 then
@@ -277,13 +255,13 @@ function M.prepareBashFile()
 end
 
 function M.closeOtherBuffers()
-  vim.cmd "mark z"               -- Save cursor position
-  vim.cmd "keepjumps %bd!"       -- Delete all buffers
-  vim.cmd "e#"                   -- Reopen the last active buffer
-  vim.cmd "bd#"                  -- Delete the temporary buffer
-  vim.cmd "keepjumps normal! 'z" -- Restore cursor position
-  vim.cmd "delmark z"            -- deletes the mark
-  vim.cmd "normal! zz"           -- centers you
+  vim.cmd "mark z"
+  vim.cmd "keepjumps %bd!"
+  vim.cmd "e#"
+  vim.cmd "bd#"
+  vim.cmd "keepjumps normal! 'z"
+  vim.cmd "delmark z"
+  vim.cmd "normal! zz"
 end
 
 function M.mergePlugins(...)
@@ -302,13 +280,8 @@ function M.clearComments()
       return
     end
 
-    -- Escape Lua magic characters
     local escaped = comment:gsub("([^%w])", "%%%1")
-
-    -- Build regex for single-line comments
     local pattern = escaped .. ".*"
-
-    -- Delete all single-line comments
     vim.cmd("silent! %s/" .. pattern .. "//g")
   end)
 end
@@ -422,7 +395,6 @@ local function update_wakatime()
       if output and output ~= "" then
         local total_minutes = 0
 
-        -- match both hr/hrs and min/mins (case-insensitive)
         for h in output:gmatch "(%d+)%s*h[r]?[s]?" do
           total_minutes = total_minutes + (tonumber(h) * 60)
         end
@@ -433,7 +405,6 @@ local function update_wakatime()
         local total_hours = math.floor(total_minutes / 60)
         local remaining_minutes = total_minutes % 60
 
-        -- Pick emoji based on hours coded
         local emoji = "☕"
         if total_hours == 0 then
           emoji = "🐢"
@@ -489,29 +460,42 @@ vim.defer_fn(function()
   })
 end, 100)
 
-
-function M.git_push_background()
+local function run_background_git_command(command, success_message, failure_message)
   local Job = require('plenary.job')
-
-  local branch = vim.fn.trim(vim.fn.system("git rev-parse --abbrev-ref HEAD"))
-  vim.notify("Pushing to " .. branch .. "...", vim.log.levels.INFO, { title = "Git" })
+  vim.notify("Running: " .. command, vim.log.levels.INFO, { title = "Git" })
 
   Job:new({
     command = "bash",
-    args = { "-ic", "git poc" },
+    args = { "-ic", command },
     on_exit = function(j, return_val)
       if return_val == 0 then
         vim.schedule(function()
-          vim.notify("Successfully pushed to " .. branch, vim.log.levels.INFO, { title = "Git" })
+          vim.notify(success_message, vim.log.levels.INFO, { title = "Git" })
         end)
       else
         local error_messages = table.concat(j:stderr_result(), "\n")
         vim.schedule(function()
-          vim.notify("Push failed for branch " .. branch .. ":\n" .. error_messages, vim.log.levels.ERROR, { title = "Git" })
+          vim.notify(failure_message .. ":\n" .. error_messages, vim.log.levels.ERROR, { title = "Git" })
         end)
       end
     end,
   }):start()
+end
+
+function M.git_push_background()
+  local branch = vim.fn.trim(vim.fn.system("git rev-parse --abbrev-ref HEAD"))
+  run_background_git_command("git poc", "Successfully pushed to " .. branch, "Push failed for branch " .. branch)
+end
+
+function M.git_commit_and_push()
+  vim.ui.input({ prompt = "Commit message: " }, function(msg)
+    if msg and msg ~= "" then
+      local cmd = "git acp " .. vim.fn.shellescape(msg)
+      run_background_git_command(cmd, "Successfully committed and pushed!", "Commit and push failed")
+    else
+      vim.notify("Commit aborted: No message provided.", vim.log.levels.WARN, { title = "Git" })
+    end
+  end)
 end
 
 return M
