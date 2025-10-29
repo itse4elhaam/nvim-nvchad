@@ -9,37 +9,49 @@ M.sidekick = {
   plugin = true,
   n = {
     ["<leader>aa"] = {
-      function() require("sidekick.cli").toggle() end,
+      function()
+        require("sidekick.cli").toggle()
+      end,
       desc = "Sidekick Toggle CLI",
     },
     ["<leader>as"] = {
-      function() require("sidekick.cli").select({ filter = { installed = true } }) end,
+      function()
+        require("sidekick.cli").select { filter = { installed = true } }
+      end,
       desc = "Select CLI",
     },
     ["<leader>ap"] = {
-      function() require("sidekick.cli").prompt() end,
+      function()
+        require("sidekick.cli").prompt()
+      end,
       mode = { "n", "x" },
       desc = "Sidekick Select Prompt",
     },
     ["<leader>ad"] = {
-      function() require("sidekick.cli").close() end,
+      function()
+        require("sidekick.cli").close()
+      end,
       desc = "Detach a CLI Session",
     },
     ["<leader>af"] = {
-      function() require("sidekick.cli").send({ msg = "{file}" }) end,
+      function()
+        require("sidekick.cli").send { msg = "{file}" }
+      end,
       desc = "Send File",
     },
   },
   v = {
     ["<leader>at"] = {
-      function() require("sidekick.cli").send({ msg = "{this}" }) end,
+      function()
+        require("sidekick.cli").send { msg = "{this}" }
+      end,
       desc = "Send This",
     },
     ["<leader>av"] = {
       function()
-        require("sidekick.cli").send({
+        require("sidekick.cli").send {
           msg = "{selection}",
-        })
+        }
       end,
       desc = "Send Visual Selection",
     },
@@ -829,6 +841,13 @@ M.general = {
     ["<leader>b7"] = { "<cmd>buffer 7<CR>", "Select buffer 7" },
     ["<leader>b8"] = { "<cmd>buffer 8<CR>", "Select buffer 8" },
     ["<leader>b9"] = { "<cmd>buffer 9<CR>", "Select buffer 9" },
+
+    ["<leader>rcm"] = {
+      function()
+        utils.remove_comments()
+      end,
+      "Cycle through buffers",
+    },
   },
 
   v = {

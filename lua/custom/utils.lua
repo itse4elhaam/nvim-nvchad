@@ -461,7 +461,7 @@ vim.defer_fn(function()
 end, 100)
 
 local function run_background_git_command(command, success_message, failure_message)
-  local Job = require('plenary.job')
+  local Job = require "plenary.job"
   vim.notify("Running: " .. command, vim.log.levels.INFO, { title = "Git" })
 
   Job:new({
@@ -483,7 +483,7 @@ local function run_background_git_command(command, success_message, failure_mess
 end
 
 function M.git_push_background()
-  local branch = vim.fn.trim(vim.fn.system("git rev-parse --abbrev-ref HEAD"))
+  local branch = vim.fn.trim(vim.fn.system "git rev-parse --abbrev-ref HEAD")
   run_background_git_command("git poc", "Successfully pushed to " .. branch, "Push failed for branch " .. branch)
 end
 
@@ -496,6 +496,26 @@ function M.git_commit_and_push()
       vim.notify("Commit aborted: No message provided.", vim.log.levels.WARN, { title = "Git" })
     end
   end)
+end
+
+function M.remove_comments()
+  local bufnr = vim.api.nvim_get_current_buf()
+  local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)
+  local new_lines = {}
+
+  for _, line in ipairs(lines) do
+    -- Trim leading whitespace for matching
+    local trimmed = line:match "^%s*(.-)%s*$"
+
+    -- Skip lines that *only* contain a comment
+    -- Covers: # comment, // comment, -- comment
+    if not (trimmed:match "^#" or trimmed:match "^//" or trimmed:match "^%-%-") then
+      table.insert(new_lines, line)
+    end
+  end
+
+  -- Replace the buffer lines
+  vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
 end
 
 return M
