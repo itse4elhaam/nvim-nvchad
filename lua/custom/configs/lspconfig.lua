@@ -167,7 +167,7 @@ vim.lsp.config("tailwindcss", {
   capabilities = capabilities,
 })
 
-vim.lsp.enable { "tailwindcss" }
+-- vim.lsp.enable { "tailwindcss" }
 
 vim.lsp.config("asm_lsp", {
   on_attach = function(client, bufnr)
