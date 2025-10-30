@@ -179,7 +179,20 @@ M.snacks = {
     },
     ["<leader>lg"] = {
       function()
-        Snacks.lazygit()
+        Snacks.lazygit.open()
+      end,
+      "Lazygit",
+    },
+
+    ["<leader>ll"] = {
+      function()
+        Snacks.lazygit.log()
+      end,
+      "Lazygit",
+    },
+    ["<leader>lb"] = {
+      function()
+        Snacks.lazygit.log_file()
       end,
       "Lazygit",
     },
@@ -193,13 +206,13 @@ M.snacks = {
       function()
         Snacks.notifier.show_history()
       end,
-      "Git browse",
+      "Show notifications history",
     },
     ["<leader>nw"] = {
       function()
         Snacks.notifier.hide()
       end,
-      "Git browse",
+      "Hide notifications",
     },
     ["<leader>zn"] = {
       function()
