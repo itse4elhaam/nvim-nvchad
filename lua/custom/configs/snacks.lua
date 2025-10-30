@@ -24,7 +24,7 @@ return {
   quickfile = { enabled = true },
   lazygit = { enabled = true },
   scratch = { enabled = true },
-  gitbrowse = { enabled = true },
+  gitbrowse = { enabled = true, what = "branch" },
   notifier = { enabled = true },
   scroll = {
     enabled = false,
