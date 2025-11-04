@@ -14,6 +14,18 @@ M.sidekick = {
       end,
       desc = "Sidekick Toggle CLI",
     },
+    ["<leader>ao"] = {
+      function()
+        require("sidekick.cli").toggle { name = "opencode", focus = true }
+      end,
+      desc = "Sidekick Toggle CLI",
+    },
+    ["<leader>ac"] = {
+      function()
+        require("sidekick.cli").toggle { name = "cursor", focus = true }
+      end,
+      desc = "Sidekick Toggle CLI",
+    },
     ["<leader>as"] = {
       function()
         require("sidekick.cli").select { filter = { installed = true } }
@@ -27,7 +39,7 @@ M.sidekick = {
       mode = { "n", "x" },
       desc = "Sidekick Select Prompt",
     },
-    ["<leader>ad"] = {
+    ["<leader>adc"] = {
       function()
         require("sidekick.cli").close()
       end,
@@ -36,6 +48,12 @@ M.sidekick = {
     ["<leader>af"] = {
       function()
         require("sidekick.cli").send { msg = "{file}" }
+      end,
+      desc = "Send File",
+    },
+    ["<leader>ad"] = {
+      function()
+        require("sidekick.cli").send { msg = "{diagnostics}" }
       end,
       desc = "Send File",
     },
