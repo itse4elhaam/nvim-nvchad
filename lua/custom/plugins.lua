@@ -6,13 +6,6 @@ local merge_plugins = require("custom.utils").mergePlugins
 local function get_ai_plugins()
   return {
     {
-      "olimorris/codecompanion.nvim",
-      cmd = { "CodeCompanion", "CodeCompanionChat", "CodeCompanionActions" },
-      opts = require("custom.configs.codecompanion").opts,
-      dependencies = require("custom.configs.codecompanion").dependencies,
-      keys = load_mappings "code_companion",
-    },
-    {
       "sudo-tee/opencode.nvim",
       lazy = false,
       opts = require("custom.configs.opencode").opts,
