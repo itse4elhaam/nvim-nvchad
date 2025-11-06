@@ -41,3 +41,5 @@ plugins to install thru reddit:
 - https://www.reddit.com/r/neovim/comments/1lir33g/allow_telescope_to_see_dotfiles/
 
 use for debugging
+
+try this in place of https://github.com/paradoxical-dev/restoration.nvim auto-session
