@@ -200,6 +200,16 @@ local function get_lsp_and_completion_plugins()
       config = require "custom.configs.nvim-lint",
     },
     {
+      "dmmulroy/ts-error-translator.nvim",
+      lazy = false,
+      config = function()
+        require("ts-error-translator").setup {
+          auto_attach = true, -- auto-translate TS diagnostics
+          servers = { "ts_ls", "vtsls", "astro", "svelte" },
+        }
+      end,
+    },
+    {
       "antosha417/nvim-lsp-file-operations",
       dependencies = {
         "nvim-lua/plenary.nvim",
