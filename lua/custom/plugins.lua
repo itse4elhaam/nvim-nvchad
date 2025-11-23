@@ -34,6 +34,7 @@ local function get_ai_plugins()
             clear_suggestion = "<C-]>",
             accept_word = "<C-j>",
           },
+          ignore_filetypes = { c = true, cpp = true },
         }
       end,
     },
