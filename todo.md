@@ -43,3 +43,4 @@ plugins to install thru reddit:
 use for debugging
 
 try this in place of https://github.com/paradoxical-dev/restoration.nvim auto-session
+try this: https://github.com/A7Lavinraj/fyler.nvim
