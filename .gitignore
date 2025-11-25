@@ -9,3 +9,4 @@ after
 **/.DS_Store
 .crush
 *.local
+*tmp
