@@ -515,6 +515,11 @@ end
 ---@return table
 local function get_git_plugins()
   return {
+    {
+      "esmuellert/vscode-diff.nvim",
+      cmd = "CodeDiff",
+      dependencies = { "MunifTanjim/nui.nvim" },
+    },
     { "akinsho/git-conflict.nvim", version = "*", config = true, event = "VeryLazy" },
     {
       "MagicDuck/grug-far.nvim",
