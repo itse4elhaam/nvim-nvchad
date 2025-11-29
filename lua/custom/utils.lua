@@ -518,4 +518,35 @@ function M.remove_comments()
   vim.api.nvim_buf_set_lines(bufnr, 0, -1, false, new_lines)
 end
 
+function M.toggle_tmux_fullscreen()
+  if not os.getenv "TMUX" then
+    vim.notify("Not running inside tmux", vim.log.levels.WARN)
+    return
+  end
+
+  M._tmux_fullscreen_state = M._tmux_fullscreen_state or { active = false, prev_status = nil }
+  local state = M._tmux_fullscreen_state
+
+  if not state.active then
+    local ok, status = pcall(vim.fn.system, "tmux show-option -gqv status")
+    if not ok then
+      vim.notify("Failed to query tmux status", vim.log.levels.ERROR)
+      return
+    end
+
+    state.prev_status = vim.fn.trim(status ~= "" and status or "on")
+    vim.fn.system "tmux set-option -g status off"
+    vim.fn.system "tmux resize-pane -Z"
+    state.active = true
+    vim.notify("Tmux fullscreen enabled", vim.log.levels.INFO)
+  else
+    local prev = state.prev_status or "on"
+    vim.fn.system(string.format("tmux set-option -g status %s", prev))
+    vim.fn.system "tmux resize-pane -Z"
+    state.active = false
+    state.prev_status = nil
+    vim.notify("Tmux fullscreen disabled", vim.log.levels.INFO)
+  end
+end
+
 return M
