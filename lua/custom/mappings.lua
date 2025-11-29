@@ -487,17 +487,9 @@ M.general = {
     ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
     ["<leader>zf"] = {
       function()
-        if vim.bo.filetype == "sidekick_terminal" then
-          if _G.Snacks and Snacks.toggle and Snacks.toggle.zen then
-            Snacks.toggle.zen()
-          elseif _G.Snacks and Snacks.zen and Snacks.zen.zen then
-            Snacks.zen.zen()
-          end
-        else
-          utils.toggle_tmux_fullscreen()
-        end
+        utils.toggle_tmux_fullscreen()
       end,
-      "Toggle agent zen / tmux fullscreen",
+      "Toggle tmux fullscreen",
     },
 
     ["<leader>poc"] = {
