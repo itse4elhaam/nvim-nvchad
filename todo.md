@@ -44,3 +44,6 @@ use for debugging
 
 try this in place of https://github.com/paradoxical-dev/restoration.nvim auto-session
 try this: https://github.com/A7Lavinraj/fyler.nvim
+
+- can use https://github.com/koushikxd/resu.nvim for accept/reject AI changes
+- https://neo451.github.io/blog/posts/in-process-lsp-guide/

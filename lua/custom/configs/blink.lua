@@ -150,8 +150,19 @@ local opts = {
       },
     },
   },
-
   signature = { enabled = false },
 }
+
+local has_thesaurus, _ = pcall(require, "blink-cmp-words.thesaurus")
+if not has_thesaurus then
+  opts.sources.providers.thesaurus = nil
+  opts.sources.per_filetype.markdown = { "buffer" }
+end
+
+local has_dictionary, _ = pcall(require, "blink-cmp-words.dictionary")
+if not has_dictionary then
+  opts.sources.providers.dictionary = nil
+  opts.sources.per_filetype.text = { "buffer" }
+end
 
 return opts

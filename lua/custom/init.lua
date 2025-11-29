@@ -22,6 +22,7 @@ local api = vim.api
 -- General
 opt.relativenumber = true
 opt.swapfile = false
+opt.iskeyword = "@,48-57,_,192-255,-"
 opt.sessionoptions = "blank,buffers,curdir,folds,help,tabpages,winsize,winpos,terminal,localoptions"
 
 -- Global variables
@@ -70,6 +71,17 @@ api.nvim_create_autocmd("TextYankPost", {
   group = augroup "HighlightYank",
   callback = function()
     vim.highlight.on_yank { higroup = "Visual", timeout = 300 }
+  end,
+})
+
+api.nvim_create_autocmd("TextYankPost", {
+  group = augroup "YankHistory",
+  callback = function()
+    if vim.v.event.operator == "y" then
+      for i = 9, 1, -1 do -- Shift all numbered registers.
+        vim.fn.setreg(tostring(i), vim.fn.getreg(tostring(i - 1)))
+      end
+    end
   end,
 })
 

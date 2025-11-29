@@ -485,6 +485,21 @@ M.general = {
     },
     ["T"] = { "<cmd>b#<CR>", "Open last closed buffer" },
     ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
+    ["<leader>zf"] = {
+      function()
+        if vim.bo.filetype == "sidekick_terminal" then
+          if _G.Snacks and Snacks.toggle and Snacks.toggle.zen then
+            Snacks.toggle.zen()
+          elseif _G.Snacks and Snacks.zen and Snacks.zen.zen then
+            Snacks.zen.zen()
+          end
+        else
+          utils.toggle_tmux_fullscreen()
+        end
+      end,
+      "Toggle agent zen / tmux fullscreen",
+    },
+
     ["<leader>poc"] = {
       function()
         utils.git_push_background()
