@@ -179,3 +179,12 @@ vim.lsp.config("asm_lsp", {
 })
 
 vim.lsp.enable { "asm_lsp" }
+
+-- Copilot LSP (required for sidekick.nvim NES - Next Edit Suggestions)
+vim.lsp.config("copilot", {
+  cmd = { "copilot-language-server", "--stdio" },
+  filetypes = { "*" }, -- Enable for all filetypes
+  capabilities = capabilities,
+})
+
+vim.lsp.enable { "copilot" }

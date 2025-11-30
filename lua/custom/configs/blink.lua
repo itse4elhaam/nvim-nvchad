@@ -44,6 +44,19 @@ local opts = {
   },
   keymap = {
     preset = "super-tab",
+    ["<Tab>"] = {
+      function(cmp)
+        -- Priority 1: Check sidekick NES (Next Edit Suggestions)
+        local has_sidekick, sidekick = pcall(require, "sidekick")
+        if has_sidekick and sidekick.nes_jump_or_apply() then
+          return true -- NES jumped or applied, stop execution
+        end
+        return false -- Continue to next handler
+      end,
+      "snippet_forward",
+      "select_next",
+      "fallback",
+    },
     ["<CR>"] = { "accept", "fallback" },
     -- TODO: replace with a loop
     ["<A-1>"] = {
