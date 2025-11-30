@@ -22,6 +22,7 @@ local function get_ai_plugins()
     },
     {
       "supermaven-inc/supermaven-nvim",
+      enabled = false,
       event = "InsertEnter",
       cmd = {
         "SupermavenUseFree",
