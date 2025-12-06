@@ -49,3 +49,5 @@ try this: https://github.com/A7Lavinraj/fyler.nvim
 - https://neo451.github.io/blog/posts/in-process-lsp-guide/
 
 X - MOVE TO DOT FILES
+
+- https://www.reddit.com/r/neovim/comments/1pa6hv3/microscopenvim_floating_definition_viewereditor/
