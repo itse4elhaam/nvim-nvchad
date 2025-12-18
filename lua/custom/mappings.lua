@@ -256,6 +256,30 @@ M.snacks = {
       end,
       "Toggle zoom Zen",
     },
+    ["<leader>gi"] = {
+      function()
+        Snacks.picker.gh_issue()
+      end,
+      "GitHub Issues (open)",
+    },
+    ["<leader>gI"] = {
+      function()
+        Snacks.picker.gh_issue { state = "all" }
+      end,
+      "GitHub Issues (all)",
+    },
+    ["<leader>gp"] = {
+      function()
+        Snacks.picker.gh_pr()
+      end,
+      "GitHub PRs (open)",
+    },
+    ["<leader>gP"] = {
+      function()
+        Snacks.picker.gh_pr { state = "all" }
+      end,
+      "GitHub PRs (all)",
+    },
   },
 }
 

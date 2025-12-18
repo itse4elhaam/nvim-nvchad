@@ -1,5 +1,12 @@
 return {
   bigfile = { enabled = true },
+  gh = { enabled = true },
+  picker = {
+    sources = {
+      gh_issue = {},
+      gh_pr = {},
+    },
+  },
   zen = {
     enabled = true,
     on_open = function(_)
