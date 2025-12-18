@@ -306,6 +306,45 @@ end
 
 M.wakatime_stats = "..."
 M.vim_zen = ""
+M.nes_status = ""
+
+-- NES (Next Edit Suggestions) status indicator
+local function update_nes_status()
+  local ok, sidekick = pcall(require, "sidekick")
+  if not ok then
+    M.nes_status = ""
+    return
+  end
+
+  local nes = require "sidekick.nes"
+  local status_ok, status = pcall(require, "sidekick.status")
+
+  -- Check if NES is enabled (it's a boolean field, not a function)
+  local is_enabled = nes.enabled
+  if not is_enabled then
+    M.nes_status = "%#St_lspHints# 󰚌 "
+    return
+  end
+
+  -- Check if there are active edits
+  local has_edits = nes.have and nes.have()
+
+  -- Check if Copilot is busy (loading)
+  local is_busy = false
+  if status_ok and status.get then
+    local copilot_status = status.get()
+    is_busy = copilot_status and copilot_status.busy or false
+  end
+
+  -- Build status string
+  if is_busy then
+    M.nes_status = "%#St_lspWarning# 󰚔  " -- Loading indicator (spinning)
+  elseif has_edits then
+    M.nes_status = "%#St_lspInfo# 󰛨  " -- Has suggestions (with count indicator)
+  else
+    M.nes_status = "%#St_lspHints# 󰛩  " -- Enabled but no suggestions
+  end
+end
 
 local zen_quotes = {
   "🧘 zen",
@@ -458,6 +497,19 @@ vim.defer_fn(function()
   vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged" }, {
     callback = update_key_streak,
   })
+
+  -- Update NES status on relevant events
+  vim.api.nvim_create_autocmd({
+    "ModeChanged",
+    "TextChanged",
+    "TextChangedI",
+    "BufEnter",
+    "CursorHold",
+    "User",
+  }, {
+    callback = update_nes_status,
+  })
+  update_nes_status()
 end, 100)
 
 local function run_background_git_command(command, success_message, failure_message)

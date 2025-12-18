@@ -1,4 +1,12 @@
 return {
+  -- Enable Next Edit Suggestions (NES)
+  nes = {
+    enabled = true,
+  },
+  signs = {
+    enabled = true,
+    icon = " ",
+  },
   cli = {
     mux = {
       backend = "tmux",
@@ -15,4 +23,12 @@ return {
       },
     },
   },
+  -- Track copilot status
+  copilot = {
+    status = {
+      enabled = true,
+      level = vim.log.levels.WARN,
+    },
+  },
 }
+
