@@ -21,6 +21,19 @@ local function get_ai_plugins()
       keys = load_mappings "sidekick",
     },
     {
+      "jim-at-jibba/nvim-redraft",
+      dependencies = {
+        { "folke/snacks.nvim", opts = { input = {} } },
+      },
+      event = "VeryLazy",
+      build = "cd ts && npm install && npm run build",
+      opts = {
+        llm = {
+          provider = "cerebras", model = "qwen-3-235b-a22b-instruct-2507", label = "Cerebras Qwen"
+        }
+      },
+    },
+    {
       "supermaven-inc/supermaven-nvim",
       event = "InsertEnter",
       cmd = {
