@@ -1,7 +1,6 @@
 return {
   bigfile = { enabled = true },
   gh = { enabled = true },
-  words = { enabled = true },
   picker = {
     enabled = true,
   },
