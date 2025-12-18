@@ -11,6 +11,26 @@ if vim.fn.has "nvim-0.11" == 1 then
 else
   vim.print = dd
 end
+
+local render_markdown_patched = false
+local original_require = require
+_G.require = function(modname)
+  local mod = original_require(modname)
+  if modname == "render-markdown" and not render_markdown_patched then
+    render_markdown_patched = true
+    if not mod.render then
+      mod.render = function(opts)
+        if opts and opts.buf then
+          local api = original_require "render-markdown.api"
+          vim.api.nvim_buf_call(opts.buf, function()
+            api.enable()
+          end)
+        end
+      end
+    end
+  end
+  return mod
+end
 -- =============================================================================
 -- Options
 -- =============================================================================
