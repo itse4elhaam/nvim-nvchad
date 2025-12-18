@@ -309,6 +309,9 @@ M.vim_zen = ""
 M.nes_status = ""
 
 -- NES (Next Edit Suggestions) status indicator
+local nes_loading_frames = { "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥" }
+local nes_loading_index = 1
+
 local function update_nes_status()
   local ok, sidekick = pcall(require, "sidekick")
   if not ok then
@@ -322,12 +325,18 @@ local function update_nes_status()
   -- Check if NES is enabled (it's a boolean field, not a function)
   local is_enabled = nes.enabled
   if not is_enabled then
-    M.nes_status = "%#St_lspHints# 󰚌 "
+    M.nes_status = "%#St_lspHints#  OFF "
     return
   end
 
   -- Check if there are active edits
   local has_edits = nes.have and nes.have()
+
+  -- Try to get count of suggestions
+  local suggestion_count = 0
+  if has_edits and nes.edits and type(nes.edits) == "table" then
+    suggestion_count = #nes.edits
+  end
 
   -- Check if Copilot is busy (loading)
   local is_busy = false
@@ -336,13 +345,31 @@ local function update_nes_status()
     is_busy = copilot_status and copilot_status.busy or false
   end
 
-  -- Build status string
+  -- Build status string with cool indicators
   if is_busy then
-    M.nes_status = "%#St_lspWarning# 󰚔  " -- Loading indicator (spinning)
+    -- Animated loading with rotating icon
+    local frame = nes_loading_frames[nes_loading_index]
+    nes_loading_index = (nes_loading_index % #nes_loading_frames) + 1
+    M.nes_status = "%#St_lspWarning# " .. frame .. "  "
   elseif has_edits then
-    M.nes_status = "%#St_lspInfo# 󰛨  " -- Has suggestions (with count indicator)
+    -- Show suggestions available with count
+    if suggestion_count > 0 then
+      M.nes_status = string.format("%%#St_lspInfo#  %d ", suggestion_count)
+    else
+      M.nes_status = "%#St_lspInfo#   "
+    end
   else
-    M.nes_status = "%#St_lspHints# 󰛩  " -- Enabled but no suggestions
+    -- Ready state - subtle indicator
+    M.nes_status = "%#St_lspHints#   "
+  end
+
+  -- Schedule redraw for animation
+  if is_busy then
+    vim.defer_fn(function()
+      vim.schedule(function()
+        vim.cmd "redrawstatus"
+      end)
+    end, 100) -- Update every 100ms for smooth animation
   end
 end
 
