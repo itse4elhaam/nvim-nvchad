@@ -280,6 +280,18 @@ M.snacks = {
       end,
       "GitHub PRs (all)",
     },
+    ["]]"] = {
+      function()
+        Snacks.words.jump(vim.v.count1)
+      end,
+      "Next LSP Reference",
+    },
+    ["[["] = {
+      function()
+        Snacks.words.jump(-vim.v.count1)
+      end,
+      "Prev LSP Reference",
+    },
   },
 }
 
