@@ -9,9 +9,6 @@ M.sidekick = {
   plugin = true,
   n = {
     -- NES (Next Edit Suggestions) mappings
-    -- i am trying to find a good way to implement this
-    -- ["<Tab>"] = {
-    -- lets do some copilot please
     [">"] = {
       function()
         -- if there is a next edit, jump to it, otherwise apply it if any
