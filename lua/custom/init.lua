@@ -33,6 +33,7 @@ g.fancy_statusline = os.getenv "NVIM_FANCY_STATUSLINE" == "true"
 g.customBigFileOpt = true
 g.disableFormat = os.getenv "NVIM_DISABLE_FORMAT" == "true"
 g.smear_cursor = os.getenv "NVIM_SMEAR_CURSOR" == "true"
+g.enable_nes = os.getenv "NVIM_DISABLE_NES" ~= "true"
 g.nvchad_hot_reload = false
 g.maplocalleader = ","
 

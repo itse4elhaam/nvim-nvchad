@@ -1,7 +1,6 @@
 return {
-  -- Enable Next Edit Suggestions (NES)
   nes = {
-    enabled = true,
+    enabled = vim.g.enable_nes,
   },
   signs = {
     enabled = true,
