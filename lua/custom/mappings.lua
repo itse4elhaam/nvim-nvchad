@@ -878,7 +878,7 @@ M.general = {
       end,
       "Open .env file",
     },
-    ["<leader>gi"] = {
+    ["<leader>gg"] = {
       function()
         utils.openOrCreateFiles { ".gitignore" }
       end,
