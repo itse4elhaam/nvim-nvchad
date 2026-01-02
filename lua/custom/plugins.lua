@@ -14,6 +14,57 @@ local function get_ai_plugins()
         require("opencode").setup(require("custom.configs.opencode").opts)
       end,
     },
+    -- remove the code from this diff
+    {
+      "ThePrimeagen/99",
+      event = "VeryLazy",
+      config = function()
+        local _99 = require "99"
+        local cwd = vim.uv.cwd()
+        local basename = vim.fs.basename(cwd)
+
+        -- Ensure tmp directory exists for 99.nvim
+        local tmp_dir = vim.fn.stdpath "config" .. "/tmp"
+        vim.fn.mkdir(tmp_dir, "p")
+
+        _99.setup {
+          logger = {
+            level = _99.DEBUG,
+            path = "/tmp/" .. basename .. ".99.debug",
+            print_on_error = true,
+          },
+          md_files = {
+            "AGENT.md",
+          },
+          tmp_name_prefix = tmp_dir .. "/99-",
+        }
+
+        -- Keymaps
+        vim.keymap.set("n", "<leader>9f", function()
+          _99.fill_in_function()
+        end, { desc = "99: Fill in function" })
+
+        vim.keymap.set("v", "<leader>9v", function()
+          _99.visual()
+        end, { desc = "99: Visual selection" })
+
+        vim.keymap.set("n", "<leader>9s", function()
+          _99.stop_all_requests()
+        end, { desc = "99: Stop all requests" })
+
+        vim.keymap.set("n", "<leader>9l", function()
+          _99.view_logs()
+        end, { desc = "99: View logs" })
+
+        vim.keymap.set("n", "<leader>9p", function()
+          _99.prev_request_logs()
+        end, { desc = "99: Previous request logs" })
+
+        vim.keymap.set("n", "<leader>9n", function()
+          _99.next_request_logs()
+        end, { desc = "99: Next request logs" })
+      end,
+    },
     {
       "folke/sidekick.nvim",
       lazy = false,
@@ -29,8 +80,10 @@ local function get_ai_plugins()
       build = "cd ts && npm install && npm run build",
       opts = {
         llm = {
-          provider = "cerebras", model = "qwen-3-235b-a22b-instruct-2507", label = "Cerebras Qwen"
-        }
+          provider = "cerebras",
+          model = "qwen-3-235b-a22b-instruct-2507",
+          label = "Cerebras Qwen",
+        },
       },
     },
     {
