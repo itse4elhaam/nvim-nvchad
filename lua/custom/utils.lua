@@ -577,6 +577,133 @@ function M.git_commit_and_push()
   end)
 end
 
+function M.opencode_commit()
+  -- Simplified logging
+  local log_file = "/tmp/opencode_commit_debug.log"
+  local function log(msg)
+    local f = io.open(log_file, "a")
+    if f then
+      f:write(string.format("[%s] %s\n", os.date("%Y-%m-%d %H:%M:%S"), msg))
+      f:close()
+    end
+  end
+
+  log("========== COMMIT WORKFLOW STARTED ==========")
+  
+  -- Show initial notification with spinner
+  vim.notify("🔄 Starting commit workflow...", vim.log.levels.INFO, { title = "OpenCode Commit" })
+
+  -- Track completion and output
+  local completed = false
+  local stdout_buffer = {}
+  local last_update = vim.loop.now()
+
+  local function once_complete(status, message)
+    if completed then
+      return
+    end
+    completed = true
+
+    if status == "success" then
+      log("SUCCESS: Commit completed")
+      vim.notify("✅ Commit completed successfully!", vim.log.levels.INFO, { title = "OpenCode Commit" })
+    elseif status == "failed" then
+      log("FAILED: " .. (message or "Unknown error"))
+      vim.notify("❌ Commit failed: " .. (message or "Unknown error"), vim.log.levels.ERROR, { title = "OpenCode Commit" })
+    end
+  end
+
+  -- Check if there are staged changes
+  local staged_status = vim.fn.system("git diff --cached --quiet")
+  local has_staged = vim.v.shell_error ~= 0
+  
+  local prompt
+  if has_staged then
+    prompt = "Create a conventional commit message for the currently staged changes. Then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command."
+    log("Has staged changes - committing staged only")
+  else
+    prompt = "Stage all changes with 'git add -A', create a conventional commit message, then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command."
+    log("No staged changes - will stage all and commit")
+  end
+
+  local command = { 
+    "opencode", "run", 
+    "--model", "github-copilot/claude-haiku-4.5",
+    prompt
+  }
+  log("Command: " .. vim.inspect(command))
+
+  -- Check if opencode is in PATH
+  local opencode_path = vim.fn.exepath("opencode")
+  if opencode_path == "" then
+    log("ERROR: opencode not found in PATH")
+    vim.notify("❌ opencode not found in PATH", vim.log.levels.ERROR, { title = "OpenCode Commit" })
+    once_complete("failed", "opencode not found in PATH")
+    return
+  end
+
+  -- Show periodic progress updates
+  local function show_progress()
+    if completed then
+      return
+    end
+    local now = vim.loop.now()
+    if now - last_update > 3000 then -- Every 3 seconds
+      vim.notify("⏳ Still working...", vim.log.levels.INFO, { title = "OpenCode Commit" })
+      last_update = now
+    end
+  end
+
+  -- Start progress timer
+  local progress_timer = vim.loop.new_timer()
+  progress_timer:start(3000, 3000, vim.schedule_wrap(show_progress))
+
+  vim.system(
+    command,
+    {
+      text = true,
+      stdout = vim.schedule_wrap(function(err, data)
+        if completed then return end
+        if data and data ~= "" then
+          table.insert(stdout_buffer, data)
+        end
+      end),
+      stderr = vim.schedule_wrap(function(err, data)
+        if completed then return end
+        -- Stderr in opencode is often just progress/status, ignore unless error
+        if err then
+          log("stderr ERROR: " .. tostring(err))
+        end
+      end),
+    },
+    vim.schedule_wrap(function(obj)
+      progress_timer:stop()
+      progress_timer:close()
+      
+      if completed then
+        return
+      end
+
+      log("Exit code: " .. obj.code)
+      
+      if obj.code ~= 0 then
+        local full_output = table.concat(stdout_buffer, "\n")
+        log("FAILED - Full output:\n" .. full_output)
+        once_complete("failed", "Exit code: " .. obj.code)
+      else
+        local full_output = table.concat(stdout_buffer, "\n")
+        log("SUCCESS - Full output:\n" .. full_output)
+        once_complete("success", "")
+      end
+
+      log("========== COMMIT WORKFLOW ENDED ==========")
+    end)
+  )
+
+  log("Process started")
+end
+
+
 function M.remove_comments()
   local bufnr = vim.api.nvim_get_current_buf()
   local lines = vim.api.nvim_buf_get_lines(bufnr, 0, -1, false)

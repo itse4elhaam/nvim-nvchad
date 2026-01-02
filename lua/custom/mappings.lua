@@ -571,6 +571,12 @@ M.general = {
       end,
       "Git commit & push",
     },
+    ["<leader>acc"] = {
+      function()
+        utils.opencode_commit()
+      end,
+      "OpenCode commit (async)",
+    },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     ["<leader>db"] = {
