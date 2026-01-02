@@ -596,7 +596,6 @@ function M.opencode_commit()
   -- Track completion and output
   local completed = false
   local stdout_buffer = {}
-  local last_update = vim.loop.now()
 
   local function once_complete(status, message)
     if completed then
@@ -642,22 +641,6 @@ function M.opencode_commit()
     return
   end
 
-  -- Show periodic progress updates
-  local function show_progress()
-    if completed then
-      return
-    end
-    local now = vim.loop.now()
-    if now - last_update > 3000 then -- Every 3 seconds
-      vim.notify("⏳ Still working...", vim.log.levels.INFO, { title = "OpenCode Commit" })
-      last_update = now
-    end
-  end
-
-  -- Start progress timer
-  local progress_timer = vim.loop.new_timer()
-  progress_timer:start(3000, 3000, vim.schedule_wrap(show_progress))
-
   vim.system(
     command,
     {
@@ -677,9 +660,6 @@ function M.opencode_commit()
       end),
     },
     vim.schedule_wrap(function(obj)
-      progress_timer:stop()
-      progress_timer:close()
-      
       if completed then
         return
       end
