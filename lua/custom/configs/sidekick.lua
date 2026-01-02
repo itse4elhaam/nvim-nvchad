@@ -1,4 +1,11 @@
 return {
+  nes = {
+    enabled = vim.g.enable_nes,
+  },
+  signs = {
+    enabled = true,
+    icon = " ",
+  },
   cli = {
     mux = {
       backend = "tmux",
@@ -15,4 +22,12 @@ return {
       },
     },
   },
+  -- Track copilot status
+  copilot = {
+    status = {
+      enabled = true,
+      level = vim.log.levels.WARN,
+    },
+  },
 }
+

@@ -1,5 +1,9 @@
 return {
   bigfile = { enabled = true },
+  gh = { enabled = true },
+  picker = {
+    enabled = true,
+  },
   zen = {
     enabled = true,
     on_open = function(_)

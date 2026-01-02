@@ -8,6 +8,41 @@ local utils = require "custom.utils"
 M.sidekick = {
   plugin = true,
   n = {
+    -- NES (Next Edit Suggestions) mappings
+    [">"] = {
+      function()
+        -- if there is a next edit, jump to it, otherwise apply it if any
+        if not require("sidekick").nes_jump_or_apply() then
+          return "<Tab>"
+        end
+      end,
+      desc = "NES: Jump to or apply suggestion",
+    },
+    ["<leader>ne"] = {
+      function()
+        require("sidekick.nes").toggle()
+      end,
+      desc = "NES: Toggle Next Edit Suggestions",
+    },
+    ["<leader>nc"] = {
+      function()
+        require("sidekick.nes").clear()
+      end,
+      desc = "NES: Clear suggestions",
+    },
+    ["<leader>nu"] = {
+      function()
+        require("sidekick.nes").update()
+      end,
+      desc = "NES: Request new suggestions",
+    },
+    ["<leader>nj"] = {
+      function()
+        require("sidekick.nes").jump()
+      end,
+      desc = "NES: Request new suggestions",
+    },
+    -- CLI mappings
     ["<leader>aa"] = {
       function()
         require("sidekick.cli").toggle()
@@ -220,6 +255,30 @@ M.snacks = {
         Snacks.zen.zoom()
       end,
       "Toggle zoom Zen",
+    },
+    ["<leader>gi"] = {
+      function()
+        Snacks.picker.gh_issue()
+      end,
+      "GitHub Issues (open)",
+    },
+    ["<leader>gI"] = {
+      function()
+        Snacks.picker.gh_issue { state = "all" }
+      end,
+      "GitHub Issues (all)",
+    },
+    ["<leader>gp"] = {
+      function()
+        Snacks.picker.gh_pr()
+      end,
+      "GitHub PRs (open)",
+    },
+    ["<leader>gP"] = {
+      function()
+        Snacks.picker.gh_pr { state = "all" }
+      end,
+      "GitHub PRs (all)",
     },
   },
 }
@@ -819,7 +878,7 @@ M.general = {
       end,
       "Open .env file",
     },
-    ["<leader>gi"] = {
+    ["<leader>gg"] = {
       function()
         utils.openOrCreateFiles { ".gitignore" }
       end,

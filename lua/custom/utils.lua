@@ -306,6 +306,72 @@ end
 
 M.wakatime_stats = "..."
 M.vim_zen = ""
+M.nes_status = ""
+
+-- NES (Next Edit Suggestions) status indicator
+local nes_loading_frames = { "󰪞", "󰪟", "󰪠", "󰪡", "󰪢", "󰪣", "󰪤", "󰪥" }
+local nes_loading_index = 1
+
+local function update_nes_status()
+  local ok, sidekick = pcall(require, "sidekick")
+  if not ok then
+    M.nes_status = ""
+    return
+  end
+
+  local nes = require "sidekick.nes"
+  local status_ok, status = pcall(require, "sidekick.status")
+
+  -- Check if NES is enabled (it's a boolean field, not a function)
+  local is_enabled = nes.enabled
+  if not is_enabled then
+    M.nes_status = "%#St_lspHints#  OFF "
+    return
+  end
+
+  -- Check if there are active edits
+  local has_edits = nes.have and nes.have()
+
+  -- Try to get count of suggestions
+  local suggestion_count = 0
+  if has_edits and nes.edits and type(nes.edits) == "table" then
+    suggestion_count = #nes.edits
+  end
+
+  -- Check if Copilot is busy (loading)
+  local is_busy = false
+  if status_ok and status.get then
+    local copilot_status = status.get()
+    is_busy = copilot_status and copilot_status.busy or false
+  end
+
+  -- Build status string with cool indicators
+  if is_busy then
+    -- Animated loading with rotating icon
+    local frame = nes_loading_frames[nes_loading_index]
+    nes_loading_index = (nes_loading_index % #nes_loading_frames) + 1
+    M.nes_status = "%#St_lspWarning# " .. frame .. "  "
+  elseif has_edits then
+    -- Show suggestions available with count
+    if suggestion_count > 0 then
+      M.nes_status = string.format("%%#St_lspInfo#  %d ", suggestion_count)
+    else
+      M.nes_status = "%#St_lspInfo#   "
+    end
+  else
+    -- Ready state - subtle indicator
+    M.nes_status = "%#St_lspHints#   "
+  end
+
+  -- Schedule redraw for animation
+  if is_busy then
+    vim.defer_fn(function()
+      vim.schedule(function()
+        vim.cmd "redrawstatus"
+      end)
+    end, 100) -- Update every 100ms for smooth animation
+  end
+end
 
 local zen_quotes = {
   "🧘 zen",
@@ -458,6 +524,19 @@ vim.defer_fn(function()
   vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged" }, {
     callback = update_key_streak,
   })
+
+  -- Update NES status on relevant events
+  vim.api.nvim_create_autocmd({
+    "ModeChanged",
+    "TextChanged",
+    "TextChangedI",
+    "BufEnter",
+    "CursorHold",
+    "User",
+  }, {
+    callback = update_nes_status,
+  })
+  update_nes_status()
 end, 100)
 
 local function run_background_git_command(command, success_message, failure_message)

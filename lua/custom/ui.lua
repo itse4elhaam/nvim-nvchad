@@ -24,6 +24,7 @@ local ui = {
       local utils = require "custom.utils"
       if vim.g.fancy_statusline then
         modules[3] = "%#St_gitIcons#" .. " " .. utils.vim_zen .. " "
+        modules[7] = modules[7] .. utils.nes_status -- Add NES status after LSP diagnostics
         modules[8] = "%#St_lspHints#" .. " " .. utils.buffer_size .. " "
         modules[9] = (function()
           if utils.streak_display ~= "" then
@@ -35,6 +36,7 @@ local ui = {
         modules[10] = "%#St_file_txt#" .. " | " .. utils.wakatime_stats
       else
         modules[3] = ""
+        modules[7] = modules[7] .. utils.nes_status -- Add NES status even in non-fancy mode
         modules[8] = ""
         modules[9] = ""
         modules[10] = "%#St_file_txt#" .. utils.wakatime_stats
