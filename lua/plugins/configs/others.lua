@@ -40,8 +40,8 @@ M.luasnip = function(opts)
   vim.api.nvim_create_autocmd("InsertLeave", {
     callback = function()
       if
-        require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
-        and not require("luasnip").session.jump_active
+          require("luasnip").session.current_nodes[vim.api.nvim_get_current_buf()]
+          and not require("luasnip").session.jump_active
       then
         require("luasnip").unlink_current()
       end
@@ -58,8 +58,22 @@ M.gitsigns = {
     changedelete = { text = "~" },
     untracked = { text = "│" },
   },
+  watch_gitdir = {
+    enable = true,
+    follow_files = true,
+  },
   on_attach = function(bufnr)
     utils.load_mappings("gitsigns", { buffer = bufnr })
+    -- Refresh gitsigns when focus is regained (e.g., after using lazygit/CLI)
+    vim.api.nvim_create_autocmd({ "FocusGained", "BufEnter" }, {
+      buffer = bufnr,
+      callback = function()
+        vim.schedule(function()
+          -- Check if file was modified externally
+          vim.cmd "checktime"
+        end)
+      end,
+    })
   end,
 }
 
