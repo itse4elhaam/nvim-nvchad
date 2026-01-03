@@ -635,7 +635,7 @@ function M.opencode_commit()
     "opencode",
     "run",
     "--model",
-    "github-copilot/claude-haiku-4.5",
+    "github-copilot/gpt-4o",
     prompt,
   }
   log("Command: " .. vim.inspect(command))
