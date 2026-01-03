@@ -5,6 +5,10 @@ return {
     },
     settings = {
       save_on_toggle = true,
+      sync_root_with_pwd = true, -- Sync with project root
+      key = function()
+        return vim.fn.getcwd() -- Separate marks per project
+      end,
     },
   },
   keys = function()
