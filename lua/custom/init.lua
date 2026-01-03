@@ -229,6 +229,9 @@ api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
 -- =============================================================================
 local utils = require "custom.utils"
 
+-- Setup buffer memory (cursor position preservation)
+utils.setup_buffer_memory()
+
 api.nvim_create_user_command("TestLearningLsp", function()
   utils.TestLearningLsp()
 end, { desc = "Test the custom LSP client: learninglsp" })

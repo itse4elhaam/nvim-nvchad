@@ -583,13 +583,13 @@ function M.opencode_commit()
   local function log(msg)
     local f = io.open(log_file, "a")
     if f then
-      f:write(string.format("[%s] %s\n", os.date("%Y-%m-%d %H:%M:%S"), msg))
+      f:write(string.format("[%s] %s\n", os.date "%Y-%m-%d %H:%M:%S", msg))
       f:close()
     end
   end
 
-  log("========== COMMIT WORKFLOW STARTED ==========")
-  
+  log "========== COMMIT WORKFLOW STARTED =========="
+
   -- Show initial notification with spinner
   vim.notify("🔄 Starting commit workflow...", vim.log.levels.INFO, { title = "OpenCode Commit" })
 
@@ -604,38 +604,46 @@ function M.opencode_commit()
     completed = true
 
     if status == "success" then
-      log("SUCCESS: Commit completed")
+      log "SUCCESS: Commit completed"
       vim.notify("✅ Commit completed successfully!", vim.log.levels.INFO, { title = "OpenCode Commit" })
     elseif status == "failed" then
       log("FAILED: " .. (message or "Unknown error"))
-      vim.notify("❌ Commit failed: " .. (message or "Unknown error"), vim.log.levels.ERROR, { title = "OpenCode Commit" })
+      vim.notify(
+        "❌ Commit failed: " .. (message or "Unknown error"),
+        vim.log.levels.ERROR,
+        { title = "OpenCode Commit" }
+      )
     end
   end
 
   -- Check if there are staged changes
-  local staged_status = vim.fn.system("git diff --cached --quiet")
+  local staged_status = vim.fn.system "git diff --cached --quiet"
   local has_staged = vim.v.shell_error ~= 0
-  
+
   local prompt
   if has_staged then
-    prompt = "Create a conventional commit message for the currently staged changes. Then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command."
-    log("Has staged changes - committing staged only")
+    prompt =
+    'Create a conventional commit message for the currently staged changes. Then run: git commit -m "<your message>". Use git commands directly, do NOT use the /commit command.'
+    log "Has staged changes - committing staged only"
   else
-    prompt = "Stage all changes with 'git add -A', create a conventional commit message, then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command."
-    log("No staged changes - will stage all and commit")
+    prompt =
+    "Stage all changes with 'git add -A', create a conventional commit message, then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command."
+    log "No staged changes - will stage all and commit"
   end
 
-  local command = { 
-    "opencode", "run", 
-    "--model", "github-copilot/claude-haiku-4.5",
-    prompt
+  local command = {
+    "opencode",
+    "run",
+    "--model",
+    "github-copilot/claude-haiku-4.5",
+    prompt,
   }
   log("Command: " .. vim.inspect(command))
 
   -- Check if opencode is in PATH
-  local opencode_path = vim.fn.exepath("opencode")
+  local opencode_path = vim.fn.exepath "opencode"
   if opencode_path == "" then
-    log("ERROR: opencode not found in PATH")
+    log "ERROR: opencode not found in PATH"
     vim.notify("❌ opencode not found in PATH", vim.log.levels.ERROR, { title = "OpenCode Commit" })
     once_complete("failed", "opencode not found in PATH")
     return
@@ -646,13 +654,17 @@ function M.opencode_commit()
     {
       text = true,
       stdout = vim.schedule_wrap(function(err, data)
-        if completed then return end
+        if completed then
+          return
+        end
         if data and data ~= "" then
           table.insert(stdout_buffer, data)
         end
       end),
       stderr = vim.schedule_wrap(function(err, data)
-        if completed then return end
+        if completed then
+          return
+        end
         -- Stderr in opencode is often just progress/status, ignore unless error
         if err then
           log("stderr ERROR: " .. tostring(err))
@@ -665,7 +677,7 @@ function M.opencode_commit()
       end
 
       log("Exit code: " .. obj.code)
-      
+
       if obj.code ~= 0 then
         local full_output = table.concat(stdout_buffer, "\n")
         log("FAILED - Full output:\n" .. full_output)
@@ -676,13 +688,12 @@ function M.opencode_commit()
         once_complete("success", "")
       end
 
-      log("========== COMMIT WORKFLOW ENDED ==========")
+      log "========== COMMIT WORKFLOW ENDED =========="
     end)
   )
 
-  log("Process started")
+  log "Process started"
 end
-
 
 function M.remove_comments()
   local bufnr = vim.api.nvim_get_current_buf()
@@ -733,6 +744,33 @@ function M.toggle_tmux_fullscreen()
     state.prev_status = nil
     vim.notify("Tmux fullscreen disabled", vim.log.levels.INFO)
   end
+end
+
+-- Auto-save cursor position per buffer when switching
+M.setup_buffer_memory = function()
+  local group = vim.api.nvim_create_augroup("BufferMemory", { clear = true })
+
+  -- Save view when leaving buffer
+  vim.api.nvim_create_autocmd("BufWinLeave", {
+    group = group,
+    pattern = "*",
+    callback = function()
+      if vim.bo.buftype == "" and vim.fn.expand "%" ~= "" then
+        vim.cmd "mkview"
+      end
+    end,
+  })
+
+  -- Restore view when entering buffer
+  vim.api.nvim_create_autocmd("BufWinEnter", {
+    group = group,
+    pattern = "*",
+    callback = function()
+      if vim.bo.buftype == "" and vim.fn.expand "%" ~= "" then
+        pcall(vim.cmd, "loadview")
+      end
+    end,
+  })
 end
 
 return M

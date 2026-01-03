@@ -14,7 +14,6 @@ local function get_ai_plugins()
         require("opencode").setup(require("custom.configs.opencode").opts)
       end,
     },
-    -- remove the code from this diff
     {
       "ThePrimeagen/99",
       event = "VeryLazy",
@@ -574,6 +573,20 @@ local function get_picker_plugins()
       branch = "harpoon2",
       opts = require("custom.configs.harpoon").opts,
       keys = require("custom.configs.harpoon").keys,
+    },
+    {
+      "ahmedkhalf/project.nvim",
+      event = "VeryLazy",
+      config = function()
+        require("project_nvim").setup {
+          detection_methods = { "pattern", "lsp" },
+          patterns = { ".git", "package.json", "Makefile", "go.mod", ".env", "Cargo.toml", "pyproject.toml" },
+          silent_chdir = false, -- Show notification when switching
+          scope_chdir = "global",
+        }
+        -- Load Telescope extension
+        require("telescope").load_extension "projects"
+      end,
     },
   }
 end
