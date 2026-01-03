@@ -9,6 +9,13 @@ capabilities.textDocument.foldingRange = {
 
 local util = require "lspconfig/util"
 
+-- Enable inlay hints for LSP servers that support it
+local function enable_inlay_hints(client, bufnr)
+  if vim.g.enable_inlay_hints and client.server_capabilities.inlayHintProvider then
+    vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+  end
+end
+
 -- Disable formatting for tailwindcss and cssls
 local function disable_formatting(client)
   if client.name == "tailwindcss" or client.name == "cssls" then
@@ -18,6 +25,7 @@ end
 
 vim.lsp.config("gopls", {
   on_attach = function(client, bufnr)
+    enable_inlay_hints(client, bufnr)
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
