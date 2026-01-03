@@ -36,7 +36,6 @@ local ui = {
         modules[10] = "%#St_file_txt#" .. " | " .. utils.wakatime_stats
       else
         modules[3] = ""
-        modules[7] = modules[7] .. utils.nes_status -- Add NES status even in non-fancy mode
         modules[8] = ""
         modules[9] = ""
         modules[10] = "%#St_file_txt#" .. utils.wakatime_stats
