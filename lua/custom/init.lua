@@ -54,6 +54,7 @@ g.customBigFileOpt = true
 g.disableFormat = os.getenv "NVIM_DISABLE_FORMAT" == "true"
 g.smear_cursor = os.getenv "NVIM_SMEAR_CURSOR" == "true"
 g.enable_nes = os.getenv "NVIM_ENABLE_NES" == "true"
+g.enable_inlay_hints = false -- Feature flag: disabled by default
 g.nvchad_hot_reload = false
 g.maplocalleader = ","
 
@@ -228,6 +229,9 @@ api.nvim_create_autocmd({ "VimEnter", "VimLeave" }, {
 -- User Commands
 -- =============================================================================
 local utils = require "custom.utils"
+
+-- Setup buffer memory (cursor position preservation)
+utils.setup_buffer_memory()
 
 api.nvim_create_user_command("TestLearningLsp", function()
   utils.TestLearningLsp()

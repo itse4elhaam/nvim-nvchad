@@ -571,6 +571,12 @@ M.general = {
       end,
       "Git commit & push",
     },
+    ["<leader>acc"] = {
+      function()
+        utils.opencode_commit()
+      end,
+      "OpenCode commit (async)",
+    },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },
     ["<leader>db"] = {
@@ -648,6 +654,19 @@ M.general = {
       "<cmd>LspStart<CR>",
       "Stop LSP",
     },
+    ["<leader>lh"] = {
+      function()
+        local enabled = vim.lsp.inlay_hint.is_enabled { bufnr = 0 }
+        vim.lsp.inlay_hint.enable(not enabled, { bufnr = 0 })
+      end,
+      "Toggle inlay hints",
+    },
+    ["<leader>fs"] = {
+      function()
+        require("telescope.builtin").lsp_document_symbols()
+      end,
+      "LSP document symbols (outline)",
+    },
     -- ts tool maps
     ["<leader>toi"] = {
       "<cmd>TSToolsOrganizeImports<CR>",
@@ -705,10 +724,9 @@ M.general = {
       "MultiGrep",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
-    ["<leader>fp"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
+    ["<leader>fy"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
-    ["<leader>fs"] = { "<cmd> Telescope lsp_document_symbols <CR>", "Find command history" },
     ["<leader>gs"] = { "<cmd>Telescope lsp_workspace_symbols query=q<CR>", "Global Symbols" },
     ["<leader>fd"] = { "<cmd> Telescope diagnostics <CR>", "Find diagnostics" },
     ["<leader>ft"] = { "<cmd> TodoTelescope <CR>" },
@@ -720,6 +738,36 @@ M.general = {
       "Open undo history using Telescope",
     },
     ["<leader>fbc"] = { "<cmd>Telescope git_bcommits<CR>", "Find buffer commits" },
+
+    -- Enhanced Telescope workflows
+    ["<leader>fR"] = {
+      function()
+        require("telescope.builtin").resume()
+      end,
+      "Resume last Telescope picker",
+    },
+    ["<leader>fro"] = {
+      function()
+        require("telescope.builtin").oldfiles { only_cwd = true }
+      end,
+      "Recent files (project-scoped)",
+    },
+    ["<leader>fB"] = {
+      function()
+        require("telescope.builtin").current_buffer_fuzzy_find {
+          previewer = false,
+          layout_config = { width = 0.6, height = 0.4 },
+        }
+      end,
+      "Fuzzy search in current buffer",
+    },
+    ["<leader>fp"] = {
+      function()
+        require("telescope").extensions.projects.projects {}
+      end,
+      "Browse recent projects",
+    },
+
     ["<leader>gvh"] = { "<cmd>Gitsigns select_hunk<CR>", "Visual selection for the git hunk" },
     ["<C-g>"] = { "<cmd>Telescope git_status<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },

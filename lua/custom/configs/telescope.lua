@@ -3,6 +3,11 @@ return function()
   local themes = require "telescope.themes"
 
   telescope.setup {
+    defaults = {
+      cache_picker = {
+        num_pickers = 10, -- Cache last 10 searches
+      },
+    },
     extensions = {
       undo = {},
       ["ui-select"] = themes.get_dropdown {

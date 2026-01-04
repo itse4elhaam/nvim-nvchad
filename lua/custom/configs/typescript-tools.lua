@@ -1,5 +1,10 @@
 return {
   on_attach = function(client, bufnr)
+    -- Enable inlay hints if supported and feature flag is enabled
+    if vim.g.enable_inlay_hints and client.server_capabilities.inlayHintProvider then
+      vim.lsp.inlay_hint.enable(true, { bufnr = bufnr })
+    end
+
     -- Disable formatting to use a dedicated formatter (like conform.nvim or null-ls)
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
