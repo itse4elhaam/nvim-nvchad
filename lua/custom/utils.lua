@@ -623,11 +623,11 @@ function M.opencode_commit()
   local prompt
   if has_staged then
     prompt =
-    'Create a conventional commit message for the currently staged changes. Then run: git commit -m "<your message>". Use git commands directly, do NOT use the /commit command.'
+    'Create a conventional commit message for the currently staged changes. Then run: git commit -m "<your message>". Use git commands directly, do NOT use the /commit command. Commit in the past tense'
     log "Has staged changes - committing staged only"
   else
     prompt =
-    "Stage all changes with 'git add -A', create a conventional commit message, then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command."
+    "Stage all changes with 'git add -A', create a conventional commit message, then run: git commit -m \"<your message>\". Use git commands directly, do NOT use the /commit command. Commit in the past tense"
     log "No staged changes - will stage all and commit"
   end
 
