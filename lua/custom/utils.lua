@@ -635,7 +635,7 @@ function M.opencode_commit()
     "opencode",
     "run",
     "--model",
-    "opencode/grok-code-fast-1",
+    "github-copilot/gpt-4o",
     prompt,
   }
   log("Command: " .. vim.inspect(command))
