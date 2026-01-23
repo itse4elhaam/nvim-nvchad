@@ -638,8 +638,30 @@ M.general = {
     ["<leader>tsn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
     ["<leader>ra"] = {
-      "<cmd>lua require('nvchad.renamer').open()<CR>",
-      "LSP rename",
+      function()
+        local original_bufnr = vim.api.nvim_get_current_buf()
+        vim.api.nvim_buf_set_var(original_bufnr, "completion", false)
+        
+        require("nvchad.renamer").open()
+        
+        vim.defer_fn(function()
+          local new_bufnr = vim.api.nvim_get_current_buf()
+          if new_bufnr ~= original_bufnr then
+            pcall(vim.api.nvim_buf_set_var, new_bufnr, "completion", false)
+          end
+        end, 50)
+        
+        vim.api.nvim_create_autocmd("BufLeave", {
+          buffer = original_bufnr,
+          once = true,
+          callback = function()
+            vim.defer_fn(function()
+              pcall(vim.api.nvim_buf_del_var, original_bufnr, "completion")
+            end, 100)
+          end,
+        })
+      end,
+      "LSP rename (no completions)",
     },
     ["<leader>esf"] = { "<cmd> EslintFixAll <CR>" },
     ["<leader>ld"] = {
@@ -976,6 +998,44 @@ M.general = {
         utils.remove_comments()
       end,
       "Cycle through buffers",
+    },
+
+    ["<leader>wm"] = {
+      function()
+        if vim.b.completion == false then
+          vim.b.completion = nil
+          pcall(function()
+            require("supermaven-nvim.api").start()
+          end)
+          require("snacks").notify("Writing Mode: OFF (AI/Completions Enabled)", { level = "info" })
+        else
+          vim.b.completion = false
+          pcall(function()
+            require("supermaven-nvim.api").stop()
+          end)
+          pcall(function()
+            require("blink.cmp").hide()
+          end)
+          require("snacks").notify("Writing Mode: ON (AI/Completions Disabled)", { level = "info" })
+        end
+      end,
+      "Toggle writing mode (disable AI completions)",
+    },
+
+    ["<leader>ht"] = {
+      function()
+        local clients = vim.lsp.get_clients({ name = "harper_ls", bufnr = 0 })
+        if #clients > 0 then
+          for _, client in ipairs(clients) do
+            vim.lsp.stop_client(client.id)
+          end
+          require("snacks").notify("Harper: OFF (Grammar/Spell check disabled)", { level = "info" })
+        else
+          vim.lsp.enable("harper_ls")
+          require("snacks").notify("Harper: ON (Grammar/Spell check enabled)", { level = "info" })
+        end
+      end,
+      "Toggle Harper grammar/spell check",
     },
   },
 

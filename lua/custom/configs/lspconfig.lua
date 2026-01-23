@@ -214,3 +214,35 @@ vim.lsp.config("copilot", {
 })
 
 vim.lsp.enable { "copilot" }
+
+vim.lsp.config("harper_ls", {
+  on_attach = function(client, bufnr)
+    on_attach(client, bufnr)
+  end,
+  capabilities = capabilities,
+  filetypes = { "markdown", "text", "gitcommit" },
+  settings = {
+    ["harper-ls"] = {
+      linters = {
+        SpellCheck = true,
+        SentenceCapitalization = true,
+        UnclosedQuotes = true,
+        WrongQuotes = false,
+        LongSentences = false,
+        RepeatedWords = true,
+        Spaces = true,
+      },
+      codeActions = {
+        ForceStable = true,
+      },
+      diagnosticSeverity = "hint",
+    },
+  },
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = { "markdown", "text", "gitcommit" },
+  callback = function()
+    vim.lsp.enable("harper_ls")
+  end,
+})
