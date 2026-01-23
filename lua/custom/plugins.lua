@@ -193,6 +193,14 @@ local function get_editing_enhancement_plugins()
       config = require "custom.configs.yanky",
     },
     {
+      "TheNoeTrevino/haunt.nvim",
+      event = "VeryLazy",
+      keys = load_mappings "haunt",
+      config = function()
+        require("haunt").setup(require "custom.configs.haunt")
+      end,
+    },
+    {
       "Wansmer/treesj",
       lazy = true,
       cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },

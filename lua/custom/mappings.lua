@@ -1022,7 +1022,7 @@ M.general = {
       "Toggle writing mode (disable AI completions)",
     },
 
-    ["<leader>ht"] = {
+    ["<leader>hg"] = {
       function()
         local clients = vim.lsp.get_clients({ name = "harper_ls", bufnr = 0 })
         if #clients > 0 then
@@ -1112,6 +1112,78 @@ M.general = {
   i = {
     ["<S-Tab>"] = { "<C-w>" },
     ["<C-h>"] = { "<C-w>" },
+  },
+}
+
+M.haunt = {
+  plugin = true,
+  n = {
+    ["<leader>hm"] = {
+      function()
+        require("haunt.api").annotate()
+      end,
+      "Haunt: Annotate line (bookmark)",
+    },
+    ["<leader>ht"] = {
+      function()
+        require("haunt.api").toggle_annotation()
+      end,
+      "Haunt: Toggle annotation",
+    },
+    ["<leader>hd"] = {
+      function()
+        require("haunt.api").delete()
+      end,
+      "Haunt: Delete bookmark",
+    },
+    ["<leader>hc"] = {
+      function()
+        require("haunt.api").clear()
+      end,
+      "Haunt: Clear buffer bookmarks",
+    },
+    ["<leader>hC"] = {
+      function()
+        require("haunt.api").clear_all()
+      end,
+      "Haunt: Clear all bookmarks",
+    },
+    ["<leader>hp"] = {
+      function()
+        require("haunt.picker").show()
+      end,
+      "Haunt: Show picker",
+    },
+    ["<leader>hn"] = {
+      function()
+        require("haunt.api").next()
+      end,
+      "Haunt: Next bookmark",
+    },
+    ["<leader>hN"] = {
+      function()
+        require("haunt.api").prev()
+      end,
+      "Haunt: Previous bookmark",
+    },
+    ["<leader>hq"] = {
+      function()
+        require("haunt.api").to_quickfix()
+      end,
+      "Haunt: Send to quickfix",
+    },
+    ["<leader>hy"] = {
+      function()
+        require("haunt.api").yank_locations()
+      end,
+      "Haunt: Yank locations",
+    },
+    ["<leader>ha"] = {
+      function()
+        require("haunt.api").toggle_all_lines()
+      end,
+      "Haunt: Toggle all annotations",
+    },
   },
 }
 
