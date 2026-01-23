@@ -1,0 +1,37 @@
+lua/custom/mappings.lua
+  e02dba82d044b97b 642-644,646,648-662
+  53bd2013e55c02b1 641,645,647,663-664
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.0.37",
+  "base_commit_sha": "e7ddd21e63679a00c6e98d8b79562308a53809f0",
+  "prompts": {
+    "53bd2013e55c02b1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_4151e1b5cffeAitU36kCW5oUxp-6532bd34-1f42-49ba-9857-a29e0ec77e35",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 2,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    },
+    "e02dba82d044b97b": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_4151e1b5cffeAitU36kCW5oUxp-f4ddc0ef-0d66-4384-a2bd-9f5f967851c9",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 19,
+      "total_deletions": 3,
+      "accepted_lines": 19,
+      "overriden_lines": 0
+    }
+  }
+}
