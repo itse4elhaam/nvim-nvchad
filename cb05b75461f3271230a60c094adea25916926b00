@@ -1,0 +1,52 @@
+lua/custom/configs/goto-preview.lua
+  f6bdb295f8f3dfc2 1-26
+lua/custom/mappings.lua
+  7ec729da01fcacc8 749-750
+  39459e29fd49d3d8 797-801
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "cb05b75461f3271230a60c094adea25916926b00",
+  "prompts": {
+    "39459e29fd49d3d8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_382cb28d1ffevhk3F5kwBm3ayn-d0a81f01-8f47-4e97-9a17-882adf1b06f9",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 5,
+      "total_deletions": 0,
+      "accepted_lines": 5,
+      "overriden_lines": 0
+    },
+    "7ec729da01fcacc8": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_382cc6f4cffelpdwDFLdDXzEbi-0c1d58f1-4e8c-4c66-a730-4203bc33dcd7",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    },
+    "f6bdb295f8f3dfc2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_382cb28d1ffevhk3F5kwBm3ayn-1ebdec7d-f041-4b0b-9381-91baa3c04c32",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 26,
+      "overriden_lines": 0
+    }
+  }
+}
