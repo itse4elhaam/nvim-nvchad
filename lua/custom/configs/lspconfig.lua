@@ -98,11 +98,12 @@ vim.lsp.enable { "emmet_language_server" }
 
 vim.lsp.config("clangd", {
   on_attach = function(client, bufnr)
-    client.server_capabilities_signatureHelpProvider = false
+    client.server_capabilities.signatureHelpProvider = false
     disable_formatting(client) -- Disable formatting for specific servers
     on_attach(client, bufnr)
   end,
   capabilities = capabilities,
+  cmd = { "clangd", "--background-index", "--clang-tidy", "--header-insertion=iwyu", "--completion-style=detailed", "--function-arg-placeholders" },
 })
 
 vim.lsp.enable { "clangd" }
