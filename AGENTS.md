@@ -23,3 +23,12 @@
 - **Autocommands**: Use `api.nvim_create_augroup` with `clear = true`, wrap in `augroup()` helper
 - **Mappings**: Load via `load_mappings` helper from `core.utils`, define in `custom/mappings.lua`
 - **LSP Config**: Use `vim.lsp.config()` + `vim.lsp.enable()` for LSP setup, extend capabilities with blink.cmp
+
+## Git Workflow (CRITICAL — read before any commit)
+- **NEVER commit to `main` or `dev`** directly. Always work on a feature branch.
+- **NEVER create merge commits** (`git merge`, `--no-ff`). Use `git rebase` or `git cherry-pick` only.
+- **Branch naming**: `feat/<short-desc>` or `fix/<short-desc>` branched from `dev` (not `main`).
+- **Before any commit**: verify current branch with `git branch --show-current`. If it shows `main` or `dev`, stop and create a feature branch first: `git checkout -b feat/<name> origin/dev`.
+- **Experiments**: Create a dedicated branch from `dev`, do the work, commit there. Do NOT merge back. Leave the branch for the user to review and merge manually.
+- **Cherry-pick over merge**: If changes from one branch are needed elsewhere, use `git cherry-pick <sha>` — never `git merge`.
+- **No merge commits ever**: `git merge --no-ff` and `git merge` are both forbidden. The user despises merge commits.
