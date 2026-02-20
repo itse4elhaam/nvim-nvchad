@@ -26,5 +26,6 @@ return {
     "sqls",
     "deno",
     "arm-lsp",
+    "biome",
   },
 }

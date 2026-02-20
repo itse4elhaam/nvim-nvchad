@@ -290,21 +290,10 @@ local function get_lsp_and_completion_plugins()
       end,
     },
     {
-      "nvimtools/none-ls.nvim",
-      event = "LspAttach",
-      opts = function()
-        return require "custom.configs.null-ls"
-      end,
-    },
-    {
-      "jay-babu/mason-null-ls.nvim",
-      event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-        "williamboman/mason.nvim",
-        "nvimtools/none-ls.nvim",
-      },
+      "stevearc/conform.nvim",
+      event = "BufWritePre",
       config = function()
-        require "custom.configs.null-ls"
+        require("custom.configs.conform")
       end,
     },
     {
@@ -331,6 +320,12 @@ local function get_lsp_and_completion_plugins()
     {
       "j-hui/fidget.nvim",
       opts = {},
+    },
+    {
+      "rmagatti/goto-preview",
+      dependencies = { "nvim-telescope/telescope.nvim" },
+      event = "LspAttach",
+      config = require "custom.configs.goto-preview",
     },
   }
 end
@@ -400,11 +395,6 @@ local function get_language_specific_plugins()
         require("venv-selector").setup()
       end,
       ft = { "python" },
-    },
-    {
-      "MunifTanjim/prettier.nvim",
-      event = "LspAttach",
-      config = require "custom.configs.prettier",
     },
     {
       "tronikelis/ts-autotag.nvim",
