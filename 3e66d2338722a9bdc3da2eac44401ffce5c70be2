@@ -1,0 +1,36 @@
+lua/custom/configs/lspconfig.lua
+  bc6df996ce001a35 101,106
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "3e66d2338722a9bdc3da2eac44401ffce5c70be2",
+  "prompts": {
+    "bc6df996ce001a35": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_382ccfbcaffea04zEZwdM4rvih-4b778696-eddc-4367-a6cf-e4926367d0fe",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 0,
+      "total_deletions": 0,
+      "accepted_lines": 2,
+      "overriden_lines": 0
+    },
+    "ed6ab3fb33ee6093": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_382cd3384ffeojoM56GIZNCm8Q-2cc13c97-bf80-4dc7-88c2-8fab53559431",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 74,
+      "total_deletions": 0,
+      "accepted_lines": 74,
+      "overriden_lines": 0
+    }
+  }
+}
