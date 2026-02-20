@@ -10,7 +10,7 @@ local M = {
       local line_count = vim.api.nvim_buf_line_count(buf)
       local block_large_file = vim.g.customBigFileOpt and line_count > 3500
 
-      return is_disabled_filetype or block_large_file or vim.g.disableFormat
+      return not (is_disabled_filetype or block_large_file or vim.g.disableFormat)
     end,
   },
   lsp_format = "fallback",
@@ -27,10 +27,12 @@ local M = {
     cpp = { "clang_format" },
     lua = { "stylua" },
     sql = { "sqlfmt" },
-    javascript = { "biome", "prettier" },
-    typescript = { "biome", "prettier" },
-    javascriptreact = { "biome", "prettier" },
-    json = { "biome", "prettier" },
+    javascript = { "biome", "prettier", stop_after_first = true },
+    typescript = { "biome", "prettier", stop_after_first = true },
+    typescriptreact = { "biome", "prettier", stop_after_first = true },
+    javascriptreact = { "biome", "prettier", stop_after_first = true },
+    json = { "biome", "prettier", stop_after_first = true },
+    jsonc = { "biome", stop_after_first = true },
     yaml = { "prettier" },
     css = { "prettier" },
     html = { "prettier" },
@@ -46,9 +48,7 @@ local M = {
         return vim.fs.find({ "biome.json", "biome.jsonc" }, { upward = true })[1] ~= nil
       end,
     },
-    prettier = {
-      stop_after_first = true,
-    },
+    prettier = {},
     gofumpt = {
       temp_dir = "/tmp",
     },
