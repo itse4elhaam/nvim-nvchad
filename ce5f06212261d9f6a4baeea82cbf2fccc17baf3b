@@ -1,0 +1,23 @@
+AGENTS.md
+  ea405c109601dae4 26-34
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.4",
+  "base_commit_sha": "ce5f06212261d9f6a4baeea82cbf2fccc17baf3b",
+  "prompts": {
+    "ea405c109601dae4": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_382d6c52fffenZuPBl54WQ67XE-b66e6719-14fb-468c-96f1-1f420885d0bb",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 9,
+      "total_deletions": 0,
+      "accepted_lines": 9,
+      "overriden_lines": 0
+    }
+  }
+}
