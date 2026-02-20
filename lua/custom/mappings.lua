@@ -746,7 +746,8 @@ M.general = {
       "MultiGrep",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
-    ["<leader>fy"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
+    -- FIXED: was <leader>fy (duplicate with line 534), renamed to <leader>fyh for yank history
+    ["<leader>fyh"] = { "<cmd> Telescope yank_history <CR>", "Yank history" },
     ["<leader>fss"] = { "<cmd> Telescope spell_suggest <CR>", "Find command history" },
     ["<leader>fr"] = { "<cmd> Telescope registers <CR>", "Find command history" },
     ["<leader>gs"] = { "<cmd>Telescope lsp_workspace_symbols query=q<CR>", "Global Symbols" },
@@ -793,6 +794,11 @@ M.general = {
     ["<leader>gvh"] = { "<cmd>Gitsigns select_hunk<CR>", "Visual selection for the git hunk" },
     ["<C-g>"] = { "<cmd>Telescope git_status<CR>" },
     ["gd"] = { "<cmd>Telescope lsp_definitions<CR>", "Lsp defination" },
+    ["gpd"] = { function() require("goto-preview").goto_preview_definition() end, "Preview: definition" },
+    ["gpt"] = { function() require("goto-preview").goto_preview_type_definition() end, "Preview: type definition" },
+    ["gpi"] = { function() require("goto-preview").goto_preview_implementation() end, "Preview: implementation" },
+    ["gpr"] = { function() require("goto-preview").goto_preview_references() end, "Preview: references" },
+    ["gP"]  = { function() require("goto-preview").close_all_win() end, "Preview: close all" },
 
     ["<leader>ba"] = {
       function()
