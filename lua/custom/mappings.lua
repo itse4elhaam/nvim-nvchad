@@ -225,6 +225,12 @@ M.snacks = {
       end,
       "Lazygit",
     },
+    ["<leader>gh"] = {
+      function()
+        require("custom.utils").open_float_term("gh dash")
+      end,
+      "GitHub Dashboard",
+    },
     ["<leader>gB"] = {
       function()
         Snacks.gitbrowse()
