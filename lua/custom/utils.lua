@@ -773,10 +773,15 @@ M.setup_buffer_memory = function()
   })
 end
 
---- Open a command in a floating terminal window (snacks.nvim style)
---- Uses Snacks.terminal toggle behavior: creates on first call, toggles on subsequent calls
+--- Open a command in a floating terminal window (snacks.nvim style).
+--- Uses Snacks.terminal toggle behavior: creates on first call, toggles on subsequent calls.
+---
+--- Usage:
+---   require("custom.utils").open_float_term("gh dash")
+---   require("custom.utils").open_float_term("lazygit", { win = { height = 0.8, width = 0.9 } })
+---
 ---@param cmd string|string[] Command to run (e.g. "gh dash", {"lazygit"})
----@param opts? table Optional snacks terminal config (win, interactive, env, cwd, etc.)
+---@param opts? { interactive?: boolean, env?: table<string,string>, cwd?: string, win?: { position?: string, height?: number, width?: number, border?: string, row?: number, col?: number } }
 function M.open_float_term(cmd, opts)
   opts = vim.tbl_deep_extend("force", {
     interactive = true,
