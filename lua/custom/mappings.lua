@@ -231,6 +231,12 @@ M.snacks = {
       end,
       "GitHub Dashboard",
     },
+    ["<leader>gd"] = {
+      function()
+        require("custom.utils").open_float_term("git diff | diffnav")
+      end,
+      "Git Diff",
+    },
     ["<leader>gB"] = {
       function()
         Snacks.gitbrowse()
@@ -251,7 +257,6 @@ M.snacks = {
     },
     ["<leader>zn"] = {
       function()
-        -- TODO: find diff bw Snacks.zen.zen() and Snacks.zen()
         Snacks.zen.zen()
       end,
       "Toggle Zen",
@@ -825,10 +830,6 @@ M.general = {
       "Copy the current function name (inside or at the start) to clipboard",
     },
     ["fws"] = { "1z=", "Fix word speling under cursor" },
-    -- for git diff
-    ["<leader>gd"] = { "<cmd> DiffviewOpen <CR>", "Open git diff" },
-    ["<leader>gdc"] = { "<cmd> DiffviewClose <CR>", "Close git diff" },
-    ["<leader>gdo"] = { "<cmd> DiffviewOpen <CR>", "Toggle files git diff" },
 
     -- basic operation remaps
     ["<leader>rc"] = {
