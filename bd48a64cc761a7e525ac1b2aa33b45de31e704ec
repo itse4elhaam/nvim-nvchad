@@ -1,0 +1,23 @@
+lua/custom/utils.lua
+  25f0b055d16997f2 776-782,784
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.5",
+  "base_commit_sha": "bd48a64cc761a7e525ac1b2aa33b45de31e704ec",
+  "prompts": {
+    "25f0b055d16997f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_36b4cafb8ffeFdHQyv0oeKd419-f94cf266-7512-4458-98ae-f206f276f732",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 8,
+      "total_deletions": 3,
+      "accepted_lines": 8,
+      "overriden_lines": 0
+    }
+  }
+}
