@@ -1,0 +1,23 @@
+lua/custom/configs/treesitter.lua
+  f48d7fc25d491c37 1-3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.1.17",
+  "base_commit_sha": "cb3ed42cf45a67a521ad1e5ed120a1c2e303ec99",
+  "prompts": {
+    "f48d7fc25d491c37": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "opencode-transcript-ses_36b4cafb8ffeFdHQyv0oeKd419-f819a3fe-ae34-4e57-a293-4f4454c22fa0",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>",
+      "messages": [],
+      "total_additions": 3,
+      "total_deletions": 0,
+      "accepted_lines": 3,
+      "overriden_lines": 0
+    }
+  }
+}
