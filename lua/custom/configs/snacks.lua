@@ -6,6 +6,9 @@ return {
   },
   zen = {
     enabled = true,
+    toggles = {
+      dim = false
+    },
     on_open = function(_)
       vim.fn.system "tmux set-option status off"
     end,

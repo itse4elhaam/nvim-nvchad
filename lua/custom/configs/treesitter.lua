@@ -1,3 +1,6 @@
+-- zsh has no dedicated treesitter parser; use bash parser instead
+vim.treesitter.language.register("bash", "zsh")
+
 local options = {
   ensure_installed = {
     "lua",
