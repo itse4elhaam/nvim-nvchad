@@ -22,12 +22,6 @@ return {
       },
     },
   },
-  copilot = {
-    status = {
-      enabled = true,
-      level = vim.log.levels.WARN,
-    },
-  },
   sections = {
     haunt = {
       title = " Bookmarks",

@@ -188,33 +188,6 @@ vim.lsp.config("asm_lsp", {
 
 vim.lsp.enable { "asm_lsp" }
 
--- Copilot LSP for sidekick.nvim NES (Next Edit Suggestions)
-vim.lsp.config("copilot", {
-  on_attach = function(client, bufnr)
-    on_attach(client, bufnr)
-  end,
-  capabilities = capabilities,
-  filetypes = {
-    "javascript",
-    "typescript",
-    "javascriptreact",
-    "typescriptreact",
-    "python",
-    "lua",
-    "go",
-    "rust",
-    "svelte",
-    "markdown",
-    "json",
-    "yaml",
-    "html",
-    "css",
-    "scss",
-  },
-})
-
-vim.lsp.enable { "copilot" }
-
 vim.lsp.config("harper_ls", {
   on_attach = function(client, bufnr)
     on_attach(client, bufnr)

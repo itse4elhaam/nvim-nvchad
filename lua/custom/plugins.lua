@@ -330,7 +330,6 @@ local function get_lsp_and_completion_plugins()
       event = "InsertEnter",
       dependencies = {
         "rafamadriz/friendly-snippets",
-        "fang2hou/blink-copilot",
         "archie-judd/blink-cmp-words",
         -- {
         --   "supermaven-inc/supermaven-nvim",

@@ -99,7 +99,7 @@ local opts = {
     nerd_font_variant = "mono",
   },
   sources = {
-    default = { "copilot", "lsp", "path", "snippets", "buffer" },
+    default = { "lsp", "path", "snippets", "buffer" },
 
     per_filetype = {
       sql = { "snippets", "dadbod", "buffer" },
@@ -111,12 +111,6 @@ local opts = {
     -- add vim-dadbod-completion to your completion providers
     providers = {
       dadbod = { name = "Dadbod", module = "vim_dadbod_completion.blink" },
-      copilot = {
-        name = "copilot",
-        module = "blink-copilot",
-        score_offset = 100,
-        async = true,
-      },
       -- Use the thesaurus source
       thesaurus = {
         name = "blink-cmp-words",

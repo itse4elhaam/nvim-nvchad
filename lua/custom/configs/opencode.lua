@@ -33,7 +33,7 @@ return {
         anti_conceal = { enabled = false },
         file_types = { "markdown", "opencode_output" },
       },
-      ft = { "markdown", "Avante", "copilot-chat", "opencode_output" },
+      ft = { "markdown", "Avante", "opencode_output" },
     },
     "saghen/blink.cmp",
     "nvim-telescope/telescope.nvim",

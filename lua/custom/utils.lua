@@ -338,11 +338,11 @@ local function update_nes_status()
     suggestion_count = #nes.edits
   end
 
-  -- Check if Copilot is busy (loading)
+  -- Check if sidekick is busy (loading)
   local is_busy = false
   if status_ok and status.get then
-    local copilot_status = status.get()
-    is_busy = copilot_status and copilot_status.busy or false
+    local sk_status = status.get()
+    is_busy = sk_status and sk_status.busy or false
   end
 
   -- Build status string with cool indicators
