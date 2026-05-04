@@ -227,13 +227,13 @@ M.snacks = {
     },
     ["<leader>gh"] = {
       function()
-        require("custom.utils").open_float_term("gh dash")
+        require("custom.utils").open_float_term "gh dash"
       end,
       "GitHub Dashboard",
     },
     ["<leader>gd"] = {
       function()
-        require("custom.utils").open_float_term("git diff | diffnav")
+        require("custom.utils").open_float_term "git diff | diffnav"
       end,
       "Git Diff",
     },
@@ -652,16 +652,16 @@ M.general = {
       function()
         local original_bufnr = vim.api.nvim_get_current_buf()
         vim.api.nvim_buf_set_var(original_bufnr, "completion", false)
-        
+
         require("nvchad.renamer").open()
-        
+
         vim.defer_fn(function()
           local new_bufnr = vim.api.nvim_get_current_buf()
           if new_bufnr ~= original_bufnr then
             pcall(vim.api.nvim_buf_set_var, new_bufnr, "completion", false)
           end
         end, 50)
-        
+
         vim.api.nvim_create_autocmd("BufLeave", {
           buffer = original_bufnr,
           once = true,
@@ -755,6 +755,45 @@ M.general = {
         utils.multiGrep()
       end,
       "MultiGrep",
+    },
+    ["<leader>sf"] = {
+      function()
+        local file = vim.fn.expand "%"
+        if file == "" then
+          vim.notify("No file to stage", vim.log.levels.WARN)
+          return
+        end
+
+        vim.fn.system { "git", "add", file }
+        vim.notify("Staged: " .. file)
+      end,
+      "Stage current file",
+    },
+    ["<leader>su"] = {
+      function()
+        local pickers = require "telescope.pickers"
+        local finders = require "telescope.finders"
+        local conf = require("telescope.config").values
+
+        local results = vim.fn.systemlist "git ls-files --modified --others --exclude-standard"
+
+        if vim.v.shell_error ~= 0 then
+          vim.notify("Not a git repo or git error", vim.log.levels.ERROR)
+          return
+        end
+
+        pickers
+            .new({}, {
+              prompt_title = "Unstaged Files",
+              finder = finders.new_table {
+                results = results,
+              },
+              previewer = conf.file_previewer {},
+              sorter = conf.file_sorter {},
+            })
+            :find()
+      end,
+      "Search unstaged files",
     },
     ["<leader>fch"] = { "<cmd> Telescope command_history <CR>", "Find command history" },
     ["<leader>fy"] = { "<cmd> Telescope yank_history <CR>", "Find command history" },
@@ -1014,7 +1053,7 @@ M.general = {
           pcall(function()
             require("supermaven-nvim.api").start()
           end)
-          require("snacks").notify("Writing Mode: OFF (AI/Completions Enabled)", { level = "info" })
+          require("snacks").notify("Writing Mode: ON (AI/Completions Disabled)", { level = "info" })
         else
           vim.b.completion = false
           pcall(function()
@@ -1024,6 +1063,7 @@ M.general = {
             require("blink.cmp").hide()
           end)
           require("snacks").notify("Writing Mode: ON (AI/Completions Disabled)", { level = "info" })
+          require("snacks").notify("Writing Mode: OFF (AI/Completions Enabled)", { level = "info" })
         end
       end,
       "Toggle writing mode (disable AI completions)",
@@ -1031,14 +1071,14 @@ M.general = {
 
     ["<leader>hg"] = {
       function()
-        local clients = vim.lsp.get_clients({ name = "harper_ls", bufnr = 0 })
+        local clients = vim.lsp.get_clients { name = "harper_ls", bufnr = 0 }
         if #clients > 0 then
           for _, client in ipairs(clients) do
             vim.lsp.stop_client(client.id)
           end
           require("snacks").notify("Harper: OFF (Grammar/Spell check disabled)", { level = "info" })
         else
-          vim.lsp.enable("harper_ls")
+          vim.lsp.enable "harper_ls"
           require("snacks").notify("Harper: ON (Grammar/Spell check enabled)", { level = "info" })
         end
       end,
