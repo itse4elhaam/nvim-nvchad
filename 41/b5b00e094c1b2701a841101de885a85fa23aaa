@@ -1,0 +1,19 @@
+lua/custom/plugins.lua
+  s_9c33021b39787e::t_0587596a46ebf6 359-379
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.4.8",
+  "base_commit_sha": "41b5b00e094c1b2701a841101de885a85fa23aaa",
+  "prompts": {},
+  "sessions": {
+    "s_9c33021b39787e": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_1d47f869affedXajh3NmcBJ1HT",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
