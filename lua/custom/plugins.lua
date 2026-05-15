@@ -356,12 +356,27 @@ end
 local function get_language_specific_plugins()
   return {
     {
-      "MeanderingProgrammer/render-markdown.nvim",
-      event = "LspAttach",
-      dependencies = { "nvim-treesitter/nvim-treesitter", "echasnovski/mini.nvim" },
-      ---@module 'render-markdown'
-      ---@type render.md.UserConfig
-      opts = {},
+      "OXY2DEV/markview.nvim",
+      lazy = false,
+      dependencies = { "nvim-treesitter/nvim-treesitter" },
+      opts = {
+        preview = {
+          enable = true,
+          enable_hybrid_mode = true,
+          modes = { "n", "no" },
+          hybrid_modes = { "n" },
+          icon_provider = "mini",
+          filetypes = { "markdown", "quarto", "rmd", "typst", "asciidoc" },
+        },
+        markdown = {
+          headings = { enable = true },
+          code_blocks = { enable = true },
+          list_items = { enable = true },
+          tables = { enable = true },
+          block_quotes = { enable = true },
+          horizontal_rules = { enable = true },
+        },
+      },
     },
     {
       "iamcco/markdown-preview.nvim",
