@@ -359,15 +359,28 @@ local function get_language_specific_plugins()
       "OXY2DEV/markview.nvim",
       lazy = false,
       dependencies = { "nvim-treesitter/nvim-treesitter" },
+
       opts = {
         preview = {
           enable = true,
-          enable_hybrid_mode = true,
-          modes = { "n", "no" },
-          hybrid_modes = { "n" },
+
+          -- Disable hybrid/raw-current-line behavior
+          enable_hybrid_mode = false,
+          hybrid_modes = {},
+
+          modes = { "n", "no", "i" },
+
           icon_provider = "mini",
-          filetypes = { "markdown", "quarto", "rmd", "typst", "asciidoc" },
+
+          filetypes = {
+            "markdown",
+            "quarto",
+            "rmd",
+            "typst",
+            "asciidoc",
+          },
         },
+
         markdown = {
           headings = { enable = true },
           code_blocks = { enable = true },
@@ -377,6 +390,14 @@ local function get_language_specific_plugins()
           horizontal_rules = { enable = true },
         },
       },
+
+      config = function(_, opts)
+        require("markview").setup(opts)
+
+        -- Keep markdown rendered in normal mode
+        vim.opt_local.conceallevel = 2
+        vim.opt_local.concealcursor = "n"
+      end,
     },
     {
       "iamcco/markdown-preview.nvim",
