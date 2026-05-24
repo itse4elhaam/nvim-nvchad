@@ -235,6 +235,16 @@ api.nvim_create_user_command("ToggleESLint", function()
   end
 end, { desc = "Toggle ESLint LSP server" })
 
+-- disables diagnostics for markdown files
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function(args)
+    vim.diagnostic.enable(false, {
+      bufnr = args.buf,
+    })
+  end,
+})
+
 -- =============================================================================
 -- Final Setup
 -- =============================================================================
