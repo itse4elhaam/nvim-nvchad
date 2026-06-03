@@ -235,13 +235,32 @@ api.nvim_create_user_command("ToggleESLint", function()
   end
 end, { desc = "Toggle ESLint LSP server" })
 
--- disables diagnostics for markdown files
+-- Enable writing mode by default for markdown and text files
+-- Disables AI completions, diagnostics, and LSP for distraction-free writing
+vim.api.nvim_create_augroup("WritingMode", { clear = true })
+
 vim.api.nvim_create_autocmd("FileType", {
-  pattern = "markdown",
+  group = "WritingMode",
+  pattern = { "markdown", "text" },
+  callback = function()
+    vim.defer_fn(function()
+      require("custom.utils").set_writing_mode(true, { silent = true })
+    end, 10)
+  end,
+})
+
+-- Guard against LSP clients attaching while writing mode is active
+vim.api.nvim_create_autocmd("LspAttach", {
+  group = "WritingMode",
   callback = function(args)
-    vim.diagnostic.enable(false, {
-      bufnr = args.buf,
-    })
+    local ok, val = pcall(vim.api.nvim_buf_get_var, args.buf, "completion")
+    if ok and val == false then
+      vim.schedule(function()
+        if args.data and args.data.client_id then
+          pcall(vim.lsp.stop_client, args.data.client_id)
+        end
+      end)
+    end
   end,
 })
 

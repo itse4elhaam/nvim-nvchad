@@ -790,4 +790,59 @@ function M.open_float_term(cmd, opts)
   return Snacks.terminal(cmd, opts)
 end
 
+--- Enable or disable writing mode for the current buffer.
+--- Disables AI completions, diagnostics, and LSP clients for distraction-free writing.
+---@param enable boolean
+---@param opts? { silent?: boolean }
+function M.set_writing_mode(enable, opts)
+  opts = opts or {}
+  local silent = opts.silent or false
+
+  if enable then
+    if vim.b.completion == false then
+      return -- already in writing mode
+    end
+    vim.b.completion = false
+    pcall(function()
+      require("supermaven-nvim.api").stop()
+    end)
+    pcall(function()
+      require("blink.cmp").hide()
+    end)
+    vim.diagnostic.enable(false, { bufnr = 0 })
+    local clients = vim.lsp.get_clients({ bufnr = 0 })
+    local stopped = {}
+    for _, client in ipairs(clients) do
+      table.insert(stopped, client.name)
+      pcall(vim.lsp.stop_client, client.id)
+    end
+    vim.b.stopped_lsp_clients = stopped
+    if not silent then
+      require("snacks").notify("Writing Mode: ON (Completions, Diagnostics & LSP Disabled)", { level = "info" })
+    end
+  else
+    if vim.b.completion ~= false then
+      return -- not in writing mode
+    end
+    vim.b.completion = nil
+    pcall(function()
+      require("supermaven-nvim.api").start()
+    end)
+    vim.diagnostic.enable(true, { bufnr = 0 })
+    local lsp_clients = vim.b.stopped_lsp_clients or {}
+    for _, name in ipairs(lsp_clients) do
+      pcall(vim.lsp.enable, name)
+    end
+    vim.b.stopped_lsp_clients = nil
+    if not silent then
+      require("snacks").notify("Writing Mode: OFF (Completions, Diagnostics & LSP Enabled)", { level = "info" })
+    end
+  end
+end
+
+--- Toggle writing mode for the current buffer.
+function M.toggle_writing_mode()
+  M.set_writing_mode(vim.b.completion ~= false)
+end
+
 return M

@@ -1048,25 +1048,9 @@ M.general = {
 
     ["<leader>wm"] = {
       function()
-        if vim.b.completion == false then
-          vim.b.completion = nil
-          pcall(function()
-            require("supermaven-nvim.api").start()
-          end)
-          require("snacks").notify("Writing Mode: ON (AI/Completions Disabled)", { level = "info" })
-        else
-          vim.b.completion = false
-          pcall(function()
-            require("supermaven-nvim.api").stop()
-          end)
-          pcall(function()
-            require("blink.cmp").hide()
-          end)
-          require("snacks").notify("Writing Mode: ON (AI/Completions Disabled)", { level = "info" })
-          require("snacks").notify("Writing Mode: OFF (AI/Completions Enabled)", { level = "info" })
-        end
+        utils.toggle_writing_mode()
       end,
-      "Toggle writing mode (disable AI completions)",
+      "Toggle writing mode (disable AI completions, diagnostics & LSP)",
     },
 
     ["<leader>hg"] = {
