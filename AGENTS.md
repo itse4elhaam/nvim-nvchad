@@ -23,3 +23,8 @@
 - **Autocommands**: Use `api.nvim_create_augroup` with `clear = true`, wrap in `augroup()` helper
 - **Mappings**: Load via `load_mappings` helper from `core.utils`, define in `custom/mappings.lua`
 - **LSP Config**: Use `vim.lsp.config()` + `vim.lsp.enable()` for LSP setup, extend capabilities with blink.cmp
+
+## Must follow
+
+- Whenver you make a change, run neovim yoruself and verify it 100% - it should 100% ready to use
+- Your changes must never break the config
