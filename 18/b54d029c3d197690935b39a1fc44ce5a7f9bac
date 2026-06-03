@@ -1,0 +1,25 @@
+lua/custom/init.lua
+  s_5747509fe408a1::t_2937f3519c844b 238-241,243-254,256-263
+lua/custom/mappings.lua
+  s_5747509fe408a1::t_ea4fb62b8ded2b 1051,1053
+lua/custom/utils.lua
+  s_5747509fe408a1::t_b0f7233f3ebc1c 812
+  s_5747509fe408a1::t_1f34ed2a62465e 831
+  s_5747509fe408a1::t_adac8b60903187 793-811,813-830,832-847
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.2",
+  "base_commit_sha": "18b54d029c3d197690935b39a1fc44ce5a7f9bac",
+  "prompts": {},
+  "sessions": {
+    "s_5747509fe408a1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_1753647d1ffeBbFN25xyFCnq3q",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
