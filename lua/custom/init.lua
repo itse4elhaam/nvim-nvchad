@@ -265,6 +265,73 @@ vim.api.nvim_create_autocmd("LspAttach", {
 })
 
 -- =============================================================================
+-- Auto Theme Switcher: falcon for writing files, tokyonight for code
+-- =============================================================================
+
+-- Writing-oriented filetypes (lowercase)
+local writing_filetypes = {
+  markdown = true,
+  mdx = true,
+  pandoc = true,
+  rmd = true,
+  quarto = true,
+  text = true,
+  asciidoc = true,
+  typst = true,
+  latex = true,
+  tex = true,
+}
+
+-- Also match by extension for buffers where filetype isn't set yet
+local writing_extensions = {
+  md = true,
+  markdown = true,
+  mdx = true,
+  txt = true,
+  text = true,
+  rmd = true,
+  qmd = true,
+  typ = true,
+  adoc = true,
+  asciidoc = true,
+  latex = true,
+  tex = true,
+}
+
+-- Track current theme to avoid redundant reloads when staying in same category
+local current_theme = vim.g.nvchad_theme
+
+api.nvim_create_autocmd("BufEnter", {
+  group = augroup "AutoThemeSwitcher",
+  desc = "Switch between falcon (writing) and tokyonight (code) based on filetype",
+  callback = function()
+    -- Skip special buffers (terminals, quickfix, nvim-tree, etc.)
+    if vim.bo.buftype ~= "" then
+      return
+    end
+
+    local ft = vim.bo.filetype
+    local bufname = vim.api.nvim_buf_get_name(0)
+    local ext = vim.fn.fnamemodify(bufname, ":e"):lower()
+
+    -- Determine if the current buffer is a writing file
+    local is_writing = writing_filetypes[ft] or writing_extensions[ext]
+
+    local target_theme = is_writing and "falcon" or "tokyonight"
+
+    -- Skip if already on the target theme (prevents flickering/redundant reloads)
+    if current_theme == target_theme then
+      return
+    end
+
+    -- Switch theme using official NvChad/Base46 API
+    vim.g.nvchad_theme = target_theme
+    require("base46").load_all_highlights()
+    current_theme = target_theme
+  end,
+})
+
+-- =============================================================================
 -- Final Setup
 -- =============================================================================
 vim.loader.enable()
