@@ -157,9 +157,12 @@ api.nvim_create_autocmd("BufReadPre", {
     end
 
     vim.b[bufnr].bigfile_disable = true
-    local ts_indent = require("nvim-treesitter.configs").get_module "indent"
-    ts_indent.disable = function(_, b)
-      return vim.b[b] and vim.b[b].bigfile_disable
+    local ok, ts_configs = pcall(require, "nvim-treesitter.configs")
+    if ok then
+      local ts_indent = ts_configs.get_module "indent"
+      ts_indent.disable = function(_, b)
+        return vim.b[b] and vim.b[b].bigfile_disable
+      end
     end
     vim.bo[bufnr].autoindent = false
     vim.bo[bufnr].smartindent = false

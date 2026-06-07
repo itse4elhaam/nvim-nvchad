@@ -16,12 +16,15 @@ return function()
     },
   }
 
-  -- Load Telescope extensions
-  telescope.load_extension "undo"
-  telescope.load_extension "refactoring"
-  telescope.load_extension "ui-select"
-  telescope.load_extension "yank_history"
-  telescope.load_extension "fzf"
-  telescope.load_extension "textcase"
-  telescope.load_extension "smart_open"
+  local function try_load_extension(name)
+    pcall(telescope.load_extension, name)
+  end
+
+  try_load_extension "undo"
+  try_load_extension "refactoring"
+  try_load_extension "ui-select"
+  try_load_extension "yank_history"
+  try_load_extension "fzf"
+  try_load_extension "textcase"
+  try_load_extension "smart_open"
 end
