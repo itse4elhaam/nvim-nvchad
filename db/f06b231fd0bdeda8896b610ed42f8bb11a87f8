@@ -1,0 +1,19 @@
+lua/custom/init.lua
+  s_2c92c275c3dc76::t_4f4750f214b617 268-333
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.3",
+  "base_commit_sha": "dbf06b231fd0bdeda8896b610ed42f8bb11a87f8",
+  "prompts": {},
+  "sessions": {
+    "s_2c92c275c3dc76": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_15f48aff2ffe2VuSzJ6M5277PH",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
