@@ -1,0 +1,26 @@
+lua/custom/init.lua
+  s_1903c787d70bbe::t_90c23fcf20e707 197
+  s_1903c787d70bbe::t_7b36469e8b4c1e 261-267
+lua/custom/configs/typescript-tools.lua
+  s_1903c787d70bbe::t_dc7805f4a0a040 1-4,6
+  s_1903c787d70bbe::t_f5e1442f63d3df 9,15
+  s_1903c787d70bbe::t_dd0725b24d9286 5,7-8,10-14,16-38,40-42,45,48,50-51,54-79,81-90,92-93
+  s_1903c787d70bbe::t_eea6747f4587eb 43-44,46-47,52-53
+  s_1903c787d70bbe::t_fd24c6eba87aa6 49
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.3",
+  "base_commit_sha": "bae69583673204dd2867b7884385789dcc4a59b0",
+  "prompts": {},
+  "sessions": {
+    "s_1903c787d70bbe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0fbda9175ffenVm9Ek7z4nHswH",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
