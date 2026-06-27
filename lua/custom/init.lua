@@ -194,7 +194,7 @@ api.nvim_create_autocmd("LspAttach", {
     for _, client in ipairs(vim.lsp.get_clients {}) do
       if client.name == "tailwindcss" then
         client.server_capabilities.completionProvider.triggerCharacters =
-        { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
+          { '"', "'", "`", ".", "(", "[", "!", "/", ":" }
       end
     end
   end,
@@ -258,11 +258,13 @@ vim.api.nvim_create_autocmd("LspAttach", {
   callback = function(args)
     local ok, val = pcall(vim.api.nvim_buf_get_var, args.buf, "completion")
     if ok and val == false then
-      vim.schedule(function()
-        if args.data and args.data.client_id then
-          pcall(vim.lsp.stop_client, args.data.client_id)
-        end
-      end)
+      -- Neovim 0.11 passes client_id directly; 0.10 had it in args.data
+      local client_id = args.client_id or (args.data and args.data.client_id)
+      if client_id then
+        vim.schedule(function()
+          pcall(vim.lsp.stop_client, client_id)
+        end)
+      end
     end
   end,
 })
