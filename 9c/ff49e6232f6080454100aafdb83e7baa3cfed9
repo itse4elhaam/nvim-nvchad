@@ -1,0 +1,19 @@
+Makefile
+  s_d8ede6e900a5f0::t_aa8ef62dc1c7e6 1-15
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "9cff49e6232f6080454100aafdb83e7baa3cfed9",
+  "prompts": {},
+  "sessions": {
+    "s_d8ede6e900a5f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0d1d2363fffebtY6b1x12a0L01",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
