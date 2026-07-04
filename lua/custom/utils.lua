@@ -534,7 +534,9 @@ vim.defer_fn(function()
     "CursorHold",
     "User",
   }, {
-    callback = update_nes_status,
+    callback = function()
+      vim.schedule(update_nes_status)
+    end,
   })
   update_nes_status()
 end, 100)

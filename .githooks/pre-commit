@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+# pre-commit — runs LSP smoke test before each commit
+set -euo pipefail
+
+# Allow bypass with env var
+if [[ "${SKIP_LSP_SMOKE:-}" == "1" ]]; then
+  exit 0
+fi
+
+SMOKE_SCRIPT="$(cd "$(dirname "$0")/.." && pwd)/tests/headless-lsp-smoke.sh"
+
+if [[ ! -x "$SMOKE_SCRIPT" ]]; then
+  echo "pre-commit: LSP smoke test not found at $SMOKE_SCRIPT — skipping"
+  exit 0
+fi
+
+echo ""
+echo "── pre-commit: LSP smoke test ──────────────────────────"
+"$SMOKE_SCRIPT" --quick
+EXIT_CODE=$?
+echo "─────────────────────────────────────────────────────────"
+echo ""
+
+exit $EXIT_CODE

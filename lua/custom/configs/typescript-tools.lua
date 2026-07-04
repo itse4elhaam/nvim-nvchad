@@ -61,6 +61,14 @@ M.on_attach = function(client, bufnr)
   client.server_capabilities.documentFormattingProvider = false
   client.server_capabilities.documentRangeFormattingProvider = false
 
+  -- Chain core NvChad LSP on_attach to load buffer-local keymaps (gd, gi, gr, etc.)
+  -- K is defined globally (ufo peek → hover) in M.general, so buffer-local lspconfig K
+  -- is removed by NvChad's merge logic — no conflict.
+  local core_on_attach = require("plugins.configs.lspconfig").on_attach
+  if core_on_attach then
+    core_on_attach(client, bufnr)
+  end
+
   -- Disable semantic tokens for large files (prevents lag)
   -- TODO: check if you need this or not
   -- if vim.api.nvim_buf_line_count(bufnr) > 3500 then
