@@ -1,0 +1,55 @@
+lua/custom/utils.lua
+  s_a8afec0eeb0826::t_8f3e9a607b4836 537-539
+lua/custom/configs/typescript-tools.lua
+  s_0c12c870f67c6a::t_8bfa11c93af5cf 64-71
+.sisyphus/analysis/ts-lsp-hover-fix.md
+  s_0c12c870f67c6a::t_a7697c4d3fbe68 1-69
+.githooks/pre-commit
+  s_d8ede6e900a5f0::t_ffe92d8442a2fc 1-24
+tests/headless-lsp-smoke.sh
+  s_d8ede6e900a5f0::t_c0f22363077518 60-65,73,86-109,111-114,118-120,122-125,128-130,133,141,143,145,149,158,166,177,184
+  s_d8ede6e900a5f0::t_55b0c1fbf72c7a 1-59,66-72,74-85,121,126-127,131-132,134-140,142,144,146-148,150-157,159-165,167-176,178-183,185-215,217,219-233,235-253,255-276,278-297,299-320,322-340,342-347,349-354,356-361,363-378
+  s_d8ede6e900a5f0::t_f97575f36b4aa9 110,115-117
+  s_d8ede6e900a5f0::t_1574e3df97037a 277
+  s_d8ede6e900a5f0::t_21088f99760a3f 341
+  s_d8ede6e900a5f0::t_dd8ed64bde88df 298
+  s_d8ede6e900a5f0::t_6d0b347d703901 348
+  s_d8ede6e900a5f0::t_8cd9984dee9ccf 254
+  s_d8ede6e900a5f0::t_abb00ec7388c0c 216,218
+  s_d8ede6e900a5f0::t_f0184b467a3896 355
+  s_d8ede6e900a5f0::t_2cb96c56479fa2 362
+  s_d8ede6e900a5f0::t_f9ef265d6b2460 234
+  s_d8ede6e900a5f0::t_8a4d8c9f9211fe 321
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "c0f3a6e350c997a926c3eb270a8e2887257029e7",
+  "prompts": {},
+  "sessions": {
+    "s_0c12c870f67c6a": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0d8463e7dffeP9ZDiZGScBrIAJ",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    },
+    "s_a8afec0eeb0826": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0f7ce0ed7ffexBqycP1gHH0hgN",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    },
+    "s_d8ede6e900a5f0": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0d1d2363fffebtY6b1x12a0L01",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
