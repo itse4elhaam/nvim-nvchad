@@ -1,0 +1,19 @@
+lua/custom/init.lua
+  s_e488f380695596::t_32c807057d01aa 248-254
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.10",
+  "base_commit_sha": "f84cbc36731505c2aa0874b7dfc3241d42a9b83b",
+  "prompts": {},
+  "sessions": {
+    "s_e488f380695596": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0c4105f09ffehyURmiiskrLluM",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
