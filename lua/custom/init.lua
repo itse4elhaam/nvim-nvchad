@@ -245,7 +245,13 @@ vim.api.nvim_create_augroup("WritingMode", { clear = true })
 vim.api.nvim_create_autocmd("FileType", {
   group = "WritingMode",
   pattern = { "markdown", "text" },
-  callback = function()
+  callback = function(args)
+    -- Only for real file buffers, not float/temp/plugin buffers.
+    -- LSP hover/docs floats use buftype=nofile; skipping them prevents
+    -- set_writing_mode(true) from killing LSP clients on the main buffer.
+    if vim.bo[args.buf].buftype ~= "" then
+      return
+    end
     vim.defer_fn(function()
       require("custom.utils").set_writing_mode(true, { silent = true })
     end, 10)
