@@ -1,5 +1,11 @@
 return {
   bigfile = { enabled = true },
+  autosave = {
+    enabled = true,
+    debounce = 1000,
+    notify = "info",
+    events = { "InsertLeave", "TextChanged" },
+  },
   gh = { enabled = true },
   picker = {
     enabled = true,

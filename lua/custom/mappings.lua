@@ -206,6 +206,12 @@ M.snacks = {
       end,
       "Select Scratch Buffer",
     },
+    ["<leader>ut"] = {
+      function()
+        Snacks.toggle.autosave()
+      end,
+      "Toggle autosave",
+    },
     ["<leader>lg"] = {
       function()
         Snacks.lazygit.open()
