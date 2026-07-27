@@ -652,6 +652,12 @@ M.general = {
       "<cmd>execute 'normal! O// @ts-ignore'<CR>j",
       "Add // @ts-ignore above the current line",
     },
+    ["<leader>hr"] = {
+      function()
+        require("custom.utils").insert_separator_below()
+      end,
+      "Insert --- separator below and continue",
+    },
     ["<leader>tsn"] = { "ggO// @ts-nocheck<Esc>", "Add ts-nocheck at the top of the file" },
     ["<leader>ca"] = { "<cmd>lua vim.lsp.buf.code_action()<CR>" },
     ["<leader>ra"] = {

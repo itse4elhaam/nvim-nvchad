@@ -847,4 +847,26 @@ function M.toggle_writing_mode()
   M.set_writing_mode(vim.b.completion ~= false)
 end
 
+--- Insert an empty line, "---", and another empty line below the current line,
+--- then place the cursor on the bottom empty line in insert mode.
+--- expected behavior:
+-- CURRENT LINE
+-- (add this space)
+--   ---
+-- (add this space)
+-- CURSOR SHOULD COME HERE IN INSERT MODE WITH ZT/ZZ
+function M.insert_separator_below()
+  local cursor = vim.api.nvim_win_get_cursor(0)
+  local current_line = cursor[1] -- 0-indexed
+  local target_line = current_line + 3
+
+  vim.api.nvim_buf_set_lines(0, current_line + 1, current_line + 1, false, { "" })
+  vim.api.nvim_buf_set_lines(0, current_line + 2, current_line + 2, false, { "---" })
+  vim.api.nvim_buf_set_lines(0, current_line + 3, current_line + 3, false, { "" })
+
+  vim.api.nvim_win_set_cursor(0, { target_line, 0 })
+  vim.cmd("normal! zt")
+  vim.cmd("startinsert")
+end
+
 return M

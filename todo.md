@@ -56,3 +56,11 @@ X - MOVE TO DOT FILES
 - https://www.reddit.com/r/neovim/comments/1q5wi8y/bento_a_minimalist_and_efficient_yet_powerful_and/
 - https://www.reddit.com/r/neovim/comments/1q75o6o/pretty_ts_errors_in_neovim/
 - https://github.com/esmuellert/codediff.nvim
+
+I AM ON THIS LINE AND PRESSING SPACE HR
+
+---
+I am placed here now
+
+---
+
