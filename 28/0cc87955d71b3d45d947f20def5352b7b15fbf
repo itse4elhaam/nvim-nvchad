@@ -1,0 +1,25 @@
+todo.md
+  s_d26218a816ccbc::t_4cfa20cb21b73d 59-66
+tests/test_separator.lua
+  s_d26218a816ccbc::t_4cfa20cb21b73d 1-33
+lua/custom/utils.lua
+  s_d26218a816ccbc::t_4cfa20cb21b73d 846-869
+lua/custom/mappings.lua
+  s_d26218a816ccbc::t_4cfa20cb21b73d 655-660
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.16",
+  "base_commit_sha": "280cc87955d71b3d45d947f20def5352b7b15fbf",
+  "prompts": {},
+  "sessions": {
+    "s_d26218a816ccbc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_05e40033dffeWztEs05CxNobpO",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
