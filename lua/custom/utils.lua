@@ -843,8 +843,30 @@ function M.set_writing_mode(enable, opts)
 end
 
 --- Toggle writing mode for the current buffer.
-function M.toggle_writing_mode()
-  M.set_writing_mode(vim.b.completion ~= false)
+function M.insert_separator_below()
+  local current_row = vim.api.nvim_win_get_cursor(0)[1]
+
+  -- append() inserts these lines after current_row.
+  local result = vim.fn.append(current_row, {
+    "",
+    "---",
+    "",
+  })
+
+  if result ~= 0 then
+    vim.notify("Failed to insert separator", vim.log.levels.ERROR)
+    return
+  end
+
+  -- Original row:
+  -- +1 = empty
+  -- +2 = ---
+  -- +3 = final empty line
+  vim.api.nvim_win_set_cursor(0, { current_row + 3, 0 })
+
+  vim.cmd("normal! zz")
+  vim.cmd("startinsert")
+  vim.cmd("normal! o")
 end
 
 return M
