@@ -579,6 +579,13 @@ function M.git_commit_and_push()
   end)
 end
 
+-- TODO: resolve the duplication - make thsi dry
+function M.git_commit_and_push_with_date()
+  local cmd = "git acpd 'vault-backup: ' "
+  run_background_git_command(cmd, "Successfully committed and pushed!", "Commit and push failed")
+end
+
+
 function M.opencode_commit()
   -- Simplified logging
   local log_file = "/tmp/opencode_commit_debug.log"

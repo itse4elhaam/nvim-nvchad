@@ -588,6 +588,12 @@ M.general = {
       end,
       "Git commit & push",
     },
+    ["<leader>adp"] = {
+      function()
+        utils.git_commit_and_push_with_date()
+      end,
+      "Git commit & push",
+    },
     ["<leader>acc"] = {
       function()
         utils.opencode_commit()
