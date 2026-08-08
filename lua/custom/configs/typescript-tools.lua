@@ -5,6 +5,41 @@
 
 local M = {}
 
+-- tsserver watches the project recursively with `watchOptions = {}` by default,
+-- stalling gd/hover/save on big repos.  Inject tsconfig-style exclusions
+-- config-side.  Deferred to first LSP attach: this module is required for the
+-- plugin `opts` before typescript-tools is on the runtimepath.
+local watch_options_injected = false
+
+local function inject_watch_options()
+  if watch_options_injected then
+    return
+  end
+  local ok_patch, initialize = pcall(require, "typescript-tools.protocol.initialize")
+  if not (ok_patch and initialize and initialize.handler) then
+    return
+  end
+  watch_options_injected = true
+  local original_handler = initialize.handler
+  initialize.handler = function(request, response)
+    local function patched_request(req)
+      if req and req.command == "configure" and req.arguments and req.arguments.watchOptions then
+        req.arguments.watchOptions = {
+          excludeDirectories = {
+            "node_modules",
+            ".next",
+            "supabase/.temp",
+            ".context",
+            "embedded-app",
+          },
+        }
+      end
+      return request(req)
+    end
+    return original_handler(patched_request, response)
+  end
+end
+
 local function is_test_file(path)
   return path:match "__tests__" or path:match "%.test%.[jt]sx?$" or path:match "%.spec%.[jt]sx?$"
 end
@@ -43,6 +78,8 @@ end
 M.on_attach = function(client, bufnr)
   local path = vim.api.nvim_buf_get_name(bufnr)
 
+  inject_watch_options()
+
   -- Test files need their own LSP server using the test tsconfig (if one exists).
   if is_test_file(path) then
     vim.schedule(function()
@@ -77,8 +114,8 @@ M.on_attach = function(client, bufnr)
 end
 
 M.settings = {
-  publish_diagnostic_on = "insert_leave",
-  separate_diagnostic_server = true,
+  publish_diagnostic_on = "change",
+  separate_diagnostic_server = false,
   tsserver_disable_suggestions = true,
   tsserver_log_verbosity = "off",
   tsserver_file_preferences = {

@@ -24,7 +24,7 @@ local opts = {
   on_attach = function(client, bufnr)
     local filetype = vim.bo[bufnr].filetype
 
-    local disabled_filetypes = { "sql", "tsx" }
+    local disabled_filetypes = { "sql", "typescriptreact" }
 
     local is_disabled_filetype = vim.tbl_contains(disabled_filetypes, filetype)
 

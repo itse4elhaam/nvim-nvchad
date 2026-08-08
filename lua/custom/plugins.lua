@@ -279,7 +279,7 @@ local function get_lsp_and_completion_plugins()
       lazy = false,
       config = function()
         require("ts-error-translator").setup {
-          auto_attach = true, -- auto-translate TS diagnostics
+          auto_attach = false, -- on-demand only; global publishDiagnostics override stalls main loop
           servers = { "ts_ls", "vtsls", "astro", "svelte" },
         }
       end,
@@ -571,6 +571,9 @@ local function get_picker_plugins()
         prompt = "> ",
         hl = {
           matched = "",
+        },
+        logging = {
+          enabled = false,
         },
       },
       keys = {
