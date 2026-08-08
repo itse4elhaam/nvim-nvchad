@@ -1,0 +1,19 @@
+sk/cli/opencode.lua
+  s_0743b16b27ed62::t_9493c84b26a784 1-23
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.21",
+  "base_commit_sha": "2b7ebbd74c80c5651c9cf39d4fbbf036be15b29f",
+  "prompts": {},
+  "sessions": {
+    "s_0743b16b27ed62": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_0258869a0ffeXoIab6azA5rIyO",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
