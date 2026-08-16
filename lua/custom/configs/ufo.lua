@@ -32,6 +32,11 @@ local config = function()
   vim.o.foldenable = true
 
   require("ufo").setup {
+    provider_selector = function(_, filetype)
+      if filetype == "markdown" then
+        return { "treesitter", "indent" }
+      end
+    end,
     fold_virt_text_handler = handler,
     close_fold_kinds_for_ft = {
       default = { "imports", "comment" },
