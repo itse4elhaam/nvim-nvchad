@@ -18,7 +18,6 @@ return {
     "misspell",
     "checkmake",
     "marksman",
-    "grammarly-languageserver",
     "bash-language-server",
     "prettierd",
     "lua-language-server",
