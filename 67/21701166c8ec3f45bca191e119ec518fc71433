@@ -1,0 +1,24 @@
+lua/custom/plugins.lua
+  s_73282661e32ab1::t_09694d34320141 675-676
+  s_73282661e32ab1::t_0ea1883dbd85ce 678-687
+lua/custom/mappings.lua
+  s_73282661e32ab1::t_6c612180ed3d0f 1239-1251
+lua/custom/configs/obsidian.lua
+  s_73282661e32ab1::t_e8b6cd3cba214a 6,9-10
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "6721701166c8ec3f45bca191e119ec518fc71433",
+  "prompts": {},
+  "sessions": {
+    "s_73282661e32ab1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_ff5f8fe80ffekQbxNft3oYett1",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
