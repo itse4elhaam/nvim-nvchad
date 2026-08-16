@@ -778,6 +778,11 @@ local function get_utility_plugins()
     { "chrisgrieser/nvim-puppeteer", lazy = false },
     { "chrisgrieser/nvim-rulebook",  cmd = "Rulebook", keys = load_mappings "rulebook" },
     {
+      "kamegoro/tobira.nvim",
+      event = "VeryLazy",
+      opts = {},
+    },
+    {
       "m4xshen/hardtime.nvim",
       lazy = false,
       enabled = false,
