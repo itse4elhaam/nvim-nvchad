@@ -197,7 +197,7 @@ local function get_editing_enhancement_plugins()
       lazy = true,
       cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
       keys = {
-        { "gJ", "<cmd>TSJToggle<CR>", desc = "Toggle Split/Join" },
+        { "<leader>cj", "<cmd>TSJToggle<CR>", desc = "Toggle Split/Join" },
       },
       opts = {
         use_default_keymaps = false,
@@ -777,6 +777,11 @@ local function get_utility_plugins()
   return {
     { "chrisgrieser/nvim-puppeteer", lazy = false },
     { "chrisgrieser/nvim-rulebook",  cmd = "Rulebook", keys = load_mappings "rulebook" },
+    {
+      "kamegoro/tobira.nvim",
+      event = "VeryLazy",
+      opts = {},
+    },
     {
       "m4xshen/hardtime.nvim",
       lazy = false,
