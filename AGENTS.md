@@ -73,7 +73,7 @@ After any change, verify before claiming success:
   `load_mappings` from `core.utils`.
 - Search existing mappings before adding new ones.
 - Preserve these namespaces unless deliberately refactoring them:
-  - `<leader>a` for AI/OpenCode/assistant workflows
+  - `<leader>a` for AI/assistant workflows
   - `<leader>g` for git and review flows
   - `<leader>f` for find/pickers
   - `<leader>h` for hunks/bookmarks if non-conflicting
@@ -83,15 +83,17 @@ After any change, verify before claiming success:
 - Known conflict areas to handle carefully: Harpoon vs `99.nvim`, legacy TrueZen
   vs Snacks Zen, CodeCompanion vs core context mappings, and completion `<Tab>`.
 
+## Pull Request Base
+
+- All pull requests must target the `dev` branch unless the user explicitly requests another base.
+- Create feature and fix branches from the latest `dev` branch to avoid unrelated history in the diff.
+
 ## Git/Diff Review Direction
 
 - `gitsigns.nvim` is the first-line hunk tool: preview hunks, inline previews,
   word diff, qflist, stage/reset hunk.
 - Existing `CodeDiff`/VSCode-style diff tooling is preferred for full-file or
   branch review before adding heavier diff plugins.
-- For OpenCode-generated changes, prefer a lane model: branch/worktree + tmux +
-  OpenCode session, then review via changed-file pickers, `CodeDiff`, and hunk
-  actions before commit/merge/PR.
 
 ## Must Follow
 
