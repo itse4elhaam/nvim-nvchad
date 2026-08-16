@@ -132,7 +132,19 @@ api.nvim_create_autocmd("FileType", {
 
 api.nvim_create_autocmd("FileType", {
   group = augroup "FormatOptions",
-  command = "set formatoptions-=ro",
+  command = "set formatoptions+=ro",
+})
+
+-- Repeat list leaders (`- `, `- [ ]`) on Enter / o / O in markdown.
+-- Default markdown comments use the `f` flag (`fb:-`), which means "do not
+-- repeat on the next line". Drop `f` so leaders continue; keep longer parts
+-- first ("specify the part after the whole").
+api.nvim_create_autocmd("FileType", {
+  group = augroup "MarkdownChecklist",
+  pattern = { "markdown", "quarto", "rmd" },
+  callback = function()
+    vim.opt_local.comments = "b:- [ ],b:- [x],b:*,b:-,b:+,n:>"
+  end,
 })
 
 api.nvim_create_autocmd("FileType", {
