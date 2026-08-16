@@ -1,6 +1,11 @@
 local ui = {
   theme = "tokyonight",
   transparency = true,
+  -- Boost tokyonight contrast for writing: brighter base text + readable comments
+  hl_override = {
+    Normal = { fg = "#c8d3f5" },
+    Comment = { fg = "#7aa2f7", italic = true },
+  },
   statusline = {
     theme = "default",
     separator_style = "round",
