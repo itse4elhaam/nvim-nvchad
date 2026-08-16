@@ -197,7 +197,7 @@ local function get_editing_enhancement_plugins()
       lazy = true,
       cmd = { "TSJToggle", "TSJSplit", "TSJJoin" },
       keys = {
-        { "gJ", "<cmd>TSJToggle<CR>", desc = "Toggle Split/Join" },
+        { "<leader>cj", "<cmd>TSJToggle<CR>", desc = "Toggle Split/Join" },
       },
       opts = {
         use_default_keymaps = false,
