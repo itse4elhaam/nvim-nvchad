@@ -6,15 +6,6 @@ local merge_plugins = require("custom.utils").mergePlugins
 local function get_ai_plugins()
   return {
     {
-      "sudo-tee/opencode.nvim",
-      lazy = false,
-      opts = require("custom.configs.opencode").opts,
-      dependencies = require("custom.configs.opencode").dependencies,
-      config = function()
-        require("opencode").setup(require("custom.configs.opencode").opts)
-      end,
-    },
-    {
       "ThePrimeagen/99",
       event = "VeryLazy",
       config = function()
