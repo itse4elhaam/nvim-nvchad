@@ -401,15 +401,6 @@ local function get_language_specific_plugins()
       end,
     },
     {
-      "iamcco/markdown-preview.nvim",
-      cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
-      build = "cd app && yarn install",
-      init = function()
-        vim.g.mkdp_filetypes = { "markdown" }
-      end,
-      ft = { "markdown" },
-    },
-    {
       "olrtg/nvim-emmet",
       event = "LspAttach",
       config = function()
