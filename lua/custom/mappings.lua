@@ -4,6 +4,7 @@
 local M = {}
 
 local utils = require "custom.utils"
+local markdown = require "custom.configs.markdown"
 
 M.sidekick = {
   plugin = true,
@@ -1164,6 +1165,91 @@ M.obsidian = {
     ["<leader>od"] = { "<cmd>ObsidianToday<cr>", "Open today's daily note" },
     ["<leader>ol"] = { "<cmd>ObsidianLink<cr>", "Insert wikilink to note" },
     ["<leader>or"] = { "<cmd>ObsidianRename<cr>", "Rename note (updates links)" },
+  },
+}
+
+M.markdown = {
+  n = {
+    ["<leader>mb"] = {
+      function()
+        markdown.wrap "**"
+      end,
+      "Markdown: bold (toggle **)",
+    },
+    ["<leader>mi"] = {
+      function()
+        markdown.wrap "*"
+      end,
+      "Markdown: italic (toggle *)",
+    },
+    ["<leader>ms"] = {
+      function()
+        markdown.wrap "~~"
+      end,
+      "Markdown: strikethrough (toggle ~~)",
+    },
+    ["<leader>mc"] = {
+      function()
+        markdown.wrap "`"
+      end,
+      "Markdown: inline code (toggle `)",
+    },
+    ["<leader>mh"] = {
+      function()
+        markdown.wrap "=="
+      end,
+      "Markdown: highlight (toggle ==)",
+    },
+    ["<leader>ml"] = {
+      function()
+        markdown.add_link()
+      end,
+      "Markdown: link [text](url)",
+    },
+    ["<leader>mt"] = {
+      function()
+        markdown.toggle_task()
+      end,
+      "Markdown: toggle task checkbox",
+    },
+  },
+  x = {
+    ["<leader>mb"] = {
+      function()
+        markdown.wrap "**"
+      end,
+      "Markdown: bold (toggle **)",
+    },
+    ["<leader>mi"] = {
+      function()
+        markdown.wrap "*"
+      end,
+      "Markdown: italic (toggle *)",
+    },
+    ["<leader>ms"] = {
+      function()
+        markdown.wrap "~~"
+      end,
+      "Markdown: strikethrough (toggle ~~)",
+    },
+    ["<leader>mc"] = {
+      function()
+        markdown.wrap "`"
+      end,
+      "Markdown: inline code (toggle `)",
+    },
+    ["<leader>mh"] = {
+      function()
+        markdown.wrap "=="
+      end,
+      "Markdown: highlight (toggle ==)",
+    },
+    ["<leader>ml"] = {
+      function()
+        markdown.add_link()
+      end,
+      "Markdown: link [text](url)",
+    },
   },
 }
 
