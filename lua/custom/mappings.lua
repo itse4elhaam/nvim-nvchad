@@ -8,50 +8,10 @@ local utils = require "custom.utils"
 M.sidekick = {
   plugin = true,
   n = {
-    -- NES (Next Edit Suggestions) mappings
-    [">"] = {
-      function()
-        -- if there is a next edit, jump to it, otherwise apply it if any
-        if not require("sidekick").nes_jump_or_apply() then
-          return "<Tab>"
-        end
-      end,
-      desc = "NES: Jump to or apply suggestion",
-    },
-    ["<leader>ne"] = {
-      function()
-        require("sidekick.nes").toggle()
-      end,
-      desc = "NES: Toggle Next Edit Suggestions",
-    },
-    ["<leader>nc"] = {
-      function()
-        require("sidekick.nes").clear()
-      end,
-      desc = "NES: Clear suggestions",
-    },
-    ["<leader>nu"] = {
-      function()
-        require("sidekick.nes").update()
-      end,
-      desc = "NES: Request new suggestions",
-    },
-    ["<leader>nj"] = {
-      function()
-        require("sidekick.nes").jump()
-      end,
-      desc = "NES: Request new suggestions",
-    },
     -- CLI mappings
     ["<leader>aa"] = {
       function()
         require("sidekick.cli").toggle()
-      end,
-      desc = "Sidekick Toggle CLI",
-    },
-    ["<leader>ao"] = {
-      function()
-        require("sidekick.cli").toggle { name = "opencode", focus = true }
       end,
       desc = "Sidekick Toggle CLI",
     },
@@ -205,12 +165,6 @@ M.snacks = {
         Snacks.scratch.select()
       end,
       "Select Scratch Buffer",
-    },
-    ["<leader>ut"] = {
-      function()
-        Snacks.toggle.autosave()
-      end,
-      "Toggle autosave",
     },
     ["<leader>lg"] = {
       function()
@@ -593,12 +547,6 @@ M.general = {
         utils.git_commit_and_push_with_date()
       end,
       "Git commit & push",
-    },
-    ["<leader>acc"] = {
-      function()
-        utils.opencode_commit()
-      end,
-      "OpenCode commit (async)",
     },
     -- plugin specifics:
     ["<leader>du"] = { "<cmd>tabnew | DBUIToggle<CR>", "Toggle Dadbod UI in a new tab" },

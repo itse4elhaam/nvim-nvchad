@@ -1,7 +1,4 @@
 return {
-  nes = {
-    enabled = vim.g.enable_nes,
-  },
   signs = {
     enabled = true,
     icon = " ",

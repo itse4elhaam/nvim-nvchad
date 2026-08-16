@@ -24,7 +24,6 @@ local ui = {
       local utils = require "custom.utils"
       if vim.g.fancy_statusline then
         modules[3] = "%#St_gitIcons#" .. " " .. utils.vim_zen .. " "
-        modules[7] = modules[7] .. utils.nes_status -- Add NES status after LSP diagnostics
         modules[8] = "%#St_lspHints#" .. " " .. utils.buffer_size .. " "
         modules[9] = (function()
           if utils.streak_display ~= "" then
