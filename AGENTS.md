@@ -17,6 +17,7 @@ Prefer small reversible improvements over broad rewrites.
 - Plugin swaps/removals are acceptable only when they reduce friction or replace
   something already unused.
 - Avoid broad formatting churn. The user explicitly dislikes non-required diffs.
+- Performance is very paramount and important - no change should cause lag or delay while editing text.
 
 ## Commands
 
