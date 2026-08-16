@@ -1,0 +1,19 @@
+lua/custom/utils.lua
+  s_fe07b6aae567fc::t_5eab0424bfe79d 648-651
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "d7f3120d6e24f21bf82cd804b45010aa4e279be2",
+  "prompts": {},
+  "sessions": {
+    "s_fe07b6aae567fc": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_ff5799c5affeOAB3tq41yb5puW",
+        "model": "unknown"
+      },
+      "human_author": null
+    }
+  }
+}
