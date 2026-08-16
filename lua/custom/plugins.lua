@@ -672,9 +672,19 @@ local function get_file_management_plugins()
       version = "*", -- recommended, use latest release instead of latest commit
       lazy = true,
       event = {
-        "BufReadPre /home/e4elhaam/vaults/obsidian-notes/*.md",
-        "BufNewFile /home/e4elhaam/vaults/obsidian-notes/*.md",
+        "BufReadPre /home/elhaam/personal/notes/obsidian-notes/*.md",
+        "BufNewFile /home/elhaam/personal/notes/obsidian-notes/*.md",
       },
+      cmd = {
+        "ObsidianNew",
+        "ObsidianSearch",
+        "ObsidianQuickSwitch",
+        "ObsidianNewFromTemplate",
+        "ObsidianToday",
+        "ObsidianLink",
+        "ObsidianRename",
+      },
+      keys = load_mappings "obsidian",
       dependencies = {
         "nvim-lua/plenary.nvim",
       },

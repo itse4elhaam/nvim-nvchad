@@ -1236,4 +1236,17 @@ M.haunt = {
   },
 }
 
+M.obsidian = {
+  plugin = true,
+  n = {
+    ["<leader>on"] = { "<cmd>ObsidianNew<cr>", "New obsidian note" },
+    ["<leader>os"] = { "<cmd>ObsidianSearch<cr>", "Search obsidian vault" },
+    ["<leader>oq"] = { "<cmd>ObsidianQuickSwitch<cr>", "Quick switch notes" },
+    ["<leader>ot"] = { "<cmd>ObsidianNewFromTemplate<cr>", "New note from template" },
+    ["<leader>od"] = { "<cmd>ObsidianToday<cr>", "Open today's daily note" },
+    ["<leader>ol"] = { "<cmd>ObsidianLink<cr>", "Insert wikilink to note" },
+    ["<leader>or"] = { "<cmd>ObsidianRename<cr>", "Rename note (updates links)" },
+  },
+}
+
 return M
