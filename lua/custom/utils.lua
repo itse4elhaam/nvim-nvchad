@@ -437,11 +437,13 @@ local function update_key_streak()
 
   vim.cmd "redrawstatus"
 
-  if streak_timer then
+  if streak_timer and not streak_timer:is_closing() then
     streak_timer:stop()
+    streak_timer:close()
   end
 
   streak_timer = vim.defer_fn(function()
+    streak_timer = nil
     M.key_streak = 0
     M.streak_display = ""
     vim.cmd "redrawstatus"
@@ -516,27 +518,29 @@ vim.defer_fn(function()
   local zen_timer = vim.uv.new_timer()
   zen_timer:start(0, 300000, vim.schedule_wrap(update_vim_zen))
 
-  vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
-    callback = update_buffer_size,
-  })
-  update_buffer_size()
+  if vim.g.fancy_statusline then
+    vim.api.nvim_create_autocmd({ "BufEnter", "TextChanged", "TextChangedI" }, {
+      callback = update_buffer_size,
+    })
+    vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged" }, {
+      callback = update_key_streak,
+    })
+    update_buffer_size()
+  end
 
-  vim.api.nvim_create_autocmd({ "TextChangedI", "TextChanged" }, {
-    callback = update_key_streak,
-  })
-
-  -- Update NES status on relevant events
-  vim.api.nvim_create_autocmd({
-    "ModeChanged",
-    "TextChanged",
-    "TextChangedI",
-    "BufEnter",
-    "CursorHold",
-    "User",
-  }, {
-    callback = update_nes_status,
-  })
-  update_nes_status()
+  if vim.g.fancy_statusline and vim.g.enable_nes then
+    vim.api.nvim_create_autocmd({
+      "ModeChanged",
+      "TextChanged",
+      "TextChangedI",
+      "BufEnter",
+      "CursorHold",
+      "User",
+    }, {
+      callback = update_nes_status,
+    })
+    update_nes_status()
+  end
 end, 100)
 
 local function run_background_git_command(command, success_message, failure_message)
@@ -746,28 +750,20 @@ function M.toggle_tmux_fullscreen()
   end
 end
 
--- Auto-save cursor position per buffer when switching
+-- Buffer cursor positions are already retained by Neovim while buffers stay
+-- loaded. Restore the last-file mark only on the initial read instead of running
+-- mkview/loadview synchronously on every buffer switch.
 M.setup_buffer_memory = function()
   local group = vim.api.nvim_create_augroup("BufferMemory", { clear = true })
 
-  -- Save view when leaving buffer
-  vim.api.nvim_create_autocmd("BufWinLeave", {
+  vim.api.nvim_create_autocmd("BufReadPost", {
     group = group,
-    pattern = "*",
-    callback = function()
-      if vim.bo.buftype == "" and vim.fn.expand "%" ~= "" then
-        vim.cmd "mkview"
-      end
-    end,
-  })
+    callback = function(args)
+      local mark = vim.api.nvim_buf_get_mark(args.buf, '"')
+      local line_count = vim.api.nvim_buf_line_count(args.buf)
 
-  -- Restore view when entering buffer
-  vim.api.nvim_create_autocmd("BufWinEnter", {
-    group = group,
-    pattern = "*",
-    callback = function()
-      if vim.bo.buftype == "" and vim.fn.expand "%" ~= "" then
-        pcall(vim.cmd, "loadview")
+      if mark[1] > 0 and mark[1] <= line_count then
+        pcall(vim.api.nvim_win_set_cursor, 0, mark)
       end
     end,
   })
