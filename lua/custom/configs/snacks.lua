@@ -1,3 +1,5 @@
+local tmux_status
+
 return {
   bigfile = { enabled = true },
   gh = { enabled = true },
@@ -10,12 +12,22 @@ return {
       dim = false
     },
     on_open = function(_)
-      vim.fn.system "tmux set-option status off"
+      if not vim.env.TMUX then
+        return
+      end
+
+      vim.system({ "tmux", "show-option", "-gqv", "status" }, { text = true }, function(result)
+        tmux_status = vim.trim(result.stdout or "") ~= "" and vim.trim(result.stdout) or "on"
+        vim.system { "tmux", "set-option", "-g", "status", "off" }
+      end)
     end,
     --- Callback when the window is closed.
     ---@param win snacks.win
     on_close = function(_)
-      vim.fn.system "tmux set-option status on"
+      if vim.env.TMUX then
+        vim.system { "tmux", "set-option", "-g", "status", tmux_status or "on" }
+        tmux_status = nil
+      end
     end,
     --- Options for the `Snacks.zen.zoom()`
     ---@type snacks.zen.Config
