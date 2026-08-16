@@ -7,7 +7,7 @@ local function get_ai_plugins()
   return {
     {
       "sudo-tee/opencode.nvim",
-      lazy = false,
+      event = "VeryLazy",
       opts = require("custom.configs.opencode").opts,
       dependencies = require("custom.configs.opencode").dependencies,
       config = function()
@@ -267,10 +267,7 @@ local function get_lsp_and_completion_plugins()
   return {
     {
       "mfussenegger/nvim-lint",
-      event = {
-        "BufReadPre",
-        "BufNewFile",
-      },
+      event = "VeryLazy",
       config = require "custom.configs.nvim-lint",
     },
     {
@@ -316,7 +313,7 @@ local function get_lsp_and_completion_plugins()
     },
     {
       "jay-babu/mason-null-ls.nvim",
-      event = { "BufReadPre", "BufNewFile" },
+      event = "VeryLazy",
       dependencies = {
         "williamboman/mason.nvim",
         "nvimtools/none-ls.nvim",
@@ -368,7 +365,7 @@ local function get_language_specific_plugins()
           enable_hybrid_mode = false,
           hybrid_modes = {},
 
-          modes = { "n", "no", "i" },
+          modes = { "n", "no" },
 
           icon_provider = "mini",
 
@@ -406,7 +403,6 @@ local function get_language_specific_plugins()
       init = function()
         vim.g.mkdp_filetypes = { "markdown" }
       end,
-      ft = { "markdown" },
     },
     {
       "olrtg/nvim-emmet",
@@ -432,11 +428,7 @@ local function get_language_specific_plugins()
       dependencies = {
         "nvim-lua/plenary.nvim",
         "neovim/nvim-lspconfig",
-        {
-          "saghen/blink.cmp",
-          lazy = false,
-          priority = 1000,
-        },
+        "saghen/blink.cmp",
       },
       ft = { "typescript", "typescriptreact", "javascript", "javascriptreact", "svelte" },
       opts = require "custom.configs.typescript-tools",
@@ -492,8 +484,19 @@ local function get_treesitter_plugins()
   return {
     {
       "nvim-treesitter/nvim-treesitter-context",
-      lazy = true,
-      event = { "BufReadPost", "BufNewFile" },
+      ft = {
+        "lua",
+        "javascript",
+        "javascriptreact",
+        "typescript",
+        "typescriptreact",
+        "go",
+        "python",
+        "rust",
+        "json",
+        "html",
+        "css",
+      },
       config = require "custom.configs.nvim-treesitter-context",
     },
     {
