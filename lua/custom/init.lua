@@ -128,7 +128,7 @@ api.nvim_create_autocmd("FileType", {
   group = augroup "MarkdownSyntax",
   pattern = { "markdown", "quarto", "rmd" },
   callback = function()
-    vim.cmd "syntax off"
+    vim.bo.syntax = ""
   end,
 })
 
