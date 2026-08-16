@@ -645,6 +645,10 @@ function M.set_writing_mode(enable, opts)
 end
 
 --- Toggle writing mode for the current buffer.
+function M.toggle_writing_mode()
+  M.set_writing_mode(not (vim.b.completion == false))
+end
+
 function M.insert_separator_below()
   local current_row = vim.api.nvim_win_get_cursor(0)[1]
 
