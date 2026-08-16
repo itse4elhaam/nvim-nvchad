@@ -1,10 +1,13 @@
 local ui = {
   theme = "tokyonight",
   transparency = true,
-  -- Boost tokyonight contrast for writing: brighter base text + readable comments
+  -- Boost tokyonight contrast without recoloring plugin UI metadata
   hl_override = {
     Normal = { fg = "#c8d3f5" },
-    Comment = { fg = "#7aa2f7", italic = true },
+  },
+  hl_add = {
+    ["@comment"] = { fg = "#7aa2f7", italic = true },
+    ["@comment.documentation"] = { fg = "#7aa2f7", italic = true },
   },
   statusline = {
     theme = "default",
