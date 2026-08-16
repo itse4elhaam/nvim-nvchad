@@ -1,0 +1,31 @@
+lua/custom/mappings.lua
+  s_1177dba51794f2::t_563f00b30aeacd 1171-1172,1215-1216,1253
+  s_1177dba51794f2::t_77bb29e42a67b7 1173-1214,1217-1252
+  s_1177dba51794f2::t_d79655c90531a8 7
+  s_1177dba51794f2::t_80ffa0124e3c6d 1254-1255
+lua/custom/configs/markdown.lua
+  s_1177dba51794f2::t_28c4d82806e3bc 48,58-60
+  s_1177dba51794f2::t_e2c44569398296 106
+  s_1177dba51794f2::t_046e283c44fe94 134-137
+  s_1177dba51794f2::t_d62a617a6e4da2 1-17,62-63,72-83,90-91,93,95,98,101-103,105,107-112,114-117,121-131,138-139,141,143-150,152-183
+  s_1177dba51794f2::t_531c75ff7641d4 118-120
+  s_1177dba51794f2::t_e0b50e066e09ce 142
+  s_1177dba51794f2::t_b75b39203a0639 18-47,49-57,61,64-71,84-85,92,94,96-97,99-100,104,113,132-133,140,151
+  s_1177dba51794f2::t_61a246f95ad71f 86-89
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "3f8afb3493fa32aaa62a9327822faeecf866f277",
+  "prompts": {},
+  "sessions": {
+    "s_1177dba51794f2": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_ff52cbd51ffe2XBrorIQfplhFE",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
