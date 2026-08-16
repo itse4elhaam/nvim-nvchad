@@ -1,0 +1,14 @@
+.githooks/pre-commit
+  h_d8075e92abae71 3,6-24
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "cb93f0b3c79cbe29e13343d56bad2f305b4846c9",
+  "prompts": {},
+  "humans": {
+    "h_d8075e92abae71": {
+      "author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
