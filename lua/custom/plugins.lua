@@ -258,24 +258,6 @@ end
 local function get_lsp_and_completion_plugins()
   return {
     {
-      "mfussenegger/nvim-lint",
-      event = {
-        "BufReadPre",
-        "BufNewFile",
-      },
-      config = require "custom.configs.nvim-lint",
-    },
-    {
-      "dmmulroy/ts-error-translator.nvim",
-      lazy = false,
-      config = function()
-        require("ts-error-translator").setup {
-          auto_attach = false, -- on-demand only; global publishDiagnostics override stalls main loop
-          servers = { "ts_ls", "vtsls", "astro", "svelte" },
-        }
-      end,
-    },
-    {
       "antosha417/nvim-lsp-file-operations",
       dependencies = {
         "nvim-lua/plenary.nvim",
@@ -304,17 +286,6 @@ local function get_lsp_and_completion_plugins()
       event = "LspAttach",
       opts = function()
         return require "custom.configs.null-ls"
-      end,
-    },
-    {
-      "jay-babu/mason-null-ls.nvim",
-      event = { "BufReadPre", "BufNewFile" },
-      dependencies = {
-        "williamboman/mason.nvim",
-        "nvimtools/none-ls.nvim",
-      },
-      config = function()
-        require "custom.configs.null-ls"
       end,
     },
     {
@@ -462,10 +433,6 @@ local function get_language_specific_plugins()
         border = "rounded",
         show_unknown_classes = true,
       },
-    },
-    {
-      "dmmulroy/ts-error-translator.nvim",
-      config = true,
     },
   }
 end
