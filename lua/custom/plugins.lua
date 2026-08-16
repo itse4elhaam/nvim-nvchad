@@ -779,6 +779,7 @@ local function get_utility_plugins()
     { "chrisgrieser/nvim-rulebook",  cmd = "Rulebook", keys = load_mappings "rulebook" },
     {
       "kamegoro/tobira.nvim",
+      enabled = false,
       event = "VeryLazy",
       opts = {},
     },
