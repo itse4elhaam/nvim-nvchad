@@ -120,6 +120,16 @@ api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {
   command = "set filetype=sh",
 })
 
+-- Treesitter and Markview own Markdown highlighting. Avoid loading the legacy
+-- markdown -> html -> css -> js syntax chain when Markview restarts Treesitter.
+api.nvim_create_autocmd("FileType", {
+  group = augroup "MarkdownSyntax",
+  pattern = { "markdown", "quarto", "rmd" },
+  callback = function()
+    vim.bo.syntax = ""
+  end,
+})
+
 api.nvim_create_autocmd("FileType", {
   group = augroup "FormatOptions",
   command = "set formatoptions-=ro",
