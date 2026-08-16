@@ -360,7 +360,7 @@ local function get_language_specific_plugins()
           enable_hybrid_mode = false,
           hybrid_modes = {},
 
-          modes = { "n", "no", "i" },
+          modes = { "n", "no" },
 
           icon_provider = "mini",
 
