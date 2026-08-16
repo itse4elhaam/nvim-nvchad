@@ -1,0 +1,14 @@
+lua/custom/themes/carbonfox.lua
+  h_d8075e92abae71 1-78
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "14e2173a9911e6c1943a7ef8f03bf446dbddc6a6",
+  "prompts": {},
+  "humans": {
+    "h_d8075e92abae71": {
+      "author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
