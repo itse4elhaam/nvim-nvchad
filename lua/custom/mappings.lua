@@ -9,7 +9,7 @@ M.sidekick = {
   plugin = true,
   n = {
     -- NES (Next Edit Suggestions) mappings
-    [">"] = {
+    [">"] = vim.g.enable_nes and {
       function()
         -- if there is a next edit, jump to it, otherwise apply it if any
         if not require("sidekick").nes_jump_or_apply() then
@@ -17,7 +17,7 @@ M.sidekick = {
         end
       end,
       desc = "NES: Jump to or apply suggestion",
-    },
+    } or nil,
     ["<leader>ne"] = {
       function()
         require("sidekick.nes").toggle()
