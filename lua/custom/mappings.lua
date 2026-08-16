@@ -473,7 +473,7 @@ M.wtf = {
 M.general = {
   n = {
     ["G"] = { "Gzz", "center after touching bottom" },
-    ["<leader>fy"] = { "<cmd>let @+ = expand('%:t:r')<CR>", "Yank current file's name" },
+    ["<leader>yf"] = { "<cmd>let @+ = expand('%:t:r')<CR>", "Yank current file's name" },
     ["<leader>bm"] = { "<cmd>BookmarksMark<CR>", "Mark/Toggle bookmark" },
     ["<leader>bg"] = { "<cmd>BookmarksGoto<CR>", "Go to bookmark" },
     ["<leader>bn"] = { "<cmd>BookmarksNewList<CR>", "Create new bookmark list" },
@@ -484,7 +484,7 @@ M.general = {
       "viwocPromise<<Esc>pa><Esc>",
       "Wrap selected type in Promise<>",
     },
-    ["T"] = { "<cmd>b#<CR>", "Open last closed buffer" },
+    ["<leader>bb"] = { "<cmd>b#<CR>", "Switch to alternate buffer" },
     ["<leader>tmt"] = { ":silent !tmuxt<CR>", "Toggle tmux status bar" },
     ["<leader>zf"] = {
       function()
@@ -687,7 +687,7 @@ M.general = {
     ["<leader>fgc"] = { "<cmd>Easypick conflicts<CR>", "Show merge conflicts" },
     ["<leader>fh"] = { "<cmd>Easypick hidden_files<CR>", "Show hidden files" },
 
-    ["<leader>fw"] = {
+    ["<leader>fW"] = {
       function()
         utils.multiGrep()
       end,
@@ -920,7 +920,7 @@ M.general = {
     -- cmd
     ["<leader>wq"] = { "<cmd>wqa!<CR>" },
     ["<leader>w"] = { "<cmd>wa<CR>" },
-    ["<leader>q"] = { "<cmd>q!<CR>" },
+    ["<leader>Q"] = { "<cmd>q!<CR>", "Force close buffer" },
     ["<leader>so"] = { ":source %<CR>", "Source the current file" },
     ["<leader>ya"] = { "<cmd>%y<CR>" },
 
@@ -1079,7 +1079,6 @@ M.general = {
 
   i = {
     ["<S-Tab>"] = { "<C-w>" },
-    ["<C-h>"] = { "<C-w>" },
   },
 }
 
