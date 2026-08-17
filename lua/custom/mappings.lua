@@ -1158,7 +1158,23 @@ M.haunt = {
 M.obsidian = {
   plugin = true,
   n = {
-    ["<leader>on"] = { "<cmd>ObsidianNew<cr>", "New obsidian note" },
+    ["<leader>on"] = {
+      function()
+        vim.cmd "ObsidianNew"
+        local bufnr = vim.api.nvim_get_current_buf()
+        local ok, client = pcall(require("obsidian").get_client)
+        if not (ok and client) then
+          return
+        end
+        -- Apply templates/default.md so new notes start with frontmatter + `# title`.
+        pcall(require("obsidian.templates").insert_template, {
+          template_name = "default",
+          client = client,
+          location = { bufnr, vim.api.nvim_get_current_win(), 1, 0 },
+        })
+      end,
+      "New obsidian note (from default template)",
+    },
     ["<leader>os"] = { "<cmd>ObsidianSearch<cr>", "Search obsidian vault" },
     ["<leader>oq"] = { "<cmd>ObsidianQuickSwitch<cr>", "Quick switch notes" },
     ["<leader>ot"] = { "<cmd>ObsidianNewFromTemplate<cr>", "New note from template" },
