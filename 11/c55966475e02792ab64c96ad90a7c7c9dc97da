@@ -1,0 +1,21 @@
+lua/custom/configs/obsidian.lua
+  s_37e610567d7d06::t_721353d27b5d6c 18,21-30
+  s_37e610567d7d06::t_89c1a64ef0d947 20
+  s_37e610567d7d06::t_63caa108ab1b32 19
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.6.22",
+  "base_commit_sha": "11c55966475e02792ab64c96ad90a7c7c9dc97da",
+  "prompts": {},
+  "sessions": {
+    "s_37e610567d7d06": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ses_fe16e625dffefEeEmQPXdQtsLk",
+        "model": "unknown"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
