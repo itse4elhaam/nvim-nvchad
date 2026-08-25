@@ -15,6 +15,9 @@ return function()
     },
     notes_subdir = "Fleeting",
     new_notes_location = "notes_subdir",
+    daily_notes = {
+      folder = "Fleeting/daily",
+    },
     note_id_func = function(title)
       -- Slug the title into the filename with a timestamp prefix to avoid collisions
       local suffix = ""
