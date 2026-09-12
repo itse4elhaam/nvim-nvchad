@@ -8,6 +8,7 @@ local ui = {
   hl_add = {
     ["@comment"] = { fg = "#7aa2f7", italic = true },
     ["@comment.documentation"] = { fg = "#7aa2f7", italic = true },
+    ["@markup.italic"] = { italic = true },
   },
   statusline = {
     theme = "default",
