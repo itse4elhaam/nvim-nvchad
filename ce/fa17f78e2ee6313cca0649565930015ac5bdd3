@@ -1,0 +1,21 @@
+lua/custom/productivity.lua
+  s_4cfba9bc0e578f::t_6e178ec9bbd48a 63,65,67,69,71
+lua/custom/ui.lua
+  s_4cfba9bc0e578f::t_079fb8af512d53 11
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.4",
+  "base_commit_sha": "cefa17f78e2ee6313cca0649565930015ac5bdd3",
+  "prompts": {},
+  "sessions": {
+    "s_4cfba9bc0e578f": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_f69911d9dffe7Vn1KcbQjClsiu",
+        "model": "gpt-5.6-luna"
+      },
+      "human_author": "Elhaam Basheer Chaudhry <e4elhaam@gmail.com>"
+    }
+  }
+}
