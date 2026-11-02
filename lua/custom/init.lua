@@ -46,6 +46,20 @@ local function augroup(name)
   return api.nvim_create_augroup("custom_" .. name, { clear = true })
 end
 
+if vim.env.NVIM_DEFAULT_FULL_SCREEN == "true" then
+  api.nvim_create_autocmd("UIEnter", {
+    group = augroup "DefaultFullScreen",
+    once = true,
+    callback = function()
+      vim.schedule(function()
+        if not (Snacks.zen.win and Snacks.zen.win:valid()) then
+          Snacks.zen.zoom()
+        end
+      end)
+    end,
+  })
+end
+
 -- Remove carriage returns after pasting in normal mode
 vim.api.nvim_create_autocmd("VimEnter", {
   group = augroup "PasteRemoveCarriageReturn",
